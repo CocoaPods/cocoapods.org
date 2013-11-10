@@ -1,7 +1,7 @@
 CocoaPods Beta Site
 ==========
 
-This is the repo for the new CocoaPods Guide site.
+This is the repo for the new CocoaPods Beta site.
 
 
 ###I'd like to make a suggestion
@@ -15,8 +15,8 @@ The beta site is built on [Middleman](http://middlemanapp.com), and runs on Ruby
 
 Steps to setup:
 
-1. `$ git clone https://github.com/CocoaPods/guides.cocoapods.org.git`
-2. `$ cd guides.cocoapods.org`
+1. `$ git clone https://github.com/CocoaPods/beta.cocoapods.org.git`
+2. `$ cd beta.cocoapods.org`
 3. `$ git submodule update --init --recursive`
 4. `$ bundle install`
 5. `$ middleman server`
