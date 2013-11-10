@@ -1,12 +1,4 @@
-# Layouts
-require "lib/breaking_source.rb"
-require "lib/breaking_image.rb"
 require "lib/shared_layouts.rb"
-
-# Tools for generating data
-require "lib/navigation_helpers.rb"
-require "lib/html_helpers.rb"
-require 'lib/doc/code_objects'
 
 set :encoding, 'utf-8'
 set :relative_links, true
@@ -27,12 +19,7 @@ set :markdown_engine, :redcarpet
 activate :automatic_image_sizes
 activate :rouge_syntax
 
-activate :breaking_image
-activate :breaking_source
 activate :shared_layouts
-
-helpers NavigationHelpers
-helpers HTMLHelpers
 
 configure :development do
   activate :livereload
