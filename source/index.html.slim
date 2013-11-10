@@ -3,53 +3,81 @@ title: CocoaPods Guides
 ---
 
 #content-wrapper
-  .search_container
-    section.row.container
+  .search_container.container
+    section.row
       == partial "search"
 
 
-  .homepage_container
-    section.row.container
-      ul.nav.nav-tabs
+  .homepage_container.container
+    section.row
+      .col-md-8.col-lg-8.col-sm-8.col-md-offset-2.col-lg-offset-2.col-sm-offset-2
+
+        ul.nav.nav-tabs.underscore
       
-        li.active  
-          a href="#install" data-toggle="tab" Install
+          li.active  
+            a href="#install" data-toggle="tab" Install
 
-        li  data-toggle="tab"
-          a href="#get_started" data-toggle="tab" Get Started
+          li  data-toggle="tab"
+            a href="#get_started" data-toggle="tab" Get Started
 
-        li  data-toggle="tab"
-          a href="#create_a_pod" data-toggle="tab" Create a Pod
+          li  data-toggle="tab"
+            a href="#create_a_pod" data-toggle="tab" Create a Pod
 
+    
+        div.tab-content
+          div#install.tab-pane.fade.in.active
 
-      div.tab-content
-        div#install.tab-pane.fade.in.active
+            markdown:
+
+              CocoaPods is built with Ruby and is installable with the default Ruby available on OS X. 
+              We [recommend](http://guides.cocoapods.org/using/getting-started.html#getting-started) you do this.
+            
+              Using the default Ruby install will require you to use `sudo` when installing
+              gems.
+
+              ```
+              $ sudo gem install cocoapods
+              ```
+            
+
+          div#get_started.tab-pane.fade 
           
-          markdown:
-            Search for pods (above). Then list the dependencies in a text file named Podfile in your Xcode project directory:
-              ```
-               $ edit Podfile
-                platform :ios
-                pod 'JSONKit',       '~> 1.4'
-                pod 'Reachability',  '~> 3.0.0'
-              ```
+            markdown:
+              Search for pods (above). Then list the dependencies in a text file named Podfile
+              in your Xcode project directory:
+              <code><pre>
+                  $ edit Podfile
+                  platform :ios
+                  pod 'JSONKit',       '~> 1.4'
+                  pod 'Reachability',  '~> 3.0.0'
+              </code></pre>
               
-            Now you can install the dependencies in your project:
+              Now you can install the dependencies in your project:
             
-            ```$ pod install```
+              ```$ pod install```
             
-            Make sure to always open the Xcode workspace instead of the project file when building your project:
+              Make sure to always open the Xcode workspace instead of the project file when 
+              building your project:
             
-            ```$ open App.xcworkspace```
+              ```$ open App.xcworkspace```
             
-            Now you can import your dependencies e.g.:
+              Now you can import your dependencies e.g.:
 
-            ```#import <Reachability.h>```
-            
-          
-        div#get_started.tab-pane.fade 
-          
-        div#create_a_pod.tab-pane.fade 
+              ```#import <Reachability.h>```
 
+          
+          div#create_a_pod.tab-pane.fade 
+
+            markdown:
+              We’re developing CocoaPods on GitHub. There’s a repository for the 
+              [CocoaPods tool](https://github.com/CocoaPods/CocoaPods) and one for all the 
+              [Podspecs](https://github.com/CocoaPods/Specs). It’s easy and really gratifying 
+              to contribute patches or pods, for a lot of people it's their first OSS pull request.
+
+              Follow [CocoaPods](http://twitter.com/CocoaPods) on Twitter to get up to date information 
+              about what’s going on in the CocoaPods world.
+    
+              Please report any problems with CocoaPods to the 
+              [CocoaPods issues](http://github.com/CocoaPods/CocoaPods/issues) page.
   
-  
+  .clearfix
