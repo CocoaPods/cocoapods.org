@@ -10,8 +10,8 @@ Fantastic! Take a look at our [open issues](https://github.com/CocoaPods/beta.co
 ###I'd like to add my blog post or tutorial.
 Delightful! Double check your link follows our [External Resource Guidelines](CONTRIBUTING.md), then make a pull request.
 
-###I'd like to run guides.cocoapods.org locally
-The guides site is built on [Middleman](http://middlemanapp.com), and runs on Ruby 1.9.3 or newer.
+###I'd like to run beta.cocoapods.org locally
+The beta site is built on [Middleman](http://middlemanapp.com), and runs on Ruby 1.9.3 or newer.
 
 Steps to setup:
 
