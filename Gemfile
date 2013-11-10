@@ -20,10 +20,4 @@ gem 'activesupport'
 gem 'pygments.rb'
 gem 'github-markup'
 
-gem 'claide'
-gem 'rake'
-
-gem 'xcodeproj'
-gem 'cocoapods'
-gem 'cocoapods-core'
-
+gem 'httparty'
