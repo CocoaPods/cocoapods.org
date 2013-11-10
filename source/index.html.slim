@@ -2,7 +2,54 @@
 title: CocoaPods Guides
 ---
 
-#content-wrapper.search_container
-  section.row.container
-    == partial "search"
+#content-wrapper
+  .search_container
+    section.row.container
+      == partial "search"
 
+
+  .homepage_container
+    section.row.container
+      ul.nav.nav-tabs
+      
+        li.active  
+          a href="#install" data-toggle="tab" Install
+
+        li  data-toggle="tab"
+          a href="#get_started" data-toggle="tab" Get Started
+
+        li  data-toggle="tab"
+          a href="#create_a_pod" data-toggle="tab" Create a Pod
+
+
+      div.tab-content
+        div#install.tab-pane.fade.in.active
+          
+          markdown:
+            Search for pods (above). Then list the dependencies in a text file named Podfile in your Xcode project directory:
+              ```
+               $ edit Podfile
+                platform :ios
+                pod 'JSONKit',       '~> 1.4'
+                pod 'Reachability',  '~> 3.0.0'
+              ```
+              
+            Now you can install the dependencies in your project:
+            
+            ```$ pod install```
+            
+            Make sure to always open the Xcode workspace instead of the project file when building your project:
+            
+            ```$ open App.xcworkspace```
+            
+            Now you can import your dependencies e.g.:
+
+            ```#import <Reachability.h>```
+            
+          
+        div#get_started.tab-pane.fade 
+          
+        div#create_a_pod.tab-pane.fade 
+
+  
+  
