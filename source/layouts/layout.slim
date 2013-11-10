@@ -1,5 +1,5 @@
 doctype html
-html
+html lang="en-en"
   head
     meta charset="utf-8"
     meta name="keywords" content="documenation cocoapods objective-c package manager"
@@ -7,6 +7,12 @@ html
   
     == shared_layout("favicons")
     == stylesheet_link_tag "app.css"
+    == stylesheet_link_tag "search.css"
+    == javascript_include_tag "jquery-1.5.0.min.js"
+    == javascript_include_tag "history.min.js"
+    == javascript_include_tag "history.adapter.jquery.min.js"
+    == javascript_include_tag "picky.min.js"
+    == javascript_include_tag "search.config.js"
     == javascript_include_tag "application.js"
 
   body

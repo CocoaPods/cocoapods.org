@@ -2,4 +2,25 @@
 title: CocoaPods Guides
 ---
 
-p hi
+form class="search-form" id="search" onkeypress="return event.keyCode != 13;"
+  fieldset
+    input type="search" id="pod_search" placeholder="SEARCH" class="query" autofocus=true autocomplete="off"
+    a href="#" class="reset-search" style="display:none"
+    | * Search for pods by name, version, author and keywords
+#search
+  .no_results style="display:none"
+    No pods found.
+  .allocations
+    ol.shown
+    ol.more load more
+    ol.hidden
+  .platform
+    input value="" type="radio" id="platform_either" name="platform" checked==(!@platform || @platform == :either)
+    label class="left" for="platform_either" <span>Either OS</span>
+    input value="on:osx on:ios" type="radio" id="platform_both" name="platform" checked==(@platform == :both)
+    label class="middle" for="platform_both" <span>iOS &amp; OSX</span>
+    input value="on:ios" type="radio" id="platform_ios" name="platform" checked==(@platform == :ios)
+    label class="middle" for="platform_ios" <span>iOS</span>
+    input value="on:osx" type="radio" id="platform_osx" name="platform" checked==(@platform == :osx)
+    label class="right" for="platform_osx" <span>OSX</span>
+  .results
