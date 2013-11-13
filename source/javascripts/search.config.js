@@ -13,8 +13,6 @@ $(window).ready(function() {
   var platformRemoverRegexp = /(platform|on\:\w+\s?)+/;
   var platformSelect = $("#search .platform");
   
-  console.log(platformSelect);
-  
   // Sets the checkbox labels correctly.
   //
   var selectCheckedPlatform = function() {
@@ -141,7 +139,7 @@ $(window).ready(function() {
         'name': 'Called <em>%1$s</em>',
         'author': 'Written by <em>%1$s</em>',
         'summary': 'Having \"<em>%1$s</em>\" in summary',
-        'dependencies': 'Using <em>%1$s</em>',
+        'dependencies': 'Using another pod called <em>%1$s</em>',
         'tags': 'Tagged <em>%1$s</em>',
         'author,name': 'Called <em>%2$s</em>, written by <em>%1$s</em>',
         'name,author': 'Called <em>%1$s</em>, written by <em>%2$s</em>',
@@ -151,7 +149,7 @@ $(window).ready(function() {
         'name,dependencies': '<em>%1$s</em>, using <em>%2$s</em>',
         'dependencies,name': '<em>%1$s</em> used by <em>%2$s</em>',
         'author,dependencies': 'Written by <em>%1$s</em> and using <em>%2$s</em>',
-        'dependencies,author': 'Using <em>%1$s</em>, written by <em>%2$s</em>',
+        'dependencies,author': 'Using a pod called <em>%1$s</em>, written by <em>%2$s</em>',
         'dependencies,version': '<em>%1$s</em> used by version <em>%2$s</em>',
         'version,dependencies': '<em>%2$s</em> used by version <em>%1$s</em>',
         'author,version': 'Version <em>%2$s</em> by <em>%1$s</em>',
@@ -162,10 +160,10 @@ $(window).ready(function() {
         'name,summary': 'Called <em>%1$s</em>, with \"<em>%2$s</em>\" in summary',
         'summary,author': 'Written by <em>%2$s</em> with \"<em>%1$s</em>\" in summary',
         'author,summary': 'Written by <em>%1$s</em> with \"<em>%2$s</em>\" in summary',
-        'summary,dependencies': 'Has \"<em>%1$s</em>\" in summary and uses <em>%2$s</em>',
-        'dependencies,summary': 'Has \"<em>%2$s</em>\" in summary and uses <em>%1$s</em>',
-        'name,dependencies': 'Called \"<em>%1$s</em>\", using <em>%2$s</em>',
-        'dependencies,name': 'Called \"<em>%2$s</em>\", using <em>%1$s</em>'
+        'summary,dependencies': 'Has \"<em>%1$s</em>\" in summary and uses another pod called <em>%2$s</em>',
+        'dependencies,summary': 'Has \"<em>%2$s</em>\" in summary and uses another pod called <em>%1$s</em>',
+        'name,dependencies': 'Called \"<em>%1$s</em>\", using another pod called <em>%2$s</em>',
+        'dependencies,name': 'Called \"<em>%2$s</em>\", using another pod called <em>%1$s</em>'
       }
     },
 
@@ -185,7 +183,20 @@ $(window).ready(function() {
       }
     }
   );
-        
+  
+  // Reset the search if empty.
+  // TODO Use the "search" Event. Also, rewrite.
+  //
+  $('#search input[type="search"]').on('input', function(e) {
+    if ('' == this.value) {
+      $('#search span.amount').hide();
+      $('#search div.platform').hide();
+    } else {
+      $('#search span.amount').show();
+      $('#search div.platform').show();
+    }
+  });
+
   // Resend query on platform selection.
   //
   // Note: Also updates the label.
@@ -195,11 +206,11 @@ $(window).ready(function() {
     selectCheckedPlatform();
     $("#pod_search").focus();
   });
-        
+
   // Initially select the right platform.
   //
   selectCheckedPlatform();
-        
+
   // Initially insert the query given in the URL
   // if there is one.
   //
