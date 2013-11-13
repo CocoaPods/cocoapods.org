@@ -1,13 +1,3 @@
-var platformRemoverRegexp = /(platform|on\:\w+\s?)+/;
-var platformSelect = $(".platform");
-      
-// Sets the checkbox labels correctly.
-//
-var selectCheckedPlatform = function() {
-  platformSelect.find('label').removeClass('selected');
-  platformSelect.find('input:checked + label').addClass('selected');
-};
-      
 // // Tracking the search results.
 // //
 // var trackAnalytics = function(data, query) {
@@ -20,6 +10,18 @@ var selectCheckedPlatform = function() {
 // }
 
 $(window).ready(function() {
+  var platformRemoverRegexp = /(platform|on\:\w+\s?)+/;
+  var platformSelect = $("#search .platform");
+  
+  console.log(platformSelect);
+  
+  // Sets the checkbox labels correctly.
+  //
+  var selectCheckedPlatform = function() {
+    platformSelect.find('label').removeClass('selected');
+    platformSelect.find('input:checked + label').addClass('selected');
+  };
+  
   pickyClient = new PickyClient({
     full: 'http://cocoapods.org/search',
       
@@ -62,6 +64,7 @@ $(window).ready(function() {
       if (query == '') { return ''; }
       query = query.replace(platformRemoverRegexp, '');
       var platformModifier = platformSelect.find("input:checked").val();
+      console.log(platformModifier);
       if (platformModifier === undefined || platformModifier == '') { return query; }
       return platformModifier + ' ' + query;
     },
@@ -96,7 +99,11 @@ $(window).ready(function() {
         }
               
         allocation.entries = entries;
-        });
+      });
+      
+      // TODO Update amount of results here.
+      //
+      $('#search form span.amount').text(data.total);
             
       return data;
     },
@@ -196,7 +203,6 @@ $(window).ready(function() {
   // Initially insert the query given in the URL
   // if there is one.
   //
-  
   if (window.initial_query != "") {
     pickyClient.insertFromURL(window.initial_query);
   }

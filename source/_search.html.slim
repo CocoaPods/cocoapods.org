@@ -1,12 +1,9 @@
-form.col-lg-12.col-sm-12.col-xs-12.search-form#search onkeypress="return event.keyCode != 13;"
-  fieldset
-    input.query#pod_search type="search" placeholder="SEARCH" autofocus=true autocomplete="off"
-    a.reset-search href="#" style="display:none"
-    | * Search for pods by name, version, author and keywords
-
-
-/ this is the 2nd id of "search", "ssearch_results" ?
 #search
+  form.col-lg-12.col-sm-12.col-xs-12 onkeypress="return event.keyCode != 13;"
+    fieldset
+      input.query#pod_search type="search" placeholder="SEARCH" autofocus=true autocomplete="off"
+      span.amount
+      | * Search for pods by name, version, author and keywords
   .no_results style="display:none"
     | No pods found.
   .allocations
