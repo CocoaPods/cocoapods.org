@@ -20,12 +20,48 @@ $(window).ready(function() {
     platformSelect.find('input:checked + label').addClass('selected');
   };
   
+  // Renders an entry, then returns the rendered HTML.
+  //
+  // TODO Improve. This is just a quick prototype.
+  //
+  var platformMapping = {
+    ios: 'iOS',
+    osx: 'OS X'
+  };
+  var render = function(entry) {
+    var platform = platformMapping[entry.platforms];
+    var authors  = $.map(entry.authors, function(email, name) {
+      return '<a href="javascript:pickyClient.insert(\'' + name.replace(/[']/, "\\\\\'") + '\')">' + name + '</a>';
+    });
+    
+    return '<li class="result">' +
+    '  <div class="infos">' +
+    '    <h3>' +
+    '      <a href="' + entry.link + '">' + entry.id + '</a>' +
+    (platform ? '<span class="os">' + platform + ' only</span>' : '') +
+    '      <span class="version">' +
+             entry.version +
+    '        <span class="clippy">' + entry.podspec + '</span>' +
+    '      </span>' +
+    '    </h3>' +
+    '    <p class="subspecs">' + entry.subspecs.join(', ') + '</p>' +
+    '    <p>' + entry.summary + '</p>' +
+    '    <p class="author">' + authors.join(', ') + '</p>' +
+    '  </div>' +
+    '  <div class="actions">' +
+    '    <a href="http://cocoadocs.org/docsets/' + entry.id + '/' + entry.version + '">Docs</a>' +
+    '    <a href="' + entry.link + '">Repo</a>' +
+    '    <a href="https://github.com/CocoaPods/Specs/tree/master/' + entry.id + '/' + entry.version + '/' + entry.id + '.podspec">Spec</a>' +
+    '  </div>' +
+    '</li>'
+  };
+  
   pickyClient = new PickyClient({
-    full: 'http://cocoapods.org/search',
+    full: 'http://cocoapods.org/search.json',
       
     // The live query does a full query.
     //
-    live: 'http://cocoapods.org/search',
+    live: 'http://cocoapods.org/search.json',
     liveResults: 20,
     liveRendered: true, // Experimental: Render live results as if they were full ones.
     liveSearchInterval: 60, // Time between keystrokes before it sends the query.
@@ -62,7 +98,6 @@ $(window).ready(function() {
       if (query == '') { return ''; }
       query = query.replace(platformRemoverRegexp, '');
       var platformModifier = platformSelect.find("input:checked").val();
-      console.log(platformModifier);
       if (platformModifier === undefined || platformModifier == '') { return query; }
       return platformModifier + ' ' + query;
     },
@@ -74,14 +109,14 @@ $(window).ready(function() {
     //
     success: function(data, query) {
       // TODO trackAnalytics(data, query);
-            
+      
       var seen = {};
             
       var allocations = data.allocations;
       allocations.each(function(i, allocation) {
         var ids     = allocation.ids;
         var entries = allocation.entries;
-        var remove = [];
+        var remove  = [];
               
         ids.each(function(j, id) {
           if (seen[id]) {
@@ -95,8 +130,10 @@ $(window).ready(function() {
         for(var l = remove.length-1; 0 <= l; l--) {
           entries.splice(remove[l], 1);
         }
-              
-        allocation.entries = entries;
+        
+        allocation.entries = entries.map(function(i, entry) {
+          return render(JSON.parse(entry));
+        });
       });
       
       // TODO Update amount of results here.
@@ -172,28 +209,30 @@ $(window).ready(function() {
     // Optional. Default are the field identifiers from the Picky server.
     //
     explanations: {
-      en:{
-          name: 'named',
-          author: 'written by',
-          versions: 'on version',
-          dependencies: 'using',
-          summary: 'with summary',
-          tags: 'tagged as'
-        }
+      en: {
+        author: 'written by',
+        versions: 'on version',
+        dependencies: 'using',
+        name: 'named',
+        platform: 'only on',
+        summary: 'with summary',
+        tags: 'tagged as'
       }
     }
-  );
+  });
   
   // Reset the search if empty.
-  // TODO Use the "search" Event. Also, rewrite.
+  // TODO Use the "search" Event? Also, rewrite.
   //
   $('#search input[type="search"]').on('input', function(e) {
     if ('' == this.value) {
       $('#search span.amount').hide();
       $('#search div.platform').hide();
+      $('#search div.results').hide();
     } else {
       $('#search span.amount').show();
       $('#search div.platform').show();
+      // $('#search div.results').show(); // Picky does this already.
     }
   });
 
