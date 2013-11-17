@@ -101,42 +101,21 @@ $(window).ready(function() {
       if (platformModifier === undefined || platformModifier == '') { return query; }
       return platformModifier + ' ' + query;
     },
-    // We filter duplicate ids here.
-    // (Not in the server as it might be
-    // used for APIs etc.)
-    //
-    // We also track the data for analytics.
-    //
     success: function(data, query) {
+      // Track query for analytics.
+      //
       // TODO trackAnalytics(data, query);
       
-      var seen = {};
-            
+      // Render the JSON into HTML.
+      //
       var allocations = data.allocations;
       allocations.each(function(i, allocation) {
-        var ids     = allocation.ids;
-        var entries = allocation.entries;
-        var remove  = [];
-              
-        ids.each(function(j, id) {
-          if (seen[id]) {
-            data.total -= 1;
-            remove.push(j);
-          } else {
-            seen[id] = true;
-          }
-        });
-              
-        for(var l = remove.length-1; 0 <= l; l--) {
-          entries.splice(remove[l], 1);
-        }
-        
-        allocation.entries = entries.map(function(i, entry) {
+        allocation.entries = allocation.entries.map(function(i, entry) {
           return render(JSON.parse(entry));
         });
       });
       
-      // TODO Update amount of results here.
+      // Update number of results.
       //
       $('#search form span.amount').text(data.total);
             
