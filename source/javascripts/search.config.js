@@ -38,7 +38,7 @@ $(window).ready(function() {
     '  <div class="infos">' +
     '    <h3>' +
     '      <a href="' + entry.link + '">' + entry.id + '</a>' +
-    (platform ? '<span class="os">' + platform + ' only</span>' : '') +
+    (platform ? '<span class="os">' + platform + '</span>' : '') +
     '      <span class="version">' +
              entry.version +
     '        <span class="clippy">' + entry.podspec + '</span>' +
