@@ -207,15 +207,17 @@ $(window).ready(function() {
   //
   $('#search input[type="search"]').on('input', function(e) {
     if ('' == this.value) {
-      $('#search').removeClass("active");
       $('nav.navbar').css("opacity", "1")
+      $('#search').removeClass("active");
       $('#search span.amount').hide();
       $('#search_results div.platform').hide();
+      $('#search_results div.allocations').hide();
       $('#search_results div.results').hide();
     } else {
-      $('#search').addClass("active")
       $('nav.navbar').css("opacity", "0")
-      $('#search_results span.amount').show();
+      $('#search').addClass("active")
+      $('#search span.amount').show();
+      $('#search_results div.allocations').show();
       $('#search_results div.platform').show();
       // $('#search div.results').show(); // Picky does this already.
     }
