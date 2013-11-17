@@ -2,12 +2,17 @@
 title: CocoaPods Guides
 ---
 
-#content-wrapper
-  .search_container.container
+#search_container.container
+  section.row
+    == partial "search"
+
+#results_container
+  .container
     section.row
-      == partial "search"
+      == partial "results"
 
 
+#content-wrapper
   .homepage_container.container
     section.row
       .col-md-8.col-lg-8.col-sm-8.col-md-offset-2.col-lg-offset-2.col-sm-offset-2

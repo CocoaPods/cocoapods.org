@@ -71,8 +71,10 @@ $(window).ready(function() {
     //
     enclosingSelector: '#search',
     resetSelector: 'a.reset-search',
+    resultsSelector: '#search_results div.results',
+    allocationsSelector: '#search_results div.allocations',
     maxSuggestions: 4,
-    moreSelector: '#search .allocations .more',
+    moreSelector: '#search_results .allocations .more',
 
     // Before a query is inserted into the search field
     // we clean it of any platform terms.
@@ -226,12 +228,16 @@ $(window).ready(function() {
   //
   $('#search input[type="search"]').on('input', function(e) {
     if ('' == this.value) {
+      $('#search').removeClass("active");
+      $('nav.navbar').css("opacity", "1")
       $('#search span.amount').hide();
-      $('#search div.platform').hide();
-      $('#search div.results').hide();
+      $('#search_results div.platform').hide();
+      $('#search_results div.results').hide();
     } else {
-      $('#search span.amount').show();
-      $('#search div.platform').show();
+      $('#search').addClass("active")
+      $('nav.navbar').css("opacity", "0")
+      $('#search_results span.amount').show();
+      $('#search_results div.platform').show();
       // $('#search div.results').show(); // Picky does this already.
     }
   });

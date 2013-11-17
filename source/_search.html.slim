@@ -2,21 +2,3 @@
   form.col-lg-12.col-sm-12.col-xs-12 onkeypress="return event.keyCode != 13;"
     fieldset
       input.query#pod_search type="search" placeholder="SEARCH" autofocus=true autocomplete="off"
-      span.amount
-      | * Search for pods by name, version, author, keywords, summary, and dependencies.
-  .platform
-    input value="" type="radio" id="platform_either" name="platform" checked==(!@platform || @platform == :either)
-    label class="left" for="platform_either" <span>Either OS</span>
-    input value="on:osx on:ios" type="radio" id="platform_both" name="platform" checked==(@platform == :both)
-    label class="middle" for="platform_both" <span>iOS &amp; OSX</span>
-    input value="on:ios" type="radio" id="platform_ios" name="platform" checked==(@platform == :ios)
-    label class="middle" for="platform_ios" <span>iOS</span>
-    input value="on:osx" type="radio" id="platform_osx" name="platform" checked==(@platform == :osx)
-    label class="right" for="platform_osx" <span>OSX</span>
-  .no_results style="display:none"
-    | No pods found.
-  .allocations
-    ol.shown
-    ol.more load more
-    ol.hidden
-  .results
