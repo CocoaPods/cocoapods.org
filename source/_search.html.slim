@@ -1,6 +1,9 @@
-#search
-  form.col-lg-12.col-sm-12.col-xs-12 onkeypress="return event.keyCode != 13;"
-    fieldset
-      input.query#pod_search type="search" placeholder="SEARCH" autofocus=true autocomplete="off"
-      span.amount
-      / | * Search for pods by name, version, author, keywords, summary, and dependencies.
+#search_container.container
+  section.row
+
+    #search
+      form.col-lg-12.col-sm-12.col-xs-12 onkeypress="return event.keyCode != 13;"
+        fieldset
+          input.query#pod_search type="search" placeholder="SEARCH*" autofocus=true autocomplete="off"
+          span.amount
+          p * By name, version, author, keywords, summary, and dependencies.

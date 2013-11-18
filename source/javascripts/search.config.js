@@ -34,8 +34,10 @@ $(window).ready(function() {
       return '<a href="javascript:pickyClient.insert(\'' + name.replace(/[']/, "\\\\\'") + '\')">' + name + '</a>';
     });
     
+    var info_classes = "infos col-lg-8 col-sm-7 col-xs-12"
+    var action_classes = "actions col-lg-4 col-sm-5 col-xs-12"
     return '<li class="result">' +
-    '  <div class="infos">' +
+    '  <div class="' + info_classes + '">' +
     '    <h3>' +
     '      <a href="' + entry.link + '">' + entry.id + '</a>' +
     (platform ? '<span class="os">' + platform + '</span>' : '') +
@@ -48,7 +50,7 @@ $(window).ready(function() {
     '    <p>' + entry.summary + '</p>' +
     '    <p class="author">' + authors.join(', ') + '</p>' +
     '  </div>' +
-    '  <div class="actions">' +
+    '  <div class="' + action_classes +'">' +
     '    <a href="http://cocoadocs.org/docsets/' + entry.id + '/' + entry.version + '">Docs</a>' +
     '    <a href="' + entry.link + '">Repo</a>' +
     '    <a href="https://github.com/CocoaPods/Specs/tree/master/' + entry.id + '/' + entry.version + '/' + entry.id + '.podspec">Spec</a>' +
