@@ -51,6 +51,16 @@ $(window).ready(function() {
     // $('#search_results .no_results').show(); // Picky does this already.
     $('#search_results div.allocations').hide();
     $('#search_results div.platform').hide();
+    
+    $.getJSON('http://cocoapods.org/no_results.json', '', function(data, textStatus, jqXHR) {
+      var tagsContainer = $('#results_container .no_results .tags');
+      var tags = [];
+      $.each(data.tag, function(name, amount) {
+        tags.push("<a href='javascript:pickyClient.insert(\"tag:" + name + "\");'>" + name + "</a>");
+      });
+      tagsContainer.html("<p>Maybe it helps exploring via one of our keywords? </p>")
+      tagsContainer.find('p').append(tags.sort().join(', ')).append('.');
+    });
   };
   
   // Renders an entry, then returns the rendered HTML.
