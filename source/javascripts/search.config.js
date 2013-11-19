@@ -20,6 +20,39 @@ $(window).ready(function() {
     platformSelect.find('input:checked + label').addClass('selected');
   };
   
+  //
+  //
+  var resetSearchInterface = function() {
+    $('nav.navbar').css("opacity", "1")
+    $('#search').removeClass("active");
+    $('#search span.amount').hide();
+    $('#search_results div.platform').hide();
+    $('#search_results div.allocations').hide();
+    $('#search_results div.results').hide();
+  };
+  
+  //
+  //
+  var prepareSearchInterfaceForResults = function() {
+    $('nav.navbar').css("opacity", "0")
+    $('#search').addClass("active")
+    $('#search span.amount').show();
+  };
+  
+  var resultsSearchInterface = function() {
+    $('#search_results div.platform').show();
+    $('#search_results div.allocations').show();
+    // $('#search div.results').show(); // Picky does this already.
+  };
+  
+  //
+  //
+  var noResultsSearchInterface = function() {
+    // $('#search_results .no_results').show(); // Picky does this already.
+    $('#search_results div.allocations').hide();
+    $('#search_results div.platform').hide();
+  };
+  
   // Renders an entry, then returns the rendered HTML.
   //
   // TODO Improve. This is just a quick prototype.
@@ -72,7 +105,9 @@ $(window).ready(function() {
     enclosingSelector: '#search',
     resetSelector: 'a.reset-search',
     resultsSelector: '#search_results div.results',
+    noResultsSelector: '#results_container .no_results',
     allocationsSelector: '#search_results div.allocations',
+    counterSelector: '#search form span.amount',
     maxSuggestions: 4,
     moreSelector: '#search_results .allocations .more',
 
@@ -98,15 +133,26 @@ $(window).ready(function() {
       // We don't add the platform if it is empty (still saved in history as empty, though).
       //
       if (query == '') { return ''; }
+      
+      // Otherwise we add in the platform.
+      //
       query = query.replace(platformRemoverRegexp, '');
       var platformModifier = platformSelect.find("input:checked").val();
       if (platformModifier === undefined || platformModifier == '') { return query; }
       return platformModifier + ' ' + query;
     },
-    success: function(data, query) {
+    success: function(data) {
       // Track query for analytics.
       //
       // TODO trackAnalytics(data, query);
+      
+      // If no results are found.
+      //
+      if (data.total == 0) {
+        noResultsSearchInterface();
+      } else {
+        resultsSearchInterface();
+      }
       
       // Render the JSON into HTML.
       //
@@ -116,14 +162,10 @@ $(window).ready(function() {
           return render(JSON.parse(entry));
         });
       });
-      
-      // Update number of results.
-      //
-      $('#search form span.amount').text(data.total);
             
       return data;
     },
-    // after: function(data, query) {  }, // After Picky has handled the data and updated the view.
+    // after: function(data) { }, // After Picky has handled the data and updated the view.
 
     // This is used to generate the correct query strings, localized. E.g. "subject:war".
     // Note: If you don't give these, the field identifier given in the Picky server is used.
@@ -207,19 +249,9 @@ $(window).ready(function() {
   //
   $('#search input[type="search"]').on('input', function(e) {
     if ('' == this.value) {
-      $('nav.navbar').css("opacity", "1")
-      $('#search').removeClass("active");
-      $('#search span.amount').hide();
-      $('#search_results div.platform').hide();
-      $('#search_results div.allocations').hide();
-      $('#search_results div.results').hide();
+      resetSearchInterface();
     } else {
-      $('nav.navbar').css("opacity", "0")
-      $('#search').addClass("active")
-      $('#search span.amount').show();
-      $('#search_results div.allocations').show();
-      $('#search_results div.platform').show();
-      // $('#search div.results').show(); // Picky does this already.
+      prepareSearchInterfaceForResults();
     }
   });
 
