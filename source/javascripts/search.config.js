@@ -11,7 +11,7 @@
 
 $(window).ready(function() {
   var platformRemoverRegexp = /(platform|on\:\w+\s?)+/;
-  var platformSelect = $("#search .platform");
+  var platformSelect = $("#results_container div.platform");
   
   // Sets the checkbox labels correctly.
   //
