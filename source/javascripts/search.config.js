@@ -101,6 +101,7 @@ $(window).ready(function() {
   
   pickyClient = new PickyClient({
     full: 'http://cocoapods.org/search.json',
+    fullResults: 20,
       
     // The live query does a full query.
     //
@@ -108,6 +109,9 @@ $(window).ready(function() {
     liveResults: 20,
     liveRendered: true, // Experimental: Render live results as if they were full ones.
     liveSearchInterval: 60, // Time between keystrokes before it sends the query.
+    maxSuggestions: 5,
+    alwaysShowResults: true, // Always show results, even when Picky does not know what categories the user wants.
+    wrapResults: '<ol class="results"></ol>', // Always wrap the results in an ol.results.
 
     // Instead of enclosing the search in #picky,
     // in the CocoaPods search we use #search.
@@ -118,9 +122,8 @@ $(window).ready(function() {
     noResultsSelector: '#results_container .no_results',
     allocationsSelector: '#search_results div.allocations',
     counterSelector: '#search form span.amount',
-    maxSuggestions: 4,
     moreSelector: '#search_results .allocations .more',
-
+    
     // Before a query is inserted into the search field
     // we clean it of any platform terms.
     //
@@ -172,7 +175,7 @@ $(window).ready(function() {
           return render(JSON.parse(entry));
         });
       });
-            
+      
       return data;
     },
     // after: function(data) { }, // After Picky has handled the data and updated the view.
