@@ -111,6 +111,7 @@ $(window).ready(function() {
     liveSearchInterval: 60, // Time between keystrokes before it sends the query.
     maxSuggestions: 5,
     alwaysShowResults: true, // Always show results, even when Picky does not know what categories the user wants.
+    alwaysShowSelection: true, // Always show the selection of what your search means, even when Picky would not show it normally.
     wrapResults: '<ol class="results"></ol>', // Always wrap the results in an ol.results.
 
     // Instead of enclosing the search in #picky,
@@ -128,6 +129,7 @@ $(window).ready(function() {
     // we clean it of any platform terms.
     //
     beforeInsert: function(query) {
+      if ('' != query) { prepareSearchInterfaceForResults(); }
       return query.replace(platformRemoverRegexp, '');
     },
 
@@ -209,34 +211,65 @@ $(window).ready(function() {
       en: {
         'platform': '', // platform is simply never shown.
               
-        'name': 'Called <em>%1$s</em>',
-        'author': 'Written by <em>%1$s</em>',
-        'summary': 'Having \"<em>%1$s</em>\" in summary',
-        'dependencies': 'Using another pod called <em>%1$s</em>',
-        'tags': 'Tagged <em>%1$s</em>',
-        'author,name': 'Called <em>%2$s</em>, written by <em>%1$s</em>',
-        'name,author': 'Called <em>%1$s</em>, written by <em>%2$s</em>',
-        'tags,name': 'Called <em>%2$s</em>, tagged as <em>%1$s</em>',
-        'name,tags': 'Called <em>%1$s</em>, tagged as <em>%2$s</em>',
-        'version,name': '<em>%1$s</em> of <em>%2$s</em>',
-        'name,dependencies': '<em>%1$s</em>, using <em>%2$s</em>',
-        'dependencies,name': '<em>%1$s</em> used by <em>%2$s</em>',
-        'author,dependencies': 'Written by <em>%1$s</em> and using <em>%2$s</em>',
-        'dependencies,author': 'Using a pod called <em>%1$s</em>, written by <em>%2$s</em>',
-        'dependencies,version': '<em>%1$s</em> used by version <em>%2$s</em>',
-        'version,dependencies': '<em>%2$s</em> used by version <em>%1$s</em>',
-        'author,version': 'Version <em>%2$s</em> by <em>%1$s</em>',
-        'version,author': 'Version <em>%1$s</em> by <em>%2$s</em>',
-        'summary,version': 'Version <em>%2$s</em> with \"<em>%1$s</em>\" in summary',
-        'version,summary': 'Version <em>%1$s</em> with \"<em>%2$s</em>\" in summary',
-        'summary,name': 'Called <em>%2$s</em>, with \"<em>%1$s</em>\" in summary',
-        'name,summary': 'Called <em>%1$s</em>, with \"<em>%2$s</em>\" in summary',
-        'summary,author': 'Written by <em>%2$s</em> with \"<em>%1$s</em>\" in summary',
-        'author,summary': 'Written by <em>%1$s</em> with \"<em>%2$s</em>\" in summary',
-        'summary,dependencies': 'Has \"<em>%1$s</em>\" in summary and uses another pod called <em>%2$s</em>',
-        'dependencies,summary': 'Has \"<em>%2$s</em>\" in summary and uses another pod called <em>%1$s</em>',
-        'name,dependencies': 'Called \"<em>%1$s</em>\", using another pod called <em>%2$s</em>',
-        'dependencies,name': 'Called \"<em>%2$s</em>\", using another pod called <em>%1$s</em>'
+        'name': 'name',
+        'author': 'author',
+        'summary': 'summary',
+        'dependencies': 'dependency',
+        'tags': 'tag',
+        'version': 'version',
+        'author,name': 'author+name',
+        'name,author': 'name+author',
+        'tags,name': 'tag+name',
+        'name,tags': 'name+tag',
+        'version,name': 'version+name',
+        'name,version': 'name+version',
+        'name,dependencies': 'name+dependency',
+        'dependencies,name': 'dependency+name',
+        'author,dependencies': 'author+dependency',
+        'dependencies,author': 'dependency+author',
+        'dependencies,version': 'version+dependencies',
+        'version,dependencies': 'version+dependency',
+        'author,version': 'author+version',
+        'version,author': 'version+author',
+        'summary,version': 'version+summary',
+        'version,summary': 'version+summary',
+        'summary,name': 'summary+name',
+        'name,summary': 'name+summary',
+        'summary,author': 'summary+author',
+        'author,summary': 'author+summary',
+        'summary,dependencies': 'summary+dependency',
+        'dependencies,summary': 'dependency+summary',
+        'name,dependencies': 'name+dependency',
+        'dependencies,name': 'dependency+name'
+        
+        // 'name': 'Called <em>%1$s</em>',
+        // 'author': 'Written by <em>%1$s</em>',
+        // 'summary': 'Having \"<em>%1$s</em>\" in summary',
+        // 'dependencies': 'Using another pod called <em>%1$s</em>',
+        // 'tags': 'Tagged <em>%1$s</em>',
+        // 'author,name': 'Called <em>%2$s</em>, written by <em>%1$s</em>',
+        // 'name,author': 'Called <em>%1$s</em>, written by <em>%2$s</em>',
+        // 'tags,name': 'Called <em>%2$s</em>, tagged as <em>%1$s</em>',
+        // 'name,tags': 'Called <em>%1$s</em>, tagged as <em>%2$s</em>',
+        // 'version,name': '<em>%1$s</em> of <em>%2$s</em>',
+        // 'name,dependencies': '<em>%1$s</em>, using <em>%2$s</em>',
+        // 'dependencies,name': '<em>%1$s</em> used by <em>%2$s</em>',
+        // 'author,dependencies': 'Written by <em>%1$s</em> and using <em>%2$s</em>',
+        // 'dependencies,author': 'Using a pod called <em>%1$s</em>, written by <em>%2$s</em>',
+        // 'dependencies,version': '<em>%1$s</em> used by version <em>%2$s</em>',
+        // 'version,dependencies': '<em>%2$s</em> used by version <em>%1$s</em>',
+        // 'author,version': 'Version <em>%2$s</em> by <em>%1$s</em>',
+        // 'version,author': 'Version <em>%1$s</em> by <em>%2$s</em>',
+        // 'summary,version': 'Version <em>%2$s</em> with \"<em>%1$s</em>\" in summary',
+        // 'version,summary': 'Version <em>%1$s</em> with \"<em>%2$s</em>\" in summary',
+        // 'summary,name': 'Called <em>%2$s</em>, with \"<em>%1$s</em>\" in summary',
+        // 'name,summary': 'Called <em>%1$s</em>, with \"<em>%2$s</em>\" in summary',
+        // 'summary,author': 'Written by <em>%2$s</em> with \"<em>%1$s</em>\" in summary',
+        // 'author,summary': 'Written by <em>%1$s</em> with \"<em>%2$s</em>\" in summary',
+        // 'summary,dependencies': 'Has \"<em>%1$s</em>\" in summary and uses another pod called <em>%2$s</em>',
+        // 'dependencies,summary': 'Has \"<em>%2$s</em>\" in summary and uses another pod called <em>%1$s</em>',
+        // 'name,dependencies': 'Called \"<em>%1$s</em>\", using another pod called <em>%2$s</em>',
+        // 'dependencies,name': 'Called \"<em>%2$s</em>\", using another pod called <em>%1$s</em>'
       }
     },
 
