@@ -10,7 +10,7 @@
 // }
 
 $(window).ready(function() {
-  var platformRemoverRegexp = /\A(platform|on\:\w+\s?)+/;
+  var platformRemoverRegexp = /\b(platform|on\:\w+\s?)+/;
   var platformSelect = $("#results_container div.platform");
   
   // Sets the checkbox labels correctly.
