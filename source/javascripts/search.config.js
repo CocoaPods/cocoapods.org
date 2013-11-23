@@ -109,7 +109,7 @@ $(window).ready(function() {
     liveResults: 20,
     liveRendered: true, // Experimental: Render live results as if they were full ones.
     liveSearchInterval: 60, // Time between keystrokes before it sends the query.
-    maxSuggestions: 5,
+    maxSuggestions: 3, // Bootstrap currently hides .hidden class using !important, which blocks Picky's behaviour :( (we now use .onrequest)
     alwaysShowResults: true, // Always show results, even when Picky does not know what categories the user wants.
     alwaysShowSelection: true, // Always show the selection of what your search means, even when Picky would not show it normally.
     wrapResults: '<ol class="results"></ol>', // Always wrap the results in an ol.results.
@@ -118,10 +118,10 @@ $(window).ready(function() {
     // in the CocoaPods search we use #search.
     //
     enclosingSelector: '#search',
-    resetSelector: 'a.reset-search',
     resultsSelector: '#search_results div.results',
     noResultsSelector: '#results_container .no_results',
     allocationsSelector: '#search_results div.allocations',
+    hiddenAllocations: '#search_results div.allocations .onrequest',
     counterSelector: '#search form span.amount',
     moreSelector: '#search_results .allocations .more',
     
