@@ -25,6 +25,7 @@ $(window).ready(function() {
   var resetSearchInterface = function() {
     $('nav.navbar').css("opacity", "1")
     $('#search').removeClass("active");
+    $('#results_container').removeClass("active")
     $('#search span.amount').hide();
     $('#search_results div.platform').hide();
     $('#search_results div.allocations').hide();
@@ -36,6 +37,7 @@ $(window).ready(function() {
   var prepareSearchInterfaceForResults = function() {
     $('nav.navbar').css("opacity", "0")
     $('#search').addClass("active")
+    $('#results_container').addClass("active")
     $('#search span.amount').show();
   };
   
