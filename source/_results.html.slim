@@ -1,24 +1,21 @@
-#results_container
-  .container
-    section.row
+#search_results.col-lg-10.col-sm-10.col-xs-10.col-lg-offset-1.col-sm-offset-1.col-xs-offset-1
+  .no_results style="display:none"
+    .apology Sorry. No pods found.
+    .tags
 
-      #search_results.col-lg-10.col-sm-10.col-xs-10.col-lg-offset-1.col-sm-offset-1.col-xs-offset-1
-        .platform
-          input value="" type="radio" id="platform_either" name="platform" checked==(!@platform || @platform == :either)
-          label class="left" for="platform_either" <span>Either OS</span>
-          input value="on:osx on:ios" type="radio" id="platform_both" name="platform" checked==(@platform == :both)
-          label class="middle" for="platform_both" <span>iOS &amp; OSX</span>
-          input value="on:ios" type="radio" id="platform_ios" name="platform" checked==(@platform == :ios)
-          label class="middle" for="platform_ios" <span>iOS</span>
-          input value="on:osx" type="radio" id="platform_osx" name="platform" checked==(@platform == :osx)
-          label class="right" for="platform_osx" <span>OSX</span>
-
-        .no_results style="display:none"
-          | No pods found.
-
-        .allocations
-          ol.shown 
-          ol.more style="display:none" load more
-          ol.hidden 
-
-        .results
+  .selection
+    .platform
+      input value="" type="radio" id="platform_either" name="platform" checked==(!@platform || @platform == :either)
+      label class="left" for="platform_either" <span>Either OS</span>
+      input value="on:osx on:ios" type="radio" id="platform_both" name="platform" checked==(@platform == :both)
+      label class="middle" for="platform_both" <span>iOS &amp; OSX</span>
+      input value="on:ios" type="radio" id="platform_ios" name="platform" checked==(@platform == :ios)
+      label class="middle" for="platform_ios" <span>iOS</span>
+      input value="on:osx" type="radio" id="platform_osx" name="platform" checked==(@platform == :osx)
+      label class="right" for="platform_osx" <span>OSX</span>
+  
+    .allocations
+      ol.shown
+      ol.more style="display:none"
+        li load more
+      ol.onrequest

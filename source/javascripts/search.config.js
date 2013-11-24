@@ -10,14 +10,59 @@
 // }
 
 $(window).ready(function() {
-  var platformRemoverRegexp = /(platform|on\:\w+\s?)+/;
-  var platformSelect = $("#search .platform");
+  var platformRemoverRegexp = /\b(platform|on\:\w+\s?)+/;
+  var platformSelect = $("#results_container div.platform");
   
   // Sets the checkbox labels correctly.
   //
   var selectCheckedPlatform = function() {
     platformSelect.find('label').removeClass('selected');
     platformSelect.find('input:checked + label').addClass('selected');
+  };
+  
+  //
+  //
+  var resetSearchInterface = function() {
+    $('nav.navbar').css("opacity", "1")
+    $('#search').removeClass("active");
+    $('#results_container').removeClass("active")
+    $('#search span.amount').hide();
+    $('#search_results div.platform').hide();
+    $('#search_results div.allocations').hide();
+    $('#search_results div.results').hide();
+  };
+  
+  //
+  //
+  var prepareSearchInterfaceForResults = function() {
+    $('nav.navbar').css("opacity", "0")
+    $('#search').addClass("active")
+    $('#results_container').addClass("active")
+    $('#search span.amount').show();
+  };
+  
+  var resultsSearchInterface = function() {
+    $('#search_results div.platform').show();
+    $('#search_results div.allocations').show();
+    // $('#search div.results').show(); // Picky does this already.
+  };
+  
+  //
+  //
+  var noResultsSearchInterface = function() {
+    // $('#search_results .no_results').show(); // Picky does this already.
+    $('#search_results div.allocations').hide();
+    $('#search_results div.platform').hide();
+    
+    $.getJSON('http://cocoapods.org/no_results.json', '', function(data, textStatus, jqXHR) {
+      var tagsContainer = $('#results_container .no_results .tags');
+      var tags = [];
+      $.each(data.tag, function(name, amount) {
+        tags.push("<a href='javascript:pickyClient.insert(\"tag:" + name + "\");'>" + name + "</a>");
+      });
+      tagsContainer.html("<p>Maybe it helps exploring via one of our keywords? </p>")
+      tagsContainer.find('p').append(tags.sort().join(', ')).append('.');
+    });
   };
   
   // Renders an entry, then returns the rendered HTML.
@@ -60,6 +105,7 @@ $(window).ready(function() {
   
   pickyClient = new PickyClient({
     full: 'http://cocoapods.org/search.json',
+    fullResults: 20,
       
     // The live query does a full query.
     //
@@ -67,21 +113,27 @@ $(window).ready(function() {
     liveResults: 20,
     liveRendered: true, // Experimental: Render live results as if they were full ones.
     liveSearchInterval: 60, // Time between keystrokes before it sends the query.
+    maxSuggestions: 5, // Bootstrap currently hides .hidden class using !important, which blocks Picky's behaviour :( (we now use .onrequest)
+    alwaysShowResults: true, // Always show results, even when Picky does not know what categories the user wants.
+    alwaysShowSelection: true, // Always show the selection of what your search means, even when Picky would not show it normally.
+    wrapResults: '<ol class="results"></ol>', // Always wrap the results in an ol.results.
 
     // Instead of enclosing the search in #picky,
     // in the CocoaPods search we use #search.
     //
     enclosingSelector: '#search',
-    resetSelector: 'a.reset-search',
     resultsSelector: '#search_results div.results',
+    noResultsSelector: '#results_container .no_results',
     allocationsSelector: '#search_results div.allocations',
-    maxSuggestions: 4,
+    hiddenAllocations: '#search_results div.allocations .onrequest',
+    counterSelector: '#search form span.amount',
     moreSelector: '#search_results .allocations .more',
-
+    
     // Before a query is inserted into the search field
     // we clean it of any platform terms.
     //
     beforeInsert: function(query) {
+      if ('' != query) { prepareSearchInterfaceForResults(); }
       return query.replace(platformRemoverRegexp, '');
     },
 
@@ -100,15 +152,26 @@ $(window).ready(function() {
       // We don't add the platform if it is empty (still saved in history as empty, though).
       //
       if (query == '') { return ''; }
+      
+      // Otherwise we add in the platform.
+      //
       query = query.replace(platformRemoverRegexp, '');
       var platformModifier = platformSelect.find("input:checked").val();
       if (platformModifier === undefined || platformModifier == '') { return query; }
       return platformModifier + ' ' + query;
     },
-    success: function(data, query) {
+    success: function(data) {
       // Track query for analytics.
       //
       // TODO trackAnalytics(data, query);
+      
+      // If no results are found.
+      //
+      if (data.total == 0) {
+        noResultsSearchInterface();
+      } else {
+        resultsSearchInterface();
+      }
       
       // Render the JSON into HTML.
       //
@@ -119,13 +182,9 @@ $(window).ready(function() {
         });
       });
       
-      // Update number of results.
-      //
-      $('#search form span.amount').text(data.total);
-            
       return data;
     },
-    // after: function(data, query) {  }, // After Picky has handled the data and updated the view.
+    // after: function(data) { }, // After Picky has handled the data and updated the view.
 
     // This is used to generate the correct query strings, localized. E.g. "subject:war".
     // Note: If you don't give these, the field identifier given in the Picky server is used.
@@ -156,34 +215,65 @@ $(window).ready(function() {
       en: {
         'platform': '', // platform is simply never shown.
               
-        'name': 'Called <em>%1$s</em>',
-        'author': 'Written by <em>%1$s</em>',
-        'summary': 'Having \"<em>%1$s</em>\" in summary',
-        'dependencies': 'Using another pod called <em>%1$s</em>',
-        'tags': 'Tagged <em>%1$s</em>',
-        'author,name': 'Called <em>%2$s</em>, written by <em>%1$s</em>',
-        'name,author': 'Called <em>%1$s</em>, written by <em>%2$s</em>',
-        'tags,name': 'Called <em>%2$s</em>, tagged as <em>%1$s</em>',
-        'name,tags': 'Called <em>%1$s</em>, tagged as <em>%2$s</em>',
-        'version,name': '<em>%1$s</em> of <em>%2$s</em>',
-        'name,dependencies': '<em>%1$s</em>, using <em>%2$s</em>',
-        'dependencies,name': '<em>%1$s</em> used by <em>%2$s</em>',
-        'author,dependencies': 'Written by <em>%1$s</em> and using <em>%2$s</em>',
-        'dependencies,author': 'Using a pod called <em>%1$s</em>, written by <em>%2$s</em>',
-        'dependencies,version': '<em>%1$s</em> used by version <em>%2$s</em>',
-        'version,dependencies': '<em>%2$s</em> used by version <em>%1$s</em>',
-        'author,version': 'Version <em>%2$s</em> by <em>%1$s</em>',
-        'version,author': 'Version <em>%1$s</em> by <em>%2$s</em>',
-        'summary,version': 'Version <em>%2$s</em> with \"<em>%1$s</em>\" in summary',
-        'version,summary': 'Version <em>%1$s</em> with \"<em>%2$s</em>\" in summary',
-        'summary,name': 'Called <em>%2$s</em>, with \"<em>%1$s</em>\" in summary',
-        'name,summary': 'Called <em>%1$s</em>, with \"<em>%2$s</em>\" in summary',
-        'summary,author': 'Written by <em>%2$s</em> with \"<em>%1$s</em>\" in summary',
-        'author,summary': 'Written by <em>%1$s</em> with \"<em>%2$s</em>\" in summary',
-        'summary,dependencies': 'Has \"<em>%1$s</em>\" in summary and uses another pod called <em>%2$s</em>',
-        'dependencies,summary': 'Has \"<em>%2$s</em>\" in summary and uses another pod called <em>%1$s</em>',
-        'name,dependencies': 'Called \"<em>%1$s</em>\", using another pod called <em>%2$s</em>',
-        'dependencies,name': 'Called \"<em>%2$s</em>\", using another pod called <em>%1$s</em>'
+        'name': 'name',
+        'author': 'author',
+        'summary': 'summary',
+        'dependencies': 'dependency',
+        'tags': 'tag',
+        'version': 'version',
+        'author,name': 'author+name',
+        'name,author': 'name+author',
+        'tags,name': 'tag+name',
+        'name,tags': 'name+tag',
+        'version,name': 'version+name',
+        'name,version': 'name+version',
+        'name,dependencies': 'name+dependency',
+        'dependencies,name': 'dependency+name',
+        'author,dependencies': 'author+dependency',
+        'dependencies,author': 'dependency+author',
+        'dependencies,version': 'version+dependencies',
+        'version,dependencies': 'version+dependency',
+        'author,version': 'author+version',
+        'version,author': 'version+author',
+        'summary,version': 'version+summary',
+        'version,summary': 'version+summary',
+        'summary,name': 'summary+name',
+        'name,summary': 'name+summary',
+        'summary,author': 'summary+author',
+        'author,summary': 'author+summary',
+        'summary,dependencies': 'summary+dependency',
+        'dependencies,summary': 'dependency+summary',
+        'name,dependencies': 'name+dependency',
+        'dependencies,name': 'dependency+name'
+        
+        // 'name': 'Called <em>%1$s</em>',
+        // 'author': 'Written by <em>%1$s</em>',
+        // 'summary': 'Having \"<em>%1$s</em>\" in summary',
+        // 'dependencies': 'Using another pod called <em>%1$s</em>',
+        // 'tags': 'Tagged <em>%1$s</em>',
+        // 'author,name': 'Called <em>%2$s</em>, written by <em>%1$s</em>',
+        // 'name,author': 'Called <em>%1$s</em>, written by <em>%2$s</em>',
+        // 'tags,name': 'Called <em>%2$s</em>, tagged as <em>%1$s</em>',
+        // 'name,tags': 'Called <em>%1$s</em>, tagged as <em>%2$s</em>',
+        // 'version,name': '<em>%1$s</em> of <em>%2$s</em>',
+        // 'name,dependencies': '<em>%1$s</em>, using <em>%2$s</em>',
+        // 'dependencies,name': '<em>%1$s</em> used by <em>%2$s</em>',
+        // 'author,dependencies': 'Written by <em>%1$s</em> and using <em>%2$s</em>',
+        // 'dependencies,author': 'Using a pod called <em>%1$s</em>, written by <em>%2$s</em>',
+        // 'dependencies,version': '<em>%1$s</em> used by version <em>%2$s</em>',
+        // 'version,dependencies': '<em>%2$s</em> used by version <em>%1$s</em>',
+        // 'author,version': 'Version <em>%2$s</em> by <em>%1$s</em>',
+        // 'version,author': 'Version <em>%1$s</em> by <em>%2$s</em>',
+        // 'summary,version': 'Version <em>%2$s</em> with \"<em>%1$s</em>\" in summary',
+        // 'version,summary': 'Version <em>%1$s</em> with \"<em>%2$s</em>\" in summary',
+        // 'summary,name': 'Called <em>%2$s</em>, with \"<em>%1$s</em>\" in summary',
+        // 'name,summary': 'Called <em>%1$s</em>, with \"<em>%2$s</em>\" in summary',
+        // 'summary,author': 'Written by <em>%2$s</em> with \"<em>%1$s</em>\" in summary',
+        // 'author,summary': 'Written by <em>%1$s</em> with \"<em>%2$s</em>\" in summary',
+        // 'summary,dependencies': 'Has \"<em>%1$s</em>\" in summary and uses another pod called <em>%2$s</em>',
+        // 'dependencies,summary': 'Has \"<em>%2$s</em>\" in summary and uses another pod called <em>%1$s</em>',
+        // 'name,dependencies': 'Called \"<em>%1$s</em>\", using another pod called <em>%2$s</em>',
+        // 'dependencies,name': 'Called \"<em>%2$s</em>\", using another pod called <em>%1$s</em>'
       }
     },
 
@@ -209,19 +299,9 @@ $(window).ready(function() {
   //
   $('#search input[type="search"]').on('input', function(e) {
     if ('' == this.value) {
-      $('nav.navbar').css("opacity", "1")
-      $('#search').removeClass("active");
-      $('#search span.amount').hide();
-      $('#search_results div.platform').hide();
-      $('#search_results div.allocations').hide();
-      $('#search_results div.results').hide();
+      resetSearchInterface();
     } else {
-      $('nav.navbar').css("opacity", "0")
-      $('#search').addClass("active")
-      $('#search span.amount').show();
-      $('#search_results div.allocations').show();
-      $('#search_results div.platform').show();
-      // $('#search div.results').show(); // Picky does this already.
+      prepareSearchInterfaceForResults();
     }
   });
 
