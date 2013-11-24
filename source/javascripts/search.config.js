@@ -10,6 +10,8 @@
 // }
 
 $(window).ready(function() {
+  var searchInput = $('#search input[type="search"]');
+  
   var platformRemoverRegexp = /\b(platform|on\:\w+\s?)+/;
   var platformSelect = $("#results_container div.platform");
   
@@ -160,14 +162,19 @@ $(window).ready(function() {
       if (platformModifier === undefined || platformModifier == '') { return query; }
       return platformModifier + ' ' + query;
     },
-    success: function(data) {
+    success: function(data, query) {
       // Track query for analytics.
       //
       // TODO trackAnalytics(data, query);
       
+      // If somebody cleared the search input, do not show any results
+      // arriving "late" (well, slower than the person can press backspace).
+      //
+      if ('' == searchInput.val()) { return false; }
+      
       // If no results are found.
       //
-      if (data.total == 0) {
+      if (0 == data.total) {
         noResultsSearchInterface();
       } else {
         resultsSearchInterface();
@@ -297,7 +304,7 @@ $(window).ready(function() {
   // Reset the search if empty.
   // TODO Use the "search" Event? Also, rewrite.
   //
-  $('#search input[type="search"]').on('input', function(e) {
+  searchInput.on('input', function(e) {
     if ('' == this.value) {
       resetSearchInterface();
     } else {
