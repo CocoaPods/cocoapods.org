@@ -77,11 +77,14 @@ $(window).ready(function() {
   };
   var goodSource = /^http/;
   var extractRepoFromSource = function(entry) {
-    var link;
-    $.each(entry.source, function(key, value) {
-      if (key == 'http') { return; }
-      if (value.match(goodSource)) { link = value; }
-    });
+    var link, value;
+    var source = entry.source;
+    for (var key in source) {
+      if (key == 'http') { return ''; }
+      
+      value = source[key];
+      if (value.toString().match(goodSource)) { link = value; break; }
+    }
     return link ? '<a href="' + link + '">Repo</a>' : '';
   };
   var render = function(entry) {
