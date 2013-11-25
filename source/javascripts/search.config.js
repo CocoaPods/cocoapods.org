@@ -99,11 +99,11 @@ $(window).ready(function() {
     '  <div class="' + info_classes + '">' +
     '    <h3>' +
     '      <a href="' + entry.link + '">' + entry.id + '</a>' +
-    (platform ? '<span class="os">' + platform + '</span>' : '') +
     '      <span class="version">' +
              entry.version +
-    '        <span class="clippy">' + entry.podspec + '</span>' +
+    // '        <span class="clippy">' + entry.podspec + '</span>' +
     '      </span>' +
+    (platform ? '<span class="os">' + platform + '</span>' : '') +
     '    </h3>' +
     '    <p class="subspecs">' + entry.subspecs.join(', ') + '</p>' +
     '    <p>' + entry.summary + '</p>' +
