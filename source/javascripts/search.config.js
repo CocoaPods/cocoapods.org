@@ -1,13 +1,13 @@
-// // Tracking the search results.
-// //
-// var trackAnalytics = function(data, query) {
-// var total = data.total;
-// if (total > 0) {
-//   _gaq.push(['_trackEvent', 'search', 'with results', query, total]);
-// } else {
-//   _gaq.push(['_trackEvent', 'search', 'not found', query, 0]);
-// }
-// }
+// Tracking the search results.
+//
+var trackAnalytics = function(data, query) {
+  var total = data.total;
+  if (total > 0) {
+    _gaq.push(['_trackEvent', 'search', 'with results', query, total]);
+  } else {
+    _gaq.push(['_trackEvent', 'search', 'not found', query, 0]);
+  }
+}
 
 $(window).ready(function() {
   var searchInput = $('#search input[type="search"]');
@@ -165,7 +165,7 @@ $(window).ready(function() {
     success: function(data, query) {
       // Track query for analytics.
       //
-      // TODO trackAnalytics(data, query);
+      trackAnalytics(data, query);
       
       // If somebody cleared the search input, do not show any results
       // arriving "late" (well, slower than the person can press backspace).
