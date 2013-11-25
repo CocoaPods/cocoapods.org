@@ -1,13 +1,13 @@
-// // Tracking the search results.
-// //
-// var trackAnalytics = function(data, query) {
-// var total = data.total;
-// if (total > 0) {
-//   _gaq.push(['_trackEvent', 'search', 'with results', query, total]);
-// } else {
-//   _gaq.push(['_trackEvent', 'search', 'not found', query, 0]);
-// }
-// }
+// Tracking the search results.
+//
+var trackAnalytics = function(data, query) {
+  var total = data.total;
+  if (total > 0) {
+    _gaq.push(['_trackEvent', 'search', 'with results', query, total]);
+  } else {
+    _gaq.push(['_trackEvent', 'search', 'not found', query, 0]);
+  }
+}
 
 $(window).ready(function() {
   var searchInput = $('#search input[type="search"]');
@@ -75,6 +75,18 @@ $(window).ready(function() {
     ios: 'iOS',
     osx: 'OS X'
   };
+  var goodSource = /^http/;
+  var extractRepoFromSource = function(entry) {
+    var link, value;
+    var source = entry.source;
+    for (var key in source) {
+      if (key == 'http') { return ''; }
+      
+      value = source[key];
+      if (value.toString().match(goodSource)) { link = value; break; }
+    }
+    return link ? '<a href="' + link + '">Repo</a>' : '';
+  };
   var render = function(entry) {
     var platform = platformMapping[entry.platforms];
     var authors  = $.map(entry.authors, function(email, name) {
@@ -98,8 +110,8 @@ $(window).ready(function() {
     '    <p class="author">' + authors.join(', ') + '</p>' +
     '  </div>' +
     '  <div class="' + action_classes +'">' +
+    extractRepoFromSource(entry) +
     '    <a href="http://cocoadocs.org/docsets/' + entry.id + '/' + entry.version + '">Docs</a>' +
-    '    <a href="' + entry.link + '">Repo</a>' +
     '    <a href="https://github.com/CocoaPods/Specs/tree/master/' + entry.id + '/' + entry.version + '/' + entry.id + '.podspec">Spec</a>' +
     '  </div>' +
     '</li>'
@@ -165,7 +177,7 @@ $(window).ready(function() {
     success: function(data, query) {
       // Track query for analytics.
       //
-      // TODO trackAnalytics(data, query);
+      trackAnalytics(data, query);
       
       // If somebody cleared the search input, do not show any results
       // arriving "late" (well, slower than the person can press backspace).
