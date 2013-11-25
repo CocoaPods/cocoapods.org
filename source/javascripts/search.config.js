@@ -75,6 +75,15 @@ $(window).ready(function() {
     ios: 'iOS',
     osx: 'OS X'
   };
+  var goodSource = /^http/;
+  var extractRepoFromSource = function(entry) {
+    var link;
+    $.each(entry.source, function(key, value) {
+      if (key == 'http') { return; }
+      if (value.match(goodSource)) { link = value; }
+    });
+    return link ? '<a href="' + link + '">Repo</a>' : '';
+  };
   var render = function(entry) {
     var platform = platformMapping[entry.platforms];
     var authors  = $.map(entry.authors, function(email, name) {
@@ -98,8 +107,8 @@ $(window).ready(function() {
     '    <p class="author">' + authors.join(', ') + '</p>' +
     '  </div>' +
     '  <div class="' + action_classes +'">' +
+    extractRepoFromSource(entry) +
     '    <a href="http://cocoadocs.org/docsets/' + entry.id + '/' + entry.version + '">Docs</a>' +
-    '    <a href="' + entry.link + '">Site</a>' +
     '    <a href="https://github.com/CocoaPods/Specs/tree/master/' + entry.id + '/' + entry.version + '/' + entry.id + '.podspec">Spec</a>' +
     '  </div>' +
     '</li>'
