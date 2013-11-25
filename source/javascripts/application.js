@@ -21,8 +21,9 @@ $( document ).ready( function(){
   $('.underscore a[data-toggle="tab"]').on('show.bs.tab', function (e) {
     
     var index = $(e.target.parentElement).index()
-    console.log("index = " + index)
-    var percent = (index * 40).toString()
+    var width = $(window).width();
+    var constant = (width < 768) ? 33: 40;
+    var percent = (index * constant).toString()
     $("#homepage-tab-indicator").css("margin-left", percent + "%");
   })  
   
