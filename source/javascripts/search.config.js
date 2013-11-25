@@ -51,12 +51,19 @@ $(window).ready(function() {
   
   //
   //
-  var noResultsSearchInterface = function() {
+  var noResultsSearchInterface = function(query) {
     // $('#search_results .no_results').show(); // Picky does this already.
     $('#search_results div.allocations').hide();
     $('#search_results div.platform').hide();
     
-    $.getJSON('http://cocoapods.org/no_results.json', '', function(data, textStatus, jqXHR) {
+    $.getJSON('http://cocoapods.org/no_results.json', 'query=' + query, function(data, textStatus, jqXHR) {
+      var suggested_query = data.split[0].join(' ');
+      var total = data.split[1];
+      if (total > 0) {
+        var splitsContainer = $('#results_container .no_results .splits');
+        splitsContainer.html("<p>We found " + total + " results searching for <a href='javascript:pickyClient.insert(\"" + suggested_query + "\");'>" + suggested_query + "</a>.</p>")
+      }
+      
       var tagsContainer = $('#results_container .no_results .tags');
       var tags = [];
       $.each(data.tag, function(name, amount) {
@@ -187,7 +194,7 @@ $(window).ready(function() {
       // If no results are found.
       //
       if (0 == data.total) {
-        noResultsSearchInterface();
+        noResultsSearchInterface(query);
       } else {
         resultsSearchInterface();
       }
