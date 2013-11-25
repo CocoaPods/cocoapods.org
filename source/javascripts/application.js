@@ -9,7 +9,10 @@
 *= require search.config.js
 */
 
-
-$(document).ready(function () {
+// Remove keyboard on scroll
+$(document).bind("touchmove", function(e){
+  
+  document.activeElement.blur();
+	$("input").blur();
 
 });

@@ -2,9 +2,7 @@
 title: CocoaPods Guides
 ---
 
-#search_container.container
-  section.row
-    == partial "search"
+== partial "search"
 
 #results_container
   .container
@@ -35,14 +33,14 @@ title: CocoaPods Guides
             markdown:
 
               CocoaPods is built with Ruby and is installable with the default Ruby available on OS X. 
-              We [recommend](http://guides.cocoapods.org/using/getting-started.html#getting-started) you do this.
+              We recommend you do this.
             
               Using the default Ruby install will require you to use `sudo` when installing
-              gems.
+              gems. Further instructions are in [the guides](http://guides.cocoapods.org/using/getting-started.html#getting-started).
 
-              ```
+              <pre class="highlight">
               $ sudo gem install cocoapods
-              ```
+              </pre>
             
 
           div#get_started.tab-pane.fade 
@@ -50,46 +48,49 @@ title: CocoaPods Guides
             markdown:
               Search for pods (above). Then list the dependencies in a text file named Podfile
               in your Xcode project directory:
-              <code><pre>
+              <pre class="highlight">
                   $ edit Podfile
                   platform :ios
                   pod 'JSONKit',       '~> 1.4'
                   pod 'Reachability',  '~> 3.0.0'
-              </code></pre>
+              </pre>
               
               Now you can install the dependencies in your project:
             
-              ```$ pod install```
-            
+              <pre class="highlight">
+              $ pod install
+              </pre>
+              
               Make sure to always open the Xcode workspace instead of the project file when 
               building your project:
             
-              ```$ open App.xcworkspace```
+              <pre class="highlight">
+              $ open App.xcworkspace
+              </pre>
             
               Now you can import your dependencies e.g.:
 
-              ```#import <Reachability/Reachability.h>```
+              <pre class="highlight">
+              #import &lt;Reachability/Reachability.h>
+              </pre>
 
           
           div#create_a_pod.tab-pane.fade 
 
             markdown:
-              We’re developing CocoaPods on GitHub. There’s a repository for the 
-              [CocoaPods tool](https://github.com/CocoaPods/CocoaPods) and one for all the 
-              [Podspecs](https://github.com/CocoaPods/Specs). It’s easy and really gratifying 
-              to contribute patches or pods, for a lot of people it's their first OSS pull request.
+              Sometimes CocoaPods doesn’t yet have a pod for one of your dependencies. Fortunately, creating a pod is pretty easy:
+              <pre class="highlight">
+                $ pod spec create Peanut
+                $ edit Peanut.podspec
+                $ pod spec lint Peanut.podspec
+              </pre>
 
-              Follow [CocoaPods](http://twitter.com/CocoaPods) on Twitter to get up to date information 
-              about what’s going on in the CocoaPods world.
-    
-              Please report any problems with CocoaPods to the 
-              [CocoaPods issues](http://github.com/CocoaPods/CocoaPods/issues) page.
+              You can find a lot of information on the [process in the guides](http://guides.cocoapods.org). When you're done you can also fork the [CocoaPods specs](http://guides.cocoapods.org/making/specs-and-specs-repo.html) GitHub repository and send a pull request. We really love contributions and will help ensure it's perfect!
   
     section.row
     
       .col-md-8.col-lg-8.col-sm-8.col-md-offset-2.col-lg-offset-2.col-sm-offset-2
         h3.underlined Contribute
-        
         
         p We’re developing CocoaPods on GitHub. There’s a repository for the CocoaPods tool and one for the pods specs. It’s easy and really gratifying to contribute patches or pods, you even get push access when one of your specs or patches is accepted.
       
