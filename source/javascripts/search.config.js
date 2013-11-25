@@ -99,7 +99,7 @@ $(window).ready(function() {
     '  </div>' +
     '  <div class="' + action_classes +'">' +
     '    <a href="http://cocoadocs.org/docsets/' + entry.id + '/' + entry.version + '">Docs</a>' +
-    '    <a href="' + entry.link + '">Repo</a>' +
+    '    <a href="' + entry.link + '">Site</a>' +
     '    <a href="https://github.com/CocoaPods/Specs/tree/master/' + entry.id + '/' + entry.version + '/' + entry.id + '.podspec">Spec</a>' +
     '  </div>' +
     '</li>'
