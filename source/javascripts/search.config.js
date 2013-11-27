@@ -374,33 +374,29 @@ $(window).ready(function() {
   // Keyboard handling.
   //
   // Currently, we only handle keyboard selecting the first result category set.
-  // Use a smarter selector than next and prev for hopping into the next/previous category set.
+  // Use a smarter selector than next and prev for hopping into the next/previous category set
+  // (so make nextResult and previousResult smarter).
   //
   // Also, we do not handle the case where the selection goes out of view.
   //
-  var nextResult = function(){
+  var nextResult = function(selected){
+    return selected.next();
+  }
+  var previousResult = function(selected){
+    return selected.prev();
+  }
+  var selectResult = function(provideNext) {
     var results = $('ol.results li.result');
     var selected = results.closest('.selected').first();
     if (selected.length > 0) {
       selected.removeClass('selected');
-      selected = selected.next();
+      selected = provideNext(selected);
     } else {
       selected = results.first();
     }
     selected.addClass('selected');
   }
-  function previousResult(){
-    var results = $('ol.results li.result');
-    var selected = results.closest('.selected').first();
-    if (selected.length > 0) {
-      selected.removeClass('selected');
-      selected = selected.prev();
-    } else {
-      selected = results.first();
-    }
-    selected.addClass('selected');
-  }
-  function openSelection(){
+  var openSelection = function(){
     var selected = $('ol.results li.result.selected').first();
     if (selected.length > 0) {
       window.document.location.href = selected.find('a').first().attr('href');
@@ -410,18 +406,17 @@ $(window).ready(function() {
   // Install keyboard handling.
   //
   $('body').keydown(function(event) {
-    console.log(event.keyCode);
     switch (event.keyCode) {
       // Down
       //
       case 40:
-          nextResult()
+          selectResult(nextResult)
           break;
       
       // Up
       //
       case 38:
-          previousResult();
+          selectResult(previousResult);
           break;
 
       // Enter
