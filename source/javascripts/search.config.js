@@ -106,10 +106,9 @@ $(window).ready(function() {
     '  <div class="' + info_classes + '">' +
     '    <h3>' +
     '      <a href="' + entry.link + '">' + entry.id + '</a>' +
-    '      <span class="version">' +
-             entry.version +
-    // '        <span class="clippy">' + entry.podspec + '</span>' +
-    '      </span>' +
+    '      <span class="version">' + entry.version + '</span>' +
+    '      <img class="copy" src="./images/copy-to-clipboard.png" data-clipboard-text="pod \'' + entry.id + '\', \'~> ' + entry.version + '\'">' +
+    '      </img><span class="copy-result flash">Copied!</span><span class="copy-result manual"></span>' +
     (platform ? '<span class="os">' + platform + '</span>' : '') +
     '    </h3>' +
     '    <p class="subspecs">' + entry.subspecs.join(', ') + '</p>' +
@@ -157,13 +156,6 @@ $(window).ready(function() {
       if ('' != query) { prepareSearchInterfaceForResults(); }
       return query.replace(platformRemoverRegexp, '');
     },
-
-    after: function(data, query) {
-      // TODO
-      // $('.clippy').clippy({
-      //   'clippy_path': '/media/clippy.swf'
-      // });
-    },
     // Before Picky sends any data to the server.
     //
     // Adds the platform modifier to it if it isn't there already.
@@ -210,7 +202,34 @@ $(window).ready(function() {
       
       return data;
     },
-    // after: function(data) { }, // After Picky has handled the data and updated the view.
+    // After Picky has handled the data and updated the view.
+    //
+    after: function(data) {
+      //
+      //
+      $('ol.results img.copy').click(function() {
+        var text = $(this).attr('data-clipboard-text');
+        var info = $(this).siblings('span.copy-result.manual');
+        info.html(text);
+        info.show();
+        // TODO If someone knows how to select text – use your powers here :)
+      });
+      
+      // This will fail if there is no flash.
+      //
+      var clip = new ZeroClipboard(
+        $('ol.results img.copy'),
+        {
+          moviePath: "./flashes/ZeroClipboard.swf",
+          forceHandCursor: true
+        }
+      );
+      clip.on("load", function(client) {
+        client.on( "complete", function(client, args) {
+          $(this).siblings('span.copy-result.flash').show();
+        });
+      });
+    },
 
     // This is used to generate the correct query strings, localized. E.g. "subject:war".
     // Note: If you don't give these, the field identifier given in the Picky server is used.

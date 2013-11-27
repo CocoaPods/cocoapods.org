@@ -7,6 +7,7 @@
 *= require history.adapter.jquery.min.js
 *= require picky.min.js
 *= require search.config.js
+*= require zero-clipboard.min.js
 */
 
 // Remove keyboard on scroll
