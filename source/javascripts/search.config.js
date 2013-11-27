@@ -370,4 +370,65 @@ $(window).ready(function() {
   if (window.initial_query != "") {
     pickyClient.insertFromURL(window.initial_query);
   }
+  
+  // Keyboard handling.
+  //
+  // Currently, we only handle keyboard selecting the first result category set.
+  // Use a smarter selector than next and prev for hopping into the next/previous category set.
+  //
+  // Also, we do not handle the case where the selection goes out of view.
+  //
+  var nextResult = function(){
+    var results = $('ol.results li.result');
+    var selected = results.closest('.selected').first();
+    if (selected.length > 0) {
+      selected.removeClass('selected');
+      selected = selected.next();
+    } else {
+      selected = results.first();
+    }
+    selected.addClass('selected');
+  }
+  function previousResult(){
+    var results = $('ol.results li.result');
+    var selected = results.closest('.selected').first();
+    if (selected.length > 0) {
+      selected.removeClass('selected');
+      selected = selected.prev();
+    } else {
+      selected = results.first();
+    }
+    selected.addClass('selected');
+  }
+  function openSelection(){
+    var selected = $('ol.results li.result.selected').first();
+    if (selected.length > 0) {
+      window.document.location.href = selected.find('a').first().attr('href');
+    }
+  }
+  
+  // Install keyboard handling.
+  //
+  $('body').keydown(function(event) {
+    console.log(event.keyCode);
+    switch (event.keyCode) {
+      // Down
+      //
+      case 40:
+          nextResult()
+          break;
+      
+      // Up
+      //
+      case 38:
+          previousResult();
+          break;
+
+      // Enter
+      //
+      case 13:
+          openSelection();
+          break;
+    }
+  });
 });
