@@ -276,7 +276,7 @@ $(window).ready(function() {
         'dependencies,name': 'dependency+name',
         'author,dependencies': 'author+dependency',
         'dependencies,author': 'dependency+author',
-        'dependencies,version': 'version+dependencies',
+        'dependencies,version': 'dependency+version',
         'version,dependencies': 'version+dependency',
         'author,version': 'author+version',
         'version,author': 'version+author',
