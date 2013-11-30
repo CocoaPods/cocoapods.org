@@ -56,7 +56,11 @@ $(window).ready(function() {
     $('#search_results div.allocations').hide();
     $('#search_results div.platform').hide();
     
-    $.getJSON('http://cocoapods.org/no_results.json', 'query=' + query, function(data, textStatus, jqXHR) {
+    // Get special no_results hash from the search API:
+    //  * autosplit query
+    //  * tags
+    //
+    $.getJSON('http://search.cocoapods.org/no_results.json', 'query=' + query, function(data, textStatus, jqXHR) {
       var suggested_query = data.split[0].join(' ');
       var total = data.split[1];
       if (total > 0) {
@@ -124,12 +128,12 @@ $(window).ready(function() {
   };
   
   pickyClient = new PickyClient({
-    full: 'http://cocoapods.org/search.json',
+    full: 'http://search.cocoapods.org/search.json',
     fullResults: 20,
       
     // The live query does a full query.
     //
-    live: 'http://cocoapods.org/search.json',
+    live: 'http://search.cocoapods.org/search.json',
     liveResults: 20,
     liveRendered: true, // Experimental: Render live results as if they were full ones.
     liveSearchInterval: 60, // Time between keystrokes before it sends the query.
