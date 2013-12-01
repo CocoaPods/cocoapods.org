@@ -119,11 +119,11 @@ $(window).ready(function() {
     '    <p>' + entry.summary + '</p>' +
     '    <p class="author">' + authors.join(', ') + '</p>' +
     '  </div>' +
-    '  <div class="' + action_classes +'">' +
+    '  <div class="' + action_classes +'">' + "<div class='action-wrapper'>" +
     extractRepoFromSource(entry) +
     '    <a href="http://cocoadocs.org/docsets/' + entry.id + '/' + entry.version + '">Docs</a>' +
     '    <a href="https://github.com/CocoaPods/Specs/tree/master/' + entry.id + '/' + entry.version + '/' + entry.id + '.podspec">Spec</a>' +
-    '  </div>' +
+    '  </div></div>' +
     '</li>'
   };
   
