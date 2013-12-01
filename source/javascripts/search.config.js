@@ -200,7 +200,7 @@ $(window).ready(function() {
       var allocations = data.allocations;
       allocations.each(function(i, allocation) {
         allocation.entries = allocation.entries.map(function(i, entry) {
-          return render(JSON.parse(entry));
+          return render(entry);
         });
       });
       
