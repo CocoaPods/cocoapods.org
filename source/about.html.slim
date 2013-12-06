@@ -1,22 +1,28 @@
+ruby:
+  team = data.dev_team
+  subprojects = [
+    { "CocoaPods" => data.contributors_cocoapods },
+    { "CocoaPods-Core" => data.contributors_core },
+    { "Xcodeproj" => data.contributors_xcodeproj },
+    { "CLAide" => data.contributors_claide },
+    { "Specs" => data.contributors_specs }
+  ]
 
+css:
+  li {
+    list-style-type: none;
+  }
 
-article 
-  p.text-center WIP, real page and real accreditation to the lovely team coming soon
-  p.text-center <img src="http://i.imgur.com/45GoAIj.gif">
-  
-  
-/   h4 Website and API by
-/   p
-/     |<a href="http://twitter.com/hanke">Florian Hanke</a>, 
-/     | The CocoaPods Dev Team and 
-/     | <a href="http://twitter.com/manfreds">Manfred Stienstra</a>.
-/ 
-/ article class="col-md-4 minor"
-/ 
-/   h4 Design by 
-/   p
-/     | <a href="http://andy-myers.co.uk">Andy Myers</a>, 
-/     | <a href="http://twitter.com/hanke">Florian Hanke</a> and 
-/     | <a href="http://twitter.com/maxsteenbergen">Max Steenbergen</a>
+h1 "About"
 
-.clearfix
+- for dev in team do
+  h2 = dev.name
+
+- for project in subprojects do
+  h2 = project.keys[0]
+  ul
+    - for contributor in project.values[0] do
+      li style="float:left;" 
+        img class="gravatar" height="30" src="http://www.gravatar.com/avatar/#{contributor.gravatar_id}?s=30" width="30"  alt=contributor.name
+
+  .clearfix

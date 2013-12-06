@@ -1,0 +1,56 @@
+---
+- name: Eloy Duran
+  twitter_id: alloy
+  cocoapods_bio: Creator, maintainer & instigator.
+  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
+  :twitter_banner_url: ''
+- name: Fabio Pelosin
+  twitter_id: fabiopelosin
+  cocoapods_bio: Programmer at Large.
+  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
+  :twitter_banner_url: ''
+- name: orta
+  twitter_id: orta
+  cocoapods_bio: Design Dictator.
+  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
+  :twitter_banner_url: ''
+- name: 'Keith Smiley '
+  twitter_id: smileykeith
+  cocoapods_bio: Master of the Specs.
+  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
+  :twitter_banner_url: ''
+- name: 'Florian Hanke '
+  twitter_id: hanke
+  cocoapods_bio: Still Searching...
+  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
+  :twitter_banner_url: ''
+- name: Andy Myers
+  twitter_id: andyrmyers
+  cocoapods_bio: Really doing the design.
+  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
+  :twitter_banner_url: ''
+- name: Marin Usalj
+  twitter_id: mneorr
+  cocoapods_bio: .
+  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
+  :twitter_banner_url: ''
+- name: Michele Titolo
+  twitter_id: micheletitolo
+  cocoapods_bio: .
+  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
+  :twitter_banner_url: ''
+- name: Kyle Fuller
+  twitter_id: kylefuller
+  cocoapods_bio: .
+  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
+  :twitter_banner_url: ''
+- name: Joshua Kalpin
+  twitter_id: joshkaplin
+  cocoapods_bio: .
+  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
+  :twitter_banner_url: ''
+- name: Swizzlr
+  twitter_id: swizzlr
+  cocoapods_bio: .
+  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
+  :twitter_banner_url: ''
