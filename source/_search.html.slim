@@ -12,8 +12,8 @@
       
 #search_container.container
   section.row
-    #search
-      form.col-lg-12.col-sm-12.col-xs-12 onkeypress="return event.keyCode != 13;"
+    #search.col-lg-12.col-sm-12.col-xs-12
+      form onkeypress="return event.keyCode != 13;"
         fieldset
           input.query#pod_search type="search" placeholder="SEARCH*" autofocus=true autocomplete="off"
           span.amount
