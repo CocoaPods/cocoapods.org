@@ -1,56 +1,56 @@
 ---
 - name: Eloy Duran
-  twitter_id: alloy
+  twitter_username: alloy
   cocoapods_bio: Creator, maintainer & instigator.
   :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
   :twitter_banner_url: ''
 - name: Fabio Pelosin
-  twitter_id: fabiopelosin
+  twitter_username: fabiopelosin
   cocoapods_bio: Programmer at Large.
   :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
   :twitter_banner_url: ''
 - name: orta
-  twitter_id: orta
+  twitter_username: orta
   cocoapods_bio: Design Dictator.
   :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
   :twitter_banner_url: ''
 - name: 'Keith Smiley '
-  twitter_id: smileykeith
+  twitter_username: smileykeith
   cocoapods_bio: Master of the Specs.
   :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
   :twitter_banner_url: ''
 - name: 'Florian Hanke '
-  twitter_id: hanke
+  twitter_username: hanke
   cocoapods_bio: Still Searching...
   :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
   :twitter_banner_url: ''
 - name: Andy Myers
-  twitter_id: andyrmyers
+  twitter_username: andyrmyers
   cocoapods_bio: Really doing the design.
   :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
   :twitter_banner_url: ''
 - name: Marin Usalj
-  twitter_id: mneorr
+  twitter_username: mneorr
   cocoapods_bio: .
   :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
   :twitter_banner_url: ''
 - name: Michele Titolo
-  twitter_id: micheletitolo
+  twitter_username: micheletitolo
   cocoapods_bio: .
   :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
   :twitter_banner_url: ''
 - name: Kyle Fuller
-  twitter_id: kylefuller
+  twitter_username: kylefuller
   cocoapods_bio: .
   :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
   :twitter_banner_url: ''
 - name: Joshua Kalpin
-  twitter_id: joshkaplin
+  twitter_username: joshkaplin
   cocoapods_bio: .
   :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
   :twitter_banner_url: ''
 - name: Swizzlr
-  twitter_id: swizzlr
+  twitter_username: swizzlr
   cocoapods_bio: .
   :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
   :twitter_banner_url: ''
