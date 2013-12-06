@@ -1,44 +1,44 @@
 ---
 - name: 'Eloy Durán'
-  twitter_id: 'alloy'
+  twitter_username: 'alloy'
   cocoapods_bio: "Creator, maintainer, and instigator."
 
 - name: 'Fabio Pelosin'
-  twitter_id: 'fabiopelosin'
+  twitter_username: 'fabiopelosin'
   cocoapods_bio: "Programmer at Large."
 
 - name: 'orta'
-  twitter_id: 'orta'
+  twitter_username: 'orta'
   cocoapods_bio: "Design Dictator."
 
 - name: 'Keith Smiley '
-  twitter_id: 'smileykeith'
+  twitter_username: 'smileykeith'
   cocoapods_bio: "Master of the Specs."
 
 - name: 'Florian Hanke '
-  twitter_id: 'hanke'
+  twitter_username: 'hanke'
   cocoapods_bio: "Still Searching..."
 
 - name: 'Andy Myers'
-  twitter_id: 'andyrmyers'
+  twitter_username: 'andyrmyers'
   cocoapods_bio: "Really doing the design."
 
 - name: 'Marin Usalj'
-  twitter_id: 'mneorr'
+  twitter_username: 'mneorr'
   cocoapods_bio: "."
 
 - name: 'Michele Titolo'
-  twitter_id: 'micheletitolo'
+  twitter_username: 'micheletitolo'
   cocoapods_bio: "."
 
 - name: 'Kyle Fuller'
-  twitter_id: 'kylefuller'
+  twitter_username: 'kylefuller'
   cocoapods_bio: "."
 
 - name: 'Joshua Kalpin'
-  twitter_id: 'joshkaplin'
+  twitter_username: 'joshkaplin'
   cocoapods_bio: "."
 
 - name: 'Swizzlr'
-  twitter_id: 'swizzlr'
+  twitter_username: 'swizzlr'
   cocoapods_bio: "."
