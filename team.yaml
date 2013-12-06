@@ -1,7 +1,7 @@
 ---
-- name: 'Eloy Duran'
+- name: 'Eloy Durán'
   twitter_id: 'alloy'
-  cocoapods_bio: "Creator, maintainer & instigator."
+  cocoapods_bio: "Creator, maintainer, and instigator."
 
 - name: 'Fabio Pelosin'
   twitter_id: 'fabiopelosin'
