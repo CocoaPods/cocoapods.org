@@ -5,24 +5,106 @@ ruby:
     { "CocoaPods-Core" => data.contributors_core },
     { "Xcodeproj" => data.contributors_xcodeproj },
     { "CLAide" => data.contributors_claide },
-    { "Specs" => data.contributors_specs }
   ]
+  specs = data.contributors_specs  
 
 css:
-  li {
-    list-style-type: none;
+
+  .dev-team {
+    margin:16px 0;
+    text-align:center
+  }
+  
+  .card {
+    background-color:white;
+    padding:16px;
+  }
+  .dev-team .card {
+    padding-top:64px;
+  }
+  
+  .card img {
+    margin:auto;
+    display:block;
+  }
+  
+  .sub-project {
+    position:relative;
+    margin:16px 0;
+  }  
+
+  .sub-project:hover h2 {
+    opacity:0;
+  }
+  
+  .sub-project ul {  
+    margin-left:0;  
+    padding-left:0;
+  }
+  
+  .sub-project li {  
+    list-style-type:none;  
+    padding-left:0;
+  }  
+  
+  .sub-project h2 {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+  
+    text-align:center;
+    height:30%;
+    font-size:4em;
+    color:white;
+  
+    -webkit-transition:opacity 0.3s ease-in-out;
+    -moz-transition:opacity 0.3s ease-in-out;
+    -o-transition:opacity 0.3s ease-in-out;
+    transition:opacity 0.3s ease-in-out;
+
   }
 
-h1 "About"
+section.container
+  article.row
+    col-lg-12.col-sm-12.col-xs-12
+      h1 About CocoaPods
 
-- for dev in team do
-  h2 = dev.name
+#content-wrapper
+  section.container
+    article.row
+      - for dev in team do
+      
+        - if team.index(dev) % 2 == 0
+          .clearfix.visible-xs
+      
+        - if team.index(dev) % 3 == 0
+          .clearfix.hidden-xs
+      
+        col-lg-4.col-sm-4.col-xs-6.dev-team
+          .card
+            img src=dev.twitter_profile_url width="64" height="64"
+            h2 = dev.name
+            p = dev.cocoapods_bio
+        
+        
+    article.row
+      
+      h2 CocoaPods is multiple projects
+    
+      - for project in subprojects do
+        - if subprojects.index(project) % 2 == 0
+          .clearfix
 
-- for project in subprojects do
-  h2 = project.keys[0]
-  ul
-    - for contributor in project.values[0] do
-      li style="float:left;" 
-        img class="gravatar" height="30" src="http://www.gravatar.com/avatar/#{contributor.gravatar_id}?s=30" width="30"  alt=contributor.name
+        col-lg-6.col-sm-6.col-xs-12.sub-project
+          .card  
 
-  .clearfix
+            ul
+              - for contributor in project.values[0] do
+                li style="float:left;" 
+                  img src="http://www.gravatar.com/avatar/#{contributor.gravatar_id}?s=30" width="48" height="48" alt=contributor.name
+            h2 = project.keys[0]
+            
+            .clearfix
