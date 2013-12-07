@@ -63,9 +63,12 @@ $(window).ready(function() {
     $.getJSON('http://search.cocoapods.org/no_results.json', 'query=' + query, function(data, textStatus, jqXHR) {
       var suggested_query = data.split[0].join(' ');
       var total = data.split[1];
-      if (total > 0) {
-        var splitsContainer = $('#results_container .no_results .splits');
+      
+      var splitsContainer = $('#results_container .no_results .splits');
+      if (suggested_query && total > 0) {
         splitsContainer.html("<p>We found " + total + " results searching for <a href='javascript:pickyClient.insert(\"" + suggested_query + "\");'>" + suggested_query + "</a>.</p>")
+      } else {
+        splitsContainer.html('');
       }
       
       var tagsContainer = $('#results_container .no_results .tags');
