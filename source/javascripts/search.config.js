@@ -419,4 +419,10 @@ $(window).ready(function() {
           break;
     }
   });
+  
+  // Initially select the right platform.
+  //
+  if (window.initial_query != "") {
+    pickyClient.insertFromURL(window.initial_query);
+  }
 });
