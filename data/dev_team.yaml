@@ -3,7 +3,7 @@
   twitter_username: alloy
   cocoapods_bio: Creator, maintainer, instigator, and gesticulator.
   :twitter_profile_url: https://pbs.twimg.com/profile_images/2725004110/7f078219b3519e1a5d617de15080adcc.png
-  :twitter_banner_url: ''
+  :twitter_banner_url: http://pbs.twimg.com/profile_banners/12459132/1386508744/web
 - name: Fabio Pelosin
   twitter_username: fabiopelosin
   cocoapods_bio: Programmer at Large.
@@ -14,12 +14,12 @@
   cocoapods_bio: Design Dictator.
   :twitter_profile_url: https://pbs.twimg.com/profile_images/378800000512098797/1aeee47d72fd9ca503ec29365b09200f.jpeg
   :twitter_banner_url: http://pbs.twimg.com/profile_banners/2569881/1380629480/web
-- name: 'Keith Smiley '
+- name: 'Keith Smiley'
   twitter_username: smileykeith
   cocoapods_bio: Master of the Specs.
   :twitter_profile_url: https://pbs.twimg.com/profile_images/1258973916/_MG_2562__2_.jpg
   :twitter_banner_url: http://pbs.twimg.com/profile_banners/14429563/1352691317/web
-- name: 'Florian Hanke '
+- name: 'Florian Hanke'
   twitter_username: hanke
   cocoapods_bio: Picky about search.
   :twitter_profile_url: https://pbs.twimg.com/profile_images/1099033346/n757283644_2693-1.jpg
@@ -53,4 +53,4 @@
   twitter_username: swizzlr
   cocoapods_bio: .
   :twitter_profile_url: https://pbs.twimg.com/profile_images/378800000086703200/61a585b2709e47507b1300876e6dfcfc.jpeg
-  :twitter_banner_url: 
+  :twitter_banner_url:
