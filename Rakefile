@@ -52,7 +52,7 @@ end
 task :generate_contributors do
   
   # loop through all projects getting a list of contributors 
-  ["Specs", "CocoaPods", "Core", "Xcodeproj", "CLAide"].each do |project|
+  ["CocoaPods", "Core", "Xcodeproj", "CLAide"].each do |project|
     p "Getting #{project}"
     
     data_path = "data/contributors_#{project.downcase}.yaml"
@@ -61,12 +61,10 @@ task :generate_contributors do
     # this is just an empty github app that does nothing
     Octokit.client_id = '927bff412ce93e98de3e'
     Octokit.client_secret = '6cb0186380b3b3301709345593a5580aadbf636f'
+    Octokit.auto_paginate = true
     
-    #  loop through all contributors
-    contributors = Octokit.collabs "CocoaPods/#{project}", :per_page => 100
-    while Octokit.last_response.rels[:next]
-      contributors.concat Octokit.last_response.rels[:next].get.data
-    end
+    # grab contributors
+    contributors = Octokit.collabs "CocoaPods/#{project}"
 
     # Store a simpler model of the data
     yaml_data = []

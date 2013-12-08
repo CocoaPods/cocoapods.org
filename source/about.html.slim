@@ -6,7 +6,6 @@ ruby:
     { "Xcodeproj" => data.contributors_xcodeproj },
     { "CLAide" => data.contributors_claide },
   ]
-  specs = data.contributors_specs  
 
 css:
 
@@ -18,15 +17,35 @@ css:
   .card {
     background-color:white;
     padding:16px;
-  }
-  .dev-team .card {
-    padding-top:64px;
+    position:relative;
   }
   
-  .card img {
-    margin:auto;
-    display:block;
+  .dev-team .card {
+      padding-top:200px;
   }
+    
+  .card .background {
+    background-color:grey;
+    background-size:cover;
+    width:100%;
+    height:160px;
+    position:absolute;
+    top:0;
+    left:0px;
+  }
+  
+  .card img.twitter_avatar {
+    top:84px;
+    width:128px;
+    height:128px;
+    position:absolute;
+    left:50%;
+    margin-left:-64px;
+    border-radius: 10%;
+    -moz-border-radius: 10%;
+    -webkit-border-radius: 10%;
+  }
+  
   
   .sub-project {
     position:relative;
@@ -84,8 +103,9 @@ section.container
           .clearfix.hidden-xs
       
         col-lg-4.col-sm-4.col-xs-6.dev-team
-          .card
-            img src=dev.twitter_profile_url width="64" height="64"
+          .card 
+            .background style="background-image:url(#{dev.twitter_banner_url})"
+            img.twitter_avatar src=dev.twitter_profile_url
             h2 = dev.name
             p = dev.cocoapods_bio
         
@@ -104,7 +124,7 @@ section.container
             ul
               - for contributor in project.values[0] do
                 li style="float:left;" 
-                  img src="http://www.gravatar.com/avatar/#{contributor.gravatar_id}?s=30" width="48" height="48" alt=contributor.name
+                  img src="http://www.gravatar.com/avatar/#{contributor.gravatar_id}?s=48" width="48" height="48" alt=contributor.name
             h2 = project.keys[0]
             
             .clearfix
