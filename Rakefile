@@ -8,6 +8,7 @@ task :deploy do
   Rake::Task["publish"].invoke
 end
 
+desc "Generate dev team and contributor infos for the about page."
 task :generate do
   p "Generating dev team from Twitter"
   Rake::Task["generate_team"].invoke
