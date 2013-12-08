@@ -14,9 +14,9 @@
   .selection
     .platform
       input value="" type="radio" id="platform_either" name="platform" checked==(!@platform || @platform == :either)
-      label class="left" for="platform_either" <span>Either OS</span>
+      label class="left" for="platform_either" <span>OSX or iOS</span>
       input value="on:osx on:ios" type="radio" id="platform_both" name="platform" checked==(@platform == :both)
-      label class="middle" for="platform_both" <span>iOS &amp; OSX</span>
+      label class="middle" for="platform_both" <span>iOS and OSX</span>
       input value="on:ios" type="radio" id="platform_ios" name="platform" checked==(@platform == :ios)
       label class="middle" for="platform_ios" <span>iOS</span>
       input value="on:osx" type="radio" id="platform_osx" name="platform" checked==(@platform == :osx)
