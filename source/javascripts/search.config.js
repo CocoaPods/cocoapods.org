@@ -307,6 +307,8 @@ $(window).ready(function() {
         'version,author': 'version+author',
         'summary,version': 'version+summary',
         'version,summary': 'version+summary',
+        'tags,summary': 'summary+name',
+        'summary,tags': 'name+summary',
         'summary,name': 'summary+name',
         'name,summary': 'name+summary',
         'summary,author': 'summary+author',
