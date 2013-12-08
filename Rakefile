@@ -34,11 +34,11 @@ task :generate_team do
   
   team = YAML.load_file('team.yaml')
   team.each do |member| 
-    p "Getting #{ member[:twitter_username] }"
+    p "Getting #{ member["twitter_username"] }"
     
-    twitter_user = client.user member[:twitter_username]
+    twitter_user = client.user member["twitter_username"]
     
-    member[:twitter_profile_url] = twitter_user.profile_image_uri_https.to_s
+    member[:twitter_profile_url] = twitter_user.profile_image_uri_https.to_s.gsub("_normal", "")
     member[:twitter_banner_url] = twitter_user.profile_banner_uri.to_s
     
     yaml_data << member
