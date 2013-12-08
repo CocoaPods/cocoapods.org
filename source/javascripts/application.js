@@ -26,11 +26,6 @@ $( document ).ready( function(){
     var constant = (width < 768) ? 33: 40;
     var percent = (index * constant).toString()
     $("#homepage-tab-indicator").css("margin-left", percent + "%");
-  })  
+  })
 
-  // Make all clicks in the search container set focus
-  $('#search_container').on('click', function (e) {
-    $('#search_container input').focus()   
-  })  
-    
 })

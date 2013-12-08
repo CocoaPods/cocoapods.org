@@ -378,6 +378,12 @@ $(window).ready(function() {
     pickyClient.insertFromURL(window.initial_query);
   }
   
+  // Make all clicks in the search container set focus.
+  //
+  $('#search_container').on('click', function (e) {
+    $('#search_container input').focus()   
+  })  
+  
   // Keyboard handling.
   //
   // Currently, we only handle keyboard selecting the first result category set.
