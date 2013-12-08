@@ -11,10 +11,10 @@
 */
 
 // Remove keyboard on scroll
+//
 $(document).bind("touchmove", function(e){
-  
   document.activeElement.blur();
-	$("input").blur();
+  $("input").blur();
 });
 
 
