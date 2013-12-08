@@ -159,9 +159,21 @@ $(window).ready(function() {
     // Before a query is inserted into the search field
     // we clean it of any platform terms.
     //
+    // And if there are any platform terms, we select
+    // the right platform selector.
+    //
     beforeInsert: function(query) {
-      if ('' != query) { prepareSearchInterfaceForResults(); }
-      return query.replace(platformRemoverRegexp, '');
+      if ('' != query) {
+        prepareSearchInterfaceForResults();
+        var platforms = query.match(platformRemoverRegexp);
+        if (platforms) {
+          var chosenPlatform = platformSelect.find('input[value="' + platforms[0].replace(/\s+$/g, '') + '"]');
+          chosenPlatform.attr('checked', 'checked');
+          platformSelect.find('label').removeClass('selected');
+          platformSelect.find('input:checked + label').addClass('selected');
+        }
+        return query.replace(platformRemoverRegexp, '');
+      }
     },
     // Before Picky sends any data to the server.
     //
@@ -337,17 +349,6 @@ $(window).ready(function() {
     selectCheckedPlatform();
     $("#pod_search").focus();
   });
-
-  // Initially select the right platform.
-  //
-  selectCheckedPlatform();
-
-  // Initially insert the query given in the URL
-  // if there is one.
-  //
-  if (window.initial_query != "") {
-    pickyClient.insertFromURL(window.initial_query);
-  }
   
   // Make all clicks in the search container set focus.
   // 
