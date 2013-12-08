@@ -379,10 +379,10 @@ $(window).ready(function() {
   }
   
   // Make all clicks in the search container set focus.
-  //
+  // 
   $('#search_container').on('click', function (e) {
-    $('#search_container input').focus()   
-  })  
+    $('#search_container input').focus();
+  });
   
   // Keyboard handling.
   //
