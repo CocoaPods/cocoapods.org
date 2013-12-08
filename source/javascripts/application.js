@@ -1,5 +1,5 @@
 /*
-*= require jquery.min
+*= require jquery-2.0.3.min
 *= require modernizr.min
 *= require bootstrap.min
 
