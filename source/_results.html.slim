@@ -1,16 +1,4 @@
 #search_results.col-lg-10.col-sm-10.col-xs-10.col-lg-offset-1.col-sm-offset-1.col-xs-offset-1
-  .no_results style="display:none"
-    .apology Sorry. No pods found.
-    .splits
-    .tags
-    .tips
-      |
-        Some suggestions:
-        Make sure that all words are spelled correctly.
-        Try different keywords.
-        Try more general keywords.
-        Split long words into pieces.
-
   .selection
     .platform
       input value="" type="radio" id="platform_either" name="platform" checked==(!@platform || @platform == :either)
@@ -27,5 +15,15 @@
       ol.more style="display:none"
         li load more
       ol.onrequest
-
   .results
+  .no_results style="display:none"
+    .apology Sorry. No pods found.
+    .splits
+    .tags
+    .tips
+      |
+        Some suggestions:
+        Make sure that all words are spelled correctly.
+        Try different keywords.
+        Try more general keywords.
+        Split long words into pieces.

@@ -49,18 +49,24 @@ $(window).ready(function() {
     // $('#search div.results').show(); // Picky does this already.
   };
   
+  var removePlatform = function(query) {
+    return query.replace(platformRemoverRegexp, '');
+  };
+  
   //
   //
   var noResultsSearchInterface = function(query) {
     // $('#search_results .no_results').show(); // Picky does this already.
     $('#search_results div.allocations').hide();
-    $('#search_results div.platform').hide();
     
     // Get special no_results hash from the search API:
     //  * autosplit query
     //  * tags
     //
-    $.getJSON('http://search.cocoapods.org/no_results.json', 'query=' + query, function(data, textStatus, jqXHR) {
+    // TODO There's the problem that we query without platform,
+    //      but then the result might be wrong.
+    //
+    $.getJSON('http://search.cocoapods.org/no_results.json', 'query=' + removePlatform(query), function(data, textStatus, jqXHR) {
       var suggested_query = data.split[0].join(' ');
       var total = data.split[1];
       
@@ -172,7 +178,7 @@ $(window).ready(function() {
           platformSelect.find('label').removeClass('selected');
           platformSelect.find('input:checked + label').addClass('selected');
         }
-        return query.replace(platformRemoverRegexp, '');
+        return removePlatform(query);
       }
     },
     // Before Picky sends any data to the server.
