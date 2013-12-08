@@ -1,56 +1,56 @@
 ---
-- name: Eloy Duran
+- name: Eloy Durán
   twitter_username: alloy
-  cocoapods_bio: Creator, maintainer & instigator.
-  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
+  cocoapods_bio: Creator, maintainer, instigator, and gesticulator.
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/2725004110/7f078219b3519e1a5d617de15080adcc.png
   :twitter_banner_url: ''
 - name: Fabio Pelosin
   twitter_username: fabiopelosin
   cocoapods_bio: Programmer at Large.
-  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/378800000492353896/c9f5ca485403fbe858b6a90cbb3e659a.png
   :twitter_banner_url: ''
 - name: orta
   twitter_username: orta
   cocoapods_bio: Design Dictator.
-  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
-  :twitter_banner_url: ''
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/378800000512098797/1aeee47d72fd9ca503ec29365b09200f.jpeg
+  :twitter_banner_url: http://pbs.twimg.com/profile_banners/2569881/1380629480/web
 - name: 'Keith Smiley '
   twitter_username: smileykeith
   cocoapods_bio: Master of the Specs.
-  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
-  :twitter_banner_url: ''
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/1258973916/_MG_2562__2_.jpg
+  :twitter_banner_url: http://pbs.twimg.com/profile_banners/14429563/1352691317/web
 - name: 'Florian Hanke '
   twitter_username: hanke
-  cocoapods_bio: Still Searching...
-  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
-  :twitter_banner_url: ''
+  cocoapods_bio: Picky about search.
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/1099033346/n757283644_2693-1.jpg
+  :twitter_banner_url: http://pbs.twimg.com/profile_banners/1018421/1353384663/web
 - name: Andy Myers
   twitter_username: andyrmyers
   cocoapods_bio: Really doing the design.
-  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
-  :twitter_banner_url: ''
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/1251242993/A.png
+  :twitter_banner_url: http://pbs.twimg.com/profile_banners/15503664/1353792454/web
 - name: Marin Usalj
   twitter_username: mneorr
   cocoapods_bio: .
-  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/378800000119552231/ff60c2d1e7ee0dfd8f3c7b7c885ed528.png
   :twitter_banner_url: ''
 - name: Michele Titolo
   twitter_username: micheletitolo
   cocoapods_bio: .
-  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
-  :twitter_banner_url: ''
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/3105057496/8ee2de17e4675c336374f333a5cc6a96.png
+  :twitter_banner_url: http://pbs.twimg.com/profile_banners/113393517/1358892326/web
 - name: Kyle Fuller
   twitter_username: kylefuller
   cocoapods_bio: .
-  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
-  :twitter_banner_url: ''
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/378800000542414658/a73aaad951191ac921c66ce05c297aa9.jpeg
+  :twitter_banner_url: http://pbs.twimg.com/profile_banners/21154599/1376862017/web
 - name: Joshua Kalpin
-  twitter_username: joshkaplin
+  twitter_username: joshkalpin
   cocoapods_bio: .
-  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
-  :twitter_banner_url: ''
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/3721228441/13e087395f074acf859a53d57bc77342.jpeg
+  :twitter_banner_url: http://pbs.twimg.com/profile_banners/17796584/1376361936/web
 - name: Swizzlr
   twitter_username: swizzlr
   cocoapods_bio: .
-  :twitter_profile_url: https://abs.twimg.com/sticky/default_profile_images/default_profile_1_normal.png
-  :twitter_banner_url: ''
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/378800000086703200/61a585b2709e47507b1300876e6dfcfc.jpeg
+  :twitter_banner_url: http://pbs.twimg.com/profile_banners/1468574148/1370601686/web
