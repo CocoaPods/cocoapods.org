@@ -23,12 +23,12 @@ end
 module LayoutTagHelper
   
   def shared_layout(*sources)
-    
     current_dir = File.dirname(File.expand_path(__FILE__))
     shared_include = current_dir + "/../shared/includes/" + sources.first + ".slim"
-
+    host_object = sources.count > 1 ? sources[1] : nil
+    
     template = Tilt::new shared_include
-    template.render($APP, :home => true )
+    template.render($APP, :home => true, :host => host_object )
   end
 end
 

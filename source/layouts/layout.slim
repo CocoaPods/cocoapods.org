@@ -1,7 +1,7 @@
 doctype html
 html lang="en-en"
   head
-    title = "CocoaPods.org"
+    title = "CocoaPods.org - The Dependency Manager for Objective C."
         
     == shared_layout("header_meta")
     == shared_layout("favicons")
@@ -10,7 +10,7 @@ html lang="en-en"
     == javascript_include_tag "application.js"
 
   body
-    == shared_layout("header")
+    == shared_layout("header", self)
 
     == yield
 
