@@ -17,6 +17,11 @@ task :deploy do
   Rake::Task["publish"].invoke
 end
 
+desc 'Runs the web server locally and watches for changes'
+task :run do
+  sh "middleman server --port 4567"
+end
+
 desc "Generate dev team and contributor infos for the about page."
 task :generate do
   p "Generating dev team from Twitter"
