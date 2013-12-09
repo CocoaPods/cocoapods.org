@@ -341,8 +341,13 @@ $(window).ready(function() {
     explanationTokenCallback: function(category, tokens) {
       // Special case to clarify when both platforms are AND-ed.
       //
-      if (category == 'platform' & tokens.length == 2) {
-        return '<strong>on</strong> both ' + tokens.join(' & ');
+      if (category == 'platform') {
+        var length = tokens.length;
+        if (length == 2) {
+          return '<strong>on</strong> both ' + tokens.join(' & ');
+        } else {
+          return 'only <strong>on</strong> ' + tokens[0];
+        }
       }
     }
     // explanationTokenDelimiter: {
