@@ -330,11 +330,26 @@ $(window).ready(function() {
         versions: 'on version',
         dependencies: 'using',
         name: 'named',
-        platform: 'only on',
+        // platform: 'on', See below.
         summary: 'with summary',
         tags: 'tagged as'
       }
+    },
+    explanationDelimiter: {
+      en: 'and'
+    },
+    explanationTokenCallback: function(category, tokens) {
+      // Special case to clarify when both platforms are AND-ed.
+      //
+      if (category == 'platform' & tokens.length == 2) {
+        return '<strong>on</strong> both ' + tokens.join(' & ');
+      }
     }
+    // explanationTokenDelimiter: {
+    //   en: {
+    //     platform: ' & '
+    //   }
+    // }
   });
   
   // Reset the search if empty.
