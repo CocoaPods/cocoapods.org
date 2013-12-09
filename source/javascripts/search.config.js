@@ -283,8 +283,8 @@ $(window).ready(function() {
     //
     choices: {
       en: {
-        'platform': '', // platform is simply never shown.
-              
+        'platform': '', // platform is simply not shown.
+        
         'name': 'name',
         'author': 'author',
         'summary': 'summary',
