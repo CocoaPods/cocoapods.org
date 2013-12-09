@@ -17,7 +17,6 @@ Steps to setup:
 
 1. `$ git clone https://github.com/CocoaPods/beta.cocoapods.org.git`
 2. `$ cd beta.cocoapods.org`
-3. `$ git submodule update --init --recursive`
-4. `$ bundle install`
-5. `$ middleman server`
-6. Open [localhost:4567](http://localhost:4567) in your browser. Changes will be processed automatically
+3. `$ rake bootstrap`
+4. `$ middleman server`
+5. Open [localhost:4567](http://localhost:4567) in your browser. Changes will be processed automatically
