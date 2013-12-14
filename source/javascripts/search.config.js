@@ -32,7 +32,7 @@ $(window).ready(function() {
   // Tracking category/categories selection.
   //
   var trackResultLinkSelection = function(href) {
-    _gaq.push(['_trackEvent', 'resultlink', href]);
+    _gaq.push(['_trackEvent', 'resultlink', 'click', href]);
   }
   
   // Sets the checkbox labels correctly.
