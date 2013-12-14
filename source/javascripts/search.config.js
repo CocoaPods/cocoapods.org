@@ -1,19 +1,33 @@
-// Tracking the search results.
-//
-var trackAnalytics = function(data, query) {
-  var total = data.total;
-  if (total > 0) {
-    _gaq.push(['_trackEvent', 'search', 'with results', query, total]);
-  } else {
-    _gaq.push(['_trackEvent', 'search', 'not found', query, 0]);
-  }
-}
-
 $(window).ready(function() {
   var searchInput = $('#search input[type="search"]');
   
   var platformRemoverRegexp = /\b(platform|on\:\w+\s?)+/;
-  var platformSelect = $("#results_container div.platform");
+  var platformSelect = $("#search_results div.platform");
+  
+  var allocationSelect = $('#search_results div.allocations');
+  
+  // Tracking the search results.
+  //
+  var trackAnalytics = function(data, query) {
+    var total = data.total;
+    if (total > 0) {
+      _gaq.push(['_trackEvent', 'search', 'with results', query, total]);
+    } else {
+      _gaq.push(['_trackEvent', 'search', 'not found', query, 0]);
+    }
+  }
+  
+  // Tracking platform selection.
+  //
+  var trackPlatformSelection = function() {
+    _gaq.push(['_trackEvent', 'platform', platformSelect.find('input:checked').val()]);
+  }
+  
+  // Tracking category/categories selection.
+  //
+  var trackAllocationSelection = function(category, count) {
+    _gaq.push(['_trackEvent', 'allocation', category, count]);
+  }
   
   // Sets the checkbox labels correctly.
   //
@@ -29,8 +43,8 @@ $(window).ready(function() {
     $('#search').removeClass("active");
     $('#results_container').removeClass("active")
     $('#search span.amount').hide();
-    $('#search_results div.platform').hide();
-    $('#search_results div.allocations').hide();
+    platformSelect.hide();
+    allocationSelect.hide();
     $('#search_results div.results').hide();
   };
   
@@ -44,8 +58,8 @@ $(window).ready(function() {
   };
   
   var resultsSearchInterface = function() {
-    $('#search_results div.platform').show();
-    $('#search_results div.allocations').show();
+    platformSelect.show();
+    allocationSelect.show();
     // $('#search div.results').show(); // Picky does this already.
   };
   
@@ -237,7 +251,7 @@ $(window).ready(function() {
         var info = $(this).siblings('span.copy-result.manual');
         info.html(text);
         info.show();
-        // TODO If someone knows how to select text – use your powers here :)
+        // TODO If someone knows how to select text programmatically – use your powers here :)
       });
       
       // This will fail if there is no flash.
@@ -253,6 +267,14 @@ $(window).ready(function() {
         client.on( "complete", function(client, args) {
           $(this).siblings('span.copy-result.flash').show();
         });
+      });
+      
+      // Install tracking on the allocation selection.
+      //
+      allocationSelect.find('li').on('click', function(event) {
+        var li = $(event.currentTarget);
+        trackAllocationSelection(li.find('.text').text(), li.find('.count').text());
+        // Rest is handled in Picky JS.
       });
     },
 
@@ -370,9 +392,10 @@ $(window).ready(function() {
 
   // Resend query on platform selection.
   //
-  // Note: Also updates the label.
+  // Note: Also updates the label & tracks.
   //
   platformSelect.find('input').bind('change', function(event) {
+    trackPlatformSelection();
     pickyClient.resend();
     selectCheckedPlatform();
     $("#pod_search").focus();
