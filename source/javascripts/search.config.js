@@ -29,6 +29,12 @@ $(window).ready(function() {
     _gaq.push(['_trackEvent', 'allocation', category, count]);
   }
   
+  // Tracking category/categories selection.
+  //
+  var trackResultLinkSelection = function(href) {
+    _gaq.push(['_trackEvent', 'resultlink', href]);
+  }
+  
   // Sets the checkbox labels correctly.
   //
   var selectCheckedPlatform = function() {
@@ -275,6 +281,12 @@ $(window).ready(function() {
         var li = $(event.currentTarget);
         trackAllocationSelection(li.find('.text').text(), li.find('.count').text());
         // Rest is handled in Picky JS.
+      });
+      
+      // Install tracking on each result link.
+      //
+      $('ol.results').find('a').on('click', function(event) {
+        trackResultLinkSelection(event.currentTarget.href);
       });
     },
 
