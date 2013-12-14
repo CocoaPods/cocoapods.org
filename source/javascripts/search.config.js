@@ -20,19 +20,19 @@ $(window).ready(function() {
   // Tracking platform selection.
   //
   var trackPlatformSelection = function() {
-    _gaq.push(['_trackEvent', 'platform', platformSelect.find('input:checked').val()]);
+    _gaq.push(['_trackEvent', 'platform', 'switch platform', platformSelect.find('input:checked').val(), 1]);
   }
   
   // Tracking category/categories selection.
   //
   var trackAllocationSelection = function(category, count) {
-    _gaq.push(['_trackEvent', 'allocation', category, count]);
+    _gaq.push(['_trackEvent', 'allocation', 'filter categories', category, count]);
   }
   
   // Tracking category/categories selection.
   //
   var trackResultLinkSelection = function(href) {
-    _gaq.push(['_trackEvent', 'resultlink', 'click', href]);
+    _gaq.push(['_trackEvent', 'resultlink', 'click outbound link', href, 1]);
   }
   
   // Sets the checkbox labels correctly.
