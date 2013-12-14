@@ -379,11 +379,11 @@ $(window).ready(function() {
     // }
   });
   
-  // Reset the search if empty.
-  // TODO Use the "search" Event? Also, rewrite.
-  //
+  // Reset the search if it has been cleared and track when it has.
+  // 
   searchInput.on('input', function(e) {
     if ('' == this.value) {
+      _gaq.push(['_trackEvent', 'clear']);
       resetSearchInterface();
     } else {
       prepareSearchInterfaceForResults();
