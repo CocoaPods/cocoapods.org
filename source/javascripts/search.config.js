@@ -1,10 +1,12 @@
 $(window).ready(function() {
   var searchInput = $('#search input[type="search"]');
+  var helpText = $('#search fieldset p');
   
   var platformRemoverRegexp = /\b(platform|on\:\w+\s?)+/;
   var platformSelect = $("#search_results div.platform");
   
   var allocationSelect = $('#search_results div.allocations');
+  var resultsContainer = $('#results_container');
   
   // Tracking the search results.
   //
@@ -42,12 +44,33 @@ $(window).ready(function() {
     platformSelect.find('input:checked + label').addClass('selected');
   };
   
+  // Hide the header.
   //
+  var headerHidden = false;
+  var hideHeader = function() {
+    if (!headerHidden) {
+      $('html, body').animate({ scrollTop: searchInput.offset().top }, 300);
+      resultsContainer.addClass("active");
+      helpText.hide();
+      headerHidden = true;
+    }
+  };
+  
+  // Show the header.
+  //
+  var showHeader = function() {
+    if (headerHidden) {
+      $('html, body').animate({ scrollTop: 0 }, 300);
+      resultsContainer.removeClass("active");
+      helpText.show();
+      headerHidden = false;
+    }
+  };
+  
+  // Reset the search interface to its initial configuration.
   //
   var resetSearchInterface = function() {
-    $('nav.navbar').css("opacity", "1")
-    $('#search').removeClass("active");
-    $('#results_container').removeClass("active")
+    showHeader();
     $('#search span.amount').hide();
     platformSelect.hide();
     allocationSelect.hide();
@@ -57,9 +80,7 @@ $(window).ready(function() {
   //
   //
   var prepareSearchInterfaceForResults = function() {
-    $('nav.navbar').css("opacity", "0")
-    $('#search').addClass("active")
-    $('#results_container').addClass("active")
+    hideHeader();
     $('#search span.amount').show();
   };
   
