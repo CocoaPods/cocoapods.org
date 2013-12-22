@@ -277,14 +277,13 @@ $(window).ready(function() {
         // before hiding so you can select text
         
         function closePopoverForNode(node){
-          setTimeout(function() {
-            if (!$(node).is(':hover') && !$(".popover:hover").length) {
-              console.log("something exists")
-              $(node).popover("hide")
-            } else {
-              closePopoverForNode(node)
-            }
-          }, 500);
+          // setTimeout(function() {
+          //   if (!$(node).is(':hover') && !$(".popover:hover").length) {
+          //     $(node).popover("hide")
+          //   } else {
+          //     closePopoverForNode(node)
+          //   }
+          // }, 500);
         }
       
         // With no flash you should be able to select the text
@@ -299,13 +298,14 @@ $(window).ready(function() {
         
         }).on("mouseenter", function() {
           $(this).popover("show");
+          $(".popover input").select()
 
         }).on("mouseleave", function() {
           closePopoverForNode(this)
         });
       });
 
-      
+      // When Flash works, jusst do a normal popover
       clip.on("load", function(client) {
 
         client.on( "complete", function(client, args) {
@@ -320,10 +320,7 @@ $(window).ready(function() {
         clip.on( 'mouseout', function ( client, args ) {
           $(this).popover('hide')
         });
-        
       });
-      
-      
       
       // Install tracking on the allocation selection.
       //
