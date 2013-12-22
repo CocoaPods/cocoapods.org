@@ -23,10 +23,10 @@ $ sudo gem install cocoapods
 </div><div class="tab-pane fade" id="get_started"><p>Search for pods (above). Then list the dependencies in a text file named Podfile
 in your Xcode project directory:
 <pre class="highlight">
-    $ edit Podfile
-    platform :ios
-    pod &#39;JSONKit&#39;,       &#39;~&gt; 1.4&#39;
-    pod &#39;Reachability&#39;,  &#39;~&gt; 3.0.0&#39;
+$ edit Podfile
+platform :ios
+pod &#39;JSONKit&#39;,       &#39;~&gt; 1.4&#39;
+pod &#39;Reachability&#39;,  &#39;~&gt; 3.0.0&#39;
 </pre></p>
 
 <p>Now you can install the dependencies in your project:</p>
@@ -49,9 +49,9 @@ $ open App.xcworkspace
 </pre>
 </div><div class="tab-pane fade" id="create_a_pod"><p>Sometimes CocoaPods doesn’t yet have a pod for one of your dependencies. Fortunately, creating a pod is pretty easy:
 <pre class="highlight">
-  $ pod spec create Peanut
-  $ edit Peanut.podspec
-  $ pod spec lint Peanut.podspec
+$ pod spec create Peanut
+$ edit Peanut.podspec
+$ pod spec lint Peanut.podspec
 </pre></p>
 
 <p>You can find a lot of information on the <a href="http://guides.cocoapods.org">process in the guides</a>. When you&#39;re done you can also fork the <a href="http://guides.cocoapods.org/making/specs-and-specs-repo.html">CocoaPods specs</a> GitHub repository and send a pull request. We really love contributions and will help ensure it&#39;s perfect!</p>
