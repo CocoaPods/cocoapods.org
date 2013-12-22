@@ -1,11 +1,6 @@
 ruby:
   team = data.dev_team
-  subprojects = [
-    { "CocoaPods" => data.contributors_cocoapods },
-    { "CocoaPods-Core" => data.contributors_core },
-    { "Xcodeproj" => data.contributors_xcodeproj },
-    { "CLAide" => data.contributors_claide },
-  ]
+
 
 css:
 
@@ -61,11 +56,14 @@ css:
   .sub-project ul {  
     margin-left:0;  
     padding-left:0;
+    text-align:center;
   }
   
   .sub-project li {  
     list-style-type:none;  
-    padding-left:0;
+    padding-left:2px;
+    padding-top:2px;
+    display:inline-block;
   }  
   
   .sub-project h2 {
@@ -114,19 +112,13 @@ section.container
         
     article.row
       
-      h2 CocoaPods is multiple projects
-    
-      - for project in subprojects do
-        - if subprojects.index(project) % 2 == 0
+      h2 Contributors to the CocoaPods Projects
+  
+      col-lg-12.col-sm-12.col-xs-12.sub-project
+        .card
+          ul
+            - for contributor in data.contributors do
+              li
+                a href="http://www.github.com/#{contributor.name}" 
+                  img src="http://www.gravatar.com/avatar/#{contributor.gravatar_id}?s=48" width="48" height="48" title="#{contributor.name} - #{contributor.commits} commits to core projects"
           .clearfix
-
-        col-lg-6.col-sm-6.col-xs-12.sub-project
-          .card  
-
-            ul
-              - for contributor in project.values[0] do
-                li style="float:left;" 
-                  img src="http://www.gravatar.com/avatar/#{contributor.gravatar_id}?s=48" width="48" height="48" alt=contributor.name
-            h2 = project.keys[0]
-            
-            .clearfix

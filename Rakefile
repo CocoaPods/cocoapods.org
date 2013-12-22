@@ -10,7 +10,6 @@ end
 require 'middleman-gh-pages'
 require 'JSON'
 require 'yaml'
-require "octokit"
 require "twitter"
 
 task :deploy do
@@ -65,35 +64,59 @@ task :generate_team do
 end
 
 task :generate_contributors do
+  require 'rest'
+  require 'json'
   
-  # loop through all projects getting a list of contributors 
-  ["CocoaPods", "Core", "Xcodeproj", "CLAide"].each do |project|
-    p "Getting #{project}"
-    
-    data_path = "data/contributors_#{project.downcase}.yaml"
-    `rm #{data_path}` if File.exists? data_path
-    
-    # this is just an empty github app that does nothing
-    Octokit.client_id = '927bff412ce93e98de3e'
-    Octokit.client_secret = '6cb0186380b3b3301709345593a5580aadbf636f'
-    Octokit.auto_paginate = true
-    
-    # grab contributors
-    contributors = Octokit.collabs "CocoaPods/#{project}"
-
-    # Store a simpler model of the data
-    yaml_data = []
-    contributors.each do |contributor|
-      yaml_data << {
-        :name => contributor.login,
-        :gravatar_id => contributor.gravatar_id
-      }
-    end
-
-    # put it in a middleman data yaml file
-    File.open(data_path, "w") do |out|
-       YAML.dump(yaml_data, out)
+  class Commiter
+    attr_accessor :commits, :gravatar_id, :name
+    def to_hash
+      Hash[instance_variables.map { |var| [var[1..-1].to_sym, instance_variable_get(var)] }]
     end
   end
   
+  params = "?client_id=927bff412ce93e98de3e&client_secret=6cb0186380b3b3301709345593a5580aadbf636f" 
+  response = RestClient.get("https://api.github.com/orgs/CocoaPods/repos" + params)
+  repos = JSON.parse(response.body)
+  all_contributors = []
+  
+  # loop through all projects getting a list of contributors 
+  repos.each do |repo|
+    project = repo["name"]
+    next if project == "Specs" 
+  
+    p "Getting #{project}"
+  
+    # grab the stats
+    url = "https://api.github.com/repos/CocoaPods/#{project}/stats/contributors" + params
+    response = RestClient.get(url)
+    next if response.code != 200
+    
+    contributors = JSON.parse(response.body)
+    p "Found " + contributors.count.to_s + " contributors."
+  
+    contributors.each do |contributor|
+      name = contributor["author"]["login"]
+      existing = all_contributors.detect { |e| e.name == name }
+      if existing 
+        existing.commits += contributor["total"]
+
+      else
+        commiter = Commiter.new
+        commiter.name = name
+        commiter.commits = contributor["total"]
+        commiter.gravatar_id = contributor["author"]["gravatar_id"]
+        all_contributors << commiter
+      end
+    end
+  
+    # double check uniquea, and order
+    contributors = all_contributors.uniq{ |hash| hash.name }.sort_by { |hash| hash.commits }.reverse
+
+    # save as hashes for ease of use in middleman
+    contributors = contributors.map { |s| s.to_hash }
+    
+    File.open("data/contributors.yaml", "w") do |out|
+      YAML.dump(contributors, out)
+    end
+  end
 end

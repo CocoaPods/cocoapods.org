@@ -20,5 +20,5 @@ gem 'activesupport'
 gem 'pygments.rb'
 gem 'github-markup'
 
-gem "octokit"
+gem "rest"
 gem "twitter"
