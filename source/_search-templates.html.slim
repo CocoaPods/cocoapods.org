@@ -1,0 +1,22 @@
+/ see http://icanhazjs.com for docs
+
+script id="search_result" type="text/html"
+
+  li.result
+    div.infos.col-lg-8.col-sm-7.col-xs-12
+      h3
+        a href="{{ link }}" {{ id }}
+        span.version {{ version }}
+        img.copy src="./images/copy-to-clipboard.png" data-clipboard-text="pod \'' {{ id }} + '\', \'~> ' + {{ version }} + '\'"
+        span.copy-result.flash Copied!
+        span.copy-result.manual
+        span.os {{ platform }}
+
+      p {{ summary }}
+      p.author {{ authors }}
+      
+    div.actions.col-lg-4.col-sm-5.col-xs-12
+     div.action-wrapper 
+       a href="{{ site_link }}" Site
+       a href="{{ docs_link }}" Docs
+       a href="{{ spec_link }}" Spec

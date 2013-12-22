@@ -8,6 +8,7 @@
 *= require picky.min.js
 *= require search.config.js
 *= require zero-clipboard.min.js
+*= require ICanHaz.js
 */
 
 // Remove keyboard on scroll

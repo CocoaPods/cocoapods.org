@@ -137,6 +137,7 @@ $(window).ready(function() {
     osx: 'OS X'
   };
   var goodSource = /^http/;
+  
   var extractRepoFromSource = function(entry) {
     var link, value;
     var source = entry.source;
@@ -146,37 +147,20 @@ $(window).ready(function() {
       value = source[key];
       if (value.toString().match(goodSource)) { link = value; break; }
     }
-    return link ? '<a href="' + link + '">Repo</a>' : '';
+    return link;
   };
+  
   var render = function(entry) {
-    var platform = platformMapping[entry.platforms];
-    var authors  = $.map(entry.authors, function(email, name) {
+    entry.platform = platformMapping[entry.platforms];
+    entry.authors  = $.map(entry.authors, function(email, name) {
       return '<a href="javascript:pickyClient.insert(\'' + name.replace(/[']/, "\\\\\'") + '\')">' + name + '</a>';
     });
-    var documentation_url = entry.documentation_url || 'http://cocoadocs.org/docsets/' + entry.id + '/' + entry.version;
-    var documentation_link = '<a href="' + documentation_url + '">Docs</a>';
     
-    var info_classes = "infos col-lg-8 col-sm-7 col-xs-12"
-    var action_classes = "actions col-lg-4 col-sm-5 col-xs-12"
-    return '<li class="result">' +
-    '  <div class="' + info_classes + '">' +
-    '    <h3>' +
-    '      <a href="' + entry.link + '">' + entry.id + '</a>' +
-    '      <span class="version">' + entry.version + '</span>' +
-    '      <img class="copy" src="./images/copy-to-clipboard.png" data-clipboard-text="pod \'' + entry.id + '\', \'~> ' + entry.version + '\'">' +
-    '      </img><span class="copy-result flash">Copied!</span><span class="copy-result manual"></span>' +
-    (platform ? '<span class="os">' + platform + '</span>' : '') +
-    '    </h3>' +
-    '    <p class="subspecs">' + entry.subspecs.join(', ') + '</p>' +
-    '    <p>' + entry.summary + '</p>' +
-    '    <p class="author">' + authors.join(', ') + '</p>' +
-    '  </div>' +
-    '  <div class="' + action_classes +'">' + "<div class='action-wrapper'>" +
-    extractRepoFromSource(entry) +
-    documentation_link +
-    '    <a href="https://github.com/CocoaPods/Specs/tree/master/' + entry.id + '/' + entry.version + '/' + entry.id + '.podspec">Spec</a>' +
-    '  </div></div>' +
-    '</li>'
+    entry.docs_link = entry.documentation_url || 'http://cocoadocs.org/docsets/' + entry.id + '/' + entry.version;
+    entry.site_link = entry.link || extractRepoFromSource(entry) 
+    entry.spec_link = 'https://github.com/CocoaPods/Specs/tree/master/' + entry.id + '/' + entry.version + '/' + entry.id + '.podspec'
+    
+    return ich.search_result(entry, true)
   };
   
   pickyClient = new PickyClient({
