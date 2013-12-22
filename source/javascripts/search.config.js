@@ -258,30 +258,72 @@ $(window).ready(function() {
     // After Picky has handled the data and updated the view.
     //
     after: function(data) {
-      //
-      //
-      $('ol.results img.copy').click(function() {
-        var text = $(this).attr('data-clipboard-text');
-        var info = $(this).siblings('span.copy-result.manual');
-        info.html(text);
-        info.show();
-        // TODO If someone knows how to select text programmatically – use your powers here :)
-      });
-      
-      // This will fail if there is no flash.
-      //
+
+      // Install Popovers for the copy to clipboard
+      // depending on whether ZeroClipboard succeeds
+      $copy_to_clipboard = $('ol.results img.copy')      
+
       var clip = new ZeroClipboard(
-        $('ol.results img.copy'),
-        {
+        $copy_to_clipboard, {
           moviePath: "./flashes/ZeroClipboard.swf",
           forceHandCursor: true
         }
       );
-      clip.on("load", function(client) {
-        client.on( "complete", function(client, args) {
-          $(this).siblings('span.copy-result.flash').show();
+      
+      clip.on( 'noflash', function ( client, args ) {
+        
+        // provide a recursive wait method
+        // that checks for the hover on the popover/clipboard
+        // before hiding so you can select text
+        
+        function closePopoverForNode(node){
+          setTimeout(function() {
+            if (!$(node).is(':hover') && !$(".popover:hover").length) {
+              console.log("something exists")
+              $(node).popover("hide")
+            } else {
+              closePopoverForNode(node)
+            }
+          }, 500);
+        }
+      
+        // With no flash you should be able to select the text
+        // in the popover
+      
+        $copy_to_clipboard.popover({
+          trigger: "manual",
+          container: "body"
+        
+        }).on("click", function(e) {
+          e.preventDefault();
+        
+        }).on("mouseenter", function() {
+          $(this).popover("show");
+
+        }).on("mouseleave", function() {
+          closePopoverForNode(this)
         });
       });
+
+      
+      clip.on("load", function(client) {
+
+        client.on( "complete", function(client, args) {
+          $("h4.has-flash").text("Saved to clipboard");
+          $(".popover").addClass("saved")
+        });
+        
+        clip.on( 'mouseover', function ( client, args ) {
+          $(this).popover('show')
+        });
+      
+        clip.on( 'mouseout', function ( client, args ) {
+          $(this).popover('hide')
+        });
+        
+      });
+      
+      
       
       // Install tracking on the allocation selection.
       //

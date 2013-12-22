@@ -32,5 +32,4 @@ $( document ).ready( function(){
   if( hasFlash() ) {
     $("html").addClass("flash")
   }
-
 });
