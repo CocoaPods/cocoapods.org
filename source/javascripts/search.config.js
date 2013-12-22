@@ -277,13 +277,13 @@ $(window).ready(function() {
         // before hiding so you can select text
         
         function closePopoverForNode(node){
-          // setTimeout(function() {
-          //   if (!$(node).is(':hover') && !$(".popover:hover").length) {
-          //     $(node).popover("hide")
-          //   } else {
-          //     closePopoverForNode(node)
-          //   }
-          // }, 500);
+          setTimeout(function() {
+            if (!$(node).is(':hover') && !$(".popover:hover").length) {
+              $(node).popover("hide")
+            } else {
+              closePopoverForNode(node)
+            }
+          }, 500);
         }
       
         // With no flash you should be able to select the text
