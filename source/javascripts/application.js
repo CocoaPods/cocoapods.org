@@ -8,6 +8,7 @@
 *= require picky.min.js
 *= require search.config.js
 *= require zero-clipboard.min.js
+*= require has_flash.js
 *= require ICanHaz.js
 */
 
@@ -18,7 +19,6 @@ $(document).bind("touchmove", function(e){
   $("input").blur();
 });
 
-
 $( document ).ready( function(){
   $('.underscore a[data-toggle="tab"]').on('show.bs.tab', function (e) {
     
@@ -28,5 +28,9 @@ $( document ).ready( function(){
     var percent = (index * constant).toString()
     $("#homepage-tab-indicator").css("margin-left", percent + "%");
   })
+ 
+  if( hasFlash() ) {
+    $("html").addClass("flash")
+  }
 
-})
+});

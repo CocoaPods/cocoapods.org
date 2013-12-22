@@ -160,6 +160,7 @@ $(window).ready(function() {
     entry.site_link = entry.link || extractRepoFromSource(entry) 
     entry.spec_link = 'https://github.com/CocoaPods/Specs/tree/master/' + entry.id + '/' + entry.version + '/' + entry.id + '.podspec'
     
+    // render with ICanHaz, see _search-templates
     return ich.search_result(entry, true)
   };
   
