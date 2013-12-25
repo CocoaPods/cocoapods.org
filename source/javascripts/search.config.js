@@ -98,7 +98,8 @@ $(window).ready(function() {
   //
   var noResultsSearchInterface = function(query) {
     // $('#search_results .no_results').show(); // Picky does this already.
-    $('#search_results div.allocations').hide();
+    platformSelect.show();
+    allocationSelect.hide();
     
     // Get special no_results hash from the search API:
     //  * autosplit query
