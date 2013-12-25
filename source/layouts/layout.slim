@@ -3,17 +3,16 @@ html lang="en-en"
   head
     title = "CocoaPods.org - The Dependency Manager for Objective C."
         
-    == shared_layout("header_meta")
-    == shared_layout("favicons")
+    == shared_partial("header_meta", "favicons")
     
     == stylesheet_link_tag "app.css"
     == javascript_include_tag "application.js"
 
   body
-    == shared_layout("header", self)
+    == shared_partial("header")
 
     == yield
 
     .clearfix
-    == shared_layout("footer")
+    == shared_partial("footer")
     

@@ -1,5 +1,3 @@
-require "lib/shared_layouts.rb"
-
 set :encoding, 'utf-8'
 set :relative_links, true
 
@@ -19,8 +17,6 @@ set :markdown_engine, :redcarpet
 activate :automatic_image_sizes
 activate :rouge_syntax
 
-activate :shared_layouts
-
 configure :development do
   activate :livereload
 end
@@ -32,4 +28,14 @@ after_configuration do
   sprockets.append_path "../shared/fonts"
   sprockets.append_path "../shared/includes"
   sprockets.append_path "../shared/sass"
+end
+
+helpers do
+  
+  def shared_partial(*sources)
+    sources.inject([]) do |combined, source|
+      combined << partial("../shared/includes/#{source}")
+    end.join
+  end
+  
 end
