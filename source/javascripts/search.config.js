@@ -165,13 +165,17 @@ $(window).ready(function() {
     return ich.search_result(entry, true)
   };
   
+  // The search uses the API on search.cocoapods.org.
+  //
+  var searchURL = 'http://search.cocoapods.org/api/v2.0/pods.picky.hash.json';
+  
   pickyClient = new PickyClient({
-    full: 'http://search.cocoapods.org/search.json',
+    full: searchURL,
     fullResults: 20,
       
     // The live query does a full query.
     //
-    live: 'http://search.cocoapods.org/search.json',
+    live: searchURL,
     liveResults: 20,
     liveRendered: true, // Experimental: Render live results as if they were full ones.
     liveSearchInterval: 60, // Time between keystrokes before it sends the query.
