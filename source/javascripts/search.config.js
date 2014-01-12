@@ -239,7 +239,10 @@ $(window).ready(function() {
       // If somebody cleared the search input, do not show any results
       // arriving "late" (well, slower than the person can press backspace).
       //
-      if ('' == searchInput.val()) { return false; }
+      if ('' == searchInput.val()) {
+        resetSearchInterface();
+        return false;
+      }
       
       // If no results are found.
       //
