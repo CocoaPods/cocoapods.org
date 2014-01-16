@@ -165,9 +165,9 @@ $(window).ready(function() {
     return ich.search_result(entry, true)
   };
   
-  // The search uses the API on search.cocoapods.org.
+  // The search uses the convenience API on search.cocoapods.org.
   //
-  var searchURL = 'http://search.cocoapods.org/api/v2.0/pods.picky.hash.json';
+  var searchURL = 'http://search.cocoapods.org/api/v1/pods.picky.hash.json';
   
   pickyClient = new PickyClient({
     full: searchURL,
