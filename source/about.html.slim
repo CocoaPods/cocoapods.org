@@ -107,9 +107,10 @@ section.container
             .background style="background-image:url(#{dev.twitter_banner_url})"
             img.twitter_avatar src=dev.twitter_profile_url
             h2 = dev.name
+            a href="https://twitter.com/#{dev.twitter_username}" class="twitter-follow-button" data-show-count="false" data-lang="en" = "Follow @#{dev.twitter_username}"
+
             p = dev.cocoapods_bio
-        
-        
+
     article.row
       
       h2 Contributors to the CocoaPods Projects
@@ -121,4 +122,6 @@ section.container
               li
                 a href="http://www.github.com/#{contributor.name}" 
                   img src="http://www.gravatar.com/avatar/#{contributor.gravatar_id}?s=48" width="48" height="48" title="#{contributor.name} - #{contributor.commits} commits to core projects"
+                  
+                  
           .clearfix
