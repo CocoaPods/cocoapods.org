@@ -1,4 +1,6 @@
 $(window).ready(function() {
+  var onMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
   var searchInput = $('#search input[type="search"]');
   var helpText = $('#search fieldset p');
   
@@ -465,13 +467,12 @@ $(window).ready(function() {
     trackPlatformSelection();
     pickyClient.resend();
     selectCheckedPlatform();
-    $("#pod_search").focus();
   });
   
   // Make all clicks in the search container set focus.
   // 
   $('#search_container').on('click', function (e) {
-    $('#search_container input').focus();
+    searchInput.focus();
   });
   
   // Keyboard handling.
@@ -513,20 +514,21 @@ $(window).ready(function() {
       // Down
       //
       case 40:
-          selectResult(nextResult)
-          break;
+        selectResult(nextResult)
+        break;
       
       // Up
       //
       case 38:
-          selectResult(previousResult);
-          break;
+        selectResult(previousResult);
+        break;
 
       // Enter
       //
       case 13:
-          openSelection();
-          break;
+        if (onMobile) { searchInput.blur(); }
+        openSelection();
+        break;
     }
   });
   
