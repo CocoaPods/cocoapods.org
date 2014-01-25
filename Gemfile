@@ -1,5 +1,10 @@
 # If you have OpenSSL installed, we recommend updating
 # the following line to use "https"
+
+# RVM support
+#ruby=ruby-2.1.0
+#ruby-gemset=cocoapods.org
+
 source 'https://rubygems.org'
 
 gem "middleman", "~>3.0.13"
