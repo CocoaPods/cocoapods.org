@@ -86,7 +86,9 @@ $(window).ready(function() {
         if (pods.indexOf(pod) != -1) { //already present locally, so no worries
             cb(true);
         } else {
-          uploadPodSettings(cb, CocoaPush.pods.slice(0).push(pod), CocoaPush.pods.slice(0));
+          var newPodArray = CocoaPush.pods.slice(0);
+          newPodArray.push(pod);
+          uploadPodSettings(cb, newPodArray, CocoaPush.pods.slice(0));
         }
         })
       };
@@ -98,8 +100,8 @@ $(window).ready(function() {
           if (pods.indexOf(pod) == -1) {
             cb(true);
           } else {
-            oldPodArray = CocoaPush.pods.slice(0);
-            newPodArray = oldPodArray.filter(function (obj) { return (obj !== pod); });
+            var oldPodArray = CocoaPush.pods.slice(0);
+            var newPodArray = oldPodArray.filter(function (obj) { return (obj !== pod); });
             uploadPodSettings(cb, newPodArray, oldPodArray);
           }
         })
@@ -107,11 +109,16 @@ $(window).ready(function() {
 
   };
 
+
+  function fillStar(target) {
+    target.setAttribute('src', './images/star-filled.png');
+  }
+
   function favePod(event) {
     CocoaPush.addPod(event.target.attributes['pod-name'].value, function(success) {
       //stopStarSpin(event.target);
       if (success) {
-        //fillStar(event.target);
+        fillStar(event.target);
       } else {
         // present an alert?
       }
