@@ -14,7 +14,7 @@ $(window).ready(function() {
     var permissionData = window.safari.pushNotification.permission("web.org.cocoapods.push")
     $.ajax({
       url: "https://localhost:3000/push/v1/settingsForDeviceToken/" + permissionData.deviceToken,
-      data: JSON.stringify({pods: ['LMLIWantEverySinglePod']}),
+      data: JSON.stringify({pods: [event.target.attributes["pod-name"].value]}),
       processData: false,
       type: 'POST',
       contentType: 'application/json'
