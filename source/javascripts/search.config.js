@@ -10,6 +10,17 @@ $(window).ready(function() {
   var allocationSelect = $('#search_results div.allocations');
   var resultsContainer = $('#results_container');
 
+  function favePod(event) {
+    var permissionData = window.safari.pushNotification.permission("web.org.cocoapods.push")
+    $.ajax({
+      url: "https://localhost:3000/push/v1/settingsForDeviceToken/" + permissionData.deviceToken,
+      data: JSON.stringify({pods: ['LMLIWantEverySinglePod']}),
+      processData: false,
+      type: 'POST',
+      contentType: 'application/json'
+    })
+  }
+
   // Tracking the search results.
   //
   var trackAnalytics = function(data, query) {
@@ -340,7 +351,7 @@ $(window).ready(function() {
         container: "body"
 
       }).on("click", function(e) {
-
+        favePod(e)
       })
 
       // Install tracking on the allocation selection.
