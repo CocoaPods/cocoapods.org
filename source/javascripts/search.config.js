@@ -126,11 +126,15 @@ $(window).ready(function() {
     //spinStar(event.target);
   }
 
+  function hollowStar(target) {
+    target.setAttribute('src', './images/star-hollow.png');
+  }
+
   function unFavePod(event) {
     CocoaPush.removePod(event.target.attributes['pod-name'].value, function(success) {
       //stopStarSpin(event.target);
       if (success) {
-        //hollowStar(event.target);
+        hollowStar(event.target);
       } else {
         // present an alert?
       }
@@ -291,6 +295,11 @@ $(window).ready(function() {
     entry.site_link = entry.link || extractRepoFromSource(entry)
     entry.spec_link = 'https://github.com/CocoaPods/Specs/tree/master/' + entry.id + '/' + entry.version + '/' + entry.id + '.podspec'
 
+    if (CocoaPush.enabled) {
+      CocoaPush.getPods(function(pods) {
+        entry.is_faved = (pods.indexOf(entry.id) !== -1); //if pod is in list of pods, then it must be faved
+      })
+    }
     // render with ICanHaz, see _search-templates
     return ich.search_result(entry, true)
   };
@@ -462,8 +471,8 @@ $(window).ready(function() {
 
       // Install popover for CocoaPush faving
 
-      $fave_info = $('ol.results img.fave')
-      $fave_info.popover({
+      $fave_star = $('ol.results img.fave')
+      $fave_star.popover({
         trigger: "hover",
         container: "body"
 
