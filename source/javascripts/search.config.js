@@ -12,6 +12,7 @@ $(window).ready(function() {
 
   function fillStar(target) {
     target.setAttribute('src', './images/star-filled.png');
+    target.setAttribute('is_faved', true);
   }
 
   function favePod(event) {
@@ -28,6 +29,7 @@ $(window).ready(function() {
 
   function hollowStar(target) {
     target.setAttribute('src', './images/star-hollow.png');
+    target.setAttribute('is_faved', false);
   }
 
   function unFavePod(event) {
@@ -377,8 +379,12 @@ $(window).ready(function() {
         container: "body"
 
       }).on("click", function(e) {
-        favePod(e)
-      })
+        if (e.target.getAttribute('is_faved') === 'true') {
+          unFavePod(e);
+        } else {
+          favePod(e);
+        }
+      });
 
       // Install tracking on the allocation selection.
       //

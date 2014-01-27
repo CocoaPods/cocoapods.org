@@ -3,6 +3,8 @@
 //If push notifications have been requested and denied, returns 'NOT ALLOWED'
 //Consumer of this singleton is responsible for updating UI in response to the former two cases
 var CocoaPush = new function () {
+    this.enabled = true;
+
     //param: callback taking permission data as parameter
     //return: null
     this.permissionData = function(cb) {
