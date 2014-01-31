@@ -17,6 +17,7 @@ Steps to setup:
 
 1. `$ git clone https://github.com/CocoaPods/cocoapods.org.git`
 2. `$ cd cocoapods.org`
-3. `$ rake bootstrap`
-4. `$ middleman server`
-5. Open [localhost:4567](http://localhost:4567) in your browser. Changes will be processed automatically
+3. `$ bundle install`
+4. `$ rake bootstrap`
+5. `$ middleman server`
+6. Open [localhost:4567](http://localhost:4567) in your browser. Changes will be processed automatically
