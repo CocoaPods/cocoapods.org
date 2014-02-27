@@ -162,6 +162,7 @@ $(window).ready(function() {
     entry.docs_link = entry.documentation_url || 'http://cocoadocs.org/docsets/' + entry.id + '/' + entry.version;
     entry.site_link = entry.link || extractRepoFromSource(entry) 
     entry.spec_link = 'https://github.com/CocoaPods/Specs/tree/master/' + entry.id + '/' + entry.version + '/' + entry.id + '.podspec'
+    entry.minor_version = version.split('.').slice(0,2)
     
     // render with ICanHaz, see _search-templates
     return ich.search_result(entry, true)

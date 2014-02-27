@@ -10,7 +10,7 @@ script id="search_result" type="text/html"
       h3
         a href="{{ link }}" {{ id }}
         span.version {{ version }}
-        img.copy src="./images/copy-to-clipboard.png" data-clipboard-text="pod '{{ id }}', '~> {{ version }}'" data-toggle="popover" data-placement="top" data-container="body" data-html="true" data-content=popover_html 
+        img.copy src="./images/copy-to-clipboard.png" data-clipboard-text="pod '{{ id }}', '~> {{ minor_version }}'" data-toggle="popover" data-placement="top" data-container="body" data-html="true" data-content=popover_html 
 
         | {{#platform}}
         span.os {{ platform }}
