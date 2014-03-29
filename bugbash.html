@@ -7,7 +7,7 @@ function getRecent() {
   $.getJSON("http://cocoapods-bashbot.herokuapp.com/triages", function( data ) {
 
     var recent_html = ""
-    $.each( data, function( index, triage ) {
+    $.each( data["triages"], function( index, triage ) {
       recent_html += ich.recent_triage(triage, true)
     });
 
@@ -23,7 +23,7 @@ function getTop() {
   $.getJSON("http://cocoapods-bashbot.herokuapp.com/users", function( data ) {
 
     var recent_html = ""
-    $.each( data["traiges"], function( index, triage ) {
+    $.each( data, function( index, triage ) {
       recent_html += ich.top_contributor(triage, true)
     });
 
