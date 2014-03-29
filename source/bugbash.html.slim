@@ -1,0 +1,127 @@
+javascript:
+
+  $(document).ready(function(){
+    getRecent();
+    getTop();
+  })
+  
+  function getRecent() {
+    $.getJSON("http://cocoapods-bashbot.herokuapp.com/triages/recent", function( data ) {
+      
+      var recent_html = ""
+      $.each( data, function( index, triage ) {
+        recent_html += ich.recent_triage(triage, true)
+      });
+ 
+      $( "<ul/>", {
+        "class": "recent-triages",
+        html: recent_html
+      }).appendTo("#recent_triages_list");
+    })
+  }
+  
+  function getTop() {
+    $.getJSON("http://cocoapods-bashbot.herokuapp.com/users", function( data ) {
+      
+      var recent_html = ""
+      $.each( data, function( index, triage ) {
+        recent_html += ich.top_contributor(triage, true)
+      });
+ 
+      $( "<ul/>", {
+        "class": "top_contributors",
+        html: recent_html
+      }).appendTo("#top_contributors_list");
+    })
+    
+  }
+
+css:
+
+  h3.underlined {
+    text-align:center;
+  }
+  
+  #content-wrapper ul {
+    padding-left:0;
+  }
+  
+  li.result {
+    padding:10px;
+    background-color:white;
+    margin-bottom:12px;
+    list-style:none;
+    min-height: 64px;
+  }
+  
+  li.result a {
+    display:block;
+  }
+  
+  li.result img {
+    float:left;
+    height:44px;
+    width:44px;
+    margin-right:12px;
+  }
+  
+  li.result h3 {
+    padding:0;
+    margin:0;
+    font-size:18px;
+    color:black;
+    font-weight:normal;
+  }
+
+  li.result h4 {
+    padding:0;
+    margin:0 0 0 0;
+    margin-top:4px;
+    font-size:18px;
+    color:black;
+    font-weight:normal;
+  }
+
+  li.result h3 em {
+    color:rgba(0,0,0,0.3);
+  }
+  
+  li.result h4 em {
+    color:#48A4EC;
+  }
+
+
+script id="top_contributor" type="text/html"
+  li.result.large
+    a href="{{ issue.url }}"
+      img src="{{ avatar_url }}"
+      h3 {{ name }} <em>{{username}}</em>
+      h4 {{ triages.length }} Triages, {{ points }} points
+
+script id="recent_triage" type="text/html"
+  li.result
+    a href="{{ issue.url }}"
+      img src="{{ user.avatar_url }}"
+      h3 {{ user.name }} <em>{{user.username}}</em>
+      h4 {{ state }} on <em>{{ issue.repository }}\#{{ issue.number }}<em>
+
+
+section.container
+  article.row
+    col-lg-12.col-sm-12.col-xs-12
+      h1 CocoaPods Bug Bash
+
+#content-wrapper
+  section.container
+    article.row
+    
+      section.row
+  
+        .col-md-4.col-lg-4.col-sm-12.col-md-offset-1.col-lg-offset-1.col-sm-offset-0#top_contributors_list
+          h3.underlined Top Contributors
+          <div class="header-horizontal-divider"><div class="index-arrow-down"></div><div class="index-enclosed-arrow-down"></div></div>
+
+        .col-md-4.col-lg-4.col-sm-12.col-md-offset-2.col-lg-offset-2.col-sm-offset-0#recent_triages_list
+          h3.underlined Recent Triages
+          <div class="header-horizontal-divider"><div class="index-arrow-down"></div><div class="index-enclosed-arrow-down"></div></div>
+
