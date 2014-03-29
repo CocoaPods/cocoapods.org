@@ -36,9 +36,21 @@ javascript:
       
       
       $("ul.top_contributors li").click(function(event){
-        var item = $(event.target)[0]
+        var tappedON = this;
         
-        console.log(item);
+        $.getJSON("http://cocoapods-bashbot.herokuapp.com/users/" + this.id, function( data ) {
+          
+          var triages_html = "" 
+          $.each( data["triages"], function( index, triage ) {
+            triages_html += ich.sub_triage(triage, true)
+          });
+        
+          $( "<ul/>", {
+            html: triages_html
+          }).appendTo(tappedON);
+        
+        
+        })
         
       });
     })
@@ -108,6 +120,16 @@ css:
     height:480px;
     overflow:scroll;
   }
+  
+  li.triage a {
+    display:inline;
+  }
+  
+  li.triage p {
+    margin-bottom: 6px;
+    margin-top: 6px;
+    
+  }
 
 
 script id="top_contributor" type="text/html"
@@ -122,6 +144,11 @@ script id="recent_triage" type="text/html"
       img src="{{ user.avatar_url }}"
       h3 {{ user.name }} <em>{{user.username}}</em>
       h4 {{ state }} on <em>{{ issue.repository }}\#{{ issue.number }}<em>
+
+script id="sub_triage" type="text/html"
+  li.triage
+    <p>{{ state }} on <a href="{{ issue.url }}">{{ issue.repository }}\#{{ issue.number }}</a></p>
+
 
 
 section.container
