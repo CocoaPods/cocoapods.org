@@ -14,7 +14,7 @@ javascript:
       });
  
       $( "<ul/>", {
-        "class": "recent-triages",
+        "class": "bash-list recent-triages",
         html: recent_html
       }).appendTo("#recent_triages_list");
     })
@@ -29,7 +29,7 @@ javascript:
       });
  
       $( "<ul/>", {
-        "class": "top_contributors",
+        "class": "bash-list top_contributors",
         html: recent_html
       }).appendTo("#top_contributors_list");
     })
@@ -89,11 +89,16 @@ css:
   li.result h4 em {
     color:#48A4EC;
   }
+  
+  ul.bash-list {
+    height:480px;
+    overflow:scroll;
+  }
 
 
 script id="top_contributor" type="text/html"
   li.result.large
-    a href="{{ issue.url }}"
+    a href="{{ url }}"
       img src="{{ avatar_url }}"
       h3 {{ name }} <em>{{username}}</em>
       h4 {{ triages.length }} Triages, {{ points }} points
