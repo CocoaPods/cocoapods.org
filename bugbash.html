@@ -23,6 +23,11 @@ function getTop() {
   $.getJSON("http://cocoapods-bashbot.herokuapp.com/users", function( data ) {
 
     var recent_html = ""
+
+    data = data.sort(function(a, b) {
+       return b["points"] - a["points"]
+    })
+
     $.each( data, function( index, triage ) {
       recent_html += ich.top_contributor(triage, true)
     });
@@ -46,7 +51,6 @@ function getTop() {
         $( "<ul/>", {
           html: triages_html
         }).appendTo(tappedON);
-
 
       })
 
