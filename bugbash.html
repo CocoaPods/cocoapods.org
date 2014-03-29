@@ -4,7 +4,7 @@
 })
 
 function getRecent() {
-  $.getJSON("http://cocoapods-bashbot.herokuapp.com/triages/recent", function( data ) {
+  $.getJSON("http://cocoapods-bashbot.herokuapp.com/triages", function( data ) {
 
     var recent_html = ""
     $.each( data, function( index, triage ) {
@@ -23,7 +23,7 @@ function getTop() {
   $.getJSON("http://cocoapods-bashbot.herokuapp.com/users", function( data ) {
 
     var recent_html = ""
-    $.each( data, function( index, triage ) {
+    $.each( data["traiges"], function( index, triage ) {
       recent_html += ich.top_contributor(triage, true)
     });
 
@@ -31,6 +31,14 @@ function getTop() {
       "class": "bash-list top_contributors",
       html: recent_html
     }).appendTo("#top_contributors_list");
+
+
+    $("ul.top_contributors li").click(function(event){
+      var item = $(event.target)[0]
+
+      console.log(item);
+
+    });
   })
 
 }</script><style type="text/css">h3.underlined {
@@ -47,6 +55,11 @@ li.result {
   margin-bottom:12px;
   list-style:none;
   min-height: 64px;
+}
+
+li.result:hover {
+  background-color: #eeeeee;
+  cursor:pointer;
 }
 
 li.result a {
