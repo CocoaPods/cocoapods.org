@@ -17,6 +17,7 @@ javascript:
         "class": "bash-list recent-triages",
         html: recent_html
       }).appendTo("#recent_triages_list");
+      
     })
   }
   
@@ -97,14 +98,13 @@ css:
 
 
 script id="top_contributor" type="text/html"
-  li.result.large
-    a href="{{ url }}"
-      img src="{{ avatar_url }}"
-      h3 {{ name }} <em>{{username}}</em>
-      h4 {{ triages.length }} Triages, {{ points }} points
+  li.result.large id="{{ username }}"
+    img src="{{ avatar_url }}"
+    h3 {{ name }} <em>{{username}}</em>
+    h4 {{ triages }} Triages, {{ points }} points
 
 script id="recent_triage" type="text/html"
-  li.result
+  li.result 
     a href="{{ issue.url }}"
       img src="{{ user.avatar_url }}"
       h3 {{ user.name }} <em>{{user.username}}</em>
