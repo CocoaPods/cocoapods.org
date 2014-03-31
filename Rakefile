@@ -89,9 +89,19 @@ task :generate_contributors do
     # grab the stats
     url = "https://api.github.com/repos/CocoaPods/#{project}/stats/contributors" + params
     response = RestClient.get(url)
-    next if response.code != 200
     
+    if response.code != 200
+      puts response
+      next
+    end
     contributors = JSON.parse(response.body)
+    
+    if contributors.count == 100
+      url2 = "https://api.github.com/repos/CocoaPods/#{project}/stats/contributors" + params + "&page=2&per_page=100"
+      response_2 = RestClient.get(url2)
+      contributors += JSON.parse(response_2.body)    
+    end
+  
     p "Found " + contributors.count.to_s + " contributors."
   
     contributors.each do |contributor|
@@ -109,7 +119,7 @@ task :generate_contributors do
       end
     end
   
-    # double check uniquea, and order
+    # double check uniques, and order
     contributors = all_contributors.uniq{ |hash| hash.name }.sort_by { |hash| hash.commits }.reverse
 
     # save as hashes for ease of use in middleman
