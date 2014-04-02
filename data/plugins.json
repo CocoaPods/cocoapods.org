@@ -2,7 +2,7 @@
   "plugins":[
     {
       "gem":"cocoapods-try",
-	  "name":"CocoaPods Try",
+      "name":"CocoaPods Try",
       "url":"https://github.com/CocoaPods/cocoapods-try",
       "description":"Quickly try the demo project of a Pod."
     },
