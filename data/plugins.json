@@ -1,0 +1,34 @@
+{
+  "plugins":[
+    {
+      "gem":"cocoapods-try",
+	  "name":"CocoaPods Try",
+      "url":"https://github.com/CocoaPods/cocoapods-try",
+      "description":"Quickly try the demo project of a Pod."
+    },
+    {
+      "gem":"cocoapods-xcode-plugin",
+      "name":"Xcode Plugin",
+      "url":"https://github.com/kattrali/cocoapods-xcode-plugin",
+      "description":"Dependency management helper for your CocoaPods, right in Xcode."
+    },
+    {
+      "gem":"cocoapods-browser",
+      "name":"Browser",
+      "url":"https://github.com/dealforest/cocoapods-browser",
+      "description":"Open a Pod’s homepage in the browser."
+    },
+    {
+      "gem":"cocoapods-packager",
+      "name":"Packager",
+      "url":"https://github.com/kylef/cocoapods-packager",
+      "description":"Generate a static library from a Podspec."
+    },
+    {
+      "gem":"cocoapod-badges",
+      "name":"Badges",
+      "url":"https://github.com/badges/cocoapod-badges",
+      "description":"Status badges to inform a Pod’s latest version and platform released on CocoaPods."
+    }
+  ]
+}
