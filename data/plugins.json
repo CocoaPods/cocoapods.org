@@ -1,34 +1,58 @@
 {
   "plugins":[
     {
-      "gem":"cocoapods-try",
-      "name":"CocoaPods Try",
-      "url":"https://github.com/CocoaPods/cocoapods-try",
-      "description":"Quickly try the demo project of a Pod."
-    },
-    {
-      "gem":"cocoapods-xcode-plugin",
-      "name":"Xcode Plugin",
-      "url":"https://github.com/kattrali/cocoapods-xcode-plugin",
-      "description":"Dependency management helper for your CocoaPods, right in Xcode."
-    },
-    {
       "gem":"cocoapods-browser",
-      "name":"Browser",
+      "name":"browser",
       "url":"https://github.com/dealforest/cocoapods-browser",
-      "description":"Open a Pod’s homepage in the browser."
+      "description":"Open a pod's homepage in the browser."
+    },
+    {
+      "gem":"cocoapods-check_latest",
+      "name":"check-latest",
+      "url":"https://github.com/yujinakayama/cocoapods-check_latest",
+      "description":"Checks if the latest version of a pod is up to date."
+    },
+    {
+      "gem":"cocoapods-docs",
+      "name":"docs",
+      "url":"https://github.com/CocoaPods/cocoapods-docs",
+      "description":"Convenient access to the documentation of a Pod via cocoadocs.org."
+    },
+    {
+      "gem":"cocoapods-docstats",
+      "name":"docstats",
+      "url":"https://github.com/neonichu/cocoapods-docstats",
+      "description":"Showing documentation metrics of Pods."
     },
     {
       "gem":"cocoapods-packager",
-      "name":"Packager",
+      "name":"package",
       "url":"https://github.com/kylef/cocoapods-packager",
       "description":"Generate a static library from a Podspec."
     },
     {
-      "gem":"cocoapod-badges",
-      "name":"Badges",
-      "url":"https://github.com/badges/cocoapod-badges",
-      "description":"Status badges to inform a Pod’s latest version and platform released on CocoaPods."
+      "gem":"cocoapods-podfile_info",
+      "name":"podfile_info",
+      "url":"https://github.com/cocoapods/cocoapods-podfile_info",
+      "description":"Shows information on installed Pods."
+    },
+    {
+      "gem":"cocoapods-repo-svn",
+      "name":"repo-svn",
+      "url":"https://github.com/clarkda/cocoapods-repo-svn",
+      "description":"Adds subversion support to manage spec-repositories."
+    },
+    {
+      "gem":"cocoapods-try",
+      "name":"try",
+      "url":"https://github.com/CocoaPods/cocoapods-try",
+      "description":"Quickly try the demo project of a Pod."
+    },
+    {
+      "gem":"cocoapods-watch",
+      "name":"watch",
+      "url":"https://github.com/supermarin/cocoapods-watch",
+      "description":"Watch plugin for cocoapods"
     }
   ]
 }
