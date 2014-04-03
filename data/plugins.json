@@ -25,6 +25,12 @@
       "description":"Showing documentation metrics of Pods."
     },
     {
+      "gem":"cocoapods-open",
+      "name":"open",
+      "url":"https://github.com/leshill/open_pod_bay",
+      "description":"Open a pod’s workspace."
+    },
+    {
       "gem":"cocoapods-packager",
       "name":"package",
       "url":"https://github.com/kylef/cocoapods-packager",
