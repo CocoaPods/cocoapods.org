@@ -1,6 +1,12 @@
 {
   "plugins":[
     {
+      "gem":"cocoapods-dependencies",
+      "name":"dependencies",
+      "url":"https//github.com/segiddins/cocoapods-dependencies",
+      "description":"Shows a project's CocoaPod dependency graph."
+    },
+    {
       "gem":"cocoapods-browser",
       "name":"browser",
       "url":"https://github.com/dealforest/cocoapods-browser",
