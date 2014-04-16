@@ -1,70 +1,82 @@
 {
   "plugins":[
     {
-      "gem":"cocoapods-dependencies",
+      "gem":"Pod Dependencies",
+      "author": "Samuel E. Giddins",
+      "social_media_url":"http://twitter.com/segiddins",
       "name":"dependencies",
       "url":"https//github.com/segiddins/cocoapods-dependencies",
       "description":"Shows a project's CocoaPod dependency graph."
     },
     {
       "gem":"cocoapods-browser",
-      "name":"browser",
+      "name":"Pod browser",
+      "author": "Toshihiro Morimoto",
+      "social_media_url":"http://twitter.com/dealforest",
       "url":"https://github.com/dealforest/cocoapods-browser",
       "description":"Open a pod's homepage in the browser."
     },
     {
       "gem":"cocoapods-check_latest",
-      "name":"check-latest",
+      "name":"Check Latest",
+      "author": "Yuji Nakayama",
+      "social_media_url":"http://twitter.com/nkym37",
       "url":"https://github.com/yujinakayama/cocoapods-check_latest",
       "description":"Checks if the latest version of a pod is up to date."
     },
     {
       "gem":"cocoapods-docs",
-      "name":"docs",
+      "name":"Pod docs",
+      "author": "CocoaPods Dev Team",
+      "social_media_url":"http://twitter.com/CocoaPods",
       "url":"https://github.com/CocoaPods/cocoapods-docs",
       "description":"Convenient access to the documentation of a Pod via cocoadocs.org."
     },
     {
       "gem":"cocoapods-docstats",
       "name":"docstats",
+      "author": "Boris Bügling",
+      "social_media_url":"http://twitter.com/NeoNacho",
       "url":"https://github.com/neonichu/cocoapods-docstats",
       "description":"Showing documentation metrics of Pods."
     },
     {
       "gem":"cocoapods-open",
       "name":"open",
+      "author": "Les Hill",
+      "social_media_url":"http://twitter.com/leshill",
       "url":"https://github.com/leshill/open_pod_bay",
       "description":"Open a pod’s workspace."
     },
     {
-      "gem":"cocoapods-packager",
-      "name":"package",
-      "url":"https://github.com/kylef/cocoapods-packager",
-      "description":"Generate a static library from a Podspec."
-    },
-    {
       "gem":"cocoapods-podfile_info",
-      "name":"podfile_info",
+      "name":"Pod info",
+      "author": "CocoaPods Dev Team",
+      "social_media_url":"http://twitter.com/CocoaPods",
       "url":"https://github.com/cocoapods/cocoapods-podfile_info",
       "description":"Shows information on installed Pods."
     },
     {
       "gem":"cocoapods-repo-svn",
       "name":"repo-svn",
+      "author": "Dusty Clarkda",
+      "social_media_url":"http://twitter.com/_clarkda",
       "url":"https://github.com/clarkda/cocoapods-repo-svn",
       "description":"Adds subversion support to manage spec-repositories."
     },
     {
       "gem":"cocoapods-try",
-      "name":"try",
+      "name":"Pod try",
+      "author": "CocoaPods Dev Team",
+      "social_media_url":"http://twitter.com/CocoaPods",
       "url":"https://github.com/CocoaPods/cocoapods-try",
       "description":"Quickly try the demo project of a Pod."
     },
     {
       "gem":"cocoapods-watch",
-      "name":"watch",
+      "name":"Pod watch",
       "url":"https://github.com/supermarin/cocoapods-watch",
-      "description":"Watch plugin for cocoapods"
+      "description":"Watch for Podfile changes and run pod install."
     }
   ]
 }
