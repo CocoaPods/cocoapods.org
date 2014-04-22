@@ -1,17 +1,17 @@
 {
   "plugins":[
     {
-      "gem":"Pod Dependencies",
-      "author": "Samuel E. Giddins",
+      "gem":"cocoapods-dependencies",
+      "name":"Pod Dependencies",
+      "author":"Samuel E. Giddins",
       "social_media_url":"http://twitter.com/segiddins",
-      "name":"dependencies",
-      "url":"https//github.com/segiddins/cocoapods-dependencies",
+      "url":"https://github.com/segiddins/cocoapods-dependencies",
       "description":"Shows a project's CocoaPod dependency graph."
     },
     {
       "gem":"cocoapods-browser",
       "name":"Pod browser",
-      "author": "Toshihiro Morimoto",
+      "author":"Toshihiro Morimoto",
       "social_media_url":"http://twitter.com/dealforest",
       "url":"https://github.com/dealforest/cocoapods-browser",
       "description":"Open a pod's homepage in the browser."
@@ -19,7 +19,7 @@
     {
       "gem":"cocoapods-check_latest",
       "name":"Check Latest",
-      "author": "Yuji Nakayama",
+      "author":"Yuji Nakayama",
       "social_media_url":"http://twitter.com/nkym37",
       "url":"https://github.com/yujinakayama/cocoapods-check_latest",
       "description":"Checks if the latest version of a pod is up to date."
@@ -27,7 +27,7 @@
     {
       "gem":"cocoapods-docs",
       "name":"Pod docs",
-      "author": "CocoaPods Dev Team",
+      "author":"CocoaPods Dev Team",
       "social_media_url":"http://twitter.com/CocoaPods",
       "url":"https://github.com/CocoaPods/cocoapods-docs",
       "description":"Convenient access to the documentation of a Pod via cocoadocs.org."
@@ -35,7 +35,7 @@
     {
       "gem":"cocoapods-docstats",
       "name":"docstats",
-      "author": "Boris Bügling",
+      "author":"Boris Bügling",
       "social_media_url":"http://twitter.com/NeoNacho",
       "url":"https://github.com/neonichu/cocoapods-docstats",
       "description":"Showing documentation metrics of Pods."
@@ -43,7 +43,7 @@
     {
       "gem":"cocoapods-open",
       "name":"open",
-      "author": "Les Hill",
+      "author":"Les Hill",
       "social_media_url":"http://twitter.com/leshill",
       "url":"https://github.com/leshill/open_pod_bay",
       "description":"Open a pod’s workspace."
@@ -51,7 +51,7 @@
     {
       "gem":"cocoapods-podfile_info",
       "name":"Pod info",
-      "author": "CocoaPods Dev Team",
+      "author":"CocoaPods Dev Team",
       "social_media_url":"http://twitter.com/CocoaPods",
       "url":"https://github.com/cocoapods/cocoapods-podfile_info",
       "description":"Shows information on installed Pods."
@@ -59,7 +59,7 @@
     {
       "gem":"cocoapods-repo-svn",
       "name":"repo-svn",
-      "author": "Dusty Clarkda",
+      "author":"Dusty Clarkda",
       "social_media_url":"http://twitter.com/_clarkda",
       "url":"https://github.com/clarkda/cocoapods-repo-svn",
       "description":"Adds subversion support to manage spec-repositories."
@@ -67,7 +67,7 @@
     {
       "gem":"cocoapods-try",
       "name":"Pod try",
-      "author": "CocoaPods Dev Team",
+      "author":"CocoaPods Dev Team",
       "social_media_url":"http://twitter.com/CocoaPods",
       "url":"https://github.com/CocoaPods/cocoapods-try",
       "description":"Quickly try the demo project of a Pod."
