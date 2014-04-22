@@ -1,11 +1,11 @@
 {
   "plugins":[
     {
-      "gem":"Pod Dependencies",
+      "gem":"cocoapods-dependencies",
+      "name":"Pod Dependencies",
       "author": "Samuel E. Giddins",
       "social_media_url":"http://twitter.com/segiddins",
-      "name":"dependencies",
-      "url":"https//github.com/segiddins/cocoapods-dependencies",
+      "url":"https://github.com/segiddins/cocoapods-dependencies",
       "description":"Shows a project's CocoaPod dependency graph."
     },
     {
