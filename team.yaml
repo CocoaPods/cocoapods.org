@@ -19,9 +19,9 @@
   twitter_username: 'hanke'
   cocoapods_bio: "Picky about search."
 
-- name: 'Andy Myers'
-  twitter_username: 'andyrmyers'
-  cocoapods_bio: "Really doing the design."
+# - name: 'Andy Myers'
+#   twitter_username: 'andyrmyers'
+#   cocoapods_bio: "Really doing the design."
 
 - name: 'Marin Usalj'
   twitter_username: '_supermarin'
@@ -42,3 +42,12 @@
 - name: 'Delisa Mason'
   twitter_username: 'kattrali'
   cocoapods_bio: "Toolsmith lvl 99."
+
+- name: 'Boris Bügling'
+  twitter_username: 'neonacho'
+  cocoapods_bio: "Triaged it already."
+
+- name: 'Sam Giddins'
+  twitter_username: 'segiddins'
+  cocoapods_bio: "Patch master."
+
