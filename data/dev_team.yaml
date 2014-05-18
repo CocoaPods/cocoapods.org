@@ -12,7 +12,7 @@
 - name: orta
   twitter_username: orta
   cocoapods_bio: Design Dictator.
-  :twitter_profile_url: https://pbs.twimg.com/profile_images/464291563259318272/8NHpSb9j_400x400.jpeg
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/464291563259318272/8NHpSb9j.jpeg
   :twitter_banner_url: http://pbs.twimg.com/profile_banners/2569881/1397940683/web
 - name: Keith Smiley
   twitter_username: smileykeith
@@ -56,7 +56,7 @@
   :twitter_banner_url: http://pbs.twimg.com/profile_banners/40614452/1386607496/web
 - name: Boris Bügling
   twitter_username: neonacho
-  cocoapods_bio: Triaged it already.
+  cocoapods_bio: Triagemaster General.
   :twitter_profile_url: https://pbs.twimg.com/profile_images/2701839364/91b55f01d201b6f591856b5b060378d2.jpeg
   :twitter_banner_url: http://pbs.twimg.com/profile_banners/10341052/1398205935/web
 - name: Samuel Giddins
@@ -64,3 +64,8 @@
   cocoapods_bio: Patch Master.
   :twitter_profile_url: https://pbs.twimg.com/profile_images/458733123996372993/CdZBz3qk.jpeg
   :twitter_banner_url: http://pbs.twimg.com/profile_banners/73644377/1398205852/web
+- name: Olivier Halligon
+  twitter_username: aligatr
+  cocoapods_bio: Guardian of consistency.
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/468031759213264897/unZTcR09.jpeg
+  :twitter_banner_url: http://pbs.twimg.com/profile_banners/193277005/1400408751/web
