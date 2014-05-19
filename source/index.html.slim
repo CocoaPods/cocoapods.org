@@ -58,14 +58,17 @@ title: CocoaPods Guides
           div#get_started.tab-pane.fade 
           
             markdown:
-              Search for pods (above). Then list the dependencies in a text file named Podfile
-              in your Xcode project directory:
+              Search for pods (above). Then list the dependencies in a text file named
+              `Podfile` in your Xcode project directory:
               <pre class="highlight">
-              $ edit Podfile
               platform :ios, '7.0'
               pod 'JSONKit',       '~> 1.4'
               pod 'Reachability',  '~> 3.0'
               </pre>
+              
+              _Tip: CocoaPods provides the `pod init` command to create a template
+              Podfile that may be a good starting point (you still need to edit it then,
+              to list the pods/dependencies you are interested in)_
               
               Now you can install the dependencies in your project:
             
