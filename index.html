@@ -20,14 +20,17 @@ gems. Further instructions are in <a href="http://guides.cocoapods.org/using/get
 <pre class="highlight">
 $ sudo gem install cocoapods
 </pre>
-</div><div class="tab-pane fade" id="get_started"><p>Search for pods (above). Then list the dependencies in a text file named Podfile
-in your Xcode project directory:
+</div><div class="tab-pane fade" id="get_started"><p>Search for pods (above). Then list the dependencies in a text file named
+<code>Podfile</code> in your Xcode project directory:
 <pre class="highlight">
-$ edit Podfile
 platform :ios, &#39;7.0&#39;
 pod &#39;JSONKit&#39;,       &#39;~&gt; 1.4&#39;
 pod &#39;Reachability&#39;,  &#39;~&gt; 3.0&#39;
 </pre></p>
+
+<p><em>Tip: CocoaPods provides the <code>pod init</code> command to create a template
+Podfile that may be a good starting point (you still need to edit it
+to list the pods/dependencies you are interested in)</em></p>
 
 <p>Now you can install the dependencies in your project:</p>
 
