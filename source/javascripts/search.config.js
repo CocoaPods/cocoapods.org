@@ -161,7 +161,7 @@ $(window).ready(function() {
     
     entry.docs_link = entry.documentation_url || 'http://cocoadocs.org/docsets/' + entry.id + '/' + entry.version;
     entry.site_link = entry.link || extractRepoFromSource(entry) 
-    entry.spec_link = 'https://github.com/CocoaPods/Specs/tree/master/' + entry.id + '/' + entry.version + '/' + entry.id + '.podspec'
+    entry.spec_link = 'https://github.com/CocoaPods/Specs/tree/master/Specs/' + entry.id + '/' + entry.version + '/' + entry.id + '.podspec.json'
     entry.minor_version = entry.version.split('.').slice(0, 2).join(".")
     
     // render with ICanHaz, see _search-templates
