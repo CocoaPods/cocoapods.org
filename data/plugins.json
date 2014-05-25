@@ -65,6 +65,14 @@
       "description":"Adds subversion support to manage spec-repositories."
     },
     {
+      "gem":"cocoapods-repo-hg",
+      "name":"repo-hg",
+      "author":"Dusty Clarkda",
+      "social_media_url":"http://twitter.com/_clarkda",
+      "url":"https://github.com/clarkda/cocoapods-repo-hg",
+      "description":"Adds mercurial support to manage spec-repositories."
+    },
+    {
       "gem":"cocoapods-try",
       "name":"Pod try",
       "author":"CocoaPods Dev Team",
@@ -77,6 +85,20 @@
       "name":"Pod watch",
       "url":"https://github.com/supermarin/cocoapods-watch",
       "description":"Watch for Podfile changes and run pod install."
+    },
+    {
+      "gem":"cocoapods-roulette",
+      "name":"Pods Roulette",
+      "author":"Heiko Behrens, Marcel Jackwerth",
+      "url":"https://github.com/sirlantis/cocoapods-roulette",
+      "description":"Builds an empty project with three random gems."
+    },
+    {
+      "gem":"cocoapods-sorted-search",
+      "name":"Sorted Search",
+      "author":"Denys Telezhkin",
+      "url":"https://github.com/DenHeadless/cocoapods-sorted-search",
+      "description":"Adds a sort subcommand for pod search to sort search results by amount of stars, forks, or github activity."
     }
   ]
 }
