@@ -99,6 +99,13 @@
       "author":"Denys Telezhkin",
       "url":"https://github.com/DenHeadless/cocoapods-sorted-search",
       "description":"Adds a sort subcommand for pod search to sort search results by amount of stars, forks, or github activity."
+    },
+    {
+      "gem":"cocoapods-archive",
+      "name":"Archive",
+      "author":"Mickey Reiss",
+      "url":"https://github.com/braintreeps/cocoapods-archive",
+      "description":"A CocoaPods plugin that enables you to archive your Pod as a static library"
     }
   ]
 }
