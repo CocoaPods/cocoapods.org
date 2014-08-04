@@ -7,12 +7,12 @@
 - name: Fabio Pelosin
   twitter_username: fabiopelosin
   cocoapods_bio: Programmer at Large.
-  :twitter_profile_url: https://pbs.twimg.com/profile_images/378800000492353896/c9f5ca485403fbe858b6a90cbb3e659a.png
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/493669974263599105/d8UzZLgr.png
   :twitter_banner_url: http://pbs.twimg.com/profile_banners/14257260/1386516577/web
 - name: orta
   twitter_username: orta
   cocoapods_bio: Design Dictator.
-  :twitter_profile_url: https://pbs.twimg.com/profile_images/464291563259318272/8NHpSb9j.jpeg
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/488439165693231104/aYJROysr.jpeg
   :twitter_banner_url: http://pbs.twimg.com/profile_banners/2569881/1397940683/web
 - name: Keith Smiley
   twitter_username: smileykeith
@@ -39,16 +39,16 @@
   cocoapods_bio: Perfectionist.
   :twitter_profile_url: https://pbs.twimg.com/profile_images/428940261582843905/UKZxhdiq.jpeg
   :twitter_banner_url: http://pbs.twimg.com/profile_banners/21154599/1376862017/web
-- name: Andy Myers
-  twitter_username: andyrmyers
-  cocoapods_bio: Really doing the design.
-  :twitter_profile_url: https://pbs.twimg.com/profile_images/415145378627862528/TDAPjav-.jpeg
-  :twitter_banner_url: http://pbs.twimg.com/profile_banners/15503664/1387813885/web
 - name: Joshua Kalpin
   twitter_username: joshkalpin
   cocoapods_bio: Boss Bug Basher.
   :twitter_profile_url: https://pbs.twimg.com/profile_images/442550514652172288/ikgXfhjW.jpeg
   :twitter_banner_url: http://pbs.twimg.com/profile_banners/17796584/1376361936/web
+- name: Andy Myers
+  twitter_username: andyrmyers
+  cocoapods_bio: Really doing the design.
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/415145378627862528/TDAPjav-.jpeg
+  :twitter_banner_url: http://pbs.twimg.com/profile_banners/15503664/1387813885/web
 - name: Delisa Mason
   twitter_username: kattrali
   cocoapods_bio: Toolsmith lvl 99.

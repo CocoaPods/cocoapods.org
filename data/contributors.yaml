@@ -1,21 +1,24 @@
 ---
 - :name: irrationalfab
-  :commits: 5767
+  :commits: 5892
   :gravatar_id: b6dde1a78e6215a592768c1e78a54adc
 - :name: alloy
-  :commits: 3725
+  :commits: 3738
   :gravatar_id: 424a9ce662b059c35063b405e160461d
 - :name: floere
-  :commits: 868
+  :commits: 891
   :gravatar_id: de2d64478e715fb02266f77a3f5641f6
 - :name: orta
-  :commits: 699
+  :commits: 790
   :gravatar_id: f116cb3be23153ec08b94e8bd4dbcfeb
 - :name: lukeredpath
   :commits: 246
   :gravatar_id: bdd4d23d1a822b2d68b53e7c51d69a39
+- :name: neonichu
+  :commits: 174
+  :gravatar_id: 9d2ea021919ff81e02d48530aae191bd
 - :name: kylef
-  :commits: 147
+  :commits: 162
   :gravatar_id: d200a17dd269fd4001bacb11662dab4b
 - :name: AliSoftware
   :commits: 126
@@ -26,12 +29,12 @@
 - :name: goonzoid
   :commits: 105
   :gravatar_id: 98135af16751fd5d29096a92e61f5a91
-- :name: neonichu
-  :commits: 101
-  :gravatar_id: 9d2ea021919ff81e02d48530aae191bd
 - :name: Keithbsmiley
   :commits: 100
   :gravatar_id: 6ab7ae85b84ebb323fab427b11500742
+- :name: segiddins
+  :commits: 86
+  :gravatar_id: 4d6be90af74894fd132fb06dacec04d7
 - :name: Kapin
   :commits: 84
   :gravatar_id: 02f12cafe5470768810719e5d3a3a47a
@@ -41,9 +44,9 @@
 - :name: jasl8r
   :commits: 64
   :gravatar_id: e8403c97c4cb889fe13647908ae97752
-- :name: segiddins
-  :commits: 63
-  :gravatar_id: 4d6be90af74894fd132fb06dacec04d7
+- :name: mrackwitz
+  :commits: 58
+  :gravatar_id: ca018f2258eadef2d02f5dcea5c25b88
 - :name: subdigital
   :commits: 56
   :gravatar_id: 023a6a37e8177cb2f84a236bbce643cf
@@ -59,26 +62,23 @@
 - :name: supermarin
   :commits: 49
   :gravatar_id: 9ee164729035736549e4ae6e6e2d7cfc
-- :name: mrackwitz
-  :commits: 45
-  :gravatar_id: ca018f2258eadef2d02f5dcea5c25b88
 - :name: swizzlr
   :commits: 43
   :gravatar_id: dc0180c1b9aff52f5d42a1ca6bd1f184
 - :name: xslim
   :commits: 40
   :gravatar_id: 4374a44a5a6642a24ac2975b9aa2dfe7
-- :name: jweinberg
-  :commits: 36
-  :gravatar_id: cf04727870245c17f455fb05b25f9f8e
 - :name: pietbrauer
   :commits: 36
   :gravatar_id: e5bce28aa297e921eb2b6aa4e4e983fc
+- :name: jweinberg
+  :commits: 36
+  :gravatar_id: cf04727870245c17f455fb05b25f9f8e
 - :name: mk
   :commits: 33
   :gravatar_id: 539ff3dd23f93348b555d9f48aa468e8
 - :name: '0xced'
-  :commits: 27
+  :commits: 30
   :gravatar_id: e634e02646d909ce006da694a9deec28
 - :name: carsonmcdonald
   :commits: 26
@@ -89,41 +89,41 @@
 - :name: dbgrandi
   :commits: 22
   :gravatar_id: d621347faa8273b41df78b62a6006374
-- :name: fmccann
-  :commits: 21
-  :gravatar_id: f152f5bd12449925938361c0d52ef7fb
 - :name: pbernery
   :commits: 21
   :gravatar_id: 369b3f412bd98b65e819e62880e00564
-- :name: groue
-  :commits: 20
-  :gravatar_id: 742c7ed1baf76bf3dc938877fccc3e7c
+- :name: fmccann
+  :commits: 21
+  :gravatar_id: f152f5bd12449925938361c0d52ef7fb
 - :name: mtitolo
   :commits: 20
   :gravatar_id: 88f93b77b71da10f57749166f7a94716
+- :name: groue
+  :commits: 20
+  :gravatar_id: 742c7ed1baf76bf3dc938877fccc3e7c
 - :name: Manfred
   :commits: 17
   :gravatar_id: ab9afc97d77dbcb8018d3f7824af534e
 - :name: gfontenot
   :commits: 16
   :gravatar_id: 579eecf84b6437b60ad25332d746696b
+- :name: samstewart
+  :commits: 16
+  :gravatar_id: 1960d5f0a79e8f3183a353afada47099
 - :name: croach
   :commits: 16
   :gravatar_id: 11467c442991c7de6d9aec8ae54ac45b
 - :name: farcaller
   :commits: 16
   :gravatar_id: abc432bb0450574a25b15ff23d399d5a
-- :name: samstewart
-  :commits: 16
-  :gravatar_id: 1960d5f0a79e8f3183a353afada47099
 - :name: luisdelarosa
   :commits: 15
   :gravatar_id: 94d6226a9fe193d6374a42b0c61f753d
-- :name: chriseidhof
-  :commits: 12
-  :gravatar_id: ade0c334ecff1448bb96f5f733bf1f83
+- :name: blakewatters
+  :commits: 14
+  :gravatar_id: 03208ebf66f35f793febe12fb0593401
 - :name: dlackty
-  :commits: 12
+  :commits: 13
   :gravatar_id: aa0358f6740f1bf02911e5300e08e800
 - :name: ulrikdamm
   :commits: 12
@@ -131,66 +131,69 @@
 - :name: dlvenable
   :commits: 12
   :gravatar_id: 4dd2e81ba25c27e9ee18d547c4761c59
-- :name: rivera-ernesto
-  :commits: 10
-  :gravatar_id: ca476a2e54e61bad7c714c345b9ef661
-- :name: joe-loco
-  :commits: 10
-  :gravatar_id: 1da0b4785697488e464d6f69862d281d
+- :name: chriseidhof
+  :commits: 12
+  :gravatar_id: ade0c334ecff1448bb96f5f733bf1f83
 - :name: andreamazz
   :commits: 10
   :gravatar_id: c6b68276bdd3413a691c0a7ef114aa73
-- :name: dev4dev
-  :commits: 9
-  :gravatar_id: 8f6839529895c673d9cea5e11f39e745
+- :name: joe-loco
+  :commits: 10
+  :gravatar_id: 1da0b4785697488e464d6f69862d281d
+- :name: rivera-ernesto
+  :commits: 10
+  :gravatar_id: ca476a2e54e61bad7c714c345b9ef661
 - :name: heyzooi
   :commits: 9
   :gravatar_id: 57cff41dc85cda9d2bcadc563b40a250
-- :name: blakewatters
+- :name: dev4dev
   :commits: 9
-  :gravatar_id: 03208ebf66f35f793febe12fb0593401
-- :name: alexrothenberg
+  :gravatar_id: 8f6839529895c673d9cea5e11f39e745
+- :name: atomkirk
   :commits: 8
-  :gravatar_id: f4252ea05ddfbeb7b1803e9941ea46aa
-- :name: nmccann
+  :gravatar_id: 7b664d039ecec08bd2b3c7f25554d83a
+- :name: dcutting
   :commits: 8
-  :gravatar_id: 8952a9a7694eec398fc65c3ad4b1aa2f
-- :name: lassebm
-  :commits: 8
-  :gravatar_id: 98bc6e7fca6363620adc4ffe414710a6
+  :gravatar_id: 571291f0a805007307a9972ebd1a6df1
 - :name: l4u
   :commits: 8
   :gravatar_id: 2f77b094c65f41806832a410fece5041
 - :name: btaylor
   :commits: 8
   :gravatar_id: 67eba90ef422f2c559bc953685020da5
-- :name: dcutting
+- :name: lassebm
   :commits: 8
-  :gravatar_id: 571291f0a805007307a9972ebd1a6df1
-- :name: atomkirk
-  :commits: 8
-  :gravatar_id: 7b664d039ecec08bd2b3c7f25554d83a
+  :gravatar_id: 98bc6e7fca6363620adc4ffe414710a6
 - :name: jeanregisser
   :commits: 8
   :gravatar_id: dcdadeb27389314844040b7d30e3433d
+- :name: nmccann
+  :commits: 8
+  :gravatar_id: 8952a9a7694eec398fc65c3ad4b1aa2f
+- :name: alexrothenberg
+  :commits: 8
+  :gravatar_id: f4252ea05ddfbeb7b1803e9941ea46aa
 - :name: nskboy
   :commits: 7
   :gravatar_id: 2a4c884bbd702b7ad86787952d8dc1b3
-- :name: drodriguez
-  :commits: 7
-  :gravatar_id: 16cfdaf3fc2c223dca2b2f9319bbe884
-- :name: modocache
-  :commits: 7
-  :gravatar_id: f921fa5d507b31ef6984fd3d77ae710c
 - :name: fluidsonic
   :commits: 7
   :gravatar_id: 3a7c823ae5ceee48823a4203d2639d16
+- :name: modocache
+  :commits: 7
+  :gravatar_id: f921fa5d507b31ef6984fd3d77ae710c
+- :name: drodriguez
+  :commits: 7
+  :gravatar_id: 16cfdaf3fc2c223dca2b2f9319bbe884
+- :name: MaxGabriel
+  :commits: 6
+  :gravatar_id: 89604545aa57aa3d14306af60126e193
 - :name: dhennessy
   :commits: 6
   :gravatar_id: 7f3b24caf0ff6b7ec320c7d125de8059
-- :name: Ashton-W
+- :name: AshFurrow
   :commits: 6
-  :gravatar_id: 56d0aa6ab1448c774dab1d2c37a077ae
+  :gravatar_id: 0ebf471a3ae8df42a84f93a7efbbdbd0
 - :name: phatblat
   :commits: 6
   :gravatar_id: 153573b9010e611f9ef7561cad74febc
@@ -203,342 +206,375 @@
 - :name: squarefrog
   :commits: 6
   :gravatar_id: f9b0b3d0bb0134538e3fb020206babc9
-- :name: MaxGabriel
+- :name: Ashton-W
   :commits: 6
-  :gravatar_id: 89604545aa57aa3d14306af60126e193
+  :gravatar_id: 56d0aa6ab1448c774dab1d2c37a077ae
 - :name: olarivain
   :commits: 6
   :gravatar_id: 7689c272aa5586212af2062881b24450
 - :name: leshill
   :commits: 6
   :gravatar_id: 3615ab75201ede5880e779287a6b5316
+- :name: paulyoung
+  :commits: 5
+  :gravatar_id: ee593093b3a4aa721ad6979c752a9c9d
+- :name: lazerwalker
+  :commits: 5
+  :gravatar_id: 6e064cf3d011801ef770ae5f3dba2074
 - :name: petergoldstein
   :commits: 5
   :gravatar_id: 06eac631460b22ff6c635e770e206a58
 - :name: corristo
   :commits: 5
   :gravatar_id: 27fa057d74d18e0620f5947d6238cebc
-- :name: lazerwalker
-  :commits: 5
-  :gravatar_id: 6e064cf3d011801ef770ae5f3dba2074
-- :name: paulyoung
-  :commits: 5
-  :gravatar_id: ee593093b3a4aa721ad6979c752a9c9d
-- :name: onato
-  :commits: 4
-  :gravatar_id: 0501459bdb895f0d1e9da139a7301d57
-- :name: klundberg
-  :commits: 4
-  :gravatar_id: 3f3d11d4d61905780b6520801220c234
-- :name: shekibobo
-  :commits: 4
-  :gravatar_id: 0f5f97443bdc1acd60990006fb0c946a
-- :name: aspyct
-  :commits: 4
-  :gravatar_id: 5c542965e5d3a5ff7f9bddd60b3a4d2a
-- :name: nilsou
-  :commits: 4
-  :gravatar_id: 4f2cea2ee015e428d1f4e234a90fb131
-- :name: apalancat
-  :commits: 4
-  :gravatar_id: 7097f01e89595da98e0945e688430547
-- :name: banjun
-  :commits: 4
-  :gravatar_id: 9bda8755a689204677a198ee85c0eb07
-- :name: jverkoey
-  :commits: 4
-  :gravatar_id: f3c8603c353afa79b9f1c77f35efd566
-- :name: daveverwer
-  :commits: 4
-  :gravatar_id: 07e80e95e01f577c15e2fc50bb5f328a
-- :name: ryanwmarsh
-  :commits: 4
-  :gravatar_id: 87ba269d52e7577416ba80bf8f9b9003
-- :name: edwardvalentini
-  :commits: 4
-  :gravatar_id: 73e288d4a215155f8d91d30051e65138
-- :name: kbok
-  :commits: 4
-  :gravatar_id: 072972927ced123af3164764258ec186
-- :name: alessandroorru
-  :commits: 4
-  :gravatar_id: 6f360833e8b9d8516b72600f85986780
-- :name: vtourraine
-  :commits: 4
-  :gravatar_id: 74079210c61f36dff0a74f24da5727e7
-- :name: listrophy
-  :commits: 4
-  :gravatar_id: 87f1b755fcd547503f3be28d77f26569
-- :name: aanand
-  :commits: 4
-  :gravatar_id: 73022df4be6fcced9792f50497b4f119
-- :name: jinthagerman
-  :commits: 4
-  :gravatar_id: 7f02665f0064e009ca939922a246482a
-- :name: stigi
-  :commits: 4
-  :gravatar_id: 3f60912a585e37a4562f5fd4b0efb4b5
-- :name: Jaym3s
-  :commits: 4
-  :gravatar_id: 34da1601e83934778ea295b1c3469a45
-- :name: angelolloqui
-  :commits: 4
-  :gravatar_id: c4a3cb96d4b778773f7f07d410d18bf0
 - :name: Noreaster76
   :commits: 4
   :gravatar_id: 9157bf15356afa166a613ff5bbca25f4
+- :name: sethfri
+  :commits: 4
+  :gravatar_id: cd6a393888e1344d772da1326ff68dd2
+- :name: banjun
+  :commits: 4
+  :gravatar_id: 9bda8755a689204677a198ee85c0eb07
+- :name: kattrali
+  :commits: 4
+  :gravatar_id: b5ff8c85fb809e9966436593b40f1063
+- :name: nilsou
+  :commits: 4
+  :gravatar_id: 4f2cea2ee015e428d1f4e234a90fb131
+- :name: cellularmitosis
+  :commits: 4
+  :gravatar_id: 0485c3a3022de4a0ab1a7e02241b894f
 - :name: garnett
   :commits: 4
   :gravatar_id: c4edd51fe88b9820a046db724d53fd91
-- :name: sethfri
+- :name: daveverwer
+  :commits: 4
+  :gravatar_id: 07e80e95e01f577c15e2fc50bb5f328a
+- :name: apalancat
+  :commits: 4
+  :gravatar_id: 7097f01e89595da98e0945e688430547
+- :name: aspyct
+  :commits: 4
+  :gravatar_id: 5c542965e5d3a5ff7f9bddd60b3a4d2a
+- :name: kbok
+  :commits: 4
+  :gravatar_id: 072972927ced123af3164764258ec186
+- :name: shekibobo
+  :commits: 4
+  :gravatar_id: 0f5f97443bdc1acd60990006fb0c946a
+- :name: klundberg
+  :commits: 4
+  :gravatar_id: 3f3d11d4d61905780b6520801220c234
+- :name: stigi
+  :commits: 4
+  :gravatar_id: 3f60912a585e37a4562f5fd4b0efb4b5
+- :name: edwardvalentini
+  :commits: 4
+  :gravatar_id: 73e288d4a215155f8d91d30051e65138
+- :name: vtourraine
+  :commits: 4
+  :gravatar_id: 74079210c61f36dff0a74f24da5727e7
+- :name: jverkoey
+  :commits: 4
+  :gravatar_id: f3c8603c353afa79b9f1c77f35efd566
+- :name: alessandroorru
+  :commits: 4
+  :gravatar_id: 6f360833e8b9d8516b72600f85986780
+- :name: onato
+  :commits: 4
+  :gravatar_id: 0501459bdb895f0d1e9da139a7301d57
+- :name: ryanwmarsh
+  :commits: 4
+  :gravatar_id: 87ba269d52e7577416ba80bf8f9b9003
+- :name: schukin
   :commits: 3
-  :gravatar_id: cd6a393888e1344d772da1326ff68dd2
-- :name: schneiderandre
-  :commits: 3
-  :gravatar_id: 0377e54a3de3dd8c0accfe970a07242b
-- :name: joelparsons
-  :commits: 3
-  :gravatar_id: 2c6de59861dd637cb39360c286ea0817
+  :gravatar_id: 87d699477b5fa8cd389c3b1c641d55e3
 - :name: sharplet
   :commits: 3
   :gravatar_id: 006afe1f7d5e4f18190f2093dd2c5cac
 - :name: yalp
   :commits: 3
   :gravatar_id: d2da79ecc6386b68457dccdcfeed3c55
-- :name: schukin
+- :name: mickeyreiss
   :commits: 3
-  :gravatar_id: 87d699477b5fa8cd389c3b1c641d55e3
-- :name: dongle
+  :gravatar_id: 60467badb228187e37e1bc5537ecac66
+- :name: schneiderandre
   :commits: 3
-  :gravatar_id: 27ebebde4a1e0a76daad6de64806f145
-- :name: Jesper84
-  :commits: 2
-  :gravatar_id: d677ee080089e19b9a72b135b78776a8
-- :name: kaelin
-  :commits: 2
-  :gravatar_id: 4e2155fd3b7248209d70ad27450205ba
-- :name: iamleeg
-  :commits: 2
-  :gravatar_id: 37d699181f04d17a0c19baff266d1968
-- :name: yury
-  :commits: 2
-  :gravatar_id: 8c66aa0721d3de506f600567755a2fb5
-- :name: jasonprado
-  :commits: 2
-  :gravatar_id: cfd87c8fd79d74d253c74458a867d376
-- :name: mipmip
-  :commits: 2
-  :gravatar_id: d9d478e261a504219e8e3dabc6114ca6
-- :name: frisocki
-  :commits: 2
-  :gravatar_id: 621d50fabcc085734b7541d8ff4dc173
-- :name: ferrous26
-  :commits: 2
-  :gravatar_id: 3932daa02b43b3036b9340f7d8ec824d
-- :name: wilkinsona
-  :commits: 2
-  :gravatar_id: 6f660658edb0ef1a5b55a80e8f56d657
-- :name: metatation
-  :commits: 2
-  :gravatar_id: 17d0c09f2316e4d078b24c8b02b4c6e3
-- :name: seivan
-  :commits: 2
-  :gravatar_id: 32c2d9e0fac0bb42c80d5da9e291ebbd
-- :name: tiemevanveen
-  :commits: 2
-  :gravatar_id: 79fe71b3b615dc49b709e3ec117c48b2
-- :name: amccarri
-  :commits: 2
-  :gravatar_id: 890b36329a1e463a4cf2db8b79a64608
-- :name: ericallam
-  :commits: 2
-  :gravatar_id: 750120a84191299321ee7912a3f27f22
-- :name: HBehrens
-  :commits: 2
-  :gravatar_id: 3263c0a75544eaec5b53c652c1fc83f4
-- :name: michalkonturek
-  :commits: 2
-  :gravatar_id: 59a25aeb50b2c10274d24c8cc6dad31d
-- :name: ashtom
-  :commits: 2
-  :gravatar_id: af9e13f22fe458c39e65ff77928cb9be
-- :name: paulmelnikow
-  :commits: 2
-  :gravatar_id: 822d02802477a759f8d3f2fa637055f6
-- :name: lrz
-  :commits: 2
-  :gravatar_id: 08eb285fc24c487c7838a6164b845364
+  :gravatar_id: 0377e54a3de3dd8c0accfe970a07242b
+- :name: nevyn
+  :commits: 3
+  :gravatar_id: 4878c6b30b4b2ea6577be7b41d1415ca
+- :name: joelparsons
+  :commits: 3
+  :gravatar_id: 2c6de59861dd637cb39360c286ea0817
 - :name: philippec
   :commits: 2
   :gravatar_id: 8042e5c4e206327431e9287e61b0167a
-- :name: punycode
+- :name: uasi
   :commits: 2
-  :gravatar_id: bc904619e8496b53845a281b3b3fc92c
-- :name: JMSerruya
+  :gravatar_id: a2571d26ae3aa1a3b8b0fd22537397f8
+- :name: paulmelnikow
   :commits: 2
-  :gravatar_id: 9a2e86a2de5a6e73597a7da77ea8ab3c
+  :gravatar_id: 822d02802477a759f8d3f2fa637055f6
+- :name: brentnycum
+  :commits: 2
+  :gravatar_id: 7e7cce47e7402b023b49f960585221af
 - :name: z00b
   :commits: 2
   :gravatar_id: 13190dae9e88dfd0154bc5dec87084bb
-- :name: AshFurrow
+- :name: frisocki
   :commits: 2
-  :gravatar_id: 0ebf471a3ae8df42a84f93a7efbbdbd0
+  :gravatar_id: 621d50fabcc085734b7541d8ff4dc173
+- :name: mipmip
+  :commits: 2
+  :gravatar_id: d9d478e261a504219e8e3dabc6114ca6
+- :name: lrz
+  :commits: 2
+  :gravatar_id: 08eb285fc24c487c7838a6164b845364
+- :name: twealm
+  :commits: 2
+  :gravatar_id: 47647259221817d6917272c2ae34ca0e
+- :name: brutella
+  :commits: 2
+  :gravatar_id: e3e93da415afd942bd9d70f81f196496
 - :name: dhoerl
   :commits: 2
   :gravatar_id: 49eeb455c3be9d8aa9c4959b9cf55636
-- :name: chipp
+- :name: aanand
   :commits: 2
-  :gravatar_id: 30219c8562e62f5a6702c8e3fdec2390
+  :gravatar_id: 73022df4be6fcced9792f50497b4f119
+- :name: timshadel
+  :commits: 2
+  :gravatar_id: 75a8def961f136f6564b25d63a5609b5
+- :name: listrophy
+  :commits: 2
+  :gravatar_id: 87f1b755fcd547503f3be28d77f26569
+- :name: jinthagerman
+  :commits: 2
+  :gravatar_id: 7f02665f0064e009ca939922a246482a
+- :name: Jaym3s
+  :commits: 2
+  :gravatar_id: 34da1601e83934778ea295b1c3469a45
 - :name: jaydee3
   :commits: 2
   :gravatar_id: 892b0b3bdc4dfef94e842a50f6da5eda
 - :name: eraserhd
   :commits: 2
   :gravatar_id: 34db93d7376124cb58ce091aa15bd1b8
-- :name: vincentisambart
-  :commits: 2
-  :gravatar_id: 7f19d1a3818a0a0c2f59ecba589bbf6b
-- :name: roothybrid7
-  :commits: 2
-  :gravatar_id: 18c5d6e2413dc02665fd4210bf5d094b
 - :name: maikg
   :commits: 2
   :gravatar_id: 8ff2f683f1daf97c7024051a18cd7ebd
-- :name: cellularmitosis
+- :name: fredjean
   :commits: 2
-  :gravatar_id: 0485c3a3022de4a0ab1a7e02241b894f
-- :name: timshadel
+  :gravatar_id: a4e17e6188fada503afd9f3ab81eea62
+- :name: roothybrid7
   :commits: 2
-  :gravatar_id: 75a8def961f136f6564b25d63a5609b5
+  :gravatar_id: 18c5d6e2413dc02665fd4210bf5d094b
+- :name: vincentisambart
+  :commits: 2
+  :gravatar_id: 7f19d1a3818a0a0c2f59ecba589bbf6b
+- :name: angelolloqui
+  :commits: 2
+  :gravatar_id: c4a3cb96d4b778773f7f07d410d18bf0
+- :name: ericallam
+  :commits: 2
+  :gravatar_id: 750120a84191299321ee7912a3f27f22
+- :name: chipp
+  :commits: 2
+  :gravatar_id: 30219c8562e62f5a6702c8e3fdec2390
 - :name: rsobik
   :commits: 2
   :gravatar_id: c01508933f528ac7bd2aec1227fea85f
-- :name: mickeyreiss
-  :commits: 1
-  :gravatar_id: 60467badb228187e37e1bc5537ecac66
-- :name: nevyn
-  :commits: 1
-  :gravatar_id: 4878c6b30b4b2ea6577be7b41d1415ca
-- :name: darthdeus
-  :commits: 1
-  :gravatar_id: 16a5eec5eca4550033c0e19dba3b32b8
-- :name: Kapeli
-  :commits: 1
-  :gravatar_id: 9144e860f82b8ae951a28f2cc1096192
-- :name: vslavik
-  :commits: 1
-  :gravatar_id: 9737cb2a6b1886d0c3aa0cbff8441cf4
-- :name: ricobeck
-  :commits: 1
-  :gravatar_id: 613a3cdf5528bbf7daf560f8bbbd4bdf
-- :name: AlexDenisov
-  :commits: 1
-  :gravatar_id: 6dc2fd642323cb9bab9a050710290353
-- :name: mralexgray
-  :commits: 1
-  :gravatar_id: 50e7ed4eb2e7af000ea7d161748958f1
-- :name: toco
-  :commits: 1
-  :gravatar_id: ca67a9c2bb5395f44a1077da877bf358
-- :name: shreeve
-  :commits: 1
-  :gravatar_id: 80deec9840a1c1ed2ccb0e37849684e2
-- :name: fulldecent
-  :commits: 1
-  :gravatar_id: 69b87b8b97740448dad9840c4bba3fa2
-- :name: jflinter
-  :commits: 1
-  :gravatar_id: d7822bb76e635948ac79ce72004e4274
-- :name: robb
-  :commits: 1
-  :gravatar_id: b00d4ed5d1e6cb9fc840167820247515
-- :name: wczekalski
-  :commits: 1
-  :gravatar_id: 592dc9334a2782e2e768be22dcbd33f9
-- :name: saniul
-  :commits: 1
-  :gravatar_id: 2f892c75b24822893e149162c0840e06
-- :name: w5mith
-  :commits: 1
-  :gravatar_id: 44ebdf82f2c0e87bcfedb89e7f79eb94
-- :name: pnc
-  :commits: 1
-  :gravatar_id: 106e991aff47a77919601a41770ea734
-- :name: gib
-  :commits: 1
-  :gravatar_id: 1b8d76ee75bbb3a3273347ee633f9a68
-- :name: kattrali
-  :commits: 1
-  :gravatar_id: b5ff8c85fb809e9966436593b40f1063
-- :name: cjwirth
-  :commits: 1
-  :gravatar_id: 696cf5da599733261059de06c4d1fe22
-- :name: rodionovd
-  :commits: 1
-  :gravatar_id: 303c0d265977a73825d9c085b232d4bb
-- :name: damiancarrillo
-  :commits: 1
-  :gravatar_id: d76521e18f7502c4a5458fed4181d4b6
-- :name: clayallsopp
-  :commits: 1
-  :gravatar_id: f6c4ef1904591e41f767ba68268971cf
-- :name: iGranDav
-  :commits: 1
-  :gravatar_id: 7e0c27dc1d7ae27f61291e5dc6d9abd2
-- :name: gcerquant
-  :commits: 1
-  :gravatar_id: a41a211aed3597a7d55f9b7ca5b32a41
-- :name: cwagdev
-  :commits: 1
-  :gravatar_id: 6dee842b5eb2fd94ffa79edac00b440e
+- :name: punycode
+  :commits: 2
+  :gravatar_id: bc904619e8496b53845a281b3b3fc92c
+- :name: amccarri
+  :commits: 2
+  :gravatar_id: 890b36329a1e463a4cf2db8b79a64608
+- :name: wilkinsona
+  :commits: 2
+  :gravatar_id: 6f660658edb0ef1a5b55a80e8f56d657
+- :name: kaelin
+  :commits: 2
+  :gravatar_id: 4e2155fd3b7248209d70ad27450205ba
+- :name: Jesper84
+  :commits: 2
+  :gravatar_id: d677ee080089e19b9a72b135b78776a8
+- :name: iamleeg
+  :commits: 2
+  :gravatar_id: 37d699181f04d17a0c19baff266d1968
+- :name: yury
+  :commits: 2
+  :gravatar_id: 8c66aa0721d3de506f600567755a2fb5
+- :name: klaaspieter
+  :commits: 2
+  :gravatar_id: a0ba7a9fea8ff4b73f0ce2837749c642
+- :name: metatation
+  :commits: 2
+  :gravatar_id: 17d0c09f2316e4d078b24c8b02b4c6e3
+- :name: HBehrens
+  :commits: 2
+  :gravatar_id: 3263c0a75544eaec5b53c652c1fc83f4
+- :name: tiemevanveen
+  :commits: 2
+  :gravatar_id: 79fe71b3b615dc49b709e3ec117c48b2
+- :name: ashtom
+  :commits: 2
+  :gravatar_id: af9e13f22fe458c39e65ff77928cb9be
+- :name: jasonprado
+  :commits: 2
+  :gravatar_id: cfd87c8fd79d74d253c74458a867d376
+- :name: JMSerruya
+  :commits: 2
+  :gravatar_id: 9a2e86a2de5a6e73597a7da77ea8ab3c
+- :name: seivan
+  :commits: 2
+  :gravatar_id: 32c2d9e0fac0bb42c80d5da9e291ebbd
+- :name: ferrous26
+  :commits: 2
+  :gravatar_id: 3932daa02b43b3036b9340f7d8ec824d
 - :name: cahlbin
   :commits: 1
   :gravatar_id: 45aefb7d7e9688352b34b574862f17a0
-- :name: jdennes
+- :name: saniul
   :commits: 1
-  :gravatar_id: 55fd031da91ef9af6e6ed88b101416a1
+  :gravatar_id: 2f892c75b24822893e149162c0840e06
+- :name: wczekalski
+  :commits: 1
+  :gravatar_id: 592dc9334a2782e2e768be22dcbd33f9
+- :name: w5mith
+  :commits: 1
+  :gravatar_id: 44ebdf82f2c0e87bcfedb89e7f79eb94
 - :name: blakevanlan
   :commits: 1
   :gravatar_id: 3ddba457df950c6fb3c92bf9b205edb9
 - :name: mmorearty
   :commits: 1
   :gravatar_id: ff18a517e9eeeca270cedc1c0f20afe3
+- :name: MSch
+  :commits: 1
+  :gravatar_id: 64afebe5db598b0b043f35560bf940df
+- :name: patoroco
+  :commits: 1
+  :gravatar_id: d76011ac5b647badc5fe06c7e39beac0
+- :name: jpsim
+  :commits: 1
+  :gravatar_id: 3a0ae72b2f6bdc4476f1fcb63396e717
+- :name: robb
+  :commits: 1
+  :gravatar_id: b00d4ed5d1e6cb9fc840167820247515
+- :name: winny-
+  :commits: 1
+  :gravatar_id: 5a97a0d428b6d8368d6a390eb80c70da
+- :name: claybridges
+  :commits: 1
+  :gravatar_id: c9d4814af02064c80e0a15d48854b592
+- :name: jlj
+  :commits: 1
+  :gravatar_id: a1c6bb7e01bdfba12167e61ec508008c
+- :name: leberwurstsaft
+  :commits: 1
+  :gravatar_id: 4f672bf7a09a856910f318e61cdc2a4c
+- :name: coverback
+  :commits: 1
+  :gravatar_id: aefb42d9021aedbc3a2c49eaa6ed7d25
+- :name: rodionovd
+  :commits: 1
+  :gravatar_id: 303c0d265977a73825d9c085b232d4bb
+- :name: johanneswuerbach
+  :commits: 1
+  :gravatar_id: 06623d168d507ad99921b405593468bf
+- :name: phillbaker
+  :commits: 1
+  :gravatar_id: fadd8c74fea4c965c571f85d115c2482
+- :name: mattconnolly
+  :commits: 1
+  :gravatar_id: 90dff6f8ad917d5a372dc2fac4f2b98f
+- :name: clayallsopp
+  :commits: 1
+  :gravatar_id: f6c4ef1904591e41f767ba68268971cf
+- :name: gib
+  :commits: 1
+  :gravatar_id: 1b8d76ee75bbb3a3273347ee633f9a68
+- :name: kastiglione
+  :commits: 1
+  :gravatar_id: 1004b266da7d0e375ed7cb88b6a79e7c
 - :name: markltownsend
   :commits: 1
   :gravatar_id: 03850aa5aeb7e0fe25e42028b2d11815
 - :name: jschmid
   :commits: 1
   :gravatar_id: 57fbdf96ca9ee1dc118068304d323a11
-- :name: mattconnolly
-  :commits: 1
-  :gravatar_id: 90dff6f8ad917d5a372dc2fac4f2b98f
-- :name: claybridges
-  :commits: 1
-  :gravatar_id: c9d4814af02064c80e0a15d48854b592
-- :name: kastiglione
-  :commits: 1
-  :gravatar_id: 1004b266da7d0e375ed7cb88b6a79e7c
 - :name: jonnyyu
   :commits: 1
   :gravatar_id: 8687660b14f41ad713c6394178ffac92
-- :name: leberwurstsaft
+- :name: jflinter
   :commits: 1
-  :gravatar_id: 4f672bf7a09a856910f318e61cdc2a4c
-- :name: phillbaker
+  :gravatar_id: d7822bb76e635948ac79ce72004e4274
+- :name: fulldecent
   :commits: 1
-  :gravatar_id: fadd8c74fea4c965c571f85d115c2482
-- :name: johanneswuerbach
+  :gravatar_id: 69b87b8b97740448dad9840c4bba3fa2
+- :name: jdennes
   :commits: 1
-  :gravatar_id: 06623d168d507ad99921b405593468bf
+  :gravatar_id: 55fd031da91ef9af6e6ed88b101416a1
+- :name: cwagdev
+  :commits: 1
+  :gravatar_id: 6dee842b5eb2fd94ffa79edac00b440e
+- :name: jk
+  :commits: 1
+  :gravatar_id: b87dc27bc905b5f72b1ce0001ac4766c
+- :name: rawrjustin
+  :commits: 1
+  :gravatar_id: 0930decbe4a86b260af95b79cc7ee4c6
+- :name: toco
+  :commits: 1
+  :gravatar_id: ca67a9c2bb5395f44a1077da877bf358
+- :name: mralexgray
+  :commits: 1
+  :gravatar_id: 50e7ed4eb2e7af000ea7d161748958f1
+- :name: AlexDenisov
+  :commits: 1
+  :gravatar_id: 6dc2fd642323cb9bab9a050710290353
 - :name: fidothe
   :commits: 1
   :gravatar_id: 92a5cff471c2d13112773c4663d93d9d
-- :name: coverback
+- :name: vslavik
   :commits: 1
-  :gravatar_id: aefb42d9021aedbc3a2c49eaa6ed7d25
-- :name: jlj
+  :gravatar_id: 9737cb2a6b1886d0c3aa0cbff8441cf4
+- :name: Kapeli
   :commits: 1
-  :gravatar_id: a1c6bb7e01bdfba12167e61ec508008c
-- :name: MSch
+  :gravatar_id: 9144e860f82b8ae951a28f2cc1096192
+- :name: gcerquant
   :commits: 1
-  :gravatar_id: 64afebe5db598b0b043f35560bf940df
+  :gravatar_id: a41a211aed3597a7d55f9b7ca5b32a41
+- :name: JensRavens
+  :commits: 1
+  :gravatar_id: d6ad24ba9c6fb228f42d334f809f58de
+- :name: iGranDav
+  :commits: 1
+  :gravatar_id: 7e0c27dc1d7ae27f61291e5dc6d9abd2
+- :name: ricobeck
+  :commits: 1
+  :gravatar_id: 613a3cdf5528bbf7daf560f8bbbd4bdf
+- :name: shreeve
+  :commits: 1
+  :gravatar_id: 80deec9840a1c1ed2ccb0e37849684e2
+- :name: cjwirth
+  :commits: 1
+  :gravatar_id: 696cf5da599733261059de06c4d1fe22
+- :name: pnc
+  :commits: 1
+  :gravatar_id: 106e991aff47a77919601a41770ea734
+- :name: k0nserv
+  :commits: 1
+  :gravatar_id: 0301339c7b91dfc95a263eb27e6fe371
+- :name: dongle
+  :commits: 1
+  :gravatar_id: 27ebebde4a1e0a76daad6de64806f145
+- :name: darthdeus
+  :commits: 1
+  :gravatar_id: 16a5eec5eca4550033c0e19dba3b32b8
+- :name: damiancarrillo
+  :commits: 1
+  :gravatar_id: d76521e18f7502c4a5458fed4181d4b6
