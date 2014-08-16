@@ -1,15 +1,15 @@
 $(window).ready(function() {
   var onMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  
+
   var searchInput = $('#search input[type="search"]');
   var helpText = $('#search fieldset p');
-  
+
   var platformRemoverRegexp = /\b(platform|on\:\w+\s?)+/;
   var platformSelect = $("#search_results div.platform");
-  
+
   var allocationSelect = $('#search_results div.allocations');
   var resultsContainer = $('#results_container');
-  
+
   // Tracking the search results.
   //
   var trackAnalytics = function(data, query) {
@@ -20,32 +20,32 @@ $(window).ready(function() {
       _gaq.push(['_trackEvent', 'search', 'not found', query, 0]);
     }
   }
-  
+
   // Tracking platform selection.
   //
   var trackPlatformSelection = function() {
     _gaq.push(['_trackEvent', 'platform', 'switch platform', platformSelect.find('input:checked').val(), 1]);
   }
-  
+
   // Tracking category/categories selection.
   //
   var trackAllocationSelection = function(category, count) {
     _gaq.push(['_trackEvent', 'allocation', 'filter categories', category, count]);
   }
-  
+
   // Tracking category/categories selection.
   //
   var trackResultLinkSelection = function(href) {
     _gaq.push(['_trackEvent', 'resultlink', 'click outbound link', href, 1]);
   }
-  
+
   // Sets the checkbox labels correctly.
   //
   var selectCheckedPlatform = function() {
     platformSelect.find('label').removeClass('selected');
     platformSelect.find('input:checked + label').addClass('selected');
   };
-  
+
   // Hide the header.
   //
   var headerHidden = false;
@@ -57,7 +57,7 @@ $(window).ready(function() {
       headerHidden = true;
     }
   };
-  
+
   // Show the header.
   //
   var showHeader = function() {
@@ -68,41 +68,43 @@ $(window).ready(function() {
       headerHidden = false;
     }
   };
-  
+
   // Reset the search interface to its initial configuration.
   //
   var resetSearchInterface = function() {
     showHeader();
     $('#search span.amount').hide();
+    $('#search span#search_loupe').show();
     platformSelect.hide();
     allocationSelect.hide();
     $('#search_results div.results').hide();
   };
-  
+
   //
   //
   var prepareSearchInterfaceForResults = function() {
     hideHeader();
     $('#search span.amount').show();
+    $('#search span#search_loupe').hide();
   };
-  
+
   var resultsSearchInterface = function() {
     platformSelect.show();
     allocationSelect.show();
     // $('#search div.results').show(); // Picky does this already.
   };
-  
+
   var removePlatform = function(query) {
     return query.replace(platformRemoverRegexp, '');
   };
-  
+
   //
   //
   var noResultsSearchInterface = function(query) {
     // $('#search_results .no_results').show(); // Picky does this already.
     platformSelect.show();
     allocationSelect.hide();
-    
+
     // Get special no_results hash from the search API:
     //  * autosplit query
     //  * tags
@@ -113,14 +115,14 @@ $(window).ready(function() {
     $.getJSON('http://search.cocoapods.org/no_results.json', 'query=' + removePlatform(query), function(data, textStatus, jqXHR) {
       var suggested_query = data.split[0].join(' ');
       var total = data.split[1];
-      
+
       var splitsContainer = $('#results_container .no_results .splits');
       if (suggested_query && total > 0) {
         splitsContainer.html("<p>We found " + total + " results searching for <a href='javascript:pickyClient.insert(\"" + suggested_query + "\");'>" + suggested_query + "</a>.</p>")
       } else {
         splitsContainer.html('');
       }
-      
+
       var tagsContainer = $('#results_container .no_results .tags');
       var tags = [];
       $.each(data.tag, function(name, amount) {
@@ -130,7 +132,7 @@ $(window).ready(function() {
       tagsContainer.find('p').append(tags.sort().join(', ')).append('.');
     });
   };
-  
+
   // Renders an entry, then returns the rendered HTML.
   //
   // TODO Improve. This is just a quick prototype.
@@ -140,42 +142,42 @@ $(window).ready(function() {
     osx: 'OS X'
   };
   var goodSource = /^http/;
-  
+
   var extractRepoFromSource = function(entry) {
     var link, value;
     var source = entry.source;
     for (var key in source) {
       if (key == 'http') { return ''; }
-      
+
       value = source[key];
       if (value.toString().match(goodSource)) { link = value; break; }
     }
     return link;
   };
-  
+
   var render = function(entry) {
     entry.platform = platformMapping[entry.platforms];
     entry.authors  = $.map(entry.authors, function(email, name) {
       return '<a href="javascript:pickyClient.insert(\'' + name.replace(/[']/, "\\\\\'") + '\')">' + name + '</a>';
     });
-    
+
     entry.docs_link = entry.documentation_url || 'http://cocoadocs.org/docsets/' + entry.id + '/' + entry.version;
-    entry.site_link = entry.link || extractRepoFromSource(entry) 
+    entry.site_link = entry.link || extractRepoFromSource(entry)
     entry.spec_link = 'https://github.com/CocoaPods/Specs/tree/master/Specs/' + entry.id + '/' + entry.version + '/' + entry.id + '.podspec.json'
     entry.minor_version = entry.version.split('.').slice(0, 2).join(".")
-    
+
     // render with ICanHaz, see _search-templates
     return ich.search_result(entry, true)
   };
-  
+
   // The search uses the convenience API on search.cocoapods.org.
   //
   var searchURL = 'http://search.cocoapods.org/api/v1/pods.picky.hash.json';
-  
+
   pickyClient = new PickyClient({
     full: searchURL,
     fullResults: 20,
-      
+
     // The live query does a full query.
     //
     live: searchURL,
@@ -197,7 +199,7 @@ $(window).ready(function() {
     hiddenAllocations: '#search_results div.allocations .onrequest',
     counterSelector: '#search form span.amount',
     moreSelector: '#search_results .allocations .more',
-    
+
     // Before a query is inserted into the search field
     // we clean it of any platform terms.
     //
@@ -226,7 +228,7 @@ $(window).ready(function() {
       // We don't add the platform if it is empty (still saved in history as empty, though).
       //
       if (query == '') { return ''; }
-      
+
       // Otherwise we add in the platform.
       //
       query = query.replace(platformRemoverRegexp, '');
@@ -238,7 +240,7 @@ $(window).ready(function() {
       // Track query for analytics.
       //
       trackAnalytics(data, query);
-      
+
       // If somebody cleared the search input, do not show any results
       // arriving "late" (well, slower than the person can press backspace).
       //
@@ -246,7 +248,7 @@ $(window).ready(function() {
         resetSearchInterface();
         return false;
       }
-      
+
       // If no results are found.
       //
       if (0 == data.total) {
@@ -254,7 +256,7 @@ $(window).ready(function() {
       } else {
         resultsSearchInterface();
       }
-      
+
       // Render the JSON into HTML.
       //
       var allocations = data.allocations;
@@ -263,7 +265,7 @@ $(window).ready(function() {
           return render(entry);
         });
       });
-      
+
       return data;
     },
     // After Picky has handled the data and updated the view.
@@ -272,7 +274,7 @@ $(window).ready(function() {
 
       // Install Popovers for the copy to clipboard
       // depending on whether ZeroClipboard succeeds
-      $copy_to_clipboard = $('ol.results img.copy')      
+      $copy_to_clipboard = $('ol.results img.copy')
 
       var clip = new ZeroClipboard(
         $copy_to_clipboard, {
@@ -280,13 +282,13 @@ $(window).ready(function() {
           forceHandCursor: true
         }
       );
-      
+
       clip.on( 'noflash', function ( client, args ) {
-        
+
         // provide a recursive wait method
         // that checks for the hover on the popover/clipboard
         // before hiding so you can select text
-        
+
         function closePopoverForNode(node){
           setTimeout(function() {
             if (!$(node).is(':hover') && !$(".popover:hover").length) {
@@ -296,17 +298,17 @@ $(window).ready(function() {
             }
           }, 500);
         }
-      
+
         // With no flash you should be able to select the text
         // in the popover
-      
+
         $copy_to_clipboard.popover({
           trigger: "manual",
           container: "body"
-        
+
         }).on("click", function(e) {
           e.preventDefault();
-        
+
         }).on("mouseenter", function() {
           $(this).popover("show");
           $(".popover input").select()
@@ -323,16 +325,16 @@ $(window).ready(function() {
           $("h4.has-flash").text("Saved to clipboard");
           $(".popover").addClass("saved")
         });
-        
+
         clip.on( 'mouseover', function ( client, args ) {
           $(this).popover('show')
         });
-      
+
         clip.on( 'mouseout', function ( client, args ) {
           $(this).popover('hide')
         });
       });
-      
+
       // Install tracking on the allocation selection.
       //
       allocationSelect.find('li').on('click', function(event) {
@@ -340,7 +342,7 @@ $(window).ready(function() {
         trackAllocationSelection(li.find('.text').text(), li.find('.count').text());
         // Rest is handled in Picky JS.
       });
-      
+
       // Install tracking on each result link.
       //
       $('ol.results').find('a').on('click', function(event) {
@@ -367,7 +369,7 @@ $(window).ready(function() {
     // simply not show it).
     //
     groups: [['platform']],
-          
+
     // This is used for formatting inside the choice groups.
     //
     // Use %n$s, where n is the position of the category in the key.
@@ -376,7 +378,7 @@ $(window).ready(function() {
     choices: {
       en: {
         'platform': '', // platform is simply not shown.
-        
+
         'name': 'name',
         'author': 'author',
         'summary': 'summary',
@@ -448,9 +450,9 @@ $(window).ready(function() {
     //   }
     // }
   });
-  
+
   // Reset the search if it has been cleared and track when it has.
-  // 
+  //
   searchInput.on('input', function(e) {
     if ('' == this.value) {
       _gaq.push(['_trackEvent', 'clear']);
@@ -469,13 +471,13 @@ $(window).ready(function() {
     pickyClient.resend();
     selectCheckedPlatform();
   });
-  
+
   // Make all clicks in the search container set focus.
-  // 
+  //
   $('#search_container').on('click', function (e) {
     searchInput.focus();
   });
-  
+
   // Keyboard handling.
   //
   // Currently, we only handle keyboard selecting the first result category set.
@@ -507,7 +509,7 @@ $(window).ready(function() {
       window.document.location.href = selected.find('a').first().attr('href');
     }
   }
-  
+
   // Install keyboard handling.
   //
   $('body').keydown(function(event) {
@@ -517,7 +519,7 @@ $(window).ready(function() {
       case 40:
         selectResult(nextResult)
         break;
-      
+
       // Up
       //
       case 38:
@@ -532,7 +534,7 @@ $(window).ready(function() {
         break;
     }
   });
-  
+
   // Initially select the right platform.
   //
   if (window.initial_query != "") {
