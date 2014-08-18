@@ -165,6 +165,11 @@ $(window).ready(function() {
     entry.site_link = entry.link || extractRepoFromSource(entry)
     entry.spec_link = 'https://github.com/CocoaPods/Specs/tree/master/Specs/' + entry.id + '/' + entry.version + '/' + entry.id + '.podspec.json'
     entry.minor_version = entry.version.split('.').slice(0, 2).join(".")
+    if (entry.deprecated_in_favor_of) {
+      entry.deprecated_in_favor_of_link = "http://cocoapods.org?q=" + entry.deprecated_in_favor_of;
+    } else {
+      entry.deprecated_in_favor_of_link = ""
+    }
 
     // render with ICanHaz, see _search-templates
     return ich.search_result(entry, true)
