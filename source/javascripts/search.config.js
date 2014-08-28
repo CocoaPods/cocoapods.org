@@ -164,7 +164,17 @@ $(window).ready(function() {
     entry.docs_link = entry.documentation_url || 'http://cocoadocs.org/docsets/' + entry.id + '/' + entry.version;
     entry.site_link = entry.link || extractRepoFromSource(entry)
     entry.spec_link = 'https://github.com/CocoaPods/Specs/tree/master/Specs/' + entry.id + '/' + entry.version + '/' + entry.id + '.podspec.json'
-    entry.minor_version = entry.version.split('.').slice(0, 2).join(".")
+
+    // If the version string has any non-numeric characters (pre-release or build metadata flags),
+    // the clipboard copy prompt should use the raw version number.
+    // (https://github.com/CocoaPods/cocoapods.org/issues/79)
+    if (entry.version.match(/[^.0-9]/)) {
+      entry.clipboard_version = entry.version;
+    } else {
+      var minor_version = entry.version.split('.').slice(0, 2).join(".")
+      entry.clipboard_version = "~> " + minor_version;
+    }
+
     if (entry.deprecated_in_favor_of) {
       entry.deprecated_in_favor_of_link = "http://cocoapods.org?q=" + entry.deprecated_in_favor_of;
     } else {
