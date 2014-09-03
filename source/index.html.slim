@@ -13,21 +13,21 @@ title: CocoaPods Guides
 
 #content-wrapper
   .homepage_container.container
-  
+
     section.row
-  
+
       .col-md-8.col-lg-8.col-sm-8.col-md-offset-2.col-lg-offset-2.col-sm-offset-2.intro
         h3.underlined What is CocoaPods
         <div class="header-horizontal-divider"><div class="index-arrow-down"></div><div class="index-enclosed-arrow-down"></div></div>
-      
+
         p CocoaPods is the dependency manager for Objective-C projects. It has thousands of libraries and can help you scale your projects elegantly.
-  
+
     section.row
       .col-md-8.col-lg-8.col-sm-8.col-md-offset-2.col-lg-offset-2.col-sm-offset-2
 
         ul.nav.nav-tabs.underscore
-      
-          li.active 
+
+          li.active
             a href="#install" data-toggle="tab" Install
 
           li
@@ -37,26 +37,26 @@ title: CocoaPods Guides
             a href="#create_a_pod" data-toggle="tab" Create a Pod
 
         <div id="homepage-tab-indicator" class="index-horizontal-divider"><div class="index-arrow-down"></div><div class="index-enclosed-arrow-down"></div></div>
-    
-    
+
+
         div.tab-content
           div#install.tab-pane.fade.in.active
 
             markdown:
 
-              CocoaPods is built with Ruby and is installable with the default Ruby available on OS X. 
+              CocoaPods is built with Ruby and is installable with the default Ruby available on OS X.
               We recommend you do this.
-            
+
               Using the default Ruby install will require you to use `sudo` when installing
               gems. Further instructions are in [the guides](http://guides.cocoapods.org/using/getting-started.html#getting-started).
 
               <pre class="highlight">
               $ sudo gem install cocoapods
               </pre>
-            
 
-          div#get_started.tab-pane.fade 
-          
+
+          div#get_started.tab-pane.fade
+
             markdown:
               Search for pods (above). Then list the dependencies in a text file named
               `Podfile` in your Xcode project directory:
@@ -65,31 +65,31 @@ title: CocoaPods Guides
               pod 'AFNetworking', '~> 2.0'
               pod 'ARAnalytics', '~> 2.7'
               </pre>
-              
+
               <small>Tip: CocoaPods provides a `pod init` command to create a Podfile with
               smart defaults. You should use it.</small>
-              
+
               Now you can install the dependencies in your project:
-            
+
               <pre class="highlight">
               $ pod install
               </pre>
-              
-              Make sure to always open the Xcode workspace instead of the project file when 
+
+              Make sure to always open the Xcode workspace instead of the project file when
               building your project:
-            
+
               <pre class="highlight">
               $ open App.xcworkspace
               </pre>
-            
+
               Now you can import your dependencies e.g.:
 
               <pre class="highlight">
               #import &lt;Reachability/Reachability.h>
               </pre>
 
-          
-          div#create_a_pod.tab-pane.fade 
+
+          div#create_a_pod.tab-pane.fade
 
             markdown:
               Sometimes CocoaPods doesn’t yet have a pod for one of your dependencies. Fortunately, creating a pod is pretty easy:
@@ -99,13 +99,13 @@ title: CocoaPods Guides
               $ pod spec lint Peanut.podspec
               </pre>
 
-              You can find a lot of information on the [process in the guides](http://guides.cocoapods.org). When you're done you can also fork the [CocoaPods specs](http://guides.cocoapods.org/making/specs-and-specs-repo.html) GitHub repository and send a pull request. We really love contributions and will help ensure it's perfect!
-  
+              You can find a lot of information on the [process in the guides](http://guides.cocoapods.org). When you're done you can get an account and push your [pod to the CocoaPods Trunk](http://guides.cocoapods.org/making/getting-setup-with-trunk.html).
+
     section.row
-    
+
       .col-md-8.col-lg-8.col-sm-8.col-md-offset-2.col-lg-offset-2.col-sm-offset-2
         h3.underlined Contribute
         <div class="header-horizontal-divider"><div class="index-arrow-down"></div><div class="index-enclosed-arrow-down"></div></div>
-        
-        markdown: 
+
+        markdown:
          We’re developing CocoaPods on GitHub. There’s a guide for [getting started on the CocoaPods tool](http://guides.cocoapods.org/contributing/contribute-to-cocoapods.html). It’s easy and really gratifying to contribute patches! - for a lot of people it's their first foray into Open Source.
