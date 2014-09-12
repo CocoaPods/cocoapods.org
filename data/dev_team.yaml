@@ -7,7 +7,7 @@
 - name: Fabio Pelosin
   twitter_username: fabiopelosin
   cocoapods_bio: Programmer at Large.
-  :twitter_profile_url: https://pbs.twimg.com/profile_images/493669974263599105/d8UzZLgr.png
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/510335730736852992/-QbAB8kd.jpeg
   :twitter_banner_url: http://pbs.twimg.com/profile_banners/14257260/1386516577/web
 - name: orta
   twitter_username: orta
@@ -17,7 +17,7 @@
 - name: Keith Smiley
   twitter_username: smileykeith
   cocoapods_bio: Master of the Specs.
-  :twitter_profile_url: https://pbs.twimg.com/profile_images/472939414507630593/eTdZKTHO.jpeg
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/506666166723416065/0H_wxP0l.jpeg
   :twitter_banner_url: http://pbs.twimg.com/profile_banners/14429563/1401592562/web
 - name: Florian Hanke
   twitter_username: hanke
@@ -52,7 +52,7 @@
 - name: Delisa Mason
   twitter_username: kattrali
   cocoapods_bio: Toolsmith lvl 99.
-  :twitter_profile_url: https://pbs.twimg.com/profile_images/378800000075120529/ac6d61813726fbc092687275fa17b667.jpeg
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/510056790604537856/b7vLFUkI.png
   :twitter_banner_url: http://pbs.twimg.com/profile_banners/40614452/1386607496/web
 - name: Boris Bügling
   twitter_username: neonacho
@@ -69,3 +69,8 @@
   cocoapods_bio: Guardian of consistency.
   :twitter_profile_url: https://pbs.twimg.com/profile_images/468031759213264897/unZTcR09.jpeg
   :twitter_banner_url: http://pbs.twimg.com/profile_banners/193277005/1400408751/web
+- name: Marius Rackwitz
+  twitter_username: mrackwitz
+  cocoapods_bio: Swift Pioneer.
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/466573618059964416/bne_4gDo.jpeg
+  :twitter_banner_url: http://pbs.twimg.com/profile_banners/902525377/1410561513/web

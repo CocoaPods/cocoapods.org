@@ -54,3 +54,7 @@
 - name: 'Olivier Halligon'
   twitter_username: 'aligatr'
   cocoapods_bio: "Guardian of consistency."
+
+- name: 'Marius Rackwitz'
+  twitter_username: 'mrackwitz'
+  cocoapods_bio: 'Swift Pioneer.'
