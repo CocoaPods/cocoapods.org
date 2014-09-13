@@ -7,6 +7,10 @@ class App < Sinatra::Base
   #
   set :public_folder, File.dirname(__FILE__) + '/middleman/build'
   
+  # Explicitly redirect root to the main page.
+  #
+  get '/' { redirect 'index.html' }
+  
   # Set up dynamic part.
   #
   require_relative 'domain'
