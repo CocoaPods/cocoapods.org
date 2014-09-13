@@ -1,3 +1,5 @@
-build
-.sass-cache
-.idea/
+.env
+
+middleman/build
+middleman/.sass-cache
+middleman/.idea/
