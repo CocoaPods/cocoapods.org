@@ -34,10 +34,14 @@ class App < Sinatra::Base
       where(pods[:name] => params[:name]).
       first
     
-    @pod = results.pod
-    @metrics = results.github_pod_metric
+    if results    
+      @pod = results.pod
+      @metrics = results.github_pod_metric
     
-    slim :pod
+      slim :pod
+    else
+      halt 404
+    end
   end
   
   # Helper method that will give you a
