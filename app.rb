@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'json'
 
 class App < Sinatra::Base
   
@@ -22,7 +23,16 @@ class App < Sinatra::Base
   #
   #
   get '/pods/:name' do
+    results = metrics.
+      where(:name => params[:name]).
+      first
     
+    results.to_json
+  end
+  
+  
+  def metrics
+    pods.join(:github_pod_metrics).on(:id => :pod_id)
   end
   
 end
