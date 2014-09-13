@@ -1,9 +1,10 @@
 require 'sinatra/base'
 
 class App < Sinatra::Base
-
-  # TODO Add links to statically generated code.
+  
+  # Links to statically generated code.
   #
+  set :public_folder, File.dirname(__FILE__) + '/middleman/build'
   
   
   # Methods for the dynamic part.
