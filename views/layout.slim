@@ -1,0 +1,8 @@
+doctype html
+html
+  head
+    title= "Pod #{@pod.name}"
+    
+    link href="/stylesheets/app.css" media="screen" rel="stylesheet" type="text/css"
+  body
+    == yield
