@@ -9,7 +9,9 @@ class App < Sinatra::Base
   
   # Explicitly redirect root to the main page.
   #
-  get('/') { redirect 'index.html' }
+  get('/') do
+    File.read File.join(settings.public_folder, 'index.html')
+  end
   
   # Set up dynamic part.
   #
