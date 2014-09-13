@@ -9,7 +9,7 @@ class App < Sinatra::Base
   
   # Explicitly redirect root to the main page.
   #
-  get '/' { redirect 'index.html' }
+  get('/') { redirect 'index.html' }
   
   # Set up dynamic part.
   #
