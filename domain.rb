@@ -18,6 +18,12 @@ connection = Flounder.connect options
 # Set up pod domain.
 #
 DB = Flounder.domain connection do |dom|
+  # Trunk
+  #
   dom.entity :owners, :owner, 'owners'
   dom.entity :pods, :pod, 'pods'
+  
+  # Metrics
+  #
+  dom.entity :github_pod_metrics, :github_pod_metric, 'github_pod_metrics'
 end
