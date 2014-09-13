@@ -24,13 +24,15 @@ class App < Sinatra::Base
   #
   get '/pods/:name' do
     results = metrics.
-      where(:name => params[:name]).
+      where(pods[:name] => params[:name]).
       first
     
     results.to_json
   end
   
-  
+  # Helper method that will give you a
+  # joined pods/metrics query proxy.
+  #
   def metrics
     pods.join(:github_pod_metrics).on(:id => :pod_id)
   end
