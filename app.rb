@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'json'
+require 'slim'
 
 class App < Sinatra::Base
   
@@ -33,7 +34,10 @@ class App < Sinatra::Base
       where(pods[:name] => params[:name]).
       first
     
-    results.to_json
+    @pod = results.pod
+    @metrics = results.github_pod_metric
+    
+    slim :pod
   end
   
   # Helper method that will give you a
