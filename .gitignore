@@ -1,5 +1,4 @@
 .env
 
-middleman/build
 middleman/.sass-cache
 middleman/.idea/
