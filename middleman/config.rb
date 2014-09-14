@@ -23,18 +23,18 @@ end
 
 # Allow shared assets folder to not be in source, thereby not dragging in every asset
 after_configuration do
-  sprockets.append_path "../shared/img"
-  sprockets.append_path "../shared/js"
-  sprockets.append_path "../shared/fonts"
-  sprockets.append_path "../shared/includes"
-  sprockets.append_path "../shared/sass"
+  sprockets.append_path "../../shared/img"
+  sprockets.append_path "../../shared/js"
+  sprockets.append_path "../../shared/fonts"
+  sprockets.append_path "../../shared/includes"
+  sprockets.append_path "../../shared/sass"
 end
 
 helpers do
   
   def shared_partial(*sources)
     sources.inject([]) do |combined, source|
-      combined << partial("../shared/includes/#{source}")
+      combined << partial("../../shared/includes/#{source}")
     end.join
   end
   
