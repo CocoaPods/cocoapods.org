@@ -4,6 +4,15 @@ require 'slim'
 
 class App < Sinatra::Base
   
+  helpers do
+    # Note: This is a hack that needs to be extracted into the
+    # shared directory for comfortable inclusion. 
+    #
+    def shared_partial(source)
+      slim :"../shared/includes/_#{source}"
+    end
+  end
+  
   # Links to statically generated code.
   #
   set :public_folder, File.dirname(__FILE__) + '/middleman/build'
