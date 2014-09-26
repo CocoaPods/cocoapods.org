@@ -8,17 +8,17 @@ css:
     margin:16px 0;
     text-align:center
   }
-  
+
   .card {
     background-color:white;
     padding:16px;
     position:relative;
   }
-  
+
   .dev-team .card {
       padding-top:200px;
   }
-    
+
   .card .background {
     background-color:grey;
     background-size:cover;
@@ -29,7 +29,7 @@ css:
     top:0;
     left:0px;
   }
-  
+
   .card img.twitter_avatar {
     top:80px;
     width:136px;
@@ -42,30 +42,30 @@ css:
     -moz-border-radius: 10%;
     -webkit-border-radius: 10%;
   }
-  
-  
+
+
   .sub-project {
     position:relative;
     margin:16px 0;
-  }  
+  }
 
   .sub-project:hover h2 {
     opacity:0;
   }
-  
-  .sub-project ul {  
-    margin-left:0;  
+
+  .sub-project ul {
+    margin-left:0;
     padding-left:0;
     text-align:center;
   }
-  
-  .sub-project li {  
-    list-style-type:none;  
+
+  .sub-project li {
+    list-style-type:none;
     padding-left:2px;
     padding-top:2px;
     display:inline-block;
-  }  
-  
+  }
+
   .sub-project h2 {
     position:absolute;
     top:0;
@@ -73,12 +73,12 @@ css:
     left:0;
     right:0;
     margin:auto;
-  
+
     text-align:center;
     height:30%;
     font-size:4em;
     color:white;
-  
+
     -webkit-transition:opacity 0.3s ease-in-out;
     -moz-transition:opacity 0.3s ease-in-out;
     -o-transition:opacity 0.3s ease-in-out;
@@ -95,36 +95,35 @@ section.container
   section.container
     article.row
       - for dev in team do
-      
+
         - if team.index(dev) % 2 == 0
           .clearfix.visible-xs
-      
+
         - if team.index(dev) % 3 == 0
           .clearfix.hidden-xs
-      
+
         col-lg-4.col-sm-4.col-xs-6.dev-team
-          .card 
+          .card
             .background style="background-image:url(#{dev.twitter_banner_url})"
-            
+
             a href="https://twitter.com/#{dev.twitter_username}"
               img.twitter_avatar src=dev.twitter_profile_url
-              
+
             h2 = dev.name
             a href="https://twitter.com/#{dev.twitter_username}" class="twitter-follow-button" data-show-count="false" data-lang="en" = "Follow @#{dev.twitter_username}"
 
             p = dev.cocoapods_bio
 
     article.row
-      
+
       h2 Contributors to the CocoaPods Projects
-  
+
       col-lg-12.col-sm-12.col-xs-12.sub-project
         .card
           ul
             - for contributor in data.contributors do
               li
-                a href="http://www.github.com/#{contributor.name}" 
+                a href="http://www.github.com/#{contributor.name}"
 
-                  img src="http://www.gravatar.com/avatar/#{contributor.gravatar_id}?s=96" width="48" height="48" title="#{contributor.name} - #{contributor.commits} commits to core projects"
+                  img src="#{contributor.avatar_url}&size=96" width="48" height="48" title="#{contributor.name} - #{contributor.commits} commits to core projects"
                 .clearfix
-
