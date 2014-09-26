@@ -8,9 +8,11 @@ task :bootstrap do
 end
 
 require 'middleman-gh-pages'
-require 'JSON'
+require 'json'
 require 'yaml'
-require "twitter"
+require 'twitter'
+require 'rest'
+require 'link_header'
 
 task :deploy do
   Rake::Task["publish"].invoke
@@ -59,14 +61,11 @@ task :generate_team do
   end
 
   File.open("data/dev_team.yaml", "w") do |out|
-     YAML.dump(yaml_data, out)
+    YAML.dump(yaml_data, out)
   end
 end
 
 task :generate_contributors do
-  require 'rest'
-  require 'json'
-
   class Commiter
     attr_accessor :commits, :avatar_url, :name
     def to_hash
@@ -74,13 +73,22 @@ task :generate_contributors do
     end
   end
 
-  params = "?client_id=927bff412ce93e98de3e&client_secret=6cb0186380b3b3301709345593a5580aadbf636f"
-  response = RestClient.get("https://api.github.com/orgs/CocoaPods/repos" + params)
-  repos = JSON.parse(response.body)
-  if repos.count == 30
-    response = RestClient.get("https://api.github.com/orgs/CocoaPods/repos" + params + '&page=2')
-    repos += JSON.parse(response.body)
+  def download_list(url)
+    # Downloads a list of objects from the URL using `Link` header to paginate
+    response = RestClient.get(url)
+    items = JSON.parse(response.body)
+
+    if response.headers[:link]
+      link_header = LinkHeader.parse(response.headers[:link])
+      next_url = link_header.find_link(['rel', 'next'])
+      items += download_list(next_url.href) if next_url
+    end
+
+    items
   end
+
+  params = "?client_id=927bff412ce93e98de3e&client_secret=6cb0186380b3b3301709345593a5580aadbf636f"
+  repos = download_list('https://api.github.com/orgs/CocoaPods/repos' + params)
   all_contributors = []
 
   # loop through all projects getting a list of contributors
@@ -88,37 +96,24 @@ task :generate_contributors do
     project = repo["name"]
     next if project == "Specs"
 
-    p "Getting #{project}"
+    puts "Getting #{project}"
 
     # grab the stats
-    url = "https://api.github.com/repos/CocoaPods/#{project}/stats/contributors" + params
-    response = RestClient.get(url)
+    contributors = download_list("https://api.github.com/repos/CocoaPods/#{project}/contributors" + params)
 
-    if response.code != 200
-      puts response
-      next
-    end
-    contributors = JSON.parse(response.body)
-
-    if contributors.count == 100
-      url2 = "https://api.github.com/repos/CocoaPods/#{project}/stats/contributors" + params + "&page=2&per_page=100"
-      response_2 = RestClient.get(url2)
-      contributors += JSON.parse(response_2.body)
-    end
-
-    p "Found " + contributors.count.to_s + " contributors."
+    puts "- Found " + contributors.count.to_s + " contributors."
 
     contributors.each do |contributor|
-      name = contributor["author"]["login"]
+      name = contributor['login']
       existing = all_contributors.detect { |e| e.name == name }
-      if existing
-        existing.commits += contributor["total"]
 
+      if existing
+        existing.commits += contributor['contributions']
       else
         commiter = Commiter.new
         commiter.name = name
-        commiter.commits = contributor["total"]
-        commiter.avatar_url = contributor["author"]["avatar_url"]
+        commiter.commits = contributor['contributions']
+        commiter.avatar_url = contributor['avatar_url']
         all_contributors << commiter
       end
     end
@@ -134,3 +129,4 @@ task :generate_contributors do
     end
   end
 end
+

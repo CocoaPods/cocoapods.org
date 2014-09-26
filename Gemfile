@@ -21,4 +21,5 @@ gem 'pygments.rb'
 gem 'github-markup'
 
 gem "rest"
+gem 'link_header'
 gem "twitter"
