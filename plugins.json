@@ -1,12 +1,12 @@
 {
   "plugins":[
     {
-      "gem": "cocoapods-deintergrate",
-      "name": "Deintergrate",
+      "gem": "cocoapods-deintegrate",
+      "name": "Deintegrate",
       "author": "Kyle Fuller",
       "social_media_url": "http://twitter.com/kylefuller",
-      "url": "https://github.com/kylef/cocoapods-deintergrate",
-      "description": "Deintergrates a project from CocoaPods."
+      "url": "https://github.com/kylef/cocoapods-deintegrate",
+      "description": "Deintegrates a project from CocoaPods."
     },
     {
       "gem":"cocoapods-dependencies",
