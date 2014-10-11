@@ -60,7 +60,7 @@ class App < Sinatra::Base
     pods.join(:github_pod_metrics).on(:id => :pod_id)
   end
   
-  # If it can't be found elsewhere, it'
+  # If it can't be found elsewhere, it's
   # probably an html file.
   # E.g. /about -> /about.html
   #
