@@ -76,6 +76,7 @@ task :generate_contributors do
   def download_list(url)
     # Downloads a list of objects from the URL using `Link` header to paginate
     response = RestClient.get(url)
+    return [] if response.code == 204
     items = JSON.parse(response.body)
 
     if response.headers[:link]
