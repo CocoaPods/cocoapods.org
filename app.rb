@@ -60,4 +60,12 @@ class App < Sinatra::Base
     pods.join(:github_pod_metrics).on(:id => :pod_id)
   end
   
+  # If it can't be found elsewhere, it'
+  # probably an html file.
+  # E.g. /about -> /about.html
+  #
+  get '/:filename' do
+    File.read File.join(settings.public_folder, "#{params[:filename]}.html")
+  end
+  
 end
