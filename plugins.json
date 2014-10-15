@@ -1,6 +1,14 @@
 {
   "plugins":[
     {
+      "gem": "cocoapods-appledoc",
+      "name": "AppleDoc",
+      "author": "Kyle Fuller",
+      "social_media_url": "http://twitter.com/kylefuller",
+      "url": "https://github.com/CocoaPods/cocoapods-appledoc",
+      "description": "Generates docset and documentation for a pod."
+    },
+    {
       "gem": "cocoapods-deintegrate",
       "name": "Deintegrate",
       "author": "Kyle Fuller",
