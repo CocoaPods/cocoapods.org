@@ -1,6 +1,9 @@
 set :encoding, 'utf-8'
 set :relative_links, true
 
+require 'slim'
+Slim::Engine.disable_option_validator!
+
 # Support for browsing from the build folder.
 set :strip_index_file,  false
 
