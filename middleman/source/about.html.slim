@@ -110,7 +110,9 @@ section.container
               img.twitter_avatar src=dev.twitter_profile_url
 
             h2 = dev.name
-            a href="https://twitter.com/#{dev.twitter_username}" class="twitter-follow-button" data-show-count="false" data-lang="en" = "Follow @#{dev.twitter_username}"
+
+            - if dev.twitter_username
+              a href="https://twitter.com/#{dev.twitter_username}" class="twitter-follow-button" data-show-count="false" data-lang="en" = "Follow @#{dev.twitter_username}"
 
             p = dev.cocoapods_bio
 
