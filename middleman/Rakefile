@@ -25,10 +25,10 @@ end
 
 desc "Generate dev team and contributor infos for the about page."
 task :generate do
-  p "Generating dev team from Twitter"
+  puts("Generating dev team from Twitter")
   Rake::Task["generate_team"].invoke
 
-  p "Generating contributors from Github"
+  puts("Generating contributors from Github")
   Rake::Task["generate_contributors"].invoke
 end
 
@@ -50,7 +50,7 @@ task :generate_team do
 
   team = YAML.load_file('team.yaml')
   team.each do |member|
-    p "Getting #{ member["twitter_username"] }"
+    puts("Getting #{ member["twitter_username"] }")
 
     twitter_user = client.user member["twitter_username"]
 
@@ -76,6 +76,7 @@ task :generate_contributors do
   def download_list(url)
     # Downloads a list of objects from the URL using `Link` header to paginate
     response = RestClient.get(url)
+    return [] if response.code == 204
     items = JSON.parse(response.body)
 
     if response.headers[:link]
