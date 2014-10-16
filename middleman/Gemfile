@@ -22,3 +22,5 @@ gem 'github-markup'
 
 gem "rest"
 gem "twitter"
+
+gem 'link_header'
