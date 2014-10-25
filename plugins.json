@@ -107,7 +107,7 @@
       "name":"Pods Roulette",
       "author":"Heiko Behrens, Marcel Jackwerth",
       "url":"https://github.com/sirlantis/cocoapods-roulette",
-      "description":"Builds an empty project with three random gems."
+      "description":"Builds an empty project with three random pods."
     },
     {
       "gem":"cocoapods-sorted-search",
