@@ -201,7 +201,7 @@ $(window).ready(function() {
     live: searchURL,
     liveResults: 20,
     liveRendered: true, // Experimental: Render live results as if they were full ones.
-    liveSearchInterval: 200, // Time between keystrokes before it sends the query.
+    liveSearchInterval: 100, // Time between keystrokes before it sends the query.
     maxSuggestions: 5, // Bootstrap currently hides .hidden class using !important, which blocks Picky's behaviour :( (we now use .onrequest)
     alwaysShowResults: true, // Always show results, even when Picky does not know what categories the user wants.
     alwaysShowSelection: true, // Always show the selection of what your search means, even when Picky would not show it normally.
