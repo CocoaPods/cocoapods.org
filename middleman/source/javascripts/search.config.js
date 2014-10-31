@@ -1,7 +1,7 @@
 $(window).ready(function() {
   // The search uses the convenience API on search.cocoapods.org.
   //
-  var domain = 'http://localhost:5001';
+  var domain = 'http://search.cocoapods.org';
   var searchURL = domain + '/api/v1/pods.picky.hash.json';
   var noResultsURL = domain + '/no_results.json';
   
