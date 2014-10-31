@@ -1,4 +1,10 @@
 $(window).ready(function() {
+  // The search uses the convenience API on search.cocoapods.org.
+  //
+  var domain = 'http://localhost:5001';
+  var searchURL = domain + '/api/v1/pods.picky.hash.json';
+  var noResultsURL = domain + '/no_results.json';
+  
   var onMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
   var searchInput = $('#search input[type="search"]');
@@ -112,7 +118,7 @@ $(window).ready(function() {
     // TODO There's the problem that we query without platform,
     //      but then the result might be wrong.
     //
-    $.getJSON('http://search.cocoapods.org/no_results.json', 'query=' + removePlatform(query), function(data, textStatus, jqXHR) {
+    $.getJSON(noResultsURL, 'query=' + removePlatform(query), function(data, textStatus, jqXHR) {
       var suggested_query = data.split[0].join(' ');
       var total = data.split[1];
 
@@ -157,9 +163,10 @@ $(window).ready(function() {
 
   var render = function(entry) {
     entry.platform = platformMapping[entry.platforms];
-    entry.authors  = $.map(entry.authors, function(email, name) {
-      return '<a href="javascript:pickyClient.insert(\'' + name.replace(/[']/, "\\\\\'") + '\')">' + name + '</a>';
-    });
+    // Not used currently. This needs a fix.
+    // entry.authors  = $.map(entry.authors, function(email, name) {
+    //   return '<a href="javascript:pickyClient.insert(\'' + name.replace(/[']/, "\\\\\'") + '\')">' + name + '</a>';
+    // });
 
     entry.docs_link = entry.documentation_url || 'http://cocoadocs.org/docsets/' + entry.id + '/' + entry.version;
     entry.site_link = entry.link || extractRepoFromSource(entry)
@@ -185,10 +192,6 @@ $(window).ready(function() {
     return ich.search_result(entry, true)
   };
 
-  // The search uses the convenience API on search.cocoapods.org.
-  //
-  var searchURL = 'http://search.cocoapods.org/api/v1/pods.picky.hash.json';
-
   pickyClient = new PickyClient({
     full: searchURL,
     fullResults: 20,
@@ -198,7 +201,7 @@ $(window).ready(function() {
     live: searchURL,
     liveResults: 20,
     liveRendered: true, // Experimental: Render live results as if they were full ones.
-    liveSearchInterval: 60, // Time between keystrokes before it sends the query.
+    liveSearchInterval: 200, // Time between keystrokes before it sends the query.
     maxSuggestions: 5, // Bootstrap currently hides .hidden class using !important, which blocks Picky's behaviour :( (we now use .onrequest)
     alwaysShowResults: true, // Always show results, even when Picky does not know what categories the user wants.
     alwaysShowSelection: true, // Always show the selection of what your search means, even when Picky would not show it normally.
