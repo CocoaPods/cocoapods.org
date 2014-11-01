@@ -276,7 +276,6 @@ $(window).ready(function() {
       //
       if (!addMostRecentQuery(query)) {
         // It wasn't added, so stop the query.
-        console.log("Not running query: " + query);
         return;
       }
 
