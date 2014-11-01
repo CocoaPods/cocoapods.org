@@ -196,8 +196,15 @@ $(window).ready(function() {
   // If they return in order, we show them.
   //
   var mostRecentQueries = [];
+  var addMostRecentQuery = function(query) {
+    if (mostRecentQueries[mostRecentQueries.length-1] != query) {
+      mostRecentQueries.push(query);
+      return true;
+    }
+    return false;
+  }
   var tooLateResponse = function(successfulQuery) {
-    if (mostRecentQueries.indexOf(successfulQuery) > 0) {
+    if (mostRecentQueries.indexOf(successfulQuery) >= 0) {
       while (successfulQuery.length > 0) {
         query = mostRecentQueries.shift();
         if (query == successfulQuery) {
@@ -205,10 +212,9 @@ $(window).ready(function() {
         }
       }
       return true;
-    } else {
-      // It's not in the queries anymore – too old.
-      return true;
     }
+    // It's not in the queries anymore – too old.
+    return true;
   };
 
   pickyClient = new PickyClient({
@@ -220,7 +226,7 @@ $(window).ready(function() {
     live: searchURL,
     liveResults: 20,
     liveRendered: true, // Experimental: Render live results as if they were full ones.
-    liveSearchInterval: 100, // Time between keystrokes before it sends the query.
+    liveSearchInterval: 166, // Time between keystrokes before it sends the query.
     maxSuggestions: 5, // Bootstrap currently hides .hidden class using !important, which blocks Picky's behaviour :( (we now use .onrequest)
     alwaysShowResults: true, // Always show results, even when Picky does not know what categories the user wants.
     alwaysShowSelection: true, // Always show the selection of what your search means, even when Picky would not show it normally.
@@ -268,10 +274,10 @@ $(window).ready(function() {
       
       // We remember the query if it hasn't just run.
       //
-      if (mostRecentQueries[mostRecentQueries.length-1] != query) {
-        mostRecentQueries.push(query);
-      } else {
-        // TODO And if it is, don't query at all.
+      if (!addMostRecentQuery(query)) {
+        // It wasn't added, so stop the query.
+        console.log("Not running query: " + query);
+        return;
       }
 
       // Otherwise we add in the platform.
