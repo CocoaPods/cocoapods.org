@@ -201,11 +201,9 @@ $(window).ready(function() {
       while (successfulQuery.length > 0) {
         query = mostRecentQueries.shift();
         if (query == successfulQuery) {
-          console.log('OK: ', successfulQuery, mostRecentQueries);
           return false;
         }
       }
-      console.log('LATE: ', successfulQuery, mostRecentQueries);
       return true;
     } else {
       // It's not in the queries anymore – too old.
