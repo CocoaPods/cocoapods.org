@@ -192,6 +192,27 @@ $(window).ready(function() {
     return ich.search_result(entry, true)
   };
 
+  // We remember the most recent queries.
+  // If they return in order, we show them.
+  //
+  var mostRecentQueries = [];
+  var tooLateResponse = function(successfulQuery) {
+    if (mostRecentQueries.indexOf(successfulQuery) > 0) {
+      while (successfulQuery.length > 0) {
+        query = mostRecentQueries.shift();
+        if (query == successfulQuery) {
+          console.log('OK: ', successfulQuery, mostRecentQueries);
+          return false;
+        }
+      }
+      console.log('LATE: ', successfulQuery, mostRecentQueries);
+      return true;
+    } else {
+      // It's not in the queries anymore – too old.
+      return true;
+    }
+  };
+
   pickyClient = new PickyClient({
     full: searchURL,
     fullResults: 20,
@@ -246,6 +267,14 @@ $(window).ready(function() {
       // We don't add the platform if it is empty (still saved in history as empty, though).
       //
       if (query == '') { return ''; }
+      
+      // We remember the query if it hasn't just run.
+      //
+      if (mostRecentQueries[mostRecentQueries.length-1] != query) {
+        mostRecentQueries.push(query);
+      } else {
+        // TODO And if it is, don't query at all.
+      }
 
       // Otherwise we add in the platform.
       //
@@ -264,6 +293,13 @@ $(window).ready(function() {
       //
       if ('' == searchInput.val()) {
         resetSearchInterface();
+        return false;
+      }
+      
+      // If a newer query has already been
+      // shown, then do not show this query.
+      //
+      if (tooLateResponse(query)) {
         return false;
       }
 
