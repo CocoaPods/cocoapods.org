@@ -262,6 +262,17 @@ $(window).ready(function() {
         return removePlatform(query);
       }
     },
+    // Before a query is run, we add a few params.
+    //
+    beforeParams: function(params) {
+      params['sort'] = 'popularity'; // TODO @orta - have fun with this!
+      return params;
+    },
+    // Before Picky sends any data to the server.
+    //
+    // Adds the platform modifier to it if it isn't there already.
+    // Removes it if it is.
+    //
     // Before Picky sends any data to the server.
     //
     // Adds the platform modifier to it if it isn't there already.
