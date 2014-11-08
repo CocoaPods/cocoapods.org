@@ -12,3 +12,13 @@ desc 'Build the static site'
 task :build do
   sh "cd middleman && bundle exec middleman build"
 end
+
+desc "Deploy to heroku"
+task :deploy do
+  sh "git push heroku master "
+end
+
+desc "Deploy to orta's beta"
+task :deploy_orta do
+  sh "git push heroku_orta search_2:master "
+end
