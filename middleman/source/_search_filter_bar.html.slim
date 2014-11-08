@@ -1,0 +1,46 @@
+#filter_bar_container
+  .container
+    .row 
+      #filter_bar.col-xs-12
+      
+        ul
+          li <span>Find Pods<span>
+          
+          li.dropdown.interactive
+            .dropdown-toggle#search_type data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" <span>containing</span>
+            ul.dropdown-menu aria-labelledby="search_type" role="menu"
+              li
+                a tabindex="-1" href="#" called
+              li
+                a tabindex="-1" href="#" with summary
+              li
+                a tabindex="-1" href="#" using
+              li
+                a tabindex="-1" href="#" written by
+              li
+                a tabindex="-1" href="#" version
+                
+          li#query <span>“<span id="search_filter_query">thing</span>” on</span>
+
+          li.dropdown.interactive
+            .dropdown-toggle#search_platform data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" <span>iOS or OSX</span>
+            ul.dropdown-menu aria-labelledby="search_platform" role="menu"
+              li
+                a tabindex="-1" href="#" iOS and OSX
+              li
+                a tabindex="-1" href="#" iOS
+              li
+                a tabindex="-1" href="#" OSX
+          
+          li <span>sorted by</span>
+          
+          li.dropdown.interactive
+            .dropdown-toggle#search_sort data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" <span>popularity</span>
+            ul.dropdown-menu aria-labelledby="search_sort" role="menu"
+              li
+                a tabindex="-1" href="#" contributors
+              li
+                a tabindex="-1" href="#" name
+              li
+                a tabindex="-1" href="#" -popularity
+          
