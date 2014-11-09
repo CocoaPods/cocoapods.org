@@ -96,7 +96,9 @@ $(window).ready(function() {
     $('#search span#search_loupe').hide();
     $('#filter_bar_container').show();
     $('#filter_bar_container').show();
-    $("#filter_bar span#search_filter_query").text( $("#pod_search").val() )
+
+    var query = $("#pod_search").val()
+    $("#filter_bar span#search_filter_query").text( query )
   };
 
   var resultsSearchInterface = function() {
@@ -288,8 +290,9 @@ $(window).ready(function() {
       // split out all the pre-config params
       // giving only the actual user query
       
-      query = $(query.split(":")).last()[0]
-      
+      query = $(query.split(" ")).last()[0]
+      query = removePlatform(query)
+
       // At runtime add the modifiers from the filter bar to the query
       // these come from _search_filter_bar.html.slim
       
@@ -336,7 +339,6 @@ $(window).ready(function() {
       } else {
         resultsSearchInterface();
       }
-      
 
       // Render the JSON into HTML.
       //
@@ -542,8 +544,14 @@ $(window).ready(function() {
     var container = target.parents(".dropdown")
     var userFacingDiv = container.children(".dropdown-toggle")
 
+    var currentDataID =  userFacingDiv.data("input")
+    var title = userFacingDiv.text()
+    
     userFacingDiv.children("span").text( target.text() )
     userFacingDiv.data("input", target.data("input") )
+
+    target.text(title)
+    target.data("input", currentDataID)
     
     container.trigger("has_changed_data_bindings")
     
