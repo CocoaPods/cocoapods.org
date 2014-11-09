@@ -59,6 +59,7 @@ $(window).ready(function() {
     if (!headerHidden) {
       $('html, body').animate({ scrollTop: searchInput.offset().top }, 300);
       resultsContainer.addClass("active");
+      
       helpText.hide();
       headerHidden = true;
     }
@@ -84,6 +85,7 @@ $(window).ready(function() {
     platformSelect.hide();
     allocationSelect.hide();
     $('#search_results div.results').hide();
+    $('#filter_bar_container').hide();
   };
 
   //
@@ -92,6 +94,9 @@ $(window).ready(function() {
     hideHeader();
     $('#search span.amount').show();
     $('#search span#search_loupe').hide();
+    $('#filter_bar_container').show();
+    $('#filter_bar_container').show();
+    $("#filter_bar span#search_filter_query").text( $("#pod_search").val() )
   };
 
   var resultsSearchInterface = function() {
@@ -265,14 +270,9 @@ $(window).ready(function() {
     // Before a query is run, we add a few params.
     //
     beforeParams: function(params) {
-      params['sort'] = 'popularity'; // TODO @orta - have fun with this!
+      params['sort'] = $("#filter_bar #search_sort").data("input")
       return params;
     },
-    // Before Picky sends any data to the server.
-    //
-    // Adds the platform modifier to it if it isn't there already.
-    // Removes it if it is.
-    //
     // Before Picky sends any data to the server.
     //
     // Adds the platform modifier to it if it isn't there already.
@@ -281,23 +281,35 @@ $(window).ready(function() {
     before: function(query, params) {
       // We don't add the platform if it is empty (still saved in history as empty, though).
       //
+      
       if (query == '') { return ''; }
+      
+
+      // split out all the pre-config params
+      // giving only the actual user query
+      
+      query = $(query.split(":")).last()[0]
+      
+      // At runtime add the modifiers from the filter bar to the query
+      // these come from _search_filter_bar.html.slim
+      
+      var platformModifier = $("#filter_bar #search_platform").data("input")
+      var typeModifier = $("#filter_bar #search_type").data("input")
+      var returnQuery =  platformModifier + typeModifier + query;
       
       // We remember the query if it hasn't just run.
       //
-      if (!addMostRecentQuery(query)) {
+      if (!addMostRecentQuery(returnQuery)) {
         // It wasn't added, so stop the query.
         return;
       }
-
-      // Otherwise we add in the platform.
-      //
-      query = query.replace(platformRemoverRegexp, '');
-      var platformModifier = platformSelect.find("input:checked").val();
-      if (platformModifier === undefined || platformModifier == '') { return query; }
-      return platformModifier + ' ' + query;
+      
+      
+      return returnQuery;
     },
+    
     success: function(data, query) {
+      
       // Track query for analytics.
       //
       trackAnalytics(data, query);
@@ -324,6 +336,7 @@ $(window).ready(function() {
       } else {
         resultsSearchInterface();
       }
+      
 
       // Render the JSON into HTML.
       //
@@ -518,6 +531,25 @@ $(window).ready(function() {
     //   }
     // }
   });
+
+  $('#filter_bar_container li.interactive').on("has_changed_data_bindings", function() {
+    pickyClient.resend();
+  });
+  
+  $('#filter_bar .dropdown li').on('click', function (event) {
+    
+    var target = $(event.target);
+    var container = target.parents(".dropdown")
+    var userFacingDiv = container.children(".dropdown-toggle")
+
+    userFacingDiv.children("span").text( target.text() )
+    userFacingDiv.data("input", target.data("input") )
+    
+    container.trigger("has_changed_data_bindings")
+    
+    event.stopPropagation();
+    return false
+  })
 
   // Reset the search if it has been cleared and track when it has.
   //

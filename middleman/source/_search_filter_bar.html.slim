@@ -1,46 +1,33 @@
-#filter_bar_container
+#filter_bar_container style="display:none"
   .container
     .row 
       #filter_bar.col-xs-12
-      
+
         ul
           li <span>Find Pods<span>
-          
+
           li.dropdown.interactive
-            .dropdown-toggle#search_type data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" <span>containing</span>
+            .dropdown-toggle#search_type data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-input="" <span>containing</span>
             ul.dropdown-menu aria-labelledby="search_type" role="menu"
-              li
-                a tabindex="-1" href="#" called
-              li
-                a tabindex="-1" href="#" with summary
-              li
-                a tabindex="-1" href="#" using
-              li
-                a tabindex="-1" href="#" written by
-              li
-                a tabindex="-1" href="#" version
-                
+              li tabindex="-1" href="#" data-input="name:" called
+              li tabindex="-1" href="#" data-input="summary:" with summary
+              li tabindex="-1" href="#" data-input="dependency:" using
+              li tabindex="-1" href="#" data-input="author:" written by
+
           li#query <span>“<span id="search_filter_query">thing</span>” on</span>
 
           li.dropdown.interactive
-            .dropdown-toggle#search_platform data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" <span>iOS or OSX</span>
+            .dropdown-toggle#search_platform data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-input="" <span>iOS or OSX</span>
             ul.dropdown-menu aria-labelledby="search_platform" role="menu"
-              li
-                a tabindex="-1" href="#" iOS and OSX
-              li
-                a tabindex="-1" href="#" iOS
-              li
-                a tabindex="-1" href="#" OSX
-          
+              li tabindex="-1" href="#" data-input="on:osx on:ios " iOS and OSX
+              li tabindex="-1" href="#" data-input="on:ios " iOS
+              li tabindex="-1" href="#" data-input="on:osx " OSX
+
           li <span>sorted by</span>
-          
+
           li.dropdown.interactive
-            .dropdown-toggle#search_sort data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" <span>popularity</span>
+            .dropdown-toggle#search_sort data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-input="popularity" <span>popularity</span>
             ul.dropdown-menu aria-labelledby="search_sort" role="menu"
-              li
-                a tabindex="-1" href="#" contributors
-              li
-                a tabindex="-1" href="#" name
-              li
-                a tabindex="-1" href="#" -popularity
-          
+              li tabindex="-1" href="#" data-input="contributors" contributors
+              li tabindex="-1" href="#" data-input="name" name
+              li tabindex="-1" href="#" data-input="-popularity" -popularity
