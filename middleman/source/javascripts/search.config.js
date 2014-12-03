@@ -282,20 +282,23 @@ $(window).ready(function() {
       // We don't add the platform if it is empty (still saved in history as empty, though).
       //
       if (query == '') { return ''; }
-      
-      // We remember the query if it hasn't just run.
-      //
-      if (!addMostRecentQuery(query)) {
-        // It wasn't added, so stop the query.
-        return;
-      }
 
       // Otherwise we add in the platform.
       //
       query = query.replace(platformRemoverRegexp, '');
       var platformModifier = platformSelect.find("input:checked").val();
-      if (platformModifier === undefined || platformModifier == '') { return query; }
-      return platformModifier + ' ' + query;
+      if (platformModifier !== undefined && platformModifier != '') {
+        query = platformModifier + ' ' + query;
+      }
+      
+      // We remember the query if it hasn't just run.
+      //
+      if (!addMostRecentQuery(query)) {
+        // It wasn't added (we just sent it off), so stop the query.
+        return;
+      }
+      
+      return query;
     },
     success: function(data, query) {
       // Track query for analytics.
