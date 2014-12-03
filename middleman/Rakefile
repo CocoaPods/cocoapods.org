@@ -15,7 +15,7 @@ require 'rest'
 require 'link_header'
 
 desc 'Runs the web server locally and watches for changes'
-task :run do
+task :serve do
   sh "middleman server --port 4567"
 end
 
