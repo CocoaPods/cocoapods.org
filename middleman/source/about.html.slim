@@ -133,6 +133,17 @@ css:
   section.access {
     background: #380200;
     color: #F6F6F6;
+    position: relative;
+  }
+  
+  section.access .image {
+    background: url("./images/access.png") no-repeat left top;
+    background-size: 412px 350px;
+    width: 412px;
+    height: 350px;
+    position: absolute;
+    top: -60px;
+    opacity: 0.8;
   }
   
   section.integration {
@@ -218,11 +229,11 @@ section.container
           })();
 
   section.access
-    div.container
+    div.container      
       article.row
-        div.col-lg-6.col-md-6.col-sm-12.col-xs-12
-          
-        div.col-lg-6.col-md-6.col-sm-12.col-xs-12
+        .image.hidden-sm.hidden-xs
+        
+        div.col-lg-6.col-md-6.col-sm-12.col-md-offset-6
           h2 Access code from any source
           
           p CocoaPods supports almost every way you would want to get source code; git, svn, bzr, http and hg.
