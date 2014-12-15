@@ -5,7 +5,7 @@ ruby:
 css:
 
   h1 {
-    font-size: 3.8em;
+    font-size: 3.6em;
     font-weight: normal;
   }
   
@@ -145,13 +145,20 @@ css:
   }
   
   section.developers h3,
-  section.overview h3 {
+  section.overview h3,
+  section.volunteer h2,
+  section.community h2 {
     color: #F61433;
+  }
+  
+  section.volunteer h2,
+  section.community h2 {
+    text-align: center;
   }
 
 section.container
   article.row
-    div.col-lg-8.col-sm-10.col-xs-10
+    div.col-lg-7.col-sm-8.col-xs-10
       h1 Get on with building your App, not duplicating code.
 
 #content-wrapper
@@ -277,8 +284,10 @@ section.container
           
           p We have guides for getting started, making a new library, contributing back and using private pods.
 
-  section.container
+  section.volunteer.container
     article.row
+      h2 Volunteer Driven
+      
       - for dev in team do
 
         - if team.index(dev) % 2 == 0
@@ -287,30 +296,28 @@ section.container
         - if team.index(dev) % 3 == 0
           .clearfix.hidden-xs
 
-        col-lg-4.col-sm-4.col-xs-6.dev-team
+        .col-lg-4.col-sm-4.col-xs-12.dev-team
           .card
             .background style="background-image:url(#{dev.twitter_banner_url})"
 
             a href="https://twitter.com/#{dev.twitter_username}"
               img.twitter_avatar src=dev.twitter_profile_url
 
-            h2 = dev.name
+            h3 = dev.name
 
             - if dev.twitter_username
               a href="https://twitter.com/#{dev.twitter_username}" class="twitter-follow-button" data-show-count="false" data-lang="en" = "Follow @#{dev.twitter_username}"
 
             p = dev.cocoapods_bio
-
+    
+  section.community.container
     article.row
+      h2 Community Powered
 
-      h2 Contributors to the CocoaPods Projects
-
-      col-lg-12.col-sm-12.col-xs-12.sub-project
+      .col-lg-12.col-sm-12.col-xs-12.sub-project
         .card
           ul
             - for contributor in data.contributors do
               li
                 a href="http://www.github.com/#{contributor.name}"
-
                   img src="#{contributor.avatar_url}&size=96" width="48" height="48" title="#{contributor.name} - #{contributor.commits} commits to core projects"
-                .clearfix
