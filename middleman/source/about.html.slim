@@ -158,6 +158,22 @@ css:
   
   section.developers {
     background: #FFFFFF;
+    position: relative;
+  }
+  
+  section.developers .image {
+    background: url("./images/dots.png") no-repeat left top;
+    background-size: 805px 473px;
+    width: 805px;
+    height: 473px;
+    position: absolute;
+    top: 0;
+  }
+  
+  @media (min-width: 992px) {
+    section.developers h3 {
+      padding-top: 2.8em;
+    }
   }
   
   section.developers h3,
@@ -253,14 +269,16 @@ section.container
   section.developers
     div.container
       article.row
-        div.col-md-4.col-md-offset-4
+        .image.hidden-sm.hidden-xs
+        
+        div.col-md-4.col-sm-6.col-md-offset-5
           h3 Thousands of CocoaPods
           
           p Discover the perfect library or build it yourself. Supporting CocoaPods means sharing your code with hundreds of thousands of developers easily.
           
           p We take care of updating your libraries when compiler flags, source files or its dependencies are updated.
           
-        div.col-md-4
+        div.col-md-3.col-sm-6
           h3 For Library Developers
           
           p We deal with improving discoverability of your library.
