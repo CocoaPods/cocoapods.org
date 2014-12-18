@@ -149,6 +149,26 @@ css:
   section.integration {
     background: #838383;
     color: #F6F6F6;
+    position: relative;
+  }
+  
+  section.integration .image {
+    background: url("./images/xcodeworkspace.png") no-repeat right 1.4em;
+    background-size: 1000px 384px;
+    width: 1170px;
+    height: 384px;
+    position: absolute;
+    top: 0;
+  }
+  
+  @media (min-width: 992px) {
+    section.integration h3 {
+      padding-bottom: 1em;
+    }
+    
+    section.integration p {
+      padding-bottom: 1.4em;
+    }
   }
   
   section.developers {
@@ -254,7 +274,9 @@ section.container
   section.integration
     div.container
       article.row
-        div.col-md-4.col-md-offset-2
+        .image.hidden-sm.hidden-xs
+      
+        div.col-md-6.col-md-offset-2
           h3 Let us do the integration for you via Xcode's Workspaces
           
           p Your App's code remains the same.
