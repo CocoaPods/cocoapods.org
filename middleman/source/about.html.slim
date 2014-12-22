@@ -198,6 +198,75 @@ css:
     }
   }
   
+  section.getting-it {
+    background: #838383;
+    color: #F6F6F6;
+    text-align: center;
+  }
+  
+  section.getting-it p {
+    text-align: left;
+  }
+  
+  @media (min-width: 992px) {
+    section.getting-it article.row {
+      padding-bottom: 0;
+    }
+    
+    section.getting-it h2 {
+      margin-bottom: 1em;
+    }
+    
+    section.getting-it .cocoapods-app,
+    section.getting-it .terminal {
+      padding: 2em 4.5em 0;
+      height: 320px;
+    }
+    
+    section.getting-it .cocoapods-app {
+      background: url("./images/cocoapods-app.png") no-repeat 50% top;
+      background-size: 452px 320px;
+    }
+    
+    section.getting-it .terminal {
+      background: url("./images/unix.png") no-repeat 50% top;
+      background-size: 452px 320px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    section.getting-it .terminal p {
+      margin-bottom: 10.7em;
+    }
+    
+    section.getting-it p {
+      font-size: .9em;
+    }
+  }
+  
+  section.getting-it .terminal p {
+    font-family: "Menlo", "Courier", "Helvetica Neue", "Arial";
+    font-size: .8em;
+  }
+  
+  section.getting-it .btn {
+    background: #4E92E0;
+    color: #FFF;
+    font-size: .9em;
+    padding: 1em;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    -o-transition: background 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  section.getting-it .btn:hover {
+    background: #3885dc;
+  }
+  
   section.developers h3,
   section.overview h3,
   section.volunteer h2,
@@ -205,9 +274,11 @@ css:
     color: #F61433;
   }
   
+  section.getting-it h2,
   section.volunteer h2,
   section.community h2 {
     text-align: center;
+    margin-top: 0;
   }
 
 section.container
@@ -341,7 +412,24 @@ section.container
           p We take our documentation seriously.
           
           p We have guides for getting started, making a new library, contributing back and using private pods.
-
+          
+  section.getting-it
+    .container
+      article.row
+        h2 Getting It
+        
+        .cocoapods-app.col-lg-6.col-md-6.col-sm-6
+          p We have a self-updating Mac app that hosts everything you need to run CocoaPods.
+          
+          p You can use all the features you know and love from the Terminal and some features with a GUI. Best of both worlds.
+          
+          a.btn href="#" Download CocoaPods.app
+          
+        .terminal.col-lg-6.col-md-6.col-sm-6
+          p > [sudo] gem install cocoapods
+          
+          a.btn href="#" Copy command
+          
   section.volunteer.container
     article.row
       h2 Volunteer Driven
