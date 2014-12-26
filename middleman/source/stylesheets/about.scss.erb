@@ -56,7 +56,7 @@ section.access {
 }
 
 section.access .image {
-  background: url("./images/access.png") no-repeat left top;
+  background: url(<%= asset_data_uri "access.png" %>) no-repeat left top;
   background-size: 412px 350px;
   width: 412px;
   height: 350px;
@@ -72,7 +72,7 @@ section.integration {
 }
 
 section.integration .image {
-  background: url("./images/xcodeworkspace.png") no-repeat right 1.4em;
+  background: url(<%= asset_data_uri "xcodeworkspace.png" %>) no-repeat right 1.4em;
   background-size: 1000px 384px;
   width: 1170px;
   height: 384px;
@@ -96,7 +96,7 @@ section.developers {
 }
 
 section.developers .image {
-  background: url("./images/dots.png") no-repeat left top;
+  background: url(<%= asset_data_uri "dots.png" %>) no-repeat left top;
   background-size: 805px 100%;
   width: 805px;
   height: 100%;
@@ -136,12 +136,12 @@ section.getting-it p {
   }
   
   section.getting-it .cocoapods-app {
-    background: url("./images/cocoapods-app.png") no-repeat 50% top;
+    background: url(<%= asset_data_uri "cocoapods-app.png" %>) no-repeat 50% top;
     background-size: 452px 320px;
   }
   
   section.getting-it .terminal {
-    background: url("./images/unix.png") no-repeat 50% top;
+    background: url(<%= asset_data_uri "unix.png" %>) no-repeat 50% top;
     background-size: 452px 320px;
   }
 }
