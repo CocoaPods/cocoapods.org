@@ -456,6 +456,7 @@ $(window).ready(function() {
         'dependencies': 'dependency',
         'tags': 'tag',
         'version': 'version',
+        'subspecs': 'subspec',
         'author,name': 'author+name',
         'name,author': 'name+author',
         'tags,name': 'tag+name',
@@ -470,7 +471,7 @@ $(window).ready(function() {
         'version,dependencies': 'version+dependency',
         'author,version': 'author+version',
         'version,author': 'version+author',
-        'summary,version': 'version+summary',
+        'summary,version': 'summary+version',
         'version,summary': 'version+summary',
         'tags,summary': 'summary+name',
         'summary,tags': 'name+summary',
@@ -480,8 +481,10 @@ $(window).ready(function() {
         'author,summary': 'author+summary',
         'summary,dependencies': 'summary+dependency',
         'dependencies,summary': 'dependency+summary',
-        'name,dependencies': 'name+dependency',
-        'dependencies,name': 'dependency+name'
+        'name,subspecs': 'name+subspec',
+        'subspecs,name': 'subspec+name',
+        'dependencies,subspecs': 'dependency+subspec',
+        'subspecs,dependencies': 'subspec+dependency'
       }
     },
 
@@ -497,7 +500,8 @@ $(window).ready(function() {
         name: 'named',
         // platform: 'on', See below.
         summary: 'with summary',
-        tags: 'tagged as'
+        tags: 'tagged as',
+        subspecs: 'with subspec'
       }
     },
     explanationDelimiter: {
