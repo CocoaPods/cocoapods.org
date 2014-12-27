@@ -2,111 +2,111 @@ h1 {
   margin-top: 0;
   font-size: 3em;
   font-weight: normal;
-}
 
-@media (min-width: 768px) {
-  h1 {
+  @media (min-width: 768px) {
     font-size: 3.6em;
   }
 }
 
-section.podfile .row {
-  padding: 0;
-}
+section.podfile {
+  h4 {
+    margin-left: 1.8em;
+    color: #D2C5C1;
+  }
 
-section.podfile h4 {
-  margin-left: 1.8em;
-  color: #D2C5C1;
-}
+  .row {
+    padding: 0;
+  }
 
-section.podfile .line-numbers-border {
-  background: #D2C5C1;
-  margin-left: 1.7em;
-  position: absolute;
-  height: 100%;
-  width: 1px;
-}
+  .line-numbers-border {
+    background: #D2C5C1;
+    margin-left: 1.7em;
+    position: absolute;
+    height: 100%;
+    width: 1px;
+  }
 
-section.podfile pre {
-  border: none;
-  overflow: auto;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-}
+  pre {
+    border: none;
+    overflow: auto;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+  }
 
-section.podfile pre .line-numbers {
-  color: #D2C5C1;
-  display: block;
-  float: left;
-  margin: 0 1em 0 -1em;
-  text-align: right;
-}
+  pre .line-numbers {
+    color: #D2C5C1;
+    display: block;
+    float: left;
+    margin: 0 1em 0 -1em;
+    text-align: right;
+  }
 
-section.podfile pre .line-numbers span {
-  display: block;
-  padding: 0 .5em 0 1em;
+  pre .line-numbers span {
+    display: block;
+    padding: 0 .5em 0 1em;
+  }
 }
 
 section.access {
   background: #380200;
   color: #F6F6F6;
   position: relative;
-}
 
-section.access .image {
-  background: url(<%= asset_data_uri "access.png" %>) no-repeat left top;
-  background-size: 412px 350px;
-  width: 412px;
-  height: 350px;
-  position: absolute;
-  top: -60px;
-  opacity: 0.8;
+  .image {
+    background: url(<%= asset_data_uri "access.png" %>) no-repeat left top;
+    background-size: 412px 350px;
+    width: 412px;
+    height: 350px;
+    position: absolute;
+    top: -60px;
+    opacity: 0.8;
+  }
 }
 
 section.integration {
   background: #838383;
   color: #F6F6F6;
   position: relative;
-}
 
-section.integration .image {
-  background: url(<%= asset_data_uri "xcodeworkspace.png" %>) no-repeat right 1.4em;
-  background-size: 1000px 384px;
-  width: 1170px;
-  height: 384px;
-  position: absolute;
-  top: 0;
-}
-
-@media (min-width: 992px) {
-  section.integration h3 {
-    padding-bottom: 1em;
+  .image {
+    background: url(<%= asset_data_uri "xcodeworkspace.png" %>) no-repeat right 1.4em;
+    background-size: 1000px 384px;
+    width: 1170px;
+    height: 384px;
+    position: absolute;
+    top: 0;
   }
-  
-  section.integration p {
-    padding-bottom: 1.4em;
+
+  @media (min-width: 992px) {
+    h3 {
+      padding-bottom: 1em;
+    }
+
+    p {
+      padding-bottom: 1.4em;
+    }
   }
 }
 
 section.developers {
   background: #FFFFFF;
   position: relative;
-}
 
-section.developers .image {
-  background: url(<%= asset_data_uri "dots.png" %>) no-repeat left top;
-  background-size: 805px 100%;
-  width: 805px;
-  height: 100%;
-  position: absolute;
-  top: 0;
-}
+  .image {
+    background: url(<%= asset_data_uri "dots.png" %>) no-repeat left top;
+    background-size: 805px 100%;
+    width: 805px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+  }
 
-@media (min-width: 992px) {
-  section.developers h3 {
-    padding-top: 2.8em;
+  @media (min-width: 992px) {
+    h3 {
+      padding-top: 2.8em;
+    }
   }
 }
 
@@ -114,69 +114,69 @@ section.getting-it {
   background: #838383;
   color: #F6F6F6;
   text-align: center;
-}
 
-section.getting-it p {
-  text-align: left;
-}
+  p {
+    text-align: left;
+  }
 
-@media (min-width: 992px) {
-  section.getting-it article.row {
-    padding-bottom: 0;
+  .terminal p {
+    font-family: "Menlo", "Courier", "Helvetica Neue", "Arial";
+    font-size: .8em;
   }
-  
-  section.getting-it h2 {
-    margin-bottom: 1em;
-  }
-  
-  section.getting-it .cocoapods-app,
-  section.getting-it .terminal {
-    padding: 2em 4.5em 0;
-    height: 320px;
-  }
-  
-  section.getting-it .cocoapods-app {
-    background: url(<%= asset_data_uri "cocoapods-app.png" %>) no-repeat 50% top;
-    background-size: 452px 320px;
-  }
-  
-  section.getting-it .terminal {
-    background: url(<%= asset_data_uri "unix.png" %>) no-repeat 50% top;
-    background-size: 452px 320px;
-  }
-}
 
-@media (min-width: 768px) {
-  section.getting-it .terminal p {
-    margin-bottom: 10.7em;
-  }
-  
-  section.getting-it p {
+  .btn {
+    background: #4E92E0;
+    color: #FFF;
     font-size: .9em;
+    padding: 1em;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    -o-transition: background 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out;
   }
-}
+  
+  .btn:hover {
+    background: #3885dc;
+  }
 
-section.getting-it .terminal p {
-  font-family: "Menlo", "Courier", "Helvetica Neue", "Arial";
-  font-size: .8em;
-}
+  @media (min-width: 992px) {
+    article.row {
+      padding-bottom: 0;
+    }
 
-section.getting-it .btn {
-  background: #4E92E0;
-  color: #FFF;
-  font-size: .9em;
-  padding: 1em;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  -webkit-transition: background 0.3s ease-in-out;
-  -moz-transition: background 0.3s ease-in-out;
-  -o-transition: background 0.3s ease-in-out;
-  transition: background 0.3s ease-in-out;
-}
+    h2 {
+      margin-bottom: 1em;
+    }
 
-section.getting-it .btn:hover {
-  background: #3885dc;
+    .cocoapods-app,
+    .terminal {
+      padding: 2em 4.5em 0;
+      height: 320px;
+    }
+
+    .cocoapods-app {
+      background: url(<%= asset_data_uri "cocoapods-app.png" %>) no-repeat 50% top;
+      background-size: 452px 320px;
+    }
+
+    .terminal {
+      background: url(<%= asset_data_uri "unix.png" %>) no-repeat 50% top;
+      background-size: 452px 320px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .terminal p {
+      margin-bottom: 10.7em;
+    }
+
+    p {
+      font-size: .9em;
+    }
+  }
 }
 
 section.developers h3,
