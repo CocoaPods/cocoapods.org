@@ -194,84 +194,78 @@ section.community h2 {
 }
 
 .dev-team {
- margin:16px 0;
- text-align:center
-}
+  margin: 16px 0;
+  text-align: center;
 
-.card {
- background-color:white;
- padding:16px;
- position:relative;
-}
+  .card {
+    background-color: white;
+    padding: 200px 16px 16px;
+    position: relative;
 
-.dev-team .card {
-   padding-top:200px;
-}
+    .background {
+      background-color: grey;
+      background-size: cover;
+      background-position: center center;
+      width: 100%;
+      height: 160px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
 
-.card .background {
- background-color:grey;
- background-size:cover;
- background-position: center center;
- width:100%;
- height:160px;
- position:absolute;
- top:0;
- left:0px;
+    img.twitter_avatar {
+      top: 80px;
+      width: 136px;
+      height: 136px;
+      position: absolute;
+      left: 50%;
+      margin-left: -68px;
+      border: 4px solid white;
+      border-radius: 10%;
+      -moz-border-radius: 10%;
+      -webkit-border-radius: 10%;
+    }
+  }
 }
-
-.card img.twitter_avatar {
- top:80px;
- width:136px;
- height:136px;
- position:absolute;
- left:50%;
- margin-left:-68px;
- border: 4px solid white;
- border-radius: 10%;
- -moz-border-radius: 10%;
- -webkit-border-radius: 10%;
-}
-
 
 .sub-project {
- position:relative;
- margin:16px 0;
-}
+  position: relative;
+  margin: 16px 0;
+  padding: 16px;
+  background: white;
 
-.sub-project:hover h2 {
- opacity:0;
-}
+  h2 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    height: 30%;
+    font-size: 4em;
+    color: white;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
 
-.sub-project ul {
- margin-left:0;
- padding-left:0;
- text-align:center;
-}
+    &:hover {
+      opacity: 0;
+    }
+  }
 
-.sub-project li {
- list-style-type:none;
- padding-left:2px;
- padding-top:2px;
- display:inline-block;
-}
+  ul {
+    margin-left: 0;
+    padding-left: 0;
+    text-align: center;
+  }
 
-.sub-project h2 {
- position:absolute;
- top:0;
- bottom:0;
- left:0;
- right:0;
- margin:auto;
-
- text-align:center;
- height:30%;
- font-size:4em;
- color:white;
-
- -webkit-transition:opacity 0.3s ease-in-out;
- -moz-transition:opacity 0.3s ease-in-out;
- -o-transition:opacity 0.3s ease-in-out;
- transition:opacity 0.3s ease-in-out;
-
+  li {
+    list-style-type: none;
+    padding-left: 2px;
+    padding-top: 2px;
+    display: inline-block;
+  }
 }
 
