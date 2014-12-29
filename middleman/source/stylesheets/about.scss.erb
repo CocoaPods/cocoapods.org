@@ -128,7 +128,8 @@ section.getting-it {
     background: #4E92E0;
     color: #FFF;
     font-size: .9em;
-    padding: 1em;
+    padding: .5em;
+    line-height: 1.99em;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
@@ -136,7 +137,17 @@ section.getting-it {
     -moz-transition: background 0.3s ease-in-out;
     -o-transition: background 0.3s ease-in-out;
     transition: background 0.3s ease-in-out;
-    
+
+    .circle-arrow-down {
+      background: url(<%= asset_data_uri "circle-arrow-down.svg" %>) no-repeat 0 0;
+      background-size: 32px 32px;
+      height: 32px;
+      width: 32px;
+      margin-left: .6em;
+      display: inline-block;
+      vertical-align: bottom;
+    }
+
     &:hover {
       background: #3885dc;
     }
