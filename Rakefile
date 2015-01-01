@@ -5,7 +5,15 @@ task :bootstrap do
 
   puts "Installing gems"
   `bundle install`
+  
+  Bundler.with_clean_env do 
     sh "cd middleman && bundle install"
+  end
+end
+
+desc 'Start up the dynamic site'
+task :serve do
+  sh "foreman start "
 end
 
 desc 'Build the static site'

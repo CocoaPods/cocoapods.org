@@ -38,10 +38,9 @@ class App < Sinatra::Base
   
   #
   #
-  get '/pods/:name' do
+  get '/pod/:name' do
     results = metrics.
-      where(pods[:name] => params[:name]).
-      first
+      where(pods[:name] => params[:name]).first
     
     if results    
       @pod = results.pod
