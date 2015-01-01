@@ -45,7 +45,8 @@ class App < Sinatra::Base
     if results    
       @pod = results.pod
       @metrics = results.github_pod_metric
-    
+      @cocoadocs = results.cocoadocs_pod_metric
+      @cloc = cocoadocs_cloc_metrics.where(pod_id: @pod.id)
       slim :pod
     else
       halt 404
@@ -57,7 +58,10 @@ class App < Sinatra::Base
   #
   def metrics
     pods.join(:github_pod_metrics).on(:id => :pod_id)
+        .join(:cocoadocs_cloc_metrics).on(:id => :pod_id)
+        .join(:cocoadocs_pod_metrics).on(:id => :pod_id)
   end
+  
   
   # If it can't be found elsewhere, it's
   # probably an html file.

@@ -26,4 +26,9 @@ DB = Flounder.domain connection do |dom|
   # Metrics
   #
   dom.entity :github_pod_metrics, :github_pod_metric, 'github_pod_metrics'
+  
+  # CocoaDocs
+  #
+  dom.entity :cocoadocs_pod_metrics, :cocoadocs_pod_metric, 'cocoadocs_pod_metrics'
+  dom.entity :cocoadocs_cloc_metrics, :cocoadocs_cloc_metric, 'cocoadocs_cloc_metrics'
 end
