@@ -1,23 +1,39 @@
-h1= @pod.name
+nav
+  ul
+    li 
+      img src="" style="width:60px; height:60px; background-color:red;"
+    li "orta/ORStackView"
+    
+    li.metadata.initial_commit "20/01/2008"
+    li.metadata.stars = @metrics.stargazers
+    li.metadata.watchers = @metrics.subscribers
+    li.metadata.forks = @metrics.forks
+    li.metadata.files = @cocoadocs.total_files
+
+div.readme_content.col-lg-9.col-sm-9.col-xs-12
+  == @readme_html
+
+div.sideline.col-lg-3.col-sm-9.col-xs-3
+  ul
+    li "See Podspec"
+    li "Documentation"
+    li "Homepage"
+  p = @pod["description"]
+  
+  
+
+hr.div.sideline.col-lg-12.col-sm-912.col-xs-12
 
 p
   | Contributors: 
-  = @metrics.contributors
-p
-  | Forks: 
-  = @metrics.forks
+    = @metrics.contributors
+
 p
   | Open issues: 
   = @metrics.open_issues
 p
   | Open pull requests: 
   = @metrics.open_pull_requests
-p
-  | Stargazers: 
-  = @metrics.stargazers
-p
-  | Subscribers: 
-  = @metrics.subscribers
 
 p
   | Pod:
@@ -35,4 +51,5 @@ p
 p
   | CLOC:
   - @cloc.each do |cloc|
-    = cloc
+    p
+      = cloc

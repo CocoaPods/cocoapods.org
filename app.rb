@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'json'
 require 'slim'
+require 'net/http'
 
 class App < Sinatra::Base
   
@@ -39,15 +40,24 @@ class App < Sinatra::Base
   #
   #
   get '/pod/:name' do
-    results = metrics.
-      where(pods[:name] => params[:name]).first
+    results = metrics.where(pods[:name] => params[:name]).first
     
     if results    
-      @pod = results.pod
+      @pod_db = results.pod
       @metrics = results.github_pod_metric
       @cocoadocs = results.cocoadocs_pod_metric
-      @cloc = cocoadocs_cloc_metrics.where(pod_id: @pod.id)
-      slim :pod
+      @cloc = cocoadocs_cloc_metrics.where(pod_id: @pod_db.id)
+      
+      version = pod_versions.where(pod_id: @pod_db.id).first
+      commit = commits.where(pod_version_id: version.id).first
+      @pod = JSON.parse(commit.specification_data)
+      
+      uri = URI(@cocoadocs["rendered_readme_url"])
+      res = Net::HTTP.get_response(uri)
+      @readme_html = res.body if res.is_a?(Net::HTTPSuccess)
+     
+      @content = slim :pod, :layout => false
+      slim :pod_page
     else
       halt 404
     end
