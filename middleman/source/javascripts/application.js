@@ -20,6 +20,9 @@ $(document).bind("touchmove", function(e){
 });
 
 $( document ).ready( function(){
+  
+  // Add support for animating the marker on the homepages
+  //
   $('.underscore a[data-toggle="tab"]').on('show.bs.tab', function (e) {
     
     var index = $(e.target.parentElement).index()
@@ -29,6 +32,8 @@ $( document ).ready( function(){
     $("#homepage-tab-indicator").css("margin-left", percent + "%");
   })
  
+  // Support non-flash clipboard stuff
+  
   if( hasFlash() ) {
     $("html").addClass("flash")
   }

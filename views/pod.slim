@@ -1,55 +1,190 @@
-nav
-  ul
-    li 
-      img src="" style="width:60px; height:60px; background-color:red;"
-    li "orta/ORStackView"
+css:
+
+  .readme-content > nav {
+    margin: -15px;
+    padding:15px;
+    background-color:whitesmoke;
+    height: 48px;
+  }
+  .readme-content > nav ul {
+    margin:0;
+  }
+  .readme-content > nav ul, .pod_result ul.links {
+    padding-left:0;
+  }
+  
+  .readme-content ul.attribution {
+    clear:both;
+  }
+  .readme-content ul.attribution li {
+    display:inline-block;
+    margin-right:12px;
+  }
+  
+  nav li, .sideline li {
+    list-style:none;
+  }
+  nav {
+    height: 32px;
+  }
+  nav li {
+    float:left;
+  }
+  
+  nav li.metadata {
+    float:right;
+    padding-left:28px;
+    margin-right:20px;
+    background-position: top left;
+  }
+  
+  li.metadata.initial-commit {
+    background: no-repeat url(/stylesheets/images/first_commit.svg);
+  }
+
+  li.metadata.stars {
+    background: no-repeat url(/stylesheets/images/stars.svg);
+  }
+
+  li.metadata.forks {
+    background: no-repeat url(/stylesheets/images/forks.svg);
+  }
+  
+  li.metadata.watchers {
+    background: no-repeat url(/stylesheets/images/watchers.svg);
+  }
+  
+  
+  li.metadata.files {
+    background: no-repeat url(/stylesheets/images/files.svg);
+    margin-right:0;
     
-    li.metadata.initial_commit "20/01/2008"
-    li.metadata.stars = @metrics.stargazers
-    li.metadata.watchers = @metrics.subscribers
-    li.metadata.forks = @metrics.forks
-    li.metadata.files = @cocoadocs.total_files
-
-div.readme_content.col-lg-9.col-sm-9.col-xs-12
-  == @readme_html
-
-div.sideline.col-lg-3.col-sm-9.col-xs-3
-  ul
-    li "See Podspec"
-    li "Documentation"
-    li "Homepage"
-  p = @pod["description"]
+  }
+    
+  .pod-metadata, .sideline, .readme-content {
+    background-color:white;
+  }
   
+  .readme-content {
+    border-right: 2px solid black;
+  }
   
-
-hr.div.sideline.col-lg-12.col-sm-912.col-xs-12
-
-p
-  | Contributors: 
-    = @metrics.contributors
-
-p
-  | Open issues: 
-  = @metrics.open_issues
-p
-  | Open pull requests: 
-  = @metrics.open_pull_requests
-
-p
-  | Pod:
-  = @pod
-
-p
-  | Metrics:
-  = @metrics
+  #pod-page .readme-content {
+    border-right: 2px solid whitesmoke;
+  }
+  .pod_result .readme-content {
+    border-right: 2px solid #d1c4c0;
+  }
   
-
-p
-  | CocoaDocs:
-  = @cocoadocs
+  .sideline tr td:last-child {
+    text-align:right;
+  }
   
-p
-  | CLOC:
-  - @cloc.each do |cloc|
-    p
-      = cloc
+  .pod-metadata h1 {
+    color: #fb0006;
+    font-weight:normal;
+    display: block;
+    margin: 0;
+    width: 100%;
+    height: 1.2em;
+    border: 0px solid #98989f;
+    border-bottom: 1px solid grey;
+    background: transparent;
+    font-size: 3em;
+  }
+
+.pod_result
+  div.pod-metadata.clearfix
+    div.readme-content.col-lg-9.col-sm-9.col-xs-12
+      h1 == @pod["name"] + " <span>" + @pod["version"] + "</span>"
+      ul.attribution
+        li By
+        li 
+          a href ="" Orta Therox
+        li.twitter
+          a href ="http://twitter.com/orta" Orta
+      
+      nav
+        ul
+          li 
+            img src="" style="width:30px; height:30px; background-color:red;"
+          li orta/ORStackView
+    
+          li.metadata.files = @cocoadocs.total_files
+          li.metadata.forks = @metrics.forks
+          li.metadata.watchers = @metrics.subscribers
+          li.metadata.stars = @metrics.stargazers
+          li.metadata.initial-commit = @cocoadocs.initial_commit_date
+      
+      == @readme_html
+
+    div.sideline.col-lg-3.col-sm-3.col-xs-12
+      p = @pod["description"]
+      hr
+      table style="width:100%"
+        tbody
+          tr
+            td Documented
+            td ✓
+          tr
+            td Tested
+            td ✓
+          tr
+            td Language
+            td Obj-C
+          tr
+            td License
+            td
+               a href ="" MIT
+
+      hr
+
+      ul.links 
+        li 
+          a href="" See Podspec
+        li 
+          a href="" Documentation
+        li
+          a href="" Homepage
+
+    
+      - if @pod["screenshots"]
+        hr
+        ul.screenshots
+        - @pod["screenshots"].each do |screenshot|
+          img src="#{screenshot}"
+          
+/
+/   hr.col-lg-12.col-sm-12.col-xs-12
+/
+/
+/
+/ p
+/   | Contributors:
+/     = @metrics.contributors
+/
+/ p
+/   | Open issues:
+/   = @metrics.open_issues
+/ p
+/   | Open pull requests:
+/   = @metrics.open_pull_requests
+/
+/ p
+/   | Pod:
+/   = @pod
+/
+/ p
+/   | Metrics:
+/   = @metrics
+/
+/
+/ p
+/   | CocoaDocs:
+/   = @cocoadocs
+/
+/ p
+/   | CLOC:
+/   - @cloc.each do |cloc|
+/     p
+/       = cloc

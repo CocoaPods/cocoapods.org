@@ -6,37 +6,40 @@ ruby:
 script id="search_result" type="text/html"
 
   li.result
-    div.infos.col-lg-8.col-sm-7.col-xs-12
-      h3
+    .infos.col-lg-8.col-sm-8.col-xs-12
+      .compressed
+        h3
+          | {{#deprecated}}
+          span.deprecated {{ id }}
+          span.deprecated.version {{ version }}
+          | {{/deprecated}}
+          | {{^deprecated}}
+          a href="{{ link }}" {{ id }}
+          span.version {{ version }}
+          | {{/deprecated}}
+          img.copy src="./images/copy-to-clipboard.png" data-clipboard-text="pod '{{ id }}', '{{ clipboard_version }}'" data-toggle="popover" data-placement="top" data-container="body" data-html="true" data-content=popover_html
+
+          | {{#platform}}
+          span.os {{ platform }}
+          | {{/platform}}
+
         | {{#deprecated}}
-        span.deprecated {{ id }}
-        span.deprecated.version {{ version }}
+        p
+          ' {{ id }} has been deprecated
+          | {{#deprecated_in_favor_of}}
+          ' in favor of
+          a href="{{ deprecated_in_favor_of_link }}" {{ deprecated_in_favor_of }}
+          | {{/deprecated_in_favor_of}}
         | {{/deprecated}}
         | {{^deprecated}}
-        a href="{{ link }}" {{ id }}
-        span.version {{ version }}
+        p {{ summary }}
         | {{/deprecated}}
-        img.copy src="./images/copy-to-clipboard.png" data-clipboard-text="pod '{{ id }}', '{{ clipboard_version }}'" data-toggle="popover" data-placement="top" data-container="body" data-html="true" data-content=popover_html
 
-        | {{#platform}}
-        span.os {{ platform }}
-        | {{/platform}}
+        .actions
+          a href="#" Expand
 
-      | {{#deprecated}}
-      p
-        ' {{ id }} has been deprecated
-        | {{#deprecated_in_favor_of}}
-        ' in favor of
-        a href="{{ deprecated_in_favor_of_link }}" {{ deprecated_in_favor_of }}
-        | {{/deprecated_in_favor_of}}
-      | {{/deprecated}}
-      | {{^deprecated}}
-      p {{ summary }}
-      | {{/deprecated}}
-      / p.author {{ authors }}
-
-    div.actions.col-lg-4.col-sm-5.col-xs-12
-     div.action-wrapper
-       a href="{{ site_link }}" Site
-       a href="{{ docs_link }}" Docs
-       a href="{{ spec_link }}" Spec
+      .expanded
+        h2
+          a href="{{ link }}" {{ id }}
+        span.version {{ version }}
+        .content

@@ -1,7 +1,9 @@
 $(window).ready(function() {
   // The search uses the convenience API on search.cocoapods.org.
   //
-  var domain = 'http://search.cocoapods.org';
+  // var domain = 'http://search.cocoapods.org';
+  var domain = 'http://localhost:8080';
+  
   var searchURL = domain + '/api/v1/pods.picky.hash.json';
   var noResultsURL = domain + '/no_results.json';
   
@@ -138,6 +140,20 @@ $(window).ready(function() {
       tagsContainer.find('p').append(tags.sort().join(', ')).append('.');
     });
   };
+
+  // Tracking category/categories selection.
+  //
+  var expandSearchResult = function(result) {
+    $.ajax({
+      url: "http://localhost:3000/pod/" + "ORStackView" + "/inline",
+      dataType: "html"
+    }).done(function(html) {
+      $(result).addClass("is-expanded")
+      $(result, ".expanded .content")[0].innerHTML = html
+    });
+    
+  }
+
 
   // Renders an entry, then returns the rendered HTML.
   //
@@ -419,6 +435,16 @@ $(window).ready(function() {
       $('ol.results').find('a').on('click', function(event) {
         trackResultLinkSelection(event.currentTarget.href);
       });
+      
+      $('ol.results li').on('click', function(event) {
+        var parent = $(event.target).parents("li")
+        console.log("event: ", parent)
+        console.log("target: ", parent)
+        expandSearchResult(parent)
+        event.stopPropagation()
+        return false
+      });
+      
     },
 
     // This is used to generate the correct query strings, localized. E.g. "subject:war".
@@ -581,14 +607,23 @@ $(window).ready(function() {
   var openSelection = function(){
     var selected = $('ol.results li.result.selected').first();
     if (selected.length > 0) {
-      window.document.location.href = selected.find('a').first().attr('href');
+      console.log("OK")
+      expandSearchResult(selected)
     }
   }
 
   // Install keyboard handling.
   //
   $('body').keydown(function(event) {
+    console.log(event.keyCode)
     switch (event.keyCode) {
+      // Alt
+      //
+      case 18:
+        var selected = $('ol.results li').first()[0];
+        expandSearchResult(selected)
+        break;
+      
       // Down
       //
       case 40:
