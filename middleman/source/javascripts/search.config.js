@@ -145,7 +145,7 @@ $(window).ready(function() {
   //
   var expandSearchResult = function(result) {
     $.ajax({
-      url: "http://localhost:3000/pod/" + "ORStackView" + "/inline",
+      url: "/pod/" + "ORStackView" + "/inline",
       dataType: "html"
     }).done(function(html) {
       $(result).addClass("is-expanded")
