@@ -52,10 +52,10 @@ class App < Sinatra::Base
       commit = commits.where(pod_version_id: version.id).first
       @pod = JSON.parse(commit.specification_data)
       
-      # uri = URI(@cocoadocs["rendered_readme_url"])
-      # res = Net::HTTP.get_response(uri)
-      # @readme_html = res.body if res.is_a?(Net::HTTPSuccess)
-      @readme_html = File.read("/Users/orta/spiel/html/cocoadocs/activity/docsets/Realm/0.88.0/README.html")
+      uri = URI(@cocoadocs["rendered_readme_url"])
+      res = Net::HTTP.get_response(uri)
+      @readme_html = res.body if res.is_a?(Net::HTTPSuccess)
+      # @readme_html = File.read("/Users/orta/spiel/html/cocoadocs/activity/docsets/Realm/0.88.0/README.html")
      
       @content = slim :pod, :layout => false
       slim :pod_page
@@ -81,10 +81,10 @@ class App < Sinatra::Base
       commit = commits.where(pod_version_id: version.id).first
       @pod = JSON.parse(commit.specification_data)
       
-      # uri = URI(@cocoadocs["rendered_readme_url"])
-      # res = Net::HTTP.get_response(uri)
-      # @readme_html = res.body if res.is_a?(Net::HTTPSuccess)
-      @readme_html = File.read("/Users/orta/spiel/html/cocoadocs/activity/docsets/Realm/0.88.0/README.html")
+      uri = URI(@cocoadocs["rendered_readme_url"])
+      res = Net::HTTP.get_response(uri)
+      @readme_html = res.body if res.is_a?(Net::HTTPSuccess)
+      # @readme_html = File.read("/Users/orta/spiel/html/cocoadocs/activity/docsets/Realm/0.88.0/README.html")
      
       slim :pod, :layout => false
     else
