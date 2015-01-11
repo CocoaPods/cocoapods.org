@@ -1,99 +1,166 @@
 ruby:
   team = data.dev_team
 
-
-css:
-
-  .dev-team {
-    margin:16px 0;
-    text-align:center
-  }
-
-  .card {
-    background-color:white;
-    padding:16px;
-    position:relative;
-  }
-
-  .dev-team .card {
-      padding-top:200px;
-  }
-
-  .card .background {
-    background-color:grey;
-    background-size:cover;
-    background-position: center center;
-    width:100%;
-    height:160px;
-    position:absolute;
-    top:0;
-    left:0px;
-  }
-
-  .card img.twitter_avatar {
-    top:80px;
-    width:136px;
-    height:136px;
-    position:absolute;
-    left:50%;
-    margin-left:-68px;
-    border: 4px solid white;
-    border-radius: 10%;
-    -moz-border-radius: 10%;
-    -webkit-border-radius: 10%;
-  }
-
-
-  .sub-project {
-    position:relative;
-    margin:16px 0;
-  }
-
-  .sub-project:hover h2 {
-    opacity:0;
-  }
-
-  .sub-project ul {
-    margin-left:0;
-    padding-left:0;
-    text-align:center;
-  }
-
-  .sub-project li {
-    list-style-type:none;
-    padding-left:2px;
-    padding-top:2px;
-    display:inline-block;
-  }
-
-  .sub-project h2 {
-    position:absolute;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    margin:auto;
-
-    text-align:center;
-    height:30%;
-    font-size:4em;
-    color:white;
-
-    -webkit-transition:opacity 0.3s ease-in-out;
-    -moz-transition:opacity 0.3s ease-in-out;
-    -o-transition:opacity 0.3s ease-in-out;
-    transition:opacity 0.3s ease-in-out;
-
-  }
-
-section.container
+section.title.container
   article.row
-    col-lg-12.col-sm-12.col-xs-12
-      h1 About CocoaPods
+    .col-lg-7.col-sm-8.col-xs-10
+      h1 Get on with building your App, not duplicating code.
 
 #content-wrapper
-  section.container
+  section.podfile.container
     article.row
+      .col-lg-6.col-md-6.col-sm-6
+        h2 Define once, update easily
+
+        markdown:
+          Create a Podfile describing the code you'd like to pull in. Run `pod install` and get the same versions as everyone else in your team.
+
+        markdown:
+          CocoaPods makes updating a single dependency easy via `pod update FLKAutoLayout` or update all of them with just `pod update`.
+
+      .col-lg-6.col-md-6.col-sm-6.podfile
+        .line-numbers-border
+
+        h4 PODFILE
+
+        markdown:
+          <pre class="highlight"><span class="c"># open source</span>
+          <span class="c">source</span> <span class="s">'https://github.com/CocoaPods/Sepcs.git'</span>
+          
+          <span class="c">pod</span> <span class="nv">'FLKAutoLayout'</span>
+          <span class="c">pod</span> <span class="nv">'ISO8601DateFormatter', '0.7'</span>
+          <span class="c">pod</span> <span class="nv">'AFNetworking', '~> 2.0'</span>
+          
+          <span class="c"># my company</span>
+          <span class="c">source</span> <span class="s">'https://github.com/artsy/Specs.git'</span>
+          
+          <span class="c">pod</span> <span class="nv">'Artsy+UIColors'</span>
+          <span class="c">pod</span> <span class="nv">'Artsy+UIButtons'</span>
+          
+          <span class="k">target</span> <span class="nv">'AppTests'</span> <span class="k">do</span>
+            <span class="c">pod</span> <span class="nv">'FBSnapshotTestCase'</span>
+            <span class="c">pod</span> <span class="nv">'Quick'</span>
+            <span class="c">pod</span> <span class="nv">'Nimble'</span>
+          <span class="k">end</span></pre>
+
+        javascript:
+          (function() {
+              var pre = document.getElementsByTagName('pre');
+              var pl = pre.length;
+              for (var i = 0; i < pl; i++) {
+                  pre[i].innerHTML = '<span class="line-numbers"></span>' + pre[i].innerHTML;
+                  var num = pre[i].innerHTML.split(/\n/).length;
+                  for (var j = 0; j < num; j++) {
+                      var line_num = pre[i].getElementsByTagName('span')[0];
+                      line_num.innerHTML += '<span>' + (j + 1) + '</span>';
+                  }
+              }
+          })();
+
+  section.access
+    .container
+      article.row
+        .image.hidden-sm.hidden-xs
+        
+        .col-lg-6.col-md-6.col-sm-12.col-md-offset-6
+          h2 Access code from any source
+          
+          p CocoaPods supports almost every way you would want to get source code; git, svn, bzr, http and hg.
+          
+          p You can use your own Private Repository of code to manage your own dependencies. It only requires a git repo, no server necessary.
+
+  section.integration
+    .container
+      article.row
+        .image.hidden-sm.hidden-xs
+      
+        .col-md-6.col-md-offset-2
+          h3 Let us do the integration for you via Xcode's Workspaces
+          
+          p Your App's code remains the same.
+          
+          p CocoaPods moves all your private or public dependencies into a separate xcodeproject for all your build targets.
+
+  section.developers
+    .container
+      article.row
+        .image.hidden-sm.hidden-xs
+        
+        .col-md-4.col-sm-6.col-md-offset-5
+          h3 Thousands of CocoaPods
+          
+          p Discover the perfect library or build it yourself. Supporting CocoaPods means sharing your code with hundreds of thousands of developers easily.
+          
+          p We take care of updating your libraries when compiler flags, source files or its dependencies are updated.
+          
+        .col-md-3.col-sm-6
+          h3 For Library Developers
+          
+          p We deal with improving discoverability of your library.
+          
+          p We deal with publicly documenting your library.
+          
+          p As build systems change, CocoaPods updates with it, and library developers don't need to do anything.
+
+  section.overview
+    .container
+      article.row
+        .col-sm-3.col-xs-12
+          h3 Extend
+          
+          p Development it a trade off of complexity and features. We keep CocoaPods focused by offering plugin support.
+          
+          p Experiment with plugins like try, packager, keys, slather, repo-svn, clean and release.
+        
+        .col-sm-3.col-xs-12
+          h3 Skip Integration
+          
+          p Don't trust CocoaPods? You can disable it and you're left with integration yourself.
+          
+          p Only want build artifacts? We built a plugin for that.
+        
+        .col-sm-3.col-xs-12
+          h3 Outreach
+          
+          p
+            'Discover interesting library authors via 
+            a href="https://twitter.com/cocoapodsfeed" @CocoaPodsFeed
+            '  twitter.
+          
+          p The CocoaPods search sorts libraries on the homepage so the most used rise to the top.
+        
+        .col-sm-3.col-xs-12
+          h3 Document
+          
+          p We take our documentation seriously.
+          
+          p We have guides for getting started, making a new library, contributing back and using private pods.
+          
+  section.getting-it
+    .container
+      article.row
+        h2 Getting It
+        
+        .cocoapods-app.col-lg-6.col-md-6.col-sm-6
+          p We have a self-updating Mac app that hosts everything you need to run CocoaPods.
+          
+          p You can use all the features you know and love from the Terminal and some features with a GUI. Best of both worlds.
+          
+          a.btn href="#"
+            |Download CocoaPods.app
+            span.circle-arrow-down
+          
+        .terminal.col-lg-6.col-md-6.col-sm-6
+          p > [sudo] gem install cocoapods
+          
+          a.btn href="#" 
+            |Copy command
+            span.circle-arrow-down
+          
+  section.volunteer.container
+    article.row
+      h2 Volunteer Driven
+      
       - for dev in team do
 
         - if team.index(dev) % 2 == 0
@@ -102,30 +169,28 @@ section.container
         - if team.index(dev) % 3 == 0
           .clearfix.hidden-xs
 
-        col-lg-4.col-sm-4.col-xs-6.dev-team
+        .col-lg-4.col-sm-4.col-xs-12.dev-team
           .card
             .background style="background-image:url(#{dev.twitter_banner_url})"
 
             a href="https://twitter.com/#{dev.twitter_username}"
               img.twitter_avatar src=dev.twitter_profile_url
 
-            h2 = dev.name
+            h3 = dev.name
 
             - if dev.twitter_username
               a href="https://twitter.com/#{dev.twitter_username}" class="twitter-follow-button" data-show-count="false" data-lang="en" = "Follow @#{dev.twitter_username}"
 
             p = dev.cocoapods_bio
-
+    
+  section.community.container
     article.row
+      h2 Community Powered
 
-      h2 Contributors to the CocoaPods Projects
-
-      col-lg-12.col-sm-12.col-xs-12.sub-project
+      .col-lg-12.col-sm-12.col-xs-12.sub-project
         .card
           ul
             - for contributor in data.contributors do
               li
                 a href="http://www.github.com/#{contributor.name}"
-
                   img src="#{contributor.avatar_url}&size=96" width="48" height="48" title="#{contributor.name} - #{contributor.commits} commits to core projects"
-                .clearfix
