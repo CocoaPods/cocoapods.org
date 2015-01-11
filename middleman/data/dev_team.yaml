@@ -12,7 +12,7 @@
 - name: orta
   twitter_username: orta
   cocoapods_bio: Design Dictator.
-  :twitter_profile_url: https://pbs.twimg.com/profile_images/488439165693231104/aYJROysr.jpeg
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/549202886253887488/iFw5zrSw.jpeg
   :twitter_banner_url: http://pbs.twimg.com/profile_banners/2569881/1397940683/web
 - name: Keith Smiley
   twitter_username: smileykeith
@@ -24,11 +24,11 @@
   cocoapods_bio: Picky about search.
   :twitter_profile_url: https://pbs.twimg.com/profile_images/455654999561752576/YBlwiW10.png
   :twitter_banner_url: http://pbs.twimg.com/profile_banners/1018421/1353384663/web
+- name: Marin Usalj
 - name: Andy Myers
   cocoapods_bio: Really doing the design.
   :twitter_profile_url: https://pbs.twimg.com/profile_images/415145378627862528/TDAPjav-.jpeg
   :twitter_banner_url: http://pbs.twimg.com/profile_banners/15503664/1387813885/web
-- name: Marin Usalj
   twitter_username: _supermarin
   cocoapods_bio: Breaking software.
   :twitter_profile_url: https://pbs.twimg.com/profile_images/515541292705529856/h3-14jxA.jpeg
@@ -61,11 +61,11 @@
 - name: Samuel Giddins
   twitter_username: segiddins
   cocoapods_bio: Patch Master.
-  :twitter_profile_url: https://pbs.twimg.com/profile_images/458733123996372993/CdZBz3qk.jpeg
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/553007992681922560/2iRdaq-v.jpeg
   :twitter_banner_url: http://pbs.twimg.com/profile_banners/73644377/1398205852/web
 - name: Olivier Halligon
   twitter_username: aligatr
-  cocoapods_bio: Guardian of consistency.
+  cocoapods_bio: Guardian of Consistency.
   :twitter_profile_url: https://pbs.twimg.com/profile_images/468031759213264897/unZTcR09.jpeg
   :twitter_banner_url: http://pbs.twimg.com/profile_banners/193277005/1400408751/web
 - name: Marius Rackwitz
