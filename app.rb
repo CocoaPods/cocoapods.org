@@ -40,57 +40,38 @@ class App < Sinatra::Base
   # Gets a Pod Page
   #
   get '/pod/:name' do
-    results = metrics.where(pods[:name] => params[:name]).first
-    
-    if results    
-      @pod_db = results.pod
-      @metrics = results.github_pod_metric
-      @cocoadocs = results.cocoadocs_pod_metric
-      @cloc = cocoadocs_cloc_metrics.where(pod_id: @pod_db.id)
-      
-      version = pod_versions.where(pod_id: @pod_db.id).first
-      commit = commits.where(pod_version_id: version.id).first
-      @pod = JSON.parse(commit.specification_data)
-      
-      uri = URI(@cocoadocs["rendered_readme_url"])
-      res = Net::HTTP.get_response(uri)
-      @readme_html = res.body if res.is_a?(Net::HTTPSuccess)
-      # @readme_html = File.read("/Users/orta/spiel/html/cocoadocs/activity/docsets/Realm/0.88.0/README.html")
-     
-      @content = slim :pod, :layout => false
-      slim :pod_page
-    else
-      halt 404
-    end
+    result = metrics.where(pods[:name] => params[:name]).first
+    halt 404 unless result
+
+    @content = pod_page_for_result result
+    slim :pod_page
   end
 
-  # TODO: DRY, lols.
-  #
   get '/pod/:name/inline' do
     response['Access-Control-Allow-Origin'] = '*'
     
-    results = metrics.where(pods[:name] => params[:name]).first
+    result = metrics.where(pods[:name] => params[:name]).first
+    halt 404 unless result
     
-    if results    
-      @pod_db = results.pod
-      @metrics = results.github_pod_metric
-      @cocoadocs = results.cocoadocs_pod_metric
-      @cloc = cocoadocs_cloc_metrics.where(pod_id: @pod_db.id)
-      
-      version = pod_versions.where(pod_id: @pod_db.id).first
-      commit = commits.where(pod_version_id: version.id).first
-      @pod = JSON.parse(commit.specification_data)
-      
-      uri = URI(@cocoadocs["rendered_readme_url"])
-      res = Net::HTTP.get_response(uri)
-      @readme_html = res.body if res.is_a?(Net::HTTPSuccess)
-      # @readme_html = File.read("/Users/orta/spiel/html/cocoadocs/activity/docsets/Realm/0.88.0/README.html")
-     
-      slim :pod, :layout => false
-    else
-      halt 404
-    end
+    pod_page_for_result result
+  end
+  
+  def pod_page_for_result result
+    @pod_db = result.pod
+    @metrics = result.github_pod_metric
+    @cocoadocs = result.cocoadocs_pod_metric
+    @cloc = cocoadocs_cloc_metrics.where(pod_id: @pod_db.id)
     
+    version = pod_versions.where(pod_id: @pod_db.id).first
+    commit = commits.where(pod_version_id: version.id).first
+    @pod = JSON.parse(commit.specification_data)
+    
+    # uri = URI(@cocoadocs["rendered_readme_url"])
+    # res = Net::HTTP.get_response(uri)
+    # @readme_html = res.body if res.is_a?(Net::HTTPSuccess)
+   
+    @readme_html = File.read "/Users/orta/spiel/html/Strata/cocoadocs.org/activity/readme/ORStackView/2.0.0/index.html"
+    slim :pod, :layout => false
   end
   
   

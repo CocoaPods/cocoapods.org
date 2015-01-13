@@ -7,6 +7,8 @@ css:
   .readme-content > nav {
     margin: -15px;
     padding:15px;
+    padding-top:12px;
+    margin-bottom:15px;
     background-color:whitesmoke;
     height: 48px;
   }
@@ -17,9 +19,15 @@ css:
     padding-left:0;
   }
   
+  #pod-page .readme-content ul.attribution {
+    margin-top:0px;
+  }
+  
   .readme-content ul.attribution {
     clear:both;
+    padding-left:0px;
   }
+  
   .readme-content ul.attribution li {
     display:inline-block;
     margin-right:12px;
@@ -28,9 +36,11 @@ css:
   nav li, .sideline li {
     list-style:none;
   }
+  
   nav {
     height: 32px;
   }
+  
   nav li {
     float:left;
   }
@@ -43,28 +53,36 @@ css:
   }
   
   li.metadata.initial-commit {
-    background: no-repeat url(/stylesheets/images/first_commit.svg);
+    background: no-repeat url(/stylesheets/svg/first_commit.svg);
   }
 
   li.metadata.stars {
-    background: no-repeat url(/stylesheets/images/stars.svg);
+    background: no-repeat url(/stylesheets/svg/stars.svg);
   }
 
   li.metadata.forks {
-    background: no-repeat url(/stylesheets/images/forks.svg);
+    background: no-repeat url(/stylesheets/svg/forks.svg);
   }
   
   li.metadata.watchers {
-    background: no-repeat url(/stylesheets/images/watchers.svg);
+    background: no-repeat url(/stylesheets/svg/watchers.svg);
   }
-  
   
   li.metadata.files {
-    background: no-repeat url(/stylesheets/images/files.svg);
+    background: no-repeat url(/stylesheets/svg/files.svg);
     margin-right:0;
-    
   }
-    
+  
+  li.github-link {
+    background: no-repeat url(/stylesheets/svg/github-cat.svg);
+    padding-left:36px;
+  }
+  
+  li.twitter {
+    background: no-repeat url(/stylesheets/svg/twitter.svg);
+    padding-left:20px;
+  }
+  
   .pod-metadata, .sideline, .readme-content {
     background-color:white;
   }
@@ -76,6 +94,7 @@ css:
   #pod-page .readme-content {
     border-right: 2px solid whitesmoke;
   }
+  
   .pod_result .readme-content {
     border-right: 2px solid #d1c4c0;
   }
@@ -92,106 +111,139 @@ css:
     font-size: 3em;
   }
   
-  #pod-page .pod-metadata h1 span {
-    color: whitesmoke;
+  #pod-page h1.inline-headline {
+    display:none;
   }
+  
+  .pod_result {
+    background-color:white;
+  }
+  
   .pod_result .pod-metadata h1 span {
     color: #d1c4c0;
   }
   
 
+ruby:
+  popover_html = "<h4 class='has-flash'>Copy to clipboard</h4><h4 class='no-flash'>For your <a href='http://guides.cocoapods.org/using/the-podfile.html'>Podfile</a></h4><pre><code>pod '{{ id }}', '{{ clipboard_version }}'</code></pre><input class='no-flash' value=\"pod '{{ id }}', '{{ clipboard_version }}'\" type=text>"
+  clipboard_text = "pod '{{ id }}', '{{ clipboard_version }}'"
+
+  has_tests = @cocoadocs["total_test_expectations"] > 5
+  tested_description = @cocoadocs["total_test_expectations"] > 20 ? "Tested" : "Well Tested"
+  has_docs = @cocoadocs["doc_percent"] > 20
+  docs_description = @cocoadocs["doc_percent"] > 70 ? "Documented" : "Well Documented"
+  
+
+/ "id","pod_id","download_size","total_files","total_comments","total_lines_of_code","doc_percent","readme_complexity","initial_commit_date","rendered_readme_url","not_found","created_at","updated_at","license_short_name","license_canonical_url","total_test_expectations"
+
 .pod_result
   div.pod-metadata.clearfix
-    div.readme-content.col-lg-9.col-sm-9.col-xs-12
-      h1 == @pod["name"] + " <span>" + @pod["version"] + "</span>"
-      ul.attribution
-        li By
-        li 
-          a href ="" Orta Therox
-        li.twitter
-          a href ="http://twitter.com/orta" Orta
-      
-      nav
-        ul
-          li 
-            img src="" style="width:30px; height:30px; background-color:red;"
-          li orta/ORStackView
+
+  div.sideline.col-sm-3.col-xs-12.col-sm-push-9
+    p = @pod["description"]
+    hr
+    table style="width:100%"
+      tbody
+        tr
+          td Documented
+          td = has_docs ? "✓":"✗"
+        tr
+          td = tested_description
+          td = has_tests ? "✓":"✗"
+        tr
+          td Language
+          td Obj-C
+        tr
+          td License
+          td
+            a href = @cocoadocs["license_canonical_url"] = @cocoadocs["license_short_name"]
+
+    hr
+
+    ul.links
+      li
+        a href="" See Podspec
+      li
+        a href="" Documentation
+      li
+        a href="" Homepage
+
+    hr
+
+    table style="width:100%"
+      tbody
+        tr
+          td Issues
+          td = @metrics["open_issues"]
+        tr
+          td Open PRs
+          td = @metrics["open_pull_requests"]
     
-          li.metadata.files = @cocoadocs.total_files
-          li.metadata.forks = @metrics.forks
-          li.metadata.watchers = @metrics.subscribers
-          li.metadata.stars = @metrics.stargazers
-          li.metadata.initial-commit = @cocoadocs.initial_commit_date
-      
-      == @readme_html
+        - if @pod["dependencies"] 
+          tr
+            td &nbsp;
+            td 
+          tr
+            td Depends on:
+            td 
+            
+          - @pod["dependencies"].each do |pod, dep|
+            td 
+              a href= "/pod/#{pod}" =pod
+            td = dep.first
 
-    div.sideline.col-lg-3.col-sm-3.col-xs-12
-      p = @pod["description"]
+    - if @pod["screenshots"]
       hr
-      table style="width:100%"
-        tbody
-          tr
-            td Documented
-            td ✓
-          tr
-            td Tested
-            td ✓
-          tr
-            td Language
-            td Obj-C
-          tr
-            td License
-            td
-               a href ="" MIT
+      ul.screenshots
+      - @pod["screenshots"].each do |screenshot|
+        img src="#{screenshot}"
 
-      hr
 
-      ul.links 
-        li 
-          a href="" See Podspec
-        li 
-          a href="" Documentation
-        li
-          a href="" Homepage
+  div.readme-content.col-sm-9.col-xs-12.col-sm-pull-3
+    h1.inline-headline == @pod["name"] + " <span>" + @pod["version"] + "</span>"
 
-    
-      - if @pod["screenshots"]
-        hr
-        ul.screenshots
-        - @pod["screenshots"].each do |screenshot|
-          img src="#{screenshot}"
-          
-/
-/   hr.col-lg-12.col-sm-12.col-xs-12
-/
-/
-/
-/ p
-/   | Contributors:
-/     = @metrics.contributors
-/
-/ p
-/   | Open issues:
-/   = @metrics.open_issues
-/ p
-/   | Open pull requests:
-/   = @metrics.open_pull_requests
-/
-/ p
-/   | Pod:
-/   = @pod
-/
-/ p
-/   | Metrics:
-/   = @metrics
-/
-/
-/ p
-/   | CocoaDocs:
-/   = @cocoadocs
-/
-/ p
-/   | CLOC:
-/   - @cloc.each do |cloc|
-/     p
-/       = cloc
+    / img.copy src="/images/copy-to-clipboard.png" data-clipboard-text=clipboard_text data-toggle="popover"  data-container="body" data-html="true"data-content=popover_html
+
+    ul.attribution
+      li By
+      li Orta Therox
+      li.twitter
+        a href ="http://twitter.com/orta" Orta
+
+    nav
+      ul
+        li.github-link
+           a href="http://github.com/orta/ORStackView" orta/ORStackView
+
+        li.metadata.files = @cocoadocs.total_files
+        li.metadata.forks = @metrics.forks
+        li.metadata.watchers = @metrics.subscribers
+        li.metadata.stars = @metrics.stargazers
+        li.metadata.initial-commit.hidden-sm.hidden-xs = @cocoadocs.initial_commit_date.strftime "%y/%m/%d"
+    .clearfix
+
+    == @readme_html
+
+  .clearfix
+
+  / .col-lg-12.col-sm-12.col-xs-12
+  /   code
+  /     pre
+  /       p
+  /         | Pod:
+  /         = @pod
+  /
+  /       p
+  /         | Metrics:
+  /         = @metrics
+  /
+  /
+  /       p
+  /         | CocoaDocs:
+  /         = @cocoadocs
+  /
+  /       p
+  /         | CLOC:
+  /         - @cloc.each do |cloc|
+  /           p
+  /             = cloc
