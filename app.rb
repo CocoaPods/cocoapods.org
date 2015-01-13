@@ -65,7 +65,7 @@ class App < Sinatra::Base
     @pod_db = result.pod
     @metrics = result.github_pod_metric
     @cocoadocs = result.cocoadocs_pod_metric
-    @cloc = cocoadocs_cloc_metrics.where(pod_id: @pod_db.id)
+    # @cloc = cocoadocs_cloc_metrics.where(pod_id: @pod_db.id)
     
     version = pod_versions.where(pod_id: @pod_db.id).first
     commit = commits.where(pod_version_id: version.id).first
