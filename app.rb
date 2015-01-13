@@ -41,6 +41,8 @@ class App < Sinatra::Base
   #
   get '/pod/:name' do
     result = metrics.where(pods[:name] => params[:name]).first
+    puts metrics.where(pods[:name] => params[:name]).to_sql
+    
     halt 404, "404" unless result
 
     @content = pod_page_for_result result
