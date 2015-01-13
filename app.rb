@@ -66,11 +66,11 @@ class App < Sinatra::Base
     commit = commits.where(pod_version_id: version.id).first
     @pod = JSON.parse(commit.specification_data)
     
-    # uri = URI(@cocoadocs["rendered_readme_url"])
-    # res = Net::HTTP.get_response(uri)
-    # @readme_html = res.body if res.is_a?(Net::HTTPSuccess)
+    uri = URI(@cocoadocs["rendered_readme_url"])
+    res = Net::HTTP.get_response(uri)
+    @readme_html = res.body if res.is_a?(Net::HTTPSuccess)
    
-    @readme_html = File.read "/Users/orta/spiel/html/Strata/cocoadocs.org/activity/readme/ORStackView/2.0.0/index.html"
+    # @readme_html = File.read "/Users/orta/spiel/html/Strata/cocoadocs.org/activity/readme/ORStackView/2.0.0/index.html"
     slim :pod, :layout => false
   end
   
