@@ -40,6 +40,8 @@ class App < Sinatra::Base
   # Gets a Pod Page
   #
   get '/pod/:name' do
+    STDOUT.sync = true
+    
     result = metrics.where(pods[:name] => params[:name]).first
     puts metrics.where(pods[:name] => params[:name]).to_sql
     
@@ -59,7 +61,6 @@ class App < Sinatra::Base
   end
   
   def pod_page_for_result result
-    STDOUT.sync = true
     
     @pod_db = result.pod
     @metrics = result.github_pod_metric
