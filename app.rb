@@ -41,7 +41,7 @@ class App < Sinatra::Base
   #
   get '/pod/:name' do
     result = metrics.where(pods[:name] => params[:name]).first
-    halt 404 unless result
+    halt 404, "404" unless result
 
     @content = pod_page_for_result result
     slim :pod_page
@@ -51,38 +51,31 @@ class App < Sinatra::Base
     response['Access-Control-Allow-Origin'] = '*'
     
     result = metrics.where(pods[:name] => params[:name]).first
-    halt 404 unless result
+    halt 404, "404" unless result
     
     pod_page_for_result result
   end
   
   def pod_page_for_result result
     STDOUT.sync = true
-    puts "1"
     
     @pod_db = result.pod
     @metrics = result.github_pod_metric
     @cocoadocs = result.cocoadocs_pod_metric
     @cloc = cocoadocs_cloc_metrics.where(pod_id: @pod_db.id)
-
-    puts "2"
     
     version = pod_versions.where(pod_id: @pod_db.id).first
     commit = commits.where(pod_version_id: version.id).first
     @pod = JSON.parse(commit.specification_data)
-
-    puts "3"
     
     if ENV['RACK_ENV'] == "development"
-      puts "3.11"
       @readme_html = File.read "/Users/orta/spiel/html/Strata/cocoadocs.org/activity/readme/ORStackView/2.0.0/index.html"
     else
-            puts "3.22"
       uri = URI(@cocoadocs["rendered_readme_url"])
       res = Net::HTTP.get_response(uri)
       @readme_html = res.body if res.is_a?(Net::HTTPSuccess)
     end
-    puts "4"
+    
     slim :pod, :layout => false
   end
   
