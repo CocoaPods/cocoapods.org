@@ -88,8 +88,9 @@ class App < Sinatra::Base
   #
   def metrics
     pods.join(:github_pod_metrics).on(:id => :pod_id)
-        .join(:cocoadocs_cloc_metrics).on(:id => :pod_id)
         .join(:cocoadocs_pod_metrics).on(:id => :pod_id)
+        # .join(:cocoadocs_cloc_metrics).on(:id => :pod_id)
+        
   end
   
   
