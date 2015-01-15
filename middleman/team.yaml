@@ -3,45 +3,17 @@
   twitter_username: 'alloy'
   cocoapods_bio: "Creator, maintainer, instigator, and gesticulator."
 
-- name: 'Fabio Pelosin'
-  twitter_username: 'fabiopelosin'
-  cocoapods_bio: "Programmer at Large."
-
 - name: 'orta'
   twitter_username: 'orta'
   cocoapods_bio: "Design Dictator."
-
-- name: 'Keith Smiley'
-  twitter_username: 'smileykeith'
-  cocoapods_bio: "Master of the Specs."
 
 - name: 'Florian Hanke'
   twitter_username: 'hanke'
   cocoapods_bio: "Picky about search."
 
-# - name: 'Andy Myers'
-#   twitter_username: 'andyrmyers'
-#   cocoapods_bio: "Really doing the design."
-
-- name: 'Marin Usalj'
-  twitter_username: '_supermarin'
-  cocoapods_bio: "Breaking software."
-
-- name: 'Michele Titolo'
-  twitter_username: 'micheletitolo'
-  cocoapods_bio: "Evangelist and CI Jedi Master."
-
 - name: 'Kyle Fuller'
   twitter_username: 'kylefuller'
   cocoapods_bio: "Perfectionist."
-
-- name: 'Joshua Kalpin'
-  twitter_username: 'joshkalpin'
-  cocoapods_bio: "Boss Bug Basher."
-
-- name: 'Delisa Mason'
-  twitter_username: 'kattrali'
-  cocoapods_bio: "Toolsmith lvl 99."
 
 - name: 'Boris Bügling'
   twitter_username: 'neonacho'

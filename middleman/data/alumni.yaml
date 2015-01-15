@@ -1,0 +1,31 @@
+---
+- name: Fabio Pelosin
+  twitter_username: fabiopelosin
+  cocoapods_bio: Programmer at Large.
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/510335730736852992/-QbAB8kd.jpeg
+  :twitter_banner_url: http://pbs.twimg.com/profile_banners/14257260/1386516577/web
+- name: Keith Smiley
+  twitter_username: smileykeith
+  cocoapods_bio: Master of the Specs.
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/506666166723416065/0H_wxP0l.jpeg
+  :twitter_banner_url: http://pbs.twimg.com/profile_banners/14429563/1401592562/web
+- name: Marin Usalj
+  twitter_username: _supermarin
+  cocoapods_bio: Breaking software.
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/515541292705529856/h3-14jxA.jpeg
+  :twitter_banner_url: http://pbs.twimg.com/profile_banners/259575244/1411755042/web
+- name: Michele Titolo
+  twitter_username: micheletitolo
+  cocoapods_bio: Evangelist and CI Jedi Master.
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/3105057496/8ee2de17e4675c336374f333a5cc6a96.png
+  :twitter_banner_url: http://pbs.twimg.com/profile_banners/113393517/1358892326/web
+- name: Joshua Kalpin
+  twitter_username: joshkalpin
+  cocoapods_bio: Boss Bug Basher.
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/497834054515838977/LUnZAQE8.jpeg
+  :twitter_banner_url: http://pbs.twimg.com/profile_banners/17796584/1376361936/web
+- name: Delisa Mason
+  twitter_username: kattrali
+  cocoapods_bio: Toolsmith lvl 99.
+  :twitter_profile_url: https://pbs.twimg.com/profile_images/542803639316664320/Jzcs814D.png
+  :twitter_banner_url: http://pbs.twimg.com/profile_banners/40614452/1386607496/web
