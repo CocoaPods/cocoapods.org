@@ -1,10 +1,17 @@
 .about-section {
   min-height: 400px;
-  
+
   h1, h2, h3, h4 {
     font-weight:normal;
   }
 }
+
+@media (max-width: 768px) {
+  .about-section {
+    min-height: 0px;
+  }
+}
+
 
 section.title {
   h1 {
@@ -23,7 +30,7 @@ section.podfile {
   .podfile {
       margin-left:-1%;
   }
-  
+
   h4 {
     margin-left: 2.4em;
     color: #D2C5C1;
@@ -84,12 +91,35 @@ section.access {
 section.integration {
   color: #F6F6F6;
   background: #838383;
-  background: url(/images/xcode.svg) #838383 no-repeat right -300px top 30px;      
-  
-  @media (max-width: 767px){
-    background-image:none;      
-    
+  background: url(/images/xcode.svg) #838383 no-repeat right -300px top 30px;
+
+  .tiny-info {
+    display:none;
   }
+  .normal-info {
+    display:block;
+  }
+
+  @media (max-width: 767px){
+    background-position:right -500px top 30px;
+    min-height:400px;
+  }
+
+  @media (max-width: 550px){
+    background-position:right -500px top 30px;
+    min-height:400px;
+
+    padding-top:80px;
+
+    .tiny-info {
+      display:block;
+      padding-bottom:20px;
+    }
+    .normal-info {
+      display:none;
+    }
+  }
+
 
   @media (min-width: 992px) {
     h3 {
@@ -103,7 +133,7 @@ section.integration {
 }
 
 section.developers {
-  background: url(/images/about-dots.svg) white no-repeat right 500px center;  
+  background: url(/images/about-dots.svg) white no-repeat right 500px center;
 
   @media (min-width: 992px) {
     h3 {
@@ -155,19 +185,50 @@ section.getting-it {
     }
   }
 
-  @media (min-width: 992px) {
-    article.row {
-      padding-bottom: 0;
-    }
 
+  .cocoapods-app,
+  .terminal {
+    padding: 2em 4.5em 0;
+    height: 320px;
+  }
+
+  .terminal {
+    background: url(<%= asset_data_uri "unix.png" %>) no-repeat 50% top;
+    background-size: 452px 320px;
+    min-width:452px;
+
+    a {
+      color:#F6F6F6;
+      text-decoration:underline;
+    }
+  }
+
+  article.row {
+    padding-bottom: 0;
+  }
+
+
+  .one-column {
+    display:none;
+  }
+  .two-column {
+    display:block;
+  }
+
+  @media (max-width: 992px){
+
+    .one-column {
+      display:block;
+    }
+    .two-column {
+      display:none;
+    }
+  }
+
+
+  @media (min-width: 992px) {
     h2 {
       margin-bottom: 1em;
-    }
-
-    .cocoapods-app,
-    .terminal {
-      padding: 2em 4.5em 0;
-      height: 320px;
     }
 
     .cocoapods-app {
@@ -175,14 +236,10 @@ section.getting-it {
       background-size: 452px 320px;
     }
 
-    .terminal {
-      background: url(<%= asset_data_uri "unix.png" %>) no-repeat 50% top;
-      background-size: 452px 320px;
-    }
   }
 
   @media (min-width: 768px) {
-    .terminal p {
+    .terminal p:first {
       margin-bottom: 10.7em;
     }
 
@@ -190,6 +247,20 @@ section.getting-it {
       font-size: .9em;
     }
   }
+
+  @media (max-width: 600px) {
+    .terminal {
+      margin-left:auto;
+      margin-right:auto;
+      width:320px;
+      float:none;
+    }
+
+    p {
+      font-size: .9em;
+    }
+  }
+
 }
 
 section.developers h3,
@@ -216,7 +287,7 @@ section.community h2 {
     position: relative;
 
     .background {
-      background-color: grey;
+      background-color: gray;
       background-size: cover;
       background-position: center center;
       width: 100%;
@@ -283,7 +354,7 @@ section.community h2 {
 }
 
 .alumni {
-  
+
   li {
     list-style:none;
     padding-left:0;

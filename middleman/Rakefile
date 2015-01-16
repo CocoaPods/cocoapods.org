@@ -58,7 +58,7 @@ task :generate_team do
       yaml_data << member
     end
     
-    if team == "alumni"
+    if team_name == "alumni"
       yaml_data << {
         name: "Andy Myers",
         cocoapods_bio: "Really doing the design.",
