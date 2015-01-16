@@ -355,8 +355,43 @@ section.community h2 {
 
 .alumni {
 
-  li {
+   div {
     list-style:none;
     padding-left:0;
+    margin-bottom:5px;
+
+    .background {
+      height: 150px;
+      padding:20px;
+      position:relative;
+    }
+
+    img.twitter_avatar {
+      width:64px;
+      height:64px;
+      border: 2px solid white;
+      border-radius: 10%;
+      -moz-border-radius: 10%;
+      -webkit-border-radius: 10%;
+    }
+
+    p, h3 {
+      padding:0;
+      margin:0;
+      color:white;
+      font-weight:normal;
+      text-shadow: 1px 1px 40px black;
+    }
+
+    p {
+      margin-top:6px;
+    }
+
+    a.twitter-follow-button, iframe {
+      position:absolute;
+      bottom:20px;
+      right:20px;
+    }
   }
+
 }

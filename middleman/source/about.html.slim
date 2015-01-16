@@ -3,7 +3,7 @@
 section.title.container.about-section
   article.row
     .col-lg-7.col-sm-12.col-xs-10
-      h1 Get on with building your App, not duplicating code.
+      h1 Get on with building your app, not duplicating code.
 
 #content-wrapper
   section.podfile.container.about-section
@@ -15,8 +15,9 @@ section.title.container.about-section
         markdown:
           Create a Podfile describing the code you'd like to pull in. Run `pod install` and get the same versions as everyone else in your team.
 
-        markdown:
           CocoaPods makes updating a single dependency easy via `pod update FLKAutoLayout` or updating all of them with just `pod update`.
+
+          You can use your code or Open Source
 
       .col-lg-6.col-md-6.col-sm-6.podfile
         .line-numbers-border
@@ -133,7 +134,7 @@ section.title.container.about-section
           p The CocoaPods search sorts libraries on the homepage so the <a href="http://cocoapods.org/?q=a">most popular</a> rise to the top.
 
         .col-sm-3.col-xs-12
-          h3 Document
+          h3 Documented
 
           p We take our documentation seriously.
 
@@ -204,16 +205,24 @@ section.title.container.about-section
       .col-lg-12
         h2 Big Thanks to our Alumni, too
 
-        ul
-          - for alumn in data.alumni do
 
-            - if data.alumni.index(alumn) % 3 == 0
-              .clearfix.visible-xs
+        - for alumn in data.alumni do
 
-            li.col-sm-2.col-xs-4
-              a href="http://www.twitter.com/#{alumn.twitter_username}"
-                img src="#{alumn.twitter_profile_url}" width="48" height="48"
-                p = alumn.name
+          .col-lg-4.col-sm-6.col-xs-8.col-xs-offset-2.col-sm-offset-0
+            .background style="background-image:url(#{alumn.twitter_banner_url})"
+
+              a.col-xs-4 href="https://twitter.com/#{alumn.twitter_username}"
+                img.twitter_avatar src=alumn.twitter_profile_url
+
+              .namage.col-xs-8
+                h3 = alumn.name
+
+                p = alumn.cocoapods_bio
+
+              - if alumn.twitter_username
+                a href="https://twitter.com/#{alumn.twitter_username}" class="twitter-follow-button" data-show-count="false" data-lang="en" = "Follow @#{alumn.twitter_username}"
+
+
 
 
   section.community.container

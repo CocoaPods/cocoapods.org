@@ -15,18 +15,18 @@
   twitter_username: 'kylefuller'
   cocoapods_bio: "Perfectionist."
 
-- name: 'Boris Bügling'
-  twitter_username: 'neonacho'
-  cocoapods_bio: "Triagemaster General."
-
 - name: 'Samuel Giddins'
   twitter_username: 'segiddins'
   cocoapods_bio: "Patch Master."
 
-- name: 'Olivier Halligon'
-  twitter_username: 'aligatr'
-  cocoapods_bio: "Guardian of Consistency."
-
 - name: 'Marius Rackwitz'
   twitter_username: 'mrackwitz'
   cocoapods_bio: 'Swift Pioneer.'
+
+- name: 'Boris Bügling'
+  twitter_username: 'neonacho'
+  cocoapods_bio: "Triagemaster General."
+
+- name: 'Olivier Halligon'
+  twitter_username: 'aligatr'
+  cocoapods_bio: "Guardian of Consistency."
