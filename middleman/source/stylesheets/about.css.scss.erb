@@ -151,6 +151,10 @@ section.getting-it {
     text-align: left;
   }
 
+  @media (max-width: 680px) {
+    display:none;
+  }
+
   .terminal p {
     font-family: "Menlo", "Courier", "Helvetica Neue", "Arial";
     font-size: .8em;
@@ -195,7 +199,7 @@ section.getting-it {
   .terminal {
     background: url(<%= asset_data_uri "unix.png" %>) no-repeat 50% top;
     background-size: 452px 320px;
-    min-width:452px;
+    min-width:320px;
 
     a {
       color:#F6F6F6;
@@ -360,8 +364,14 @@ section.community h2 {
     padding-left:0;
     margin-bottom:5px;
 
+    @media (min-width: 768px) {
+      margin-left:auto;
+      margin-right:auto;
+    }
+
     .background {
       height: 150px;
+      max-width:520px;
       padding:20px;
       position:relative;
     }
@@ -369,6 +379,8 @@ section.community h2 {
     img.twitter_avatar {
       width:64px;
       height:64px;
+      min-width:64px;
+
       border: 2px solid white;
       border-radius: 10%;
       -moz-border-radius: 10%;
