@@ -186,7 +186,7 @@ section.title.container.about-section
         - if data.team.index(dev) % 3 == 0
           .clearfix.hidden-xs
 
-        .col-lg-4.col-sm-4.col-xs-6.dev-team
+        .col-lg-4.col-sm-4.col-xs-12.dev-team
           .card
             .background style="background-image:url(#{dev.twitter_banner_url})"
 
@@ -206,21 +206,21 @@ section.title.container.about-section
         h2 Big Thanks to our Alumni, too
 
 
-        - for alumn in data.alumni do
+      - for alumn in data.alumni do
 
-          .col-lg-4.col-sm-6.col-xs-10.col-xs-offset-1.col-sm-offset-0
-            .background style="background-image:url(#{alumn.twitter_banner_url})"
+        .col-lg-4.col-sm-6.col-xs-12.alum
+          .background style="background-image:url(#{alumn.twitter_banner_url})"
 
-              a.col-xs-4 href="https://twitter.com/#{alumn.twitter_username}"
-                img.twitter_avatar src=alumn.twitter_profile_url
+            a.col-xs-4 href="https://twitter.com/#{alumn.twitter_username}"
+              img.twitter_avatar src=alumn.twitter_profile_url
 
-              .namage.col-xs-8
-                h3 = alumn.name
+            .namage.col-xs-8
+              h3 = alumn.name
 
-                p = alumn.cocoapods_bio
+              p = alumn.cocoapods_bio
 
-              - if alumn.twitter_username
-                a href="https://twitter.com/#{alumn.twitter_username}" class="twitter-follow-button" data-show-count="false" data-lang="en" = "Follow @#{alumn.twitter_username}"
+            - if alumn.twitter_username
+              a href="https://twitter.com/#{alumn.twitter_username}" class="twitter-follow-button" data-show-count="false" data-lang="en" = "Follow @#{alumn.twitter_username}"
 
 
 

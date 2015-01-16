@@ -46,6 +46,10 @@ section.podfile {
     position: absolute;
     height: 105%;
     width: 1px;
+
+    @media (max-width: 320px) {
+      margin-left: 1.3em;
+    }
   }
 
   pre {
@@ -55,7 +59,13 @@ section.podfile {
     word-spacing: normal;
     word-break: normal;
     word-wrap: normal;
+
+    @media (max-width: 320px) {
+      font-size:0.5em;
+    }
+
   }
+
 
   pre .line-numbers {
     color: #D2C5C1;
@@ -119,6 +129,11 @@ section.integration {
       display:none;
     }
   }
+
+  @media (max-width: 320px) {
+    background-position:right -600px top 30px;
+  }
+
 
 
   @media (min-width: 992px) {
