@@ -147,7 +147,7 @@ $(window).ready(function() {
     result = $(result)
     result.addClass("loading")
     $.ajax({
-      url: "http://localhost:3000/pod/" + result.data("pod-name") + "/inline",
+      url: "/pod/" + result.data("pod-name") + "/inline",
       dataType: "html"
     }).done(function(html) {
       result.addClass("is-expanded")
@@ -155,7 +155,7 @@ $(window).ready(function() {
       
       $(result, ".expanded .content")[0].innerHTML = html
 
-    }).fail(function() {
+    }).fail(function() {r
       result.removeClass("loading")
     });
     
