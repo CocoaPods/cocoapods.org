@@ -29,7 +29,6 @@ task :generate do
 end
 
 task :generate_team do
-  yaml_data = []
 
   # This is for an account @123123wqeqweqqwe
   # so I'm not worried if people try break in.
@@ -44,20 +43,34 @@ task :generate_team do
     config.access_token_secret = "jcjML9tG93Nh76IyxzesejOXIostnbfri7iyDPlk6hCU5"
   end
 
-  team = YAML.load_file('team.yaml')
-  team.each do |member|
-    puts("Getting #{ member["twitter_username"] }")
+  ["team", "alumni"].each do |team_name|
+    yaml_data = []
+    
+    team = YAML.load_file(team_name + '.yaml')
+    team.each do |member|
+      next if member["twitter_username"] == "andyrmyers"
+      puts("Getting #{ member["twitter_username"] }")
+      
+      twitter_user = client.user member["twitter_username"]
+      member[:twitter_profile_url] = twitter_user.profile_image_uri_https.to_s.gsub("_normal", "")
+      member[:twitter_banner_url] = twitter_user.profile_banner_uri.to_s
 
-    twitter_user = client.user member["twitter_username"]
+      yaml_data << member
+    end
+    
+    if team_name == "alumni"
+      yaml_data << {
+        name: "Andy Myers",
+        cocoapods_bio: "Really doing the design.",
+        twitter_profile_url: "https://pbs.twimg.com/profile_images/415145378627862528/TDAPjav-.jpeg",
+        twitter_banner_url: "http://pbs.twimg.com/profile_banners/15503664/1387813885/web"
+      }
+    end
 
-    member[:twitter_profile_url] = twitter_user.profile_image_uri_https.to_s.gsub("_normal", "")
-    member[:twitter_banner_url] = twitter_user.profile_banner_uri.to_s
-
-    yaml_data << member
-  end
-
-  File.open("data/dev_team.yaml", "w") do |out|
-    YAML.dump(yaml_data, out)
+    File.open("data/#{ team_name }.yaml", "w") do |out|
+      YAML.dump(yaml_data, out)
+    end
+    
   end
 end
 
