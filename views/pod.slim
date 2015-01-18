@@ -80,7 +80,7 @@ css:
   
   li.twitter {
     background: no-repeat url(/stylesheets/svg/twitter.svg);
-    padding-left:20px;
+    padding-left:28px;
   }
   
   .pod-metadata, .sideline, .readme-content {
@@ -132,7 +132,11 @@ ruby:
   tested_description = @cocoadocs["total_test_expectations"] > 20 ? "Tested" : "Well Tested"
   has_docs = @cocoadocs["doc_percent"] > 20
   docs_description = @cocoadocs["doc_percent"] > 70 ? "Documented" : "Well Documented"
-  
+  lang_small = @metrics["language"] == "Objective-C" ? "Obj-C" : @metrics["language"]
+  version = "2.0.0"
+  cocoadocs_url = @pod["documentation_url"] ? @pod["documentation_url"] : "http://cocoadocs.org/docsets/#{ @pod["name"] }"
+  podspec_url = "https://github.com/CocoaPods/Specs/blob/master/Specs/#{ @pod["name"] }/#{ version }/#{ @pod["name"] }.podspec.json"
+  homepage = @pod["homepage"]
 
 / "id","pod_id","download_size","total_files","total_comments","total_lines_of_code","doc_percent","readme_complexity","initial_commit_date","rendered_readme_url","not_found","created_at","updated_at","license_short_name","license_canonical_url","total_test_expectations"
 
@@ -152,7 +156,9 @@ ruby:
           td = has_tests ? "✓":"✗"
         tr
           td Language
-          td Obj-C
+          td 
+            span.hidden-lg-span = lang_small
+            span.visible-lg-span = @metrics["language"]
         tr
           td License
           td
@@ -162,11 +168,13 @@ ruby:
 
     ul.links
       li
-        a href="" See Podspec
+        a href=podspec_url See Podspec
       li
-        a href="" Documentation
-      li
-        a href="" Homepage
+        a href=cocoadocs_url Documentation
+
+      - if homepage
+        li
+          a href="#{homepage}" Homepage
 
     hr
 
@@ -225,25 +233,3 @@ ruby:
     == @readme_html
 
   .clearfix
-
-  / .col-lg-12.col-sm-12.col-xs-12
-  /   code
-  /     pre
-  /       p
-  /         | Pod:
-  /         = @pod
-  /
-  /       p
-  /         | Metrics:
-  /         = @metrics
-  /
-  /
-  /       p
-  /         | CocoaDocs:
-  /         = @cocoadocs
-  /
-  /       p
-  /         | CLOC:
-  /         - @cloc.each do |cloc|
-  /           p
-  /             = cloc

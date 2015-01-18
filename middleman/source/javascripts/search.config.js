@@ -144,12 +144,19 @@ $(window).ready(function() {
   // Tracking category/categories selection.
   //
   var expandSearchResult = function(result) {
+    result = $(result)
+    result.addClass("loading")
     $.ajax({
-      url: "/pod/" + "ORStackView" + "/inline",
+      url: "http://localhost:3000/pod/" + result.data("pod-name") + "/inline",
       dataType: "html"
     }).done(function(html) {
-      $(result).addClass("is-expanded")
+      result.addClass("is-expanded")
+      result.removeClass("loading")
+      
       $(result, ".expanded .content")[0].innerHTML = html
+
+    }).fail(function() {
+      result.removeClass("loading")
     });
     
   }
@@ -437,10 +444,11 @@ $(window).ready(function() {
       });
       
       $('ol.results li').on('click', function(event) {
-        var parent = $(event.target).parents("li")
-        console.log("event: ", parent)
-        console.log("target: ", parent)
-        expandSearchResult(parent)
+        var target = $(event.target)
+        if (target.is("li.result") == false) {
+          target = $(event.target).parents("li")
+        }
+        expandSearchResult(target)
         event.stopPropagation()
         return false
       });
@@ -607,7 +615,6 @@ $(window).ready(function() {
   var openSelection = function(){
     var selected = $('ol.results li.result.selected').first();
     if (selected.length > 0) {
-      console.log("OK")
       expandSearchResult(selected)
     }
   }
@@ -615,15 +622,7 @@ $(window).ready(function() {
   // Install keyboard handling.
   //
   $('body').keydown(function(event) {
-    console.log(event.keyCode)
-    switch (event.keyCode) {
-      // Alt
-      //
-      case 18:
-        var selected = $('ol.results li').first()[0];
-        expandSearchResult(selected)
-        break;
-      
+      switch (event.keyCode) {
       // Down
       //
       case 40:

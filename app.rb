@@ -42,9 +42,7 @@ class App < Sinatra::Base
   get '/pod/:name' do
     STDOUT.sync = true
     
-    result = metrics.where(pods[:name] => params[:name]).first
-    puts metrics.where(pods[:name] => params[:name]).to_sql
-    
+    result = metrics.where(pods[:name] => params[:name]).first    
     halt 404, "404" unless result
 
     @content = pod_page_for_result result
@@ -68,16 +66,39 @@ class App < Sinatra::Base
     # @cloc = cocoadocs_cloc_metrics.where(pod_id: @pod_db.id)
     
     version = pod_versions.where(pod_id: @pod_db.id).first
+
+    # use this, somehow:
+    <<-eos
+    
+    select id,
+           name,
+           v[1] as major_version,
+           v[2] as minor_version,
+           v[3] as patch_level
+    from (
+       select id, 
+              name, 
+              string_to_array(name, '.') as v
+       from pod_versions
+    ) t
+    order by
+        CASE WHEN v[1]~E'^\\d+$' THEN v[1]::int ELSE 0 END desc,
+        CASE WHEN v[2]~E'^\\d+$' THEN v[2]::int ELSE 0 END desc,
+        CASE WHEN v[3]~E'^\\d+$' THEN v[3]::int ELSE 0 END desc;
+    
+    eos
+    
     commit = commits.where(pod_version_id: version.id).first
     @pod = JSON.parse(commit.specification_data)
     
-    if ENV['RACK_ENV'] == "development"
-      @readme_html = File.read "/Users/orta/spiel/html/Strata/cocoadocs.org/activity/readme/ORStackView/2.0.0/index.html"
-    else
+
+    # if ENV['RACK_ENV'] == "development"
+    #   @readme_html = File.read "/Users/orta/spiel/html/Strata/cocoadocs.org/activity/readme/ORStackView/2.0.0/index.html"
+    # else
       uri = URI(@cocoadocs["rendered_readme_url"])
       res = Net::HTTP.get_response(uri)
       @readme_html = res.body if res.is_a?(Net::HTTPSuccess)
-    end
+    # end
     
     slim :pod, :layout => false
   end
@@ -89,8 +110,6 @@ class App < Sinatra::Base
   def metrics
     pods.join(:github_pod_metrics).on(:id => :pod_id)
         .join(:cocoadocs_pod_metrics).on(:id => :pod_id)
-        # .join(:cocoadocs_cloc_metrics).on(:id => :pod_id)
-        
   end
   
   
