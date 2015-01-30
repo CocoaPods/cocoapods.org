@@ -213,9 +213,9 @@ $(window).ready(function() {
 
     // render with ICanHaz, see _search-templates
     if (entry.cocoadocs) {
-      return ich.search_result(entry, true)
+      return ich.expandable_search_result(entry, true)  
     } else {
-      return ich.search_result(entry, true)  
+      return ich.search_result(entry, true)
     }
       
   };
