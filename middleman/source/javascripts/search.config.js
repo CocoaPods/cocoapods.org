@@ -212,7 +212,12 @@ $(window).ready(function() {
     }
 
     // render with ICanHaz, see _search-templates
-    return ich.search_result(entry, true)
+    if (entry.cocoadocs) {
+      return ich.search_result(entry, true)
+    } else {
+      return ich.search_result(entry, true)  
+    }
+      
   };
 
   // We remember the most recent queries.
