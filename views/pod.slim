@@ -3,7 +3,7 @@ css:
   .readme-content {
     padding-top:15px;
   }
-  
+
   .readme-content > nav {
     margin: -15px;
     padding:15px;
@@ -18,40 +18,40 @@ css:
   .readme-content > nav ul, .pod_result ul.links {
     padding-left:0;
   }
-  
+
   #pod-page .readme-content ul.attribution {
     margin-top:0px;
   }
-  
+
   .readme-content ul.attribution {
     clear:both;
     padding-left:0px;
   }
-  
+
   .readme-content ul.attribution li {
     display:inline-block;
     margin-right:12px;
   }
-  
+
   nav li, .sideline li {
     list-style:none;
   }
-  
+
   nav {
     height: 32px;
   }
-  
+
   nav li {
     float:left;
   }
-  
+
   nav li.metadata {
     float:right;
     padding-left:28px;
     margin-right:20px;
     background-position: top left;
   }
-  
+
   li.metadata.initial-commit {
     background: no-repeat url(/stylesheets/svg/first_commit.svg);
   }
@@ -63,46 +63,46 @@ css:
   li.metadata.forks {
     background: no-repeat url(/stylesheets/svg/forks.svg);
   }
-  
+
   li.metadata.watchers {
     background: no-repeat url(/stylesheets/svg/watchers.svg);
   }
-  
+
   li.metadata.files {
     background: no-repeat url(/stylesheets/svg/files.svg);
     margin-right:0;
   }
-  
+
   li.github-link {
     background: no-repeat url(/stylesheets/svg/github-cat.svg);
     padding-left:36px;
   }
-  
+
   li.twitter {
     background: no-repeat url(/stylesheets/svg/twitter.svg);
     padding-left:28px;
   }
-  
+
   .pod-metadata, .sideline, .readme-content {
     background-color:white;
   }
-  
+
   .readme-content {
     border-right: 2px solid black;
   }
-  
+
   #pod-page .readme-content {
     border-right: 2px solid whitesmoke;
   }
-  
+
   .pod_result .readme-content {
     border-right: 2px solid #d1c4c0;
   }
-  
+
   .sideline tr td:last-child {
     text-align:right;
   }
-  
+
   .pod-metadata h1 {
     color: #fb0006;
     font-weight:normal;
@@ -110,19 +110,19 @@ css:
     height: 1.2em;
     font-size: 3em;
   }
-  
+
   #pod-page h1.inline-headline {
     display:none;
   }
-  
+
   .pod_result {
     background-color:white;
   }
-  
+
   .pod_result .pod-metadata h1 span {
     color: #d1c4c0;
   }
-  
+
 
 ruby:
   popover_html = "<h4 class='has-flash'>Copy to clipboard</h4><h4 class='no-flash'>For your <a href='http://guides.cocoapods.org/using/the-podfile.html'>Podfile</a></h4><pre><code>pod '{{ id }}', '{{ clipboard_version }}'</code></pre><input class='no-flash' value=\"pod '{{ id }}', '{{ clipboard_version }}'\" type=text>"
@@ -156,7 +156,7 @@ ruby:
           td = has_tests ? "✓":"✗"
         tr
           td Language
-          td 
+          td
             span.hidden-lg-span = lang_small
             span.visible-lg-span = @metrics["language"]
         tr
@@ -186,17 +186,17 @@ ruby:
         tr
           td Open PRs
           td = @metrics["open_pull_requests"]
-    
-        - if @pod["dependencies"] 
+
+        - if @pod["dependencies"]
           tr
             td &nbsp;
-            td 
+            td
           tr
             td Depends on:
-            td 
-            
+            td
+
           - @pod["dependencies"].each do |pod, dep|
-            td 
+            td
               a href= "/pod/#{pod}" =pod
             td = dep.first
 

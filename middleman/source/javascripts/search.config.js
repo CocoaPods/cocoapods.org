@@ -3,10 +3,10 @@ $(window).ready(function() {
   //
   var domain = 'http://search.cocoapods.org';
   // var domain = 'http://localhost:8080';
-  
+
   var searchURL = domain + '/api/v1/pods.picky.hash.json';
   var noResultsURL = domain + '/no_results.json';
-  
+
   var onMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
   var searchInput = $('#search input[type="search"]');
@@ -146,19 +146,20 @@ $(window).ready(function() {
   var expandSearchResult = function(result) {
     result = $(result)
     result.addClass("loading")
+
     $.ajax({
-      url: "/pod/" + result.data("pod-name") + "/inline",
+      url: "/pods/" + result.data("pod-name") + "/inline",
       dataType: "html"
     }).done(function(html) {
       result.addClass("is-expanded")
       result.removeClass("loading")
-      
+
       $(result, ".expanded .content")[0].innerHTML = html
 
     }).fail(function() {r
       result.removeClass("loading")
     });
-    
+
   }
 
 
@@ -213,11 +214,11 @@ $(window).ready(function() {
 
     // render with ICanHaz, see _search-templates
     if (entry.cocoadocs) {
-      return ich.expandable_search_result(entry, true)  
+      return ich.expandable_search_result(entry, true)
     } else {
       return ich.search_result(entry, true)
     }
-      
+
   };
 
   // We remember the most recent queries.
@@ -318,14 +319,14 @@ $(window).ready(function() {
       if (platformModifier !== undefined && platformModifier != '') {
         query = platformModifier + ' ' + query;
       }
-      
+
       // We remember the query if it hasn't just run.
       //
       if (!addMostRecentQuery(query)) {
         // It wasn't added (we just sent it off), so stop the query.
         return;
       }
-      
+
       return query;
     },
     success: function(data, query) {
@@ -340,7 +341,7 @@ $(window).ready(function() {
         resetSearchInterface();
         return false;
       }
-      
+
       // If a newer query has already been
       // shown, then do not show this query.
       //
@@ -447,7 +448,7 @@ $(window).ready(function() {
       $('ol.results').find('a').on('click', function(event) {
         trackResultLinkSelection(event.currentTarget.href);
       });
-      
+
       $('ol.results li').on('click', function(event) {
         var target = $(event.target)
         if (target.is("li.result") == false) {
@@ -457,7 +458,7 @@ $(window).ready(function() {
         event.stopPropagation()
         return false
       });
-      
+
     },
 
     // This is used to generate the correct query strings, localized. E.g. "subject:war".
