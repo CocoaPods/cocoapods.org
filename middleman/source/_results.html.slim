@@ -1,4 +1,25 @@
-#search_results.col-lg-10.col-sm-12.col-xs-10.col-lg-offset-1.col-sm-offset-0.col-xs-offset-1
+css:
+  ol.results {
+    -webkit-column-count: 2;
+    -webkit-column-gap: 10px;
+    -webkit-column-fill: auto;
+    -moz-column-count: 32;
+    -moz-column-gap: 10px;
+    -moz-column-fill: auto;
+    column-count: 2;
+    column-gap: 15px;
+    column-fill: auto;
+  }
+  #results_container ol.results li.result {
+    margin-bottom:10px;
+    display: inline-block;
+    width:100%;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+#search_results.col-lg-102.col-sm-12.col-xs-10.col-sm-offset-0.col-xs-offset-1
   .selection
     .platform
       input value="" type="radio" id="platform_either" name="platform" checked==(!@platform || @platform == :either)
@@ -9,15 +30,15 @@
       label class="middle" for="platform_ios" <span>iOS</span>
       input value="on:osx" type="radio" id="platform_osx" name="platform" checked==(@platform == :osx)
       label class="right" for="platform_osx" <span>OSX</span>
-  
+
     .allocations
       ol.shown
       ol.more style="display:none"
         li load more
       ol.onrequest
-  
+
   .results
-  
+
   .no_results style="display:none"
     .apology Sorry. No pods found.
     .splits
