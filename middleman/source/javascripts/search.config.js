@@ -157,7 +157,7 @@ $(window).ready(function() {
 
       value = source[key];
       if (!value) {
-        console.log 'The following entry did not contain a source: ' + entry
+        console.log('The following entry did not contain a source: ' + entry.id);
       }
       if (value && value.toString().match(goodSource)) { link = value; break; }
     }
