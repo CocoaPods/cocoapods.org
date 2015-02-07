@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.1.3'
 
 gem 'sinatra'
+gem 'cocoapods-core'
 gem 'flounder', require: true
 gem 'rake', require: true
 gem 'dm-core', require: true

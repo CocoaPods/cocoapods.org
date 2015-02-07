@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'json'
 require 'slim'
 require 'net/http'
+require 'cocoapods-core'
 
 class App < Sinatra::Base
 
@@ -65,28 +66,10 @@ class App < Sinatra::Base
     @cocoadocs = result.cocoadocs_pod_metric
     # @cloc = cocoadocs_cloc_metrics.where(pod_id: @pod_db.id)
 
-    version = pod_versions.where(pod_id: @pod_db.id).first
-
-    # use this, somehow:
-    <<-eos
-
-    select id,
-           name,
-           v[1] as major_version,
-           v[2] as minor_version,
-           v[3] as patch_level
-    from (
-       select id,
-              name,
-              string_to_array(name, '.') as v
-       from pod_versions
-    ) t
-    order by
-        CASE WHEN v[1]~E'^\\d+$' THEN v[1]::int ELSE 0 END desc,
-        CASE WHEN v[2]~E'^\\d+$' THEN v[2]::int ELSE 0 END desc,
-        CASE WHEN v[3]~E'^\\d+$' THEN v[3]::int ELSE 0 END desc;
-
-    eos
+    version = pod_versions
+                .where(pod_id: @pod_db.id)
+                .sort_by { |v| Pod::Version.new(v.name) }
+                .last
 
     commit = commits.where(pod_version_id: version.id).first
     @pod = JSON.parse(commit.specification_data)
