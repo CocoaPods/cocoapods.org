@@ -1,3 +1,8 @@
+css:
+  table {
+    
+  }
+
 #content-wrapper
   .homepage_container.container
 
@@ -8,7 +13,18 @@
         <div class="header-horizontal-divider"><div class="index-arrow-down"></div><div class="index-enclosed-arrow-down"></div></div>
 
         markdown:
+        
+          We're participating in [Google's Summer of Code 2015](https://www.google-melange.com/gsoc/homepage/google/gsoc2015). This is a great chance to work on Open Source and to get paid doing it!
+        
+        - for project in data.summer_of_code_projects do
+
+          h3 = project.project_name
+          p = project.project_bio
           
-          ### TBD
-          
-          Being wrote up right now.
+          table
+          - for subproject in project.projects
+            tr
+              td = subproject.repos
+              td = subproject.title
+              td 
+                a href="#{subproject.issue_url}" = subproject.issue_url.split("github.com/")[-1]
