@@ -1,6 +1,6 @@
 ---
 - project_name: COCOAPODS
-  project_bio: Working on the CocoaPods ruby gem means affecting hundreds of thousands of apps. You can build features that people have been asking about for a long time, or fix
+  project_bio: Working on the CocoaPods ruby gem means affecting hundreds of thousands of apps. You can build features that people have been asking about for a long time, or fix long standing issues.
 
   projects:
     - repos: CocoaPods / Core
@@ -9,9 +9,14 @@
       description: Add support for Xcode projects to a Podspec.
 
     - repos: CocoaPods / Core
-      title: Xcode Projects as a target
-      issue_url: https://github.com/CocoaPods/CocoaPods/issues/1024
-      description: Add support for Xcode projects to a Podspec.
+      title: CocoaPods Download Cache
+      issue_url: https://github.com/CocoaPods/CocoaPods/issues/2863
+      description: Add support for caching a Podspec
+
+    - repos: CocoaPods / Core
+      title: Split CocoaPods into plugins
+      issue_url: https://github.com/CocoaPods/CocoaPods/issues/2729
+      description: Take the CocoaPods project and split it into a collection of gems based around functionally, such as the creation of the workspace, the resolver and the downloader.
 
 - project_name: COCOAPODS WEBSITES
   project_bio: The CocoaPods website reaches hundreds of thousands of hits a month. It's a high profile website with many interleaved components from search, to documentation & metric generation.
@@ -27,8 +32,9 @@
       issue_url: http://orta.io/rebase/from/a/higher-vantage/
       description: Create an website that allows user-generated lists of Pods. These can come with user annotations allowing for favourite lists, or for allowing for official "best of class" libraries.
 
+
 - project_name: COCOAPODS.APP
-  project_bio: The command line is not the only way. We have a working implemntation of a hosted CocoaPods environment, and we can take it to the next level. This is good if you're interested in working in Objective-C.
+  project_bio: The command line is not the only way. We have a working implemntation of a hosted CocoaPods environment within an App, and we can take it to the next level. These are good choices if you're interested in working in Objective-C.
 
   projects:
     - repos: cocoapods.app
