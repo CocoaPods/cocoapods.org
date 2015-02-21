@@ -45,19 +45,19 @@ task :generate_team do
 
   ["team", "alumni"].each do |team_name|
     yaml_data = []
-    
+
     team = YAML.load_file(team_name + '.yaml')
     team.each do |member|
       next if member["twitter_username"] == "andyrmyers"
       puts("Getting #{ member["twitter_username"] }")
-      
+
       twitter_user = client.user member["twitter_username"]
       member[:twitter_profile_url] = twitter_user.profile_image_uri_https.to_s.gsub("_normal", "")
       member[:twitter_banner_url] = twitter_user.profile_banner_uri.to_s
 
       yaml_data << member
     end
-    
+
     if team_name == "alumni"
       yaml_data << {
         name: "Andy Myers",
@@ -70,7 +70,7 @@ task :generate_team do
     File.open("data/#{ team_name }.yaml", "w") do |out|
       YAML.dump(yaml_data, out)
     end
-    
+
   end
 end
 
@@ -129,7 +129,7 @@ task :generate_contributors do
     end
 
     # double check uniques, and order
-    contributors = all_contributors.uniq{ |hash| hash.name }.sort_by { |hash| hash.commits }.reverse
+    contributors = all_contributors.uniq { |hash| hash.name }.sort_by { |hash| [-hash.commits, hash.name] }
 
     # save as hashes for ease of use in middleman
     contributors = contributors.map { |s| s.to_hash }
@@ -139,4 +139,3 @@ task :generate_contributors do
     end
   end
 end
-
