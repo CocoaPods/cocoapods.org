@@ -3,6 +3,7 @@ require 'json'
 require 'slim'
 require 'net/http'
 require 'cocoapods-core'
+require_relative 'spec_extensions'
 
 class App < Sinatra::Base
 
@@ -71,12 +72,12 @@ class App < Sinatra::Base
                 .sort_by { |v| Pod::Version.new(v.name) }
                 .last
 
-    commit = commits.where(pod_version_id: version.id).first
-    @pod = JSON.parse(commit.specification_data)
+    @commit = commits.where(pod_version_id: version.id).first
+    @pod = Pod::Specification.from_json @commit.specification_data
     uri = URI(@cocoadocs["rendered_readme_url"])
     res = Net::HTTP.get_response(uri)
     @readme_html = res.body.force_encoding('UTF-8') if res.is_a?(Net::HTTPSuccess)
-    slim :pod, :layout => false
+    slim :pod, :layout => false 
   end
 
 

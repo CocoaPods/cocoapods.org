@@ -146,20 +146,27 @@ $(window).ready(function() {
   var expandSearchResult = function(result) {
     result = $(result)
     result.addClass("loading")
+    
+    var url = "/pods/" + result.data("pod-name") + "/inline";
 
+    // Hosted by Middleman?
+    if (document.location.host == "localhost:4567") {
+      url = "http://localhost:3000/" + url
+    }
+      
     $.ajax({
-      url: "/pods/" + result.data("pod-name") + "/inline",
+      url: url,
       dataType: "html"
     }).done(function(html) {
+      result.data("span", "2")
       result.addClass("is-expanded")
       result.removeClass("loading")
-
       $(result, ".expanded .content")[0].innerHTML = html
-
-    }).fail(function() {r
+      result.parents(".masonry").masonry()
+      
+    }).fail(function() {
       result.removeClass("loading")
     });
-
   }
 
 
@@ -262,7 +269,7 @@ $(window).ready(function() {
     maxSuggestions: 5, // Bootstrap currently hides .hidden class using !important, which blocks Picky's behaviour :( (we now use .onrequest)
     alwaysShowResults: true, // Always show results, even when Picky does not know what categories the user wants.
     alwaysShowSelection: true, // Always show the selection of what your search means, even when Picky would not show it normally.
-    wrapResults: '<ol class="results"></ol>', // Always wrap the results in an ol.results.
+    wrapResults: '<ol class="results masonry"></ol>', // Always wrap the results in an ol.results.
 
     // Instead of enclosing the search in #picky,
     // in the CocoaPods search we use #search.
@@ -461,6 +468,20 @@ $(window).ready(function() {
         event.stopPropagation()
         return false
       });
+
+      $('ol.results').masonry({ 
+        "isFitWidth": true,
+        "itemSelector": "li.result",
+        "columnWidth": "li.result",
+        transitionDuration: 0
+      })
+      
+     //  $(window).on("resize load", function() {
+     //   var desired_width = $(".masonry").width()/2 - 10
+     //   $('.masonry li.result:not(.is-expanded)').css("width", desired_width)
+     // })
+
+
 
     },
 

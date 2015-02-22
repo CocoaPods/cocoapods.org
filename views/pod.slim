@@ -118,7 +118,15 @@ css:
   .pod_result {
     background-color:white;
   }
-
+  
+  .pod_result ul.screenshots {
+    padding:0;
+  }
+  
+  .pod_result ul.screenshots img {
+    width: 100%;
+  }
+  
   .pod_result .pod-metadata h1 span {
     color: #d1c4c0;
   }
@@ -134,9 +142,6 @@ ruby:
   docs_description = @cocoadocs["doc_percent"] > 70 ? "Documented" : "Well Documented"
   lang_small = @metrics["language"] == "Objective-C" ? "Obj-C" : @metrics["language"]
   version = "2.0.0"
-  cocoadocs_url = @pod["documentation_url"] ? @pod["documentation_url"] : "http://cocoadocs.org/docsets/#{ @pod["name"] }"
-  podspec_url = "https://github.com/CocoaPods/Specs/blob/master/Specs/#{ @pod["name"] }/#{ version }/#{ @pod["name"] }.podspec.json"
-  homepage = @pod["homepage"]
 
 / "id","pod_id","download_size","total_files","total_comments","total_lines_of_code","doc_percent","readme_complexity","initial_commit_date","rendered_readme_url","not_found","created_at","updated_at","license_short_name","license_canonical_url","total_test_expectations"
 
@@ -144,7 +149,7 @@ ruby:
   div.pod-metadata.clearfix
 
   div.sideline.col-sm-3.col-xs-12.col-sm-push-9
-    p = @pod["description"]
+    p = @pod.description
     hr
     table style="width:100%"
       tbody
@@ -159,6 +164,7 @@ ruby:
           td
             span.hidden-lg-span = lang_small
             span.visible-lg-span = @metrics["language"]
+                
         tr
           td License
           td
@@ -168,13 +174,13 @@ ruby:
 
     ul.links
       li
-        a href=podspec_url See Podspec
+        a href=@pod.or_podspec_url See Podspec
       li
-        a href=cocoadocs_url Documentation
-
-      - if homepage
+        a href=@pod.or_web_documentation_url Documentation
+      
+      - if @pod.homepage
         li
-          a href="#{homepage}" Homepage
+          a href=@pod.homepage Homepage
 
     hr
 
@@ -187,7 +193,7 @@ ruby:
           td Open PRs
           td = @metrics["open_pull_requests"]
 
-        - if @pod["dependencies"]
+        - if @pod.dependencies
           tr
             td &nbsp;
             td
@@ -195,39 +201,52 @@ ruby:
             td Depends on:
             td
 
-          - @pod["dependencies"].each do |pod, dep|
-            td
-              a href= "/pod/#{pod}" =pod
-            td = dep.first
+          - @pod.dependencies.each do |dep|
+            td = dep.to_s
+            / td
+            /   a href= "/pod/#{pod}" =pod
+            / td = dep.first
 
-    - if @pod["screenshots"]
+        tr
+          td Start Date
+          td = @cocoadocs.initial_commit_date.strftime "%y/%m/%d"
+
+
+    - if @pod.screenshots
       hr
       ul.screenshots
-      - @pod["screenshots"].each do |screenshot|
-        img src="#{screenshot}"
+        - @pod.screenshots.each do |screenshot|
+          img src="#{screenshot}"
 
 
   div.readme-content.col-sm-9.col-xs-12.col-sm-pull-3
-    h1.inline-headline == @pod["name"] + " <span>" + @pod["version"] + "</span>"
+    h1.inline-headline == @pod.name + " <span>" + @pod.version.to_s + "</span>"
 
     / img.copy src="/images/copy-to-clipboard.png" data-clipboard-text=clipboard_text data-toggle="popover"  data-container="body" data-html="true"data-content=popover_html
 
     ul.attribution
       li By
-      li Orta Therox
-      li.twitter
-        a href ="http://twitter.com/orta" Orta
+      li = @pod.or_contributors_to_spec
+      
+      - if @pod.or_has_twitter_url?
+        li.twitter
+          a href="http://twitter.com/#{@pod.or_twitter_handle}" =@pod.or_twitter_handle
+
+      - elsif @pod.or_has_social_media_url?
+        li.social
+           a href=@pod.social_media_url =@pod.or_social_media_title
+
 
     nav
       ul
-        li.github-link
-           a href="http://github.com/orta/ORStackView" orta/ORStackView
-
+        - if @pod.or_is_github?
+          li.github-link
+            a href=@pod.or_github_url ="#{@pod.or_user}/#{@pod.or_repo}"
+      
         li.metadata.files = @cocoadocs.total_files
         li.metadata.forks = @metrics.forks
         li.metadata.watchers = @metrics.subscribers
         li.metadata.stars = @metrics.stargazers
-        li.metadata.initial-commit.hidden-sm.hidden-xs = @cocoadocs.initial_commit_date.strftime "%y/%m/%d"
     .clearfix
 
     == @readme_html

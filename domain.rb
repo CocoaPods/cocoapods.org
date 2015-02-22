@@ -37,4 +37,3 @@ DB = Flounder.domain connection do |dom|
   dom.entity :commits, :commit, 'commits'
   dom.entity :pod_versions, :pod_version, 'pod_versions'
 end
-

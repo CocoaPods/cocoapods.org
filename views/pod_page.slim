@@ -43,7 +43,7 @@ css:
 section.container
   article.row#headline  
     .col-lg-12.col-sm-12.col-xs-12
-      h1 == @pod["name"] + " <span>" + @pod["version"] + "</span>"
+      h1 == @pod.name + " <span>" + @pod.version.to_s + "</span>"
       
 
 #content-wrapper
