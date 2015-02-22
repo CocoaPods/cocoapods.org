@@ -1,6 +1,9 @@
 require 'flounder'
 require 'data_objects'
 
+ENV['RACK_ENV'] ||= 'production'
+ENV['DATABASE_URL'] ||= "postgres://localhost/trunk_cocoapods_org_#{ENV['RACK_ENV']}"
+
 # Handle DB options.
 #
 options = {}
@@ -22,7 +25,7 @@ DB = Flounder.domain connection do |dom|
   #
   dom.entity :owners, :owner, 'owners'
   dom.entity :pods, :pod, 'pods'
-  
+
   # Metrics
   #
   dom.entity :github_pod_metrics, :github_pod_metric, 'github_pod_metrics'
@@ -34,3 +37,4 @@ DB = Flounder.domain connection do |dom|
   dom.entity :commits, :commit, 'commits'
   dom.entity :pod_versions, :pod_version, 'pod_versions'
 end
+
