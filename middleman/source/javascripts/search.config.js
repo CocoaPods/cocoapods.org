@@ -162,7 +162,11 @@ $(window).ready(function() {
       result.addClass("is-expanded")
       result.removeClass("loading")
       $(result, ".expanded .content")[0].innerHTML = html
+
       result.parents(".masonry").masonry()
+      result.imagesLoaded( function() {
+        result.parents(".masonry").masonry()
+      });
       
     }).fail(function() {
       result.removeClass("loading")
@@ -462,8 +466,12 @@ $(window).ready(function() {
       $('ol.results li').on('click', function(event) {
         var target = $(event.target)
         if (target.is("li.result") == false) {
-          target = $(event.target).parents("li")
+          target = $(event.target).parents("li.result")
         }
+
+        if (target.hasClass("is-expanded")) { return true }
+        if (target.data("pod-name") == undefined) { return true }
+        
         expandSearchResult(target)
         event.stopPropagation()
         return false
@@ -475,13 +483,6 @@ $(window).ready(function() {
         "columnWidth": "li.result",
         transitionDuration: 0
       })
-      
-     //  $(window).on("resize load", function() {
-     //   var desired_width = $(".masonry").width()/2 - 10
-     //   $('.masonry li.result:not(.is-expanded)').css("width", desired_width)
-     // })
-
-
 
     },
 

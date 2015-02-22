@@ -6,6 +6,7 @@ css:
 
   .readme-content > nav {
     margin: -15px;
+    margin-top:0;
     padding:15px;
     padding-top:12px;
     margin-bottom:15px;
@@ -91,6 +92,10 @@ css:
     border-right: 2px solid black;
   }
 
+  .readme-content {
+    padding-bottom: 20px;
+  }
+
   #pod-page .readme-content {
     border-right: 2px solid whitesmoke;
   }
@@ -111,6 +116,16 @@ css:
     font-size: 3em;
   }
 
+  h1.inline-headline {
+    margin-top:12px;
+    height: 1.2em;
+    font-size: 3em;
+  }
+  
+  h1.inline-headline span {
+    color: #d1c4c0;
+  }
+  
   #pod-page h1.inline-headline {
     display:none;
   }
@@ -178,7 +193,12 @@ ruby:
       li
         a href=@pod.or_web_documentation_url Documentation
       
-      - if @pod.homepage
+      
+      - if @pod.or_github_url
+        li
+          a href=@pod.or_github_url Github
+      
+      - if @pod.homepage && @pod.homepage != @pod.or_github_url
         li
           a href=@pod.homepage Homepage
 
@@ -186,14 +206,16 @@ ruby:
 
     table style="width:100%"
       tbody
-        tr
-          td Issues
-          td = @metrics["open_issues"]
-        tr
-          td Open PRs
-          td = @metrics["open_pull_requests"]
+      
+        - if @pod.or_is_github?
+          tr
+            td Issues
+            td = @metrics["open_issues"]
+          tr
+            td Open PRs
+            td = @metrics["open_pull_requests"]
 
-        - if @pod.dependencies
+        - if @pod.dependencies.count > 1
           tr
             td &nbsp;
             td
@@ -202,9 +224,10 @@ ruby:
             td
 
           - @pod.dependencies.each do |dep|
-            td
-              a href= "/pod/#{dep.name}" =dep.name
-            td = dep.requirement.to_s
+            tr
+              td
+                a href= "/pod/#{dep.name}" =dep.name
+              td = dep.requirement.to_s
 
           tr
             td &nbsp;
@@ -223,9 +246,9 @@ ruby:
 
 
   div.readme-content.col-sm-9.col-xs-12.col-sm-pull-3
-    h1.inline-headline == @pod.name + " <span>" + @pod.version.to_s + "</span>"
+    h1.inline-headline == "<a href='/pods/#{@pod.name}'>" + @pod.name + "</a> <span>" + @pod.version.to_s + "</span>"
 
-    / img.copy src="/images/copy-to-clipboard.png" data-clipboard-text=clipboard_text data-toggle="popover"  data-container="body" data-html="true"data-content=popover_html
+    img.copy src="/images/copy-to-clipboard.png" data-clipboard-text=clipboard_text data-toggle="popover"  data-container="body" data-html="true"data-content=popover_html
 
     ul.attribution
       li By

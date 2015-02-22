@@ -11,7 +11,7 @@
 *= require has_flash.js
 *= require ICanHaz.js
 *= require masonry.pkgd.min.js
-
+*= require imagesloaded.pkgd.min.js
 */
 
 // Remove keyboard on scroll
