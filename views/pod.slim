@@ -202,10 +202,13 @@ ruby:
             td
 
           - @pod.dependencies.each do |dep|
-            td = dep.to_s
-            / td
-            /   a href= "/pod/#{pod}" =pod
-            / td = dep.first
+            td
+              a href= "/pod/#{dep.name}" =dep.name
+            td = dep.requirement.to_s
+
+          tr
+            td &nbsp;
+            td
 
         tr
           td Start Date

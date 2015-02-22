@@ -7,40 +7,7 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-</script>
-
-<!-- Piwik -->
-<script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//ec2-54-81-98-241.compute-1.amazonaws.com/";
-    _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId', 3]);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<noscript><p><img src="//ec2-54-81-98-241.compute-1.amazonaws.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript><div class="container" id="search_container"><section class="row"><div class="col-xs-12" id="search"><form onkeypress="return event.keyCode != 13;"><fieldset><input autocomplete="off" autofocus="autofocus" class="query" id="pod_search" placeholder="SEARCH*" type="search" /><span class="amount"></span><span id="search_loupe"></span><p>* Type here to search by name, version, author, keywords, summary, and dependencies.</p></fieldset></form></div></section></div><div id="results_container"><div class="container"><section class="row"><style type="text/css">ol.results {
-  -webkit-column-count: 2;
-  -webkit-column-gap: 10px;
-  -webkit-column-fill: auto;
-  -moz-column-count: 32;
-  -moz-column-gap: 10px;
-  -moz-column-fill: auto;
-  column-count: 2;
-  column-gap: 15px;
-  column-fill: auto;
-}
-#results_container ol.results li.result {
-  margin-bottom:10px;
-  display: inline-block;
-  width:100%;
-  -webkit-column-break-inside: avoid;
-  page-break-inside: avoid;
-  break-inside: avoid;
-}</style><div class="col-lg-102 col-sm-12 col-xs-10 col-sm-offset-0 col-xs-offset-1" id="search_results"><div class="selection"><div class="platform"><input checked="checked" id="platform_either" name="platform" type="radio" value="" /><label class="left" for="platform_either"><span>OSX or iOS</span></label><input id="platform_both" name="platform" type="radio" value="on:osx on:ios" /><label class="middle" for="platform_both"><span>iOS and OSX</span></label><input id="platform_ios" name="platform" type="radio" value="on:ios" /><label class="middle" for="platform_ios"><span>iOS</span></label><input id="platform_osx" name="platform" type="radio" value="on:osx" /><label class="right" for="platform_osx"><span>OSX</span></label></div><div class="allocations"><ol class="shown"></ol><ol class="more" style="display:none"><li>load more</li></ol><ol class="onrequest"></ol></div></div><div class="results"></div><div class="no_results" style="display:none"><div class="apology">Sorry. No pods found.</div><div class="splits"></div><div class="tags"></div><div class="tips">Some suggestions:
+</script><div class="container" id="search_container"><section class="row"><div class="col-xs-12" id="search"><form onkeypress="return event.keyCode != 13;"><fieldset><input autocomplete="off" autofocus="autofocus" class="query" id="pod_search" placeholder="SEARCH*" type="search" /><span class="amount"></span><span id="search_loupe"></span><p>* Type here to search by name, version, author, keywords, summary, and dependencies.</p></fieldset></form></div></section></div><div id="results_container"><div class="container"><section class="row"><div class="col-lg-102 col-sm-12 col-xs-10 col-sm-offset-0 col-xs-offset-1" id="search_results"><div class="selection"><div class="platform"><input checked="checked" id="platform_either" name="platform" type="radio" value="" /><label class="left" for="platform_either"><span>OSX or iOS</span></label><input id="platform_both" name="platform" type="radio" value="on:osx on:ios" /><label class="middle" for="platform_both"><span>iOS and OSX</span></label><input id="platform_ios" name="platform" type="radio" value="on:ios" /><label class="middle" for="platform_ios"><span>iOS</span></label><input id="platform_osx" name="platform" type="radio" value="on:osx" /><label class="right" for="platform_osx"><span>OSX</span></label></div><div class="allocations"><ol class="shown"></ol><ol class="more" style="display:none"><li>load more</li></ol><ol class="onrequest"></ol></div></div><div class="results"></div><div class="no_results" style="display:none"><div class="apology">Sorry. No pods found.</div><div class="splits"></div><div class="tags"></div><div class="tips">Some suggestions:
 Make sure that all words are spelled correctly.
 Try different keywords.
 Try more general keywords.
