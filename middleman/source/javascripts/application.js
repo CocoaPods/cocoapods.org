@@ -10,8 +10,6 @@
 *= require zero-clipboard.min.js
 *= require has_flash.js
 *= require ICanHaz.js
-*= require masonry.pkgd.min.js
-*= require imagesloaded.pkgd.min.js
 */
 
 // Remove keyboard on scroll
@@ -22,20 +20,20 @@ $(document).bind("touchmove", function(e){
 });
 
 $( document ).ready( function(){
-  
+
   // Add support for animating the marker on the homepages
   //
   $('.underscore a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-    
+
     var index = $(e.target.parentElement).index()
     var width = $(window).width();
     var constant = (width < 768) ? 33: 40;
     var percent = (index * constant).toString()
     $("#homepage-tab-indicator").css("margin-left", percent + "%");
   })
- 
+
   // Support non-flash clipboard stuff
-  
+
   if( hasFlash() ) {
     $("html").addClass("flash")
   }

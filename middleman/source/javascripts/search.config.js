@@ -146,14 +146,14 @@ $(window).ready(function() {
   var expandSearchResult = function(result) {
     result = $(result)
     result.addClass("loading")
-    
+
     var url = "/pods/" + result.data("pod-name") + "/inline";
 
     // Hosted by Middleman?
     if (document.location.host == "localhost:4567") {
       url = "http://localhost:3000/" + url
     }
-      
+
     $.ajax({
       url: url,
       dataType: "html"
@@ -163,11 +163,6 @@ $(window).ready(function() {
       result.removeClass("loading")
       $(result, ".expanded .content")[0].innerHTML = html
 
-      result.parents(".masonry").masonry()
-      result.imagesLoaded( function() {
-        result.parents(".masonry").masonry()
-      });
-      
     }).fail(function() {
       result.removeClass("loading")
     });
@@ -273,7 +268,7 @@ $(window).ready(function() {
     maxSuggestions: 5, // Bootstrap currently hides .hidden class using !important, which blocks Picky's behaviour :( (we now use .onrequest)
     alwaysShowResults: true, // Always show results, even when Picky does not know what categories the user wants.
     alwaysShowSelection: true, // Always show the selection of what your search means, even when Picky would not show it normally.
-    wrapResults: '<ol class="results masonry"></ol>', // Always wrap the results in an ol.results.
+    wrapResults: '<ol class="results"></ol>', // Always wrap the results in an ol.results.
 
     // Instead of enclosing the search in #picky,
     // in the CocoaPods search we use #search.
@@ -471,19 +466,11 @@ $(window).ready(function() {
 
         if (target.hasClass("is-expanded")) { return true }
         if (target.data("pod-name") == undefined) { return true }
-        
+
         expandSearchResult(target)
         event.stopPropagation()
         return false
       });
-
-      $('ol.results').masonry({ 
-        "isFitWidth": true,
-        "itemSelector": "li.result",
-        "columnWidth": "li.result",
-        transitionDuration: 0
-      })
-
     },
 
     // This is used to generate the correct query strings, localized. E.g. "subject:war".
