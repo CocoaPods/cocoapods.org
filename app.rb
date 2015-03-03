@@ -67,17 +67,17 @@ class App < Sinatra::Base
     @cocoadocs = result.cocoadocs_pod_metric
     # @cloc = cocoadocs_cloc_metrics.where(pod_id: @pod_db.id)
 
-    version = pod_versions
+    @version = pod_versions
                 .where(pod_id: @pod_db.id)
                 .sort_by { |v| Pod::Version.new(v.name) }
                 .last
 
-    @commit = commits.where(pod_version_id: version.id).first
+    @commit = commits.where(pod_version_id: @version.id).first
     @pod = Pod::Specification.from_json @commit.specification_data
     uri = URI(@cocoadocs["rendered_readme_url"])
     res = Net::HTTP.get_response(uri)
     @readme_html = res.body.force_encoding('UTF-8') if res.is_a?(Net::HTTPSuccess)
-    slim :pod, :layout => false 
+    slim :pod, :layout => false
   end
 
 

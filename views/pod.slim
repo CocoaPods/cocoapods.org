@@ -121,11 +121,11 @@ css:
     height: 1.2em;
     font-size: 3em;
   }
-  
+
   h1.inline-headline span {
     color: #d1c4c0;
   }
-  
+
   #pod-page h1.inline-headline {
     display:none;
   }
@@ -133,15 +133,15 @@ css:
   .pod_result {
     background-color:white;
   }
-  
+
   .pod_result ul.screenshots {
     padding:0;
   }
-  
+
   .pod_result ul.screenshots img {
     width: 100%;
   }
-  
+
   .pod_result .pod-metadata h1 span {
     color: #d1c4c0;
   }
@@ -179,7 +179,7 @@ ruby:
           td
             span.hidden-lg-span = lang_small
             span.visible-lg-span = @metrics["language"]
-                
+
         tr
           td License
           td
@@ -192,12 +192,12 @@ ruby:
         a href=@pod.or_podspec_url See Podspec
       li
         a href=@pod.or_web_documentation_url Documentation
-      
-      
+
+
       - if @pod.or_github_url
         li
           a href=@pod.or_github_url Github
-      
+
       - if @pod.homepage && @pod.homepage != @pod.or_github_url
         li
           a href=@pod.homepage Homepage
@@ -206,7 +206,7 @@ ruby:
 
     table style="width:100%"
       tbody
-      
+
         - if @pod.or_is_github?
           tr
             td Issues
@@ -235,7 +235,12 @@ ruby:
 
         tr
           td Start Date
-          td = @cocoadocs.initial_commit_date.strftime "%y/%m/%d"
+          td = @cocoadocs.initial_commit_date.strftime "%Y/%m/%d"
+
+        - unless @commit["imported"]
+          tr
+            td Last Release
+            td = @commit["created_at"].strftime "%Y/%m/%d"
 
 
     - if @pod.screenshots
@@ -248,12 +253,12 @@ ruby:
   div.readme-content.col-sm-9.col-xs-12.col-sm-pull-3
     h1.inline-headline == "<a href='/pods/#{@pod.name}'>" + @pod.name + "</a> <span>" + @pod.version.to_s + "</span>"
 
-    img.copy src="/images/copy-to-clipboard.png" data-clipboard-text=clipboard_text data-toggle="popover"  data-container="body" data-html="true"data-content=popover_html
+    / img.copy src="/images/copy-to-clipboard.png" data-clipboard-text=clipboard_text data-toggle="popover"  data-container="body" data-html="true"data-content=popover_html
 
     ul.attribution
       li By
       li = @pod.or_contributors_to_spec
-      
+
       - if @pod.or_has_twitter_url?
         li.twitter
           a href="http://twitter.com/#{@pod.or_twitter_handle}" =@pod.or_twitter_handle
@@ -268,7 +273,7 @@ ruby:
         - if @pod.or_is_github?
           li.github-link
             a href=@pod.or_github_url ="#{@pod.or_user}/#{@pod.or_repo}"
-      
+
         li.metadata.files = @cocoadocs.total_files
         li.metadata.forks = @metrics.forks
         li.metadata.watchers = @metrics.subscribers
