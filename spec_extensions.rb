@@ -23,10 +23,14 @@ module Pod
       documentation_url || or_cocoadocs_url
     end
 
+    def or_cocoapods_url
+      "http://cocoapods.org/#{ name }/"
+    end
+
     def or_cocoadocs_url
       "http://cocoadocs.org/docsets/#{ name }/#{ version }"
     end
-    
+
     def or_git_ref
       source[:tag] || source[:commit] || source[:branch] || 'master'
     end
@@ -70,7 +74,7 @@ module Pod
       return license[:type] if license.is_a? Hash
       "Unknown License"
     end
-    
+
     def or_podfile_string
       if (version.to_s.match(/[^.0-9]/))
         "pod '#{name}', '#{version}'"
@@ -165,7 +169,7 @@ module Pod
       if social_media_url.include?("github.com")
         return "GH: " + social_media_url.split(".com/")[-1]
       end
-      
+
       if social_media_url.include?("linkedin.com")
         return "LI: " + social_media_url.split(".com/")[-1]
       end
@@ -176,5 +180,18 @@ module Pod
     def or_spec_is_deprecated?
       deprecated || deprecated_in_favor_of
     end
- end
+
+    # TODO
+    def or_summary_plaintext
+      summary
+    end
+
+    def or_summary_html
+      summary
+    end
+
+    def or_thumbnail_image
+      "http://cocoadocs.org/docsets/" + name + "/" + version.to_s + "/preview.png"
+    end
+  end
 end
