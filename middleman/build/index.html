@@ -27,7 +27,7 @@
 Make sure that all words are spelled correctly.
 Try different keywords.
 Try more general keywords.
-Split long words into pieces.</div></div></div></section></div></div><div id="content-wrapper"><div class="homepage_container container"><section class="row"><div class="col-md-8 col-lg-8 col-sm-8 col-md-offset-2 col-lg-offset-2 col-sm-offset-2 intro"><h3 class="underlined">What is CocoaPods</h3><div class="header-horizontal-divider"><div class="index-arrow-down"></div><div class="index-enclosed-arrow-down"></div></div><p>CocoaPods is the dependency manager for Cocoa projects. It has thousands of libraries and can help you scale your projects elegantly.</p></div></section><section class="row"><div class="col-md-8 col-lg-8 col-sm-8 col-md-offset-2 col-lg-offset-2 col-sm-offset-2"><ul class="nav nav-tabs underscore"><li class="active"><a data-toggle="tab" href="#install">Install</a></li><li><a data-toggle="tab" href="#get_started">Get Started</a></li><li><a data-toggle="tab" href="#create_a_pod">Create a Pod</a></li></ul><div id="homepage-tab-indicator" class="index-horizontal-divider"><div class="index-arrow-down"></div><div class="index-enclosed-arrow-down"></div></div><div class="tab-content"><div class="tab-pane fade in active" id="install"><p>CocoaPods is built with Ruby and is installable with the default Ruby available on OS X.
+Split long words into pieces.</div></div></div></section></div></div><div id="content-wrapper"><div class="homepage_container container"><section class="row"><div class="col-md-8 col-lg-8 col-sm-8 col-md-offset-2 col-lg-offset-2 col-sm-offset-2 intro"><h3 class="underlined">What is CocoaPods</h3><div class="header-horizontal-divider"><div class="index-arrow-down"></div><div class="index-enclosed-arrow-down"></div></div><p>CocoaPods is the dependency manager for Swift and Objective-C Cocoa projects. It has thousands of libraries and can help you scale your projects elegantly.</p></div></section><section class="row"><div class="col-md-8 col-lg-8 col-sm-8 col-md-offset-2 col-lg-offset-2 col-sm-offset-2"><ul class="nav nav-tabs underscore"><li class="active"><a data-toggle="tab" href="#install">Install</a></li><li><a data-toggle="tab" href="#get_started">Get Started</a></li><li><a data-toggle="tab" href="#create_a_pod">Create a Pod</a></li></ul><div id="homepage-tab-indicator" class="index-horizontal-divider"><div class="index-arrow-down"></div><div class="index-enclosed-arrow-down"></div></div><div class="tab-content"><div class="tab-pane fade in active" id="install"><p>CocoaPods is built with Ruby and is installable with the default Ruby available on OS X.
 We recommend you do this.</p>
 
 <p>Using the default Ruby install will require you to use <code>sudo</code> when installing
@@ -36,8 +36,6 @@ gems. Further instructions are in <a href="http://guides.cocoapods.org/using/get
 <pre class="highlight">
 $ sudo gem install cocoapods
 </pre>
-
-<p>We currently have <a href="http://blog.cocoapods.org">Swift support</a> in a beta release.</p>
 </div><div class="tab-pane fade" id="get_started"><p>Search for pods (above). Then list the dependencies in a text file named
 <code>Podfile</code> in your Xcode project directory:</p>
 
@@ -47,6 +45,7 @@ platform :ios, '8.0'
 
 pod 'AFNetworking', '~> 2.0'
 pod 'ARAnalytics', '~> 2.7'
+pod 'SwiftyJSON', '~> 2.1'
 </pre>
 
 <p><small>Tip: CocoaPods provides a <code>pod init</code> command to create a Podfile with
