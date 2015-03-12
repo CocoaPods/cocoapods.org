@@ -5,7 +5,14 @@ task :bootstrap do
 
   puts "Installing gems"
   `bundle install`
-    sh "cd middleman && bundle install"
+  Rake::Task["build"].invoke
+end
+
+namespace :assets do
+  desc "Compile the static site"
+  task :precompile do
+    Rake::Task["build"].invoke
+  end
 end
 
 desc 'Build the static site'
