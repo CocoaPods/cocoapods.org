@@ -17,7 +17,13 @@ end
 
 desc 'Build the static site'
 task :build do
-  sh "cd middleman && bundle exec middleman build"
+  Bundler.with_clean_env do 
+    sh "cd middleman"
+    sh "bundle install"
+    sh "rake bootstrap"
+    sh "rake generate"
+    sh "rake build"
+  end
 end
 
 desc "Deploy to heroku"
