@@ -18,11 +18,13 @@ end
 desc 'Build the static site'
 task :build do
   Bundler.with_clean_env do 
-    sh "cd middleman"
-    sh "bundle install"
-    sh "rake bootstrap"
-    sh "rake generate"
-    sh "rake build"
+    Dir.chdir("middleman/") do
+      sh "gem install bundler"
+      sh "bundle install"
+      sh "rake bootstrap"
+      sh "rake generate"
+      sh "middleman build"
+    end
   end
 end
 
