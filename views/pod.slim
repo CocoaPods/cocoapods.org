@@ -20,13 +20,11 @@ css:
     padding-left:0;
   }
 
-  #pod-page .readme-content ul.attribution {
-    margin-top:0px;
-  }
-
   .readme-content ul.attribution {
     clear:both;
     padding-left:0px;
+    margin-top:0px;
+    margin-bottom:8px;
   }
 
   .readme-content ul.attribution li {
@@ -77,6 +75,7 @@ css:
   li.github-link {
     background: no-repeat url(/stylesheets/svg/github-cat.svg);
     padding-left:36px;
+    height:32px;
   }
 
   li.twitter {
@@ -237,10 +236,11 @@ ruby:
           td Start Date
           td = @cocoadocs.initial_commit_date.strftime "%Y/%m/%d"
 
-        - unless @commit["imported"]
-          tr
-            td Last Release
-            td = @commit["created_at"].strftime "%Y/%m/%d"
+        / This isn't coming in from CocoaDocs correctly - https://github.com/CocoaPods/cocoadocs.org/issues/317
+        / - unless @commit["imported"]
+        /   tr
+        /     td Last Release
+        /     td = @commit["created_at"].strftime "%Y/%m/%d"
 
 
     - if @pod.screenshots

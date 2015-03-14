@@ -35,6 +35,10 @@ module Pod
       source[:tag] || source[:commit] || source[:branch] || 'master'
     end
 
+    def or_longer_description
+      description || summary
+    end
+
     def or_user
       return nil unless self.or_is_github?
       or_github_url.split("/")[-2]
