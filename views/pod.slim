@@ -103,6 +103,12 @@ css:
     border-right: 2px solid #d1c4c0;
   }
 
+  @media (max-width: 767px){
+    .readme-content {
+      border-right: none !important;
+    }
+  }
+
   .sideline tr td:last-child {
     text-align:right;
   }
@@ -111,13 +117,12 @@ css:
     color: #fb0006;
     font-weight:normal;
     margin: 0;
-    height: 1.2em;
     font-size: 3em;
+    word-break: break-all;
   }
 
   h1.inline-headline {
     margin-top:12px;
-    height: 1.2em;
     font-size: 3em;
   }
 
@@ -163,7 +168,8 @@ ruby:
   div.pod-metadata.clearfix
 
   div.sideline.col-sm-3.col-xs-12.col-sm-push-9
-    p = @pod.description
+    h1.visible-xs.inline-headline == "<a href='/pods/#{@pod.name}'>" + @pod.name + "</a> <span>" + @pod.version.to_s + "</span>"
+    p = @pod.or_longer_description
     hr
     table style="width:100%"
       tbody
@@ -232,15 +238,16 @@ ruby:
             td &nbsp;
             td
 
-        tr
-          td Start Date
-          td = @cocoadocs.initial_commit_date.strftime "%Y/%m/%d"
+        / tr
+          / This isn't coming in from CocoaDocs correctly - https://github.com/CocoaPods/cocoadocs.org/issues/317
 
-        / This isn't coming in from CocoaDocs correctly - https://github.com/CocoaPods/cocoadocs.org/issues/317
-        / - unless @commit["imported"]
-        /   tr
-        /     td Last Release
-        /     td = @commit["created_at"].strftime "%Y/%m/%d"
+          / td Start Date
+          / td = @cocoadocs.initial_commit_date.strftime "%Y/%m/%d"
+
+        - unless @commit["imported"]
+          tr
+            td Last Release
+            td = @commit["created_at"].strftime "%Y/%m/%d"
 
 
     - if @pod.screenshots
@@ -251,7 +258,7 @@ ruby:
 
 
   div.readme-content.col-sm-9.col-xs-12.col-sm-pull-3
-    h1.inline-headline == "<a href='/pods/#{@pod.name}'>" + @pod.name + "</a> <span>" + @pod.version.to_s + "</span>"
+    h1.hidden-xs.inline-headline == "<a href='/pods/#{@pod.name}'>" + @pod.name + "</a> <span>" + @pod.version.to_s + "</span>"
 
     / img.copy src="/images/copy-to-clipboard.png" data-clipboard-text=clipboard_text data-toggle="popover"  data-container="body" data-html="true"data-content=popover_html
 
@@ -274,10 +281,10 @@ ruby:
           li.github-link
             a href=@pod.or_github_url ="#{@pod.or_user}/#{@pod.or_repo}"
 
-        li.metadata.files = @cocoadocs.total_files
-        li.metadata.forks = @metrics.forks
-        li.metadata.watchers = @metrics.subscribers
-        li.metadata.stars = @metrics.stargazers
+        li.metadata.files.hidden-xs = @cocoadocs.total_files
+        li.metadata.forks.hidden-xs = @metrics.forks
+        li.metadata.watchers.hidden-xs = @metrics.subscribers
+        li.metadata.stars.hidden-xs = @metrics.stargazers
     .clearfix
 
     == @readme_html
