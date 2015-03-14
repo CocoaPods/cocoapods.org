@@ -129,7 +129,7 @@ task :generate_contributors do
     end
 
     # double check uniques, and order
-    contributors = all_contributors.uniq { |hash| hash.name }.sort_by { |hash| [-hash.commits, hash.name] }
+    contributors = all_contributors.uniq { |hash| hash.name }.sort_by { |hash| [-hash.commits, hash.name.downcase] }
 
     # save as hashes for ease of use in middleman
     contributors = contributors.map { |s| s.to_hash }
