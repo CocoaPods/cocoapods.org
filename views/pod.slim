@@ -1,3 +1,4 @@
+
 css:
 
   .readme-content {
@@ -52,34 +53,34 @@ css:
   }
 
   li.metadata.initial-commit {
-    background: no-repeat url(/stylesheets/svg/first_commit.svg);
+    background: no-repeat url(/images/first_commit.svg);
   }
 
   li.metadata.stars {
-    background: no-repeat url(/stylesheets/svg/stars.svg);
+    background: no-repeat url(/images/stars.svg);
   }
 
   li.metadata.forks {
-    background: no-repeat url(/stylesheets/svg/forks.svg);
+    background: no-repeat url(/images/forks.svg);
   }
 
   li.metadata.watchers {
-    background: no-repeat url(/stylesheets/svg/watchers.svg);
+    background: no-repeat url(/images/watchers.svg);
   }
 
   li.metadata.files {
-    background: no-repeat url(/stylesheets/svg/files.svg);
+    background: no-repeat url(/images/files.svg);
     margin-right:0;
   }
 
   li.github-link {
-    background: no-repeat url(/stylesheets/svg/github-cat.svg);
+    background: no-repeat url(/images/github-cat.svg);
     padding-left:36px;
     height:32px;
   }
 
   li.twitter {
-    background: no-repeat url(/stylesheets/svg/twitter.svg);
+    background: no-repeat url(/images/twitter.svg);
     padding-left:28px;
   }
 
@@ -188,7 +189,7 @@ ruby:
         tr
           td License
           td
-            a href = @cocoadocs["license_canonical_url"] = @cocoadocs["license_short_name"]
+            a href=@cocoadocs["license_canonical_url"] =@cocoadocs["license_short_name"]
 
     hr
 
@@ -215,10 +216,10 @@ ruby:
         - if @pod.or_is_github?
           tr
             td Issues
-            td = @metrics["open_issues"]
+            td=@metrics["open_issues"]
           tr
             td Open PRs
-            td = @metrics["open_pull_requests"]
+            td=@metrics["open_pull_requests"]
 
         - if @pod.dependencies.count > 1
           tr
@@ -231,7 +232,7 @@ ruby:
           - @pod.dependencies.each do |dep|
             tr
               td
-                a href= "/pod/#{dep.name}" =dep.name
+                a href="/pod/#{dep.name}" =dep.name
               td = dep.requirement.to_s
 
           tr

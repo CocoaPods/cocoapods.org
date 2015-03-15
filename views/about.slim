@@ -1,4 +1,5 @@
-== stylesheet_link_tag "about.css"
+link href="/stylesheets/about.css" media="screen" rel="stylesheet" type="text/css"
+
 
 section.title.container.about-section
   article.row
@@ -121,7 +122,7 @@ section.title.container.about-section
             <span class="hidden-lg-span">with the flag <code>--no-integrate</code></span>
             <span class="visible-lg-span">using <code>pod install --no-integrate</code></span>
 
-          p Then you can decide how to move them into your app.
+          p Then you can decide how to move your pods into your app.
 
         .col-sm-3.col-xs-12
           h3 Outreach
@@ -178,52 +179,49 @@ section.title.container.about-section
     article.row
       h2 Volunteer Driven
 
-      - for dev in data.team do
+      - team = data("team")
+      - for dev in team do
 
-        - if data.team.index(dev) % 2 == 0
+        - if team.index(dev) % 2 == 0
           .clearfix.visible-xs
 
-        - if data.team.index(dev) % 3 == 0
+        - if team.index(dev) % 3 == 0
           .clearfix.hidden-xs
 
         .col-lg-4.col-sm-4.col-xs-12.dev-team
           .card
-            .background style="background-image:url(#{dev.twitter_banner_url})"
+            .background style="background-image:url(#{dev[:twitter_banner_url]})"
 
-            a href="https://twitter.com/#{dev.twitter_username}"
-              img.twitter_avatar src=dev.twitter_profile_url
+            a href="https://twitter.com/#{dev[:twitter_username]}"
+              img.twitter_avatar src=dev[:twitter_profile_url]
 
-            h3 = dev.name
+            h3 = dev[:name]
 
-            - if dev.twitter_username
-              a href="https://twitter.com/#{dev.twitter_username}" class="twitter-follow-button" data-show-count="false" data-lang="en" = "Follow @#{dev.twitter_username}"
+            - if dev[:twitter_username]
+              a href="https://twitter.com/#{dev[:twitter_username]}" class="twitter-follow-button" data-show-count="false" data-lang="en" = "Follow @#{dev[:twitter_username]}"
 
-            p = dev.cocoapods_bio
+            p = dev[:cocoapods_bio]
 
   section.alumni.container
     article.row
       .col-xs-12
         h2 Big Thanks to our Alumni, too
 
-
-      - for alumn in data.alumni do
+      - for alumn in data("alumni") do
 
         .col-lg-4.col-sm-6.col-xs-12.alum
-          .background style="background-image:url(#{alumn.twitter_banner_url})"
+          .background style="background-image:url(#{alumn[:twitter_banner_url]})"
 
-            a.col-xs-4 href="https://twitter.com/#{alumn.twitter_username}"
-              img.twitter_avatar src=alumn.twitter_profile_url
+            a.col-xs-4 href="https://twitter.com/#{alumn[:twitter_username]}"
+              img.twitter_avatar src=alumn[:twitter_profile_url]
 
             .namage.col-xs-8
-              h3 = alumn.name
+              h3 = alumn[:name]
 
-              p = alumn.cocoapods_bio
+              p = alumn[:cocoapods_bio]
 
-            - if alumn.twitter_username
-              a href="https://twitter.com/#{alumn.twitter_username}" class="twitter-follow-button" data-show-count="false" data-lang="en" = "Follow @#{alumn.twitter_username}"
-
-
-
+            - if alumn[:twitter_username]
+              a href="https://twitter.com/#{alumn[:twitter_username]}" class="twitter-follow-button" data-show-count="false" data-lang="en" = "Follow @#{alumn[:twitter_username]}"
 
   section.community.container
     article.row
@@ -232,7 +230,7 @@ section.title.container.about-section
       .col-lg-12.col-sm-12.col-xs-12.sub-project
         .card
           ul
-            - for contributor in data.contributors do
+            - for contributor in data("contributors") do
               li
-                a href="http://www.github.com/#{contributor.name}"
-                  img src="#{contributor.avatar_url}&size=96" width="48" height="48" title="#{contributor.name} - #{contributor.commits} commits to core projects"
+                a href="http://www.github.com/#{contributor[:name]}"
+                  img src="#{contributor[:avatar_url]}&size=96" width="48" height="48" title="#{contributor[:name]} - #{contributor[:commits]} commits to core projects"
