@@ -9,8 +9,8 @@ script id="search_result" type="text/html"
     .infos.col-sm-8.col-xs-12
       h3
         | {{#deprecated}}
-        span.deprecated {{ id }}
-        span.deprecated.version {{ version }}
+        span.deprecated {{id}}
+        span.deprecated.version {{version}}
         | {{/deprecated}}
         | {{^deprecated}}
         a href="{{ link }}" {{ id }}

@@ -1,0 +1,148 @@
+.readme-content {
+  padding-top: 15px;
+
+  > nav {
+    background-color: whitesmoke;
+    height: 48px;
+    margin: 0 -15px -15px;
+    padding: 12px 15px 15px;
+    margin-bottom: 15px;
+
+    nav ul {
+      margin: 0;
+      .pod_result ul.links {
+        padding-left: 0;
+      }
+    }
+
+    ul.attribution {
+      clear: both;
+      padding-left: 0;
+      margin-top: 0;
+      margin-bottom: 8px;
+
+      li {
+        display: inline-block;
+        margin-right: 12px;
+      }
+    }
+  }
+}
+
+nav li, .sideline li {
+  list-style:none;
+}
+
+nav {
+  height: 32px;
+}
+
+nav li {
+  float:left;
+}
+
+nav li.metadata {
+  float:right;
+  padding-left:28px;
+  margin-right:20px;
+  background-position: top left;
+}
+
+li.metadata.initial-commit {
+  background: no-repeat url(/images/first_commit.svg);
+}
+
+li.metadata.stars {
+  background: no-repeat url("/images/stars.svg");
+}
+
+li.metadata.forks {
+  background: no-repeat url(/images/forks.svg);
+}
+
+li.metadata.watchers {
+  background: no-repeat url(/images/watchers.svg);
+}
+
+li.metadata.files {
+  background: no-repeat url(/images/files.svg);
+  margin-right:0;
+}
+
+li.github-link {
+  background: no-repeat url(/images/github-cat.svg);
+  padding-left:36px;
+  height:32px;
+}
+
+li.twitter {
+  background: no-repeat url(/images/twitter.svg);
+  padding-left:28px;
+}
+
+.pod-metadata, .sideline, .readme-content {
+  background-color:white;
+}
+
+.readme-content {
+  border-right: 2px solid black;
+}
+
+.readme-content {
+  padding-bottom: 20px;
+}
+
+#pod-page .readme-content {
+  border-right: 2px solid whitesmoke;
+}
+
+.pod_result .readme-content {
+  border-right: 2px solid #d1c4c0;
+}
+
+@media (max-width: 767px){
+  .readme-content {
+    border-right: none !important;
+  }
+}
+
+.sideline tr td:last-child {
+  text-align:right;
+}
+
+.pod-metadata h1 {
+  color: #fb0006;
+  font-weight:normal;
+  margin: 0;
+  font-size: 3em;
+  word-break: break-all;
+}
+
+h1.inline-headline {
+  margin-top:12px;
+  font-size: 3em;
+}
+
+h1.inline-headline span {
+  color: #d1c4c0;
+}
+
+#pod-page h1.inline-headline {
+  display:none;
+}
+
+.pod_result {
+  background-color:white;
+}
+
+.pod_result ul.screenshots {
+  padding:0;
+}
+
+.pod_result ul.screenshots img {
+  width: 100%;
+}
+
+.pod_result .pod-metadata h1 span {
+  color: #d1c4c0;
+}
