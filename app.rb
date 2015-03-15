@@ -107,11 +107,9 @@ class App < Sinatra::Base
   set :assets, Sprockets::Environment.new
 
   # Configure sprockets
-  settings.assets.append_path "shared/img"
-  settings.assets.append_path "shared/js"
-  settings.assets.append_path "shared/fonts"
-  settings.assets.append_path "shared/includes"
-  settings.assets.append_path "shared/sass"
+  ["img", "js", "fonts", "includes", "sass"].each do |shared|
+    settings.assets.append_path "shared/#{shared}"
+  end
 
   Dir["assets/*"].each do |file|
     settings.assets.append_path file
@@ -132,10 +130,17 @@ class App < Sinatra::Base
     settings.assets["#{params[:file]}.svg"]
   end
 
-  get "/images/:file" do
-    settings.assets[params[:file]]
+  get "/flashes/:file.swf" do
+    content_type "application/x-shockwave-flash"
+    settings.assets["#{params[:file]}.swf"]
   end
 
+  ["images", "favicons"].each do |folder|
+    get "/#{folder}/:file" do
+      content_type "image/png"
+      settings.assets["#{params[:file]}"]
+    end
+  end
 
   # If it can't be found elsewhere, it's
   # probably an html file.
@@ -145,9 +150,8 @@ class App < Sinatra::Base
     name = params[:filename]
     if File.exists? "views/#{name}.slim"
       slim :"#{name}"
-    else
-      File.read File.join(settings.public_folder, "#{name}.html")
     end
+    halt 404
   end
 
 end
