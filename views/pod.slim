@@ -94,7 +94,7 @@ ruby:
         - unless @commit["imported"]
           tr
             td Last Release
-            td = @commit["created_at"].strftime "%Y/%m/%d"
+            td = @commit["created_at"].strftime "%b %Y"
 
 
     - if @pod.screenshots

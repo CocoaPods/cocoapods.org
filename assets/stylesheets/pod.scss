@@ -1,4 +1,6 @@
 .readme-content {
+  border-right: 2px solid black;
+  padding-bottom: 20px;
   padding-top: 15px;
 
   > nav {
@@ -8,20 +10,19 @@
     margin-bottom: 15px;
     padding: 12px 15px 15px;
 
-    ul {
-      margin: 0;
-      .pod_result ul.links {
-        padding-left: 0;
-      }
-    }
-
   }
 
-  ul.attribution {
-    clear: both;
+  ul {
+    margin: 0;
     padding-left: 0;
-    margin-top: 0;
-    margin-bottom: 8px;
+
+    &.attribution {
+      clear: both;
+      margin-bottom: 8px;
+      margin-top: 0;
+      padding-left: 0;
+
+    }
 
     li {
       display: inline-block;
@@ -37,17 +38,17 @@ nav li, .sideline li {
 
 nav {
   height: 32px;
-}
 
-nav li {
-  float: left;
-}
+  li {
+    float: left;
 
-nav li.metadata {
-  float:right;
-  padding-left:28px;
-  margin-right:20px;
-  background-position: top left;
+    &.metadata {
+      float:right;
+      padding-left:28px;
+      margin-right:20px;
+      background-position: top left;
+    }
+  }
 }
 
 li.metadata.initial-commit {
@@ -86,14 +87,6 @@ li.twitter {
   background-color:white;
 }
 
-.readme-content {
-  border-right: 2px solid black;
-}
-
-.readme-content {
-  padding-bottom: 20px;
-}
-
 #pod-page .readme-content {
   border-right: 2px solid whitesmoke;
 }
@@ -108,8 +101,14 @@ li.twitter {
   }
 }
 
-.sideline tr td:last-child {
-  text-align:right;
+.sideline{
+  ul {
+    padding-left: 0;
+  }
+
+   tr td:last-child {
+    text-align:right;
+  }
 }
 
 .pod-metadata h1 {
