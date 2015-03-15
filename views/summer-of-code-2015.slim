@@ -30,14 +30,14 @@ css:
 
         - for project in data("summer_of_code_projects") do
 
-          h3 = project[:project_name]
-          p = project[:project_bio]
+          h3 = project["project_name"]
+          p = project["project_bio"]
 
-          / ul#projects
-          /   - for subproject in project[:projects]
-          /     li
-          /       p = "#{subproject[:repos]} - #{subproject[:title]}"
-          /       a
-          /         a href="#{subproject[:issue_url]}" = subproject[:issue_url].split("github.com/")[-1].gsub("/issues/", "#")
-          /       p = subproject[:description]
-          /       hr
+          ul#projects
+            - for subproject in project["projects"]
+              li
+                p = "#{subproject["repos"]} - #{subproject["title"]}"
+                a
+                  a href="#{subproject["issue_url"]}" = subproject["issue_url"].split("github.com/")[-1].gsub("/issues/", "#")
+                p = subproject["description"]
+                hr
