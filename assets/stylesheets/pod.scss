@@ -1,3 +1,14 @@
+$highlight-font: "GT Walsheim", "gt_walsheim_regular", "Avant Garde Gothic ITCW01Dm", "Avant Garde", "Helvetica Neue", "Arial";
+$body: "Helvetica Neue", "Arial", san-serif;
+$code: "Monaco", "Menlo", "Consolas", "Courier New", monospace;
+$highlight-color: #ED0015;
+$highlight-dark-color: #A90010;
+$darker-color: #C6B7B2;
+$darker-dark-color: #A8A8A8;
+$background-color: #F2F2F2;
+$alt-link-color: #B7233F;
+$warning-color: #B80E3D;
+
 .readme-content {
   border-right: 2px solid black;
   padding-bottom: 20px;
@@ -10,26 +21,353 @@
     margin-bottom: 15px;
     padding: 12px 15px 15px;
 
-  }
-
-  ul {
-    margin: 0;
-    padding-left: 0;
-
-    &.attribution {
-      clear: both;
-      margin-bottom: 8px;
-      margin-top: 0;
+    ul {
+      margin: 0;
       padding-left: 0;
 
+      li {
+        display: inline-block;
+        margin-right: 12px;
+      }
     }
+  }
+
+  ul.attribution {
+    clear: both;
+    margin-bottom: 8px;
+    margin-top: 0;
+    padding-left: 0;
 
     li {
       display: inline-block;
       margin-right: 12px;
     }
   }
+
+  img {
+    max-width:100%;
+  }
+
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $highlight-font;
+    padding: 0;
+    -webkit-font-smoothing: subpixel-antialiased;
+    margin-top:1em;
+    margin-bottom:0.4em;
+  }
+
+  h1 {
+    border-left: 4px $highlight-color solid;
+    padding-left: 20px;
+    margin-left:-30px;
+    font-size: 48px;
+    line-height: 52px;
+  }
+
+  h2 {
+    font-size: 40px;
+    line-height: 52px;
+  }
+
+  h3 {
+    color: $highlight-dark-color;
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  h4 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  h5 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  h6 {
+    font-size: 14px;
+    line-height: 19px;
+  }
+
+
+  ul, ol {
+    padding-left: 30px;
+  }
+
+  hr {
+    background-color: #ccc;
+    border:0;
+    height: 4px;
+    padding: 0;
+  }
+
+  p {
+    font-size:16px;
+    line-height:20px;
+  }
+
+  h1 img, h2 img, h3 img {
+    margin-bottom: 4px;
+  }
+
+dl {
+  padding: 0;
+  dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px;
+    &:first-child {
+      padding: 0;
+    }
+    > {
+      :first-child {
+        margin-top: 0;
+      }
+      :last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  dd {
+    margin: 0 0 15px;
+    padding: 0 15px;
+    > {
+      :first-child {
+        margin-top: 0;
+      }
+      :last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
+
+  blockquote {
+    border-left: 4px solid #ddd;
+    padding: 0 15px;
+    color: #777;
+    > {
+      :first-child {
+        margin-top: 0;
+      }
+      :last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 100%;
+    font: inherit;
+    width:100%;
+
+    th {
+      font-weight: bold;
+      border: 1px solid $darker-color;
+      background-color: $darker-color;
+      padding: 6px 13px;
+    }
+    td {
+      border: 1px solid #ccc;
+      padding: 6px 13px;
+    }
+    tr {
+      border-top: 1px solid #ccc;
+      background-color: #fff;
+    }
+    trimg {
+      max-width: 100%;
+    }
+  }
+
+  code, tt {
+    margin: 0 2px;
+    padding: 0 5px;
+  }
+
+  pre > code {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+  }
+
+  pre {
+    background-color: #F2F2F2;
+    border:0;
+    border-left: 2px solid $highlight-dark-color;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+  }
+
+  .poetry pre {
+    font-family: Georgia, Garamond, serif !important;
+    font-style: italic;
+    font-size: 110% !important;
+    line-height: 1.6em;
+    display: block;
+    margin-left: 1em;
+    code {
+      font-family: Georgia, Garamond, serif !important;
+      word-break: break-all;
+      word-break: break-word;
+      -webkit-hyphens: auto;
+      -moz-hyphens: auto;
+      hyphens: auto;
+      white-space: pre-wrap;
+    }
+  }
+
+  sup, sub, a.footnote {
+    font-size: 1.4ex;
+    height: 0;
+    line-height: 1;
+    vertical-align: super;
+    position: relative;
+  }
+
+  sub {
+    vertical-align: sub;
+    top: -1px;
+  }
+
+  em {
+    font-style:normal;
+    color:#818181;
+  }
+
+  .highlight {
+    // Jazzy
+
+    .hll { background-color: #FFFFCC; }
+    .c { color: #408090; font-style: italic; }
+    .err { border: 1px solid #FF0000; }
+    .k { color: darken($highlight-dark-color, .3); }
+    .o { color: #000; }
+    .cm { color:#408090; font-style:italic; }
+    .cp { color:#007020; }
+    .c1 { color:#408090; font-style:italic; }
+    .cs { background-color:#FFF0F0; color:#408090; }
+    .gd { color:#A00000; }
+    .ge { font-style:italic; }
+    .gr { color:#FF0000; }
+    .gh { color:#000080; font-weight:bold; }
+    .gi { color:#00A000; }
+    .go { color:#303030; }
+    .gp { color:#C65D09; }
+    .gs { font-weight:bold; }
+    .gu { color: #800080; }
+    .gt { color: #0040D0; }
+    .kc { color: #007020; }
+    .kd { color: #007020; }
+    .kn { color: #007020; }
+    .kp { color: #007020; }
+    .kr { color: #007020; font-weight:bold; }
+    .kt { color: #902000; }
+    .m { color: #208050; }
+    .s { color: lighten($highlight-color, .3); }
+    .n { color: #3a3a3a; }
+    .na { color: #4070A0; }
+    .nb { color: darken($highlight-dark-color, .3); }
+    .nc { color: #0E84B5; font-weight:bold; }
+    .no { color: #60ADD5; }
+    .nd { color: #555555; font-weight:bold; }
+    .ni { color: #D55537; font-weight:bold; }
+    .ne { color: #007020; }
+    .nf { color: $highlight-dark-color; }
+    .nl { color: black; }
+    .nn { color: #0E84B5; font-weight:bold; }
+    .nt { color: #062873; font-weight:bold; }
+    .nv { color: lighten($highlight-color, 0.3); }
+    .ow { color: #007020; font-weight:bold; }
+    .w { color: #BBBBBB; }
+    .mf { color: #208050; }
+    .mh { color: #208050; }
+    .mi { color: darken($highlight-dark-color, .3); }
+    .mo { color: #208050; }
+    .sb { color: #4070A0; }
+    .sc { color: #4070A0; }
+    .sd { color: #4070A0; font-style:italic; }
+    .s2 { color: #4070A0; }
+    .se { color: #4070A0; font-weight:bold; }
+    .sh { color: #4070A0; }
+    .si { color: #70A0D0; font-style:italic; }
+    .sx { color: #C65D09; }
+    .sr { color: #235388; }
+    .s1 { color: #4070A0; }
+    .ss { color: #517918; }
+    .bp { color: darken($highlight-dark-color, .3); }
+    .vc { color: #BB60D5; }
+    .vg { color: #BB60D5; }
+    .vi { color: #BB60D5; }
+    .il { color: #208050; }
+
+    // Github / CocoaDocs
+
+    .pl-c { color: #969896 }
+    .pl-c1, .pl-mdh, .pl-mm, .pl-mp, .pl-mr, .pl-s1 .pl-v, .pl-s3, .pl-sc, .pl-sv { color: #0086b3 }
+    .pl-e, .pl-en { color: #795da3 }
+    .pl-s1 .pl-s2, .pl-smi, .pl-smp, .pl-stj, .pl-vo, .pl-vpf { color: #333 }
+    .pl-ent { color: #63a35c }
+    .pl-k, .pl-s, .pl-st { color: #a71d5d }
+    .pl-pds, .pl-s1, .pl-s1 .pl-pse .pl-s2, .pl-sr, .pl-sr .pl-cce, .pl-sr .pl-sra, .pl-sr .pl-sre, .pl-src { color: #183691 }
+    .pl-v { color: #ed6a43 }
+    .pl-id { color: #b52a1d }
+    .pl-ml { color: #693a17 }
+    .pl-mo { color: #1d3e81 }
+
+    .pl-ii {
+      background-color: #b52a1d;
+      color: #f8f8f8
+    }
+
+    .pl-sr .pl-cce {
+      color: #63a35c;
+      font-weight: bold
+    }
+
+    .pl-mh, .pl-mh .pl-en, .pl-ms {
+      color: #1d3e81;
+      font-weight: bold
+    }
+
+    .pl-mq {
+      color: #008080
+    }
+
+    .pl-mi {
+      color: #333;
+      font-style: italic
+    }
+
+    .pl-mb {
+      color: #333;
+      font-weight: bold
+    }
+
+    .pl-md, .pl-mdhf {
+      background-color: #ffecec;
+      color: #bd2c00
+    }
+
+    .pl-mdht, .pl-mi1 {
+      background-color: #eaffea;
+      color: #55a532
+    }
+
+    .pl-mdr {
+      color: #795da3;
+      font-weight: bold
+    }
+  }
+}
+
 
 nav li, .sideline li {
   list-style: none;
