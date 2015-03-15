@@ -3,7 +3,9 @@ require 'json'
 require 'slim'
 require 'net/http'
 require 'cocoapods-core'
+require 'yaml'
 require_relative 'spec_extensions'
+require 'sprockets'
 
 class App < Sinatra::Base
 
@@ -14,16 +16,26 @@ class App < Sinatra::Base
     def shared_partial(source)
       slim :"../shared/includes/_#{source}"
     end
+
+    def partial(source)
+      slim :"partials/_#{source}"
+    end
+
+    def data(name)
+      YAML.load_file "data/#{name}.yaml"
+    end
   end
 
-  # Links to statically generated code.
+  # Some special cases for the routing
   #
-  set :public_folder, File.dirname(__FILE__) + '/middleman/build'
 
-  # Explicitly redirect root to the main page.
-  #
-  get('/') do
-    File.read File.join(settings.public_folder, 'index.html')
+  get '/' do
+    slim :index
+  end
+
+  get '/opensearch.xml' do
+    content_type "application/xml"
+    slim :opensearch, :layout => false
   end
 
   # Set up dynamic part.
@@ -89,13 +101,57 @@ class App < Sinatra::Base
         .join(:cocoadocs_pod_metrics).on(:id => :pod_id)
   end
 
+  # Setup image assets
+  #
+
+  set :assets, Sprockets::Environment.new
+
+  # Configure sprockets
+  ["img", "js", "fonts", "includes", "sass"].each do |shared|
+    settings.assets.append_path "shared/#{shared}"
+  end
+
+  Dir["assets/*"].each do |file|
+    settings.assets.append_path file
+  end
+
+  get "/javascripts/:file.js" do
+    content_type "application/javascript"
+    settings.assets["#{params[:file]}.js"]
+  end
+
+  get "/stylesheets/:file.css" do
+    content_type "text/css"
+    settings.assets["#{params[:file]}.css"]
+  end
+
+  get "/images/:file.svg" do
+    content_type "image/svg+xml"
+    settings.assets["#{params[:file]}.svg"]
+  end
+
+  get "/flashes/:file.swf" do
+    content_type "application/x-shockwave-flash"
+    settings.assets["#{params[:file]}.swf"]
+  end
+
+  ["images", "favicons"].each do |folder|
+    get "/#{folder}/:file" do
+      content_type "image/png"
+      settings.assets["#{params[:file]}"]
+    end
+  end
 
   # If it can't be found elsewhere, it's
   # probably an html file.
   # E.g. /about -> /about.html
   #
   get '/:filename' do
-    File.read File.join(settings.public_folder, "#{params[:filename]}.html")
+    name = params[:filename]
+    if File.exists? "views/#{name}.slim"
+      slim :"#{name}"
+    end
+    halt 404
   end
 
 end

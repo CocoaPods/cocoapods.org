@@ -2,12 +2,13 @@ doctype html
 html lang="en-en"
   head
     title = "CocoaPods.org"
-        
+
     == shared_partial("header_meta")
     == shared_partial("favicons")
-    
+
     script src="/javascripts/application.js"
     link href="/stylesheets/app.css" media="screen" rel="stylesheet" type="text/css"
+    link rel="search" type="application/opensearchdescription+xml" href="http://cocoapods.org/opensearch.xml" title="CocoaPods"
 
   body
     == shared_partial("header")
@@ -16,21 +17,6 @@ html lang="en-en"
 
     .clearfix
     == shared_partial("footer")
-    
-javascript: 
-  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
 javascript:
-  var _paq = _paq || [];
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//ec2-54-81-98-241.compute-1.amazonaws.com/";
-    _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId', 3]);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
-
-noscript
-  img src="//ec2-54-81-98-241.compute-1.amazonaws.com/piwik.php?idsite=3" style="border:0;" alt=""
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");

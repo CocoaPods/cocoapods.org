@@ -1,3 +1,5 @@
+require "redcarpet"
+
 class Array
   def listify
     length < 2 ? first.to_s : "#{self[0..-2] * ', '} and #{last}"
@@ -24,7 +26,7 @@ module Pod
     end
 
     def or_cocoapods_url
-      "http://cocoapods.org/#{ name }/"
+      "http://cocoapods.org/pods/#{ name }/"
     end
 
     def or_cocoadocs_url
@@ -36,7 +38,12 @@ module Pod
     end
 
     def or_longer_description
-      description || summary
+      if description
+        markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true)
+        markdown.render description
+      else
+        summary
+      end
     end
 
     def or_user
