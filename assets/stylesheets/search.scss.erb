@@ -1,0 +1,609 @@
+@import "vars";
+
+#search {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+  &.active {
+    margin-top:-48px;
+    left:0;
+    background-color:white;
+    z-index:200;
+    clear:left;
+
+    p {
+      display:none;
+    }
+
+    form {
+      height:100px;
+
+      fieldset {
+        bottom: 0em;
+      }
+    }
+
+    input[type=search] {
+      border: none;
+      padding-top:32px;
+      padding-bottom:12px;
+      height:100px;
+    }
+  }
+
+  &.static {
+    position:static;
+  }
+
+  form {
+    height:320px;
+
+    display: block;
+    position: relative;
+    -webkit-user-select: none;
+    cursor:text;
+
+    fieldset {
+      position: absolute;
+      bottom: 16px;
+      width:100%;
+    }
+
+    p {
+      margin-bottom: 0px;
+    }
+
+    input[type=search] {
+      color: $cocoapods-highlight-color;
+      text-transform: uppercase;
+      display: block;
+      margin: 0;
+
+      width: 100%;
+      height: 1.2em;
+
+      border: 0px solid #98989f;
+      border-bottom: 1px solid grey;
+      background: transparent;
+      font-size: 3em;
+
+      -webkit-appearance: none;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+
+      &:focus  {
+        outline: 0;
+      }
+
+      &::-webkit-input-placeholder {
+        color: $cocoapods-highlight-color;
+      }
+
+      &:-moz-placeholder {
+        color: $cocoapods-highlight-color;
+      }
+
+      &::-webkit-search-cancel-button {
+        z-index: 9;
+        position: absolute;
+        right: 0.3em;
+        top: 0.5em;
+        width: 32px;
+        height: 32px;
+        margin: 0;
+        padding: 0;
+        background: url(/images/cancel.svg);
+        -webkit-appearance: none;
+        cursor: pointer;
+      }
+
+      &::-webkit-search-cancel-button:active {
+        background-position: 0 0;
+      }
+    }
+
+    span#search_loupe {
+      width: 34px;
+      height: 35px;
+      position: absolute;
+      background: url(/images/search_loupe@2x.png);
+      background-size: 34px 35px;
+      right: 0.8em;
+      top: 1.1em;
+    }
+
+    span.amount {
+      color: gray;
+      font-size: 2em;
+      position: absolute;
+      right: 1.5em;
+      top: 0.5em;
+    }
+  }
+
+  & > div {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+
+#results_container.active {
+  padding: 2em 0;
+  background-color: $search-background-color;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition:    all 0.3s ease-in-out;
+  -o-transition:      all 0.3s ease-in-out;
+  transition:         all 0.3s ease-in-out;
+}
+
+#results_container {
+
+  .row {
+    padding: 0;
+  }
+
+  .no_results {
+    .apology {
+      text-transform: uppercase;
+      font-size: 1.6em;
+      text-align: center;
+      color: $cocoapods-highlight-color;
+    }
+  }
+
+  .results {
+
+    .header {
+      font-size: 0.7em;
+      opacity: 0.5;
+      overflow: hidden;
+      margin-top: 0.5em;
+
+      .explanation { float: left; }
+      .tothetop {
+        float: right;
+        margin-top: 0.2em;
+
+        a {
+          width: 1.5em;
+          display: block;
+          text-align: center;
+          font-size: 1.4em;
+          font-weight: bold;
+          background-color: white;
+          border-radius: 1em;
+          text-decoration: none;
+        }
+        a:hover {
+          width: 3em;
+          &:after { content: ' UP' };
+        }
+      }
+    }
+  }
+
+  ol.results {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    // TODO Florian: Improve the structure.
+    //
+    > li, ol.more {
+      font-size: 0.8em;
+      background-color: white;
+
+      border: 1px solid #cccccc;
+
+      .text {
+        width: 0.9em;
+        float: left;
+      }
+      .count {
+        text-align: right;
+      }
+    }
+
+    > li.result {
+
+      margin-bottom: -1px;
+      overflow: hidden;
+      min-height:80px;
+
+      .expanded {
+        display:none;
+      }
+
+      &.is-expanded {
+        width:100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+        .compressed {
+          display:none;
+        }
+        .expanded {
+          display:block;
+        }
+      }
+
+      &.selected {
+        background-color: whitesmoke;
+      }
+
+      .infos {
+        padding: 12px;
+
+        span.version {
+          margin:0 0.2em;
+          color: $search-background-color;
+        }
+
+        span.deprecated {
+          color: $search-background-color
+        }
+
+        span.os {
+          padding: 0.2em;
+          font-size: 0.5em;
+          color: white;
+          background-color: black;
+          margin-left: 1em;
+          vertical-align: 35%;
+        }
+
+        img.copy {
+          vertical-align: top;
+          margin-top: 0.1em;
+          margin-left: 12px;
+          &:hover { opacity: 0.5; }
+        }
+
+        img.fave {
+          vertical-align: top;
+          margin-top: 0.1em;
+          opacity: 0.5;
+          &:hover { opacity: 1.0; }
+        }
+
+        span.copy-result {
+          display: none;
+          font-size: 0.5em;
+
+          &.manual {
+            font-family: courier;
+          }
+        }
+
+        h3 {
+          margin: 0 0 0.2em;
+          font-weight:normal;
+          word-wrap:break-word;
+        }
+
+        .subspecs, .author {
+          display:none;
+        }
+
+        p {
+          margin: 0;
+          font-size:14px;
+        }
+      }
+
+      &.loading {
+        a {
+          color:$search-background-color;
+        }
+      }
+
+      .actions {
+        text-align:right;
+
+        a {
+          font-size: 1.3em;
+          color: white;
+          padding: 0.5em 1em;
+          background-color: #dacfcd;
+
+          &:hover {
+            background-color: $cocoapods-highlight-color;
+            text-decoration:none;
+          }
+        }
+
+      }
+    }
+  }
+
+  .explanation {
+    color:white;
+    text-transform:uppercase;
+    font-size:2em;
+  }
+
+  .addination {
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    width: 200px;
+    padding: 10px;
+    border: 1px solid black;
+    margin: 20px auto 0;
+    background-color: white;
+
+    &:hover {
+      color: white;
+      background-color: red;
+    }
+  }
+
+  .selection {
+    font-size: 0.8em;
+    overflow: hidden;
+    margin-bottom: 0.5em;
+
+    li, label, ol {
+      margin: 0;
+      cursor: pointer;
+    }
+  }
+
+  .platform {
+    display: none;
+    float: left;
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"]:checked + label, label:hover {
+      color: white;
+      background-color: red;
+    }
+
+    label {
+      font-weight: normal;
+      padding: 6px 10px;
+      border: 1px solid red;
+      margin-right: -1px;
+      background-color:white;
+    }
+
+    label:last-child {
+      margin-right: 0px;
+    }
+  }
+
+  .allocations {
+    text-transform: uppercase;
+    float: right;
+
+    ol {
+      float: left;
+      padding: 0;
+
+      & > li {
+        float: left;
+      }
+
+      li:first-child {
+        margin-left: 0px;
+      }
+
+      &.shown > li, &.more > li, &.onrequest >  li {
+        list-style: none;
+        padding: 6px 10px;
+        border: 1px solid red;
+        margin-left: -1px;
+        background-color:white;
+        overflow: hidden;
+
+        &:hover {
+          color: white;
+          background-color: red;
+        }
+
+        .text {
+          float: left;
+          margin-right: 1em;
+        }
+        .count {
+          float: right;
+        }
+      }
+
+      &.more {
+        float: left;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+
+  }
+}
+
+// Deal with vertical centering as this is complex it's kept together - ./
+// Works as a combination of http://vanseodesign.com/blog/demo/vertical-centering/positioning-stretch.php
+// and an absolute right aligned block
+
+#results_container ol.results li.result {
+  position:relative;
+
+  .action-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right:12px;
+    margin: auto;
+    height: 30%;
+  }
+
+  .actions {
+    padding-right:12px;
+    vertical-align: middle;
+    height:100%;
+
+    display: block;
+    position: absolute;
+    right: 0;
+
+    a {
+      display:inline-block;
+      margin: -0.4em 0 0 0.2em;
+    }
+  }
+}
+
+// Custom styling for the copy to clipboard UI
+
+html.flash pre {
+  opacity:1;
+}
+
+.popover {
+  h4 {
+    text-align:center;
+  }
+
+  pre {
+    font-size:0.8em;
+    opacity:0;
+    margin-bottom:0;
+  }
+
+  input {
+    display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    font-size: 0.6em;
+    line-height: 1.428571429;
+    color: #333;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+
+    width:88%;
+    position:absolute;
+    bottom: 12px;
+  }
+
+  &.saved code {
+    opacity:0.3;
+  }
+}
+
+
+@media (max-width:1000px){
+  #results_container {
+    ol.results li.result .actions a {
+      padding: 0.5em 0.5em;
+    }
+  }
+}
+
+// Basically iPhone stuff
+
+@media (max-width:768px){
+
+  // Results
+   #search_results {
+     padding:0;
+
+     .allocations {
+       margin: 0.6em auto;
+     }
+   }
+
+  // Make the OS selector centered and smaller
+  #results_container {
+
+    ol.results li.result .actions a {
+      padding: 0.5em 0.5em;
+    }
+
+    .result {
+      padding: 0.66em;
+
+      img.copy {
+        display:none;
+      }
+    }
+
+    // Hide OS / Deeper selectors
+    .selection {
+      display:none;
+    }
+
+    .explanation {
+      padding-top:0.5em;
+      font-size:1.5em;
+    }
+  }
+
+  // Change the size of the form
+  #search form {
+    height: 8em;
+    margin: 0.66em;
+
+    fieldset {
+      bottom: 2px;
+
+      input[type=search] {
+        font-size: 1.75em;
+        height: 2em;
+        padding:0;
+      }
+
+      span.amount {
+        top: 0.18em;
+      }
+
+      p {
+        font-size: 0.75em;
+        margin-bottom:0.1em;
+      }
+    }
+  }
+
+  #results_container {
+    form {
+      margin-top: 0;
+    }
+
+    div.results ol.results li.result {
+
+      h3 {
+        font-size: 1.2em;
+      }
+
+      .infos {
+        width: 100%;
+        padding: 0;
+      }
+
+      .actions {
+        margin: 0.5em 0;
+        text-align:center;
+
+        a {
+          font-size: 1em;
+        }
+      }
+    }
+  }
+
+  .homepage_container .underscore li a {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width:460px){
+  .homepage_container .underscore li:first-child a {
+    padding-top:1.45em;
+  }
+}

@@ -2,18 +2,19 @@
 
 ## Setup
 
-1. Install PostgresSQL locally. [Mac](http://postgresapp.com/)
-2. Create a database called `trunk_cocoapods_org_development` using `CREATE DATABASE trunk_cocoapods_org_development;`
-3. Clone the [Humus](https://github.com/CocoaPods/Humus) repository which contains the migrations for the database.
-4. In the Humus directory run `bundle exec rake db:migrate` after running `bundle install`.
-5. Add a `.env` file with ENVIRONMENT variables, see `sample.env`.
+Ideally this website should be ran through a sub-folder of [Strata](https://github.com/CocoaPods/Strata).
+
+1. Clone a copy of [Strata](https://github.com/CocoaPods/Strata) and run `rake clone`. Or if you just want this website `rake clone:cocoapods`.
+2. Run `rake db:migrate` in Strata to update the database to the latest version.
+3. Add a `.env` file with in CocoaPods.org ENVIRONMENT variables, see `sample.env`.
 
 ## Running
 
 1. `bundle exec foreman start`
 
-## Updating the static part
+The server will run on http://localhost:3000
 
-1. Update the files in `/middleman/source`.
-2. Run `bundle exec middleman build` in `/middleman`.
-3. Commit changes.
+## Things to note
+
+* Large scale design changes should be discussed in a [new issue](https://github.com/cocoapods/cocoapods.org/issues/new) first.
+* By default the server will use the production search database in a development environment.

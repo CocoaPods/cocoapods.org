@@ -1,0 +1,417 @@
+.about-section {
+  min-height: 400px;
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    min-height: 0px;
+  }
+}
+
+section.title {
+  h1 {
+    margin-top: 0;
+    font-size: 2.5em;
+    margin-top: 0.95em;
+    line-height: 1.3em;
+
+    @media (min-width: 768px) {
+      font-size: 3.6em;
+    }
+  }
+}
+
+section.podfile {
+  .podfile {
+      margin-left:-1%;
+  }
+
+  h4 {
+    margin-left: 2.4em;
+    color: #D2C5C1;
+  }
+
+  .row {
+    padding: 0;
+  }
+
+  .line-numbers-border {
+    background: #D2C5C1;
+    margin-left: 1.7em;
+    position: absolute;
+    height: 105%;
+    width: 1px;
+
+    @media (max-width: 320px) {
+      margin-left: 1.3em;
+    }
+  }
+
+  pre {
+    border: none;
+    overflow: auto;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+
+    @media (max-width: 320px) {
+      font-size:0.5em;
+    }
+
+  }
+
+
+  pre .line-numbers {
+    color: #D2C5C1;
+    display: block;
+    float: left;
+    margin: 0 1em 0 -1em;
+    text-align: right;
+  }
+
+  pre .line-numbers span {
+    display: block;
+    padding: 0 .5em 0 1em;
+  }
+}
+
+section.access {
+  background: #380200;
+  color: #F6F6F6;
+  position: relative;
+
+  .image {
+    background: url(<%= asset_data_uri "access.png" %>) no-repeat left top;
+    background-position: 20px 0px;
+    background-size: 412px 350px;
+    width: 500px;
+    height: 350px;
+    position: absolute;
+    top: 24px;
+    opacity: 0.8;
+  }
+}
+
+section.integration {
+  color: #F6F6F6;
+  background: #838383;
+  background: url(/images/xcode.svg) #838383 no-repeat right -300px top 30px;
+
+  .tiny-info {
+    display:none;
+  }
+  .normal-info {
+    display:block;
+  }
+
+  @media (max-width: 767px){
+    background-position:right -500px top 30px;
+    min-height:400px;
+  }
+
+  @media (max-width: 550px){
+    background-position:right -500px top 30px;
+    min-height:400px;
+
+    padding-top:80px;
+
+    .tiny-info {
+      display:block;
+      padding-bottom:20px;
+    }
+    .normal-info {
+      display:none;
+    }
+  }
+
+  @media (max-width: 320px) {
+    background-position:right -600px top 30px;
+  }
+
+  @media (min-width: 992px) {
+    h3 {
+      padding-bottom: 1em;
+    }
+
+    p {
+      padding-bottom: 0.5em;
+    }
+  }
+}
+
+section.developers {
+  background: url(/images/about-dots.svg) white no-repeat right 500px center;
+
+  @media (min-width: 992px) {
+    h3 {
+      padding-top: 2.8em;
+    }
+  }
+}
+
+section.getting-it {
+  background: #838383;
+  color: #F6F6F6;
+  text-align: center;
+
+  p {
+    text-align: left;
+  }
+
+  @media (max-width: 680px) {
+    display:none;
+  }
+
+  .terminal p {
+    font-family: "Menlo", "Courier", "Helvetica Neue", "Arial";
+    font-size: .8em;
+  }
+
+  .btn {
+    background: #4E92E0;
+    color: #FFF;
+    font-size: .9em;
+    padding: .5em;
+    line-height: 1.99em;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    -o-transition: background 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out;
+
+    .circle-arrow-down {
+      background: url(<%= asset_data_uri "circle-arrow-down.svg" %>) no-repeat 0 0;
+      background-size: 32px 32px;
+      height: 32px;
+      width: 32px;
+      margin-left: .6em;
+      display: inline-block;
+      vertical-align: bottom;
+    }
+
+    &:hover {
+      background: #3885dc;
+    }
+  }
+
+
+  .cocoapods-app,
+  .terminal {
+    padding: 2em 4.5em 0;
+    height: 320px;
+  }
+
+  .terminal {
+    background: url(<%= asset_data_uri "unix.png" %>) no-repeat 50% top;
+    background-size: 452px 320px;
+    min-width:320px;
+
+    a {
+      color:#F6F6F6;
+      text-decoration:underline;
+    }
+  }
+
+  article.row {
+    padding-bottom: 0;
+  }
+
+
+  .one-column {
+    display:none;
+  }
+  .two-column {
+    display:block;
+  }
+
+  @media (max-width: 992px){
+
+    .one-column {
+      display:block;
+    }
+    .two-column {
+      display:none;
+    }
+  }
+
+
+  @media (min-width: 992px) {
+    h2 {
+      margin-bottom: 1em;
+    }
+
+    .cocoapods-app {
+      background: url(<%= asset_data_uri "cocoapods-app.png" %>) no-repeat 50% top;
+      background-size: 452px 320px;
+    }
+
+  }
+
+  @media (min-width: 768px) {
+    .terminal p:first {
+      margin-bottom: 10.7em;
+    }
+
+    p {
+      font-size: .9em;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .terminal {
+      margin-left:auto;
+      margin-right:auto;
+      width:320px;
+      float:none;
+    }
+
+    p {
+      font-size: .9em;
+    }
+  }
+
+}
+
+section.developers h3,
+section.overview h3,
+section.volunteer h2,
+section.community h2 {
+  color: #F61433;
+}
+
+section.getting-it h2,
+section.volunteer h2,
+section.community h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.dev-team {
+  margin: 16px 0;
+  text-align: center;
+
+  .card {
+    background-color: white;
+    padding: 200px 16px 16px;
+    position: relative;
+
+    .background {
+      background-color: gray;
+      background-size: cover;
+      background-position: center center;
+      width: 100%;
+      height: 160px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    img.twitter_avatar {
+      top: 80px;
+      width: 136px;
+      height: 136px;
+      position: absolute;
+      left: 50%;
+      margin-left: -68px;
+      border: 4px solid white;
+      border-radius: 10%;
+      -moz-border-radius: 10%;
+      -webkit-border-radius: 10%;
+    }
+  }
+}
+
+.sub-project {
+  position: relative;
+  margin: 16px 0;
+  padding: 16px;
+  background: white;
+
+  h2 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    height: 30%;
+    font-size: 4em;
+    color: white;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+
+    &:hover {
+      opacity: 0;
+    }
+  }
+
+  ul {
+    margin-left: 0;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  li {
+    list-style-type: none;
+    padding-left: 2px;
+    padding-top: 2px;
+    display: inline-block;
+  }
+}
+
+.alumni {
+
+   div {
+    list-style:none;
+    padding-left:0;
+    margin-bottom:5px;
+
+    @media (min-width: 768px) {
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    .background {
+      height: 150px;
+      max-width:520px;
+      padding:20px;
+      position:relative;
+    }
+
+    img.twitter_avatar {
+      width:64px;
+      height:64px;
+      min-width:64px;
+
+      border: 2px solid white;
+      border-radius: 10%;
+      -moz-border-radius: 10%;
+      -webkit-border-radius: 10%;
+    }
+
+    p, h3 {
+      padding:0;
+      margin:0;
+      color:white;
+      font-weight:normal;
+      text-shadow: 1px 1px 36px black;
+    }
+
+    p {
+      margin-top:6px;
+    }
+
+    a.twitter-follow-button, iframe {
+      position:absolute;
+      bottom:20px;
+      right:20px;
+    }
+  }
+
+}

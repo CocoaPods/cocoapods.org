@@ -1,28 +1,143 @@
-h1= @pod.name
+ruby:
+  popover_html = "<h4 class='has-flash'>Copy to clipboard</h4><h4 class='no-flash'>For your <a href='http://guides.cocoapods.org/using/the-podfile.html'>Podfile</a></h4><pre><code>pod '{{ id }}', '{{ clipboard_version }}'</code></pre><input class='no-flash' value=\"pod '{{ id }}', '{{ clipboard_version }}'\" type=text>"
+  clipboard_text = "pod '{{ id }}', '{{ clipboard_version }}'"
 
-p
-  | Contributors: 
-  = @metrics.contributors
-p
-  | Forks: 
-  = @metrics.forks
-p
-  | Open issues: 
-  = @metrics.open_issues
-p
-  | Open pull requests: 
-  = @metrics.open_pull_requests
-p
-  | Stargazers: 
-  = @metrics.stargazers
-p
-  | Subscribers: 
-  = @metrics.subscribers
+  has_tests = @cocoadocs["total_test_expectations"] > 5
+  tested_description = @cocoadocs["total_test_expectations"] > 20 ? "Tested" : "Well Tested"
+  has_docs = @cocoadocs["doc_percent"] > 20
+  docs_description = @cocoadocs["doc_percent"] > 70 ? "Documented" : "Well Documented"
+  lang_small = @metrics["language"] == "Objective-C" ? "Obj-C" : @metrics["language"]
+  version = "2.0.0"
 
-p
-  | Pod:
-  = @pod
+/ "id","pod_id","download_size","total_files","total_comments","total_lines_of_code","doc_percent","readme_complexity","initial_commit_date","rendered_readme_url","not_found","created_at","updated_at","license_short_name","license_canonical_url","total_test_expectations"
 
-p
-  | Metrics:
-  = @metrics
+.pod_result
+  div.pod-metadata.clearfix
+
+  div.sideline.col-sm-3.col-xs-12.col-sm-push-9
+    h1.visible-xs.inline-headline == "<a href='/pods/#{@pod.name}'>" + @pod.name + "</a> <span>" + @pod.version.to_s + "</span>"
+    p == @pod.or_longer_description
+    hr
+    table style="width:100%"
+      tbody
+        tr
+          td Documented
+          td = has_docs ? "✓":"✗"
+        tr
+          td = tested_description
+          td = has_tests ? "✓":"✗"
+        tr
+          td Language
+          td
+            span.hidden-lg-span = lang_small
+            span.visible-lg-span = @metrics["language"]
+
+        tr
+          td License
+          td
+            a href=@cocoadocs["license_canonical_url"] =@cocoadocs["license_short_name"]
+
+    hr
+
+    ul.links
+      li
+        a href=@pod.or_podspec_url See Podspec
+      li
+        a href=@pod.or_web_documentation_url Documentation
+
+
+      - if @pod.or_github_url
+        li
+          a href=@pod.or_github_url Github
+
+      - if @pod.homepage && @pod.homepage != @pod.or_github_url
+        li
+          a href=@pod.homepage Homepage
+      li
+        a href=@pod.or_cocoapods_url Page on CocoaPods.org
+
+
+
+    hr
+
+    table style="width:100%"
+      tbody
+
+        - if @pod.or_is_github?
+          tr
+            td Issues
+            td=@metrics["open_issues"]
+          tr
+            td Open PRs
+            td=@metrics["open_pull_requests"]
+
+        - if @pod.dependencies.count > 1
+          tr
+            td &nbsp;
+            td
+          tr
+            td Depends on:
+            td
+
+          - @pod.dependencies.each do |dep|
+            tr
+              td
+                a href="/pod/#{dep.name}" =dep.name
+              td = dep.requirement.to_s
+
+          tr
+            td &nbsp;
+            td
+
+        / tr
+          / This isn't coming in from CocoaDocs correctly - https://github.com/CocoaPods/cocoadocs.org/issues/317
+
+          / td Start Date
+          / td = @cocoadocs.initial_commit_date.strftime "%Y/%m/%d"
+
+        - unless @commit["imported"]
+          tr
+            td Last Release
+            td = @commit["created_at"].strftime "%b %Y"
+
+
+    - if @pod.screenshots
+      hr
+      ul.screenshots
+        - @pod.screenshots.each do |screenshot|
+          img src="#{screenshot}"
+
+
+  div.readme-content.col-sm-9.col-xs-12.col-sm-pull-3
+    h1.hidden-xs.inline-headline == "<a href='/pods/#{@pod.name}'>" + @pod.name + "</a> <span>" + @pod.version.to_s + "</span>"
+
+    / img.copy src="/images/copy-to-clipboard.png" data-clipboard-text=clipboard_text data-toggle="popover"  data-container="body" data-html="true"data-content=popover_html
+
+    ul.attribution
+      li By
+      li = @pod.or_contributors_to_spec
+
+      - if @pod.or_has_twitter_url?
+        li.twitter
+          a href="http://twitter.com/#{@pod.or_twitter_handle}" =@pod.or_twitter_handle
+
+      - elsif @pod.or_has_social_media_url?
+        li.social
+           a href=@pod.social_media_url =@pod.or_social_media_title
+
+
+    nav
+      ul
+        - if @pod.or_is_github?
+          li.github-link
+            a href=@pod.or_github_url ="#{@pod.or_user}/#{@pod.or_repo}"
+
+        li.metadata.files.hidden-xs = @cocoadocs.total_files
+        li.metadata.forks.hidden-xs = @metrics.forks
+        li.metadata.watchers.hidden-xs = @metrics.subscribers
+        li.metadata.stars.hidden-xs = @metrics.stargazers
+    .clearfix
+
+    == @readme_html
+
+  .clearfix
