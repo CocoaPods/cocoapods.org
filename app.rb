@@ -150,8 +150,8 @@ class App < Sinatra::Base
     name = params[:filename]
     if File.exists? "views/#{name}.slim"
       slim :"#{name}"
+    else
+      halt 404
     end
-    halt 404
   end
-
 end
