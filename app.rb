@@ -8,6 +8,9 @@ require_relative 'spec_extensions'
 require 'sprockets'
 
 class App < Sinatra::Base
+  configure do
+    use Rack::Deflater
+  end
 
   helpers do
     # Note: This is a hack that needs to be extracted into the
