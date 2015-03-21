@@ -278,7 +278,7 @@ $(window).ready(function() {
     noResultsSelector: '#results_container .no_results',
     allocationsSelector: '#search_results div.allocations',
     hiddenAllocations: '#search_results div.allocations .onrequest',
-    counterSelector: '#search form span.amount',
+    counterSelector: '#search_results span.amount',
     moreSelector: '#search_results .allocations .more',
 
     // Before a query is inserted into the search field

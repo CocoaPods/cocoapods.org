@@ -129,16 +129,22 @@
 
 #results_container.active {
   padding: 2em 0;
+  padding-top:0px;
   background-color: $search-background-color;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition:    all 0.3s ease-in-out;
   -o-transition:      all 0.3s ease-in-out;
   transition:         all 0.3s ease-in-out;
+
+  .selection {
+    background-color:$content-background-color;
+    padding:20px 0;
+  }
+
 }
 
 #results_container {
-
-  .row {
+  .row, .to-edges {
     padding: 0;
   }
 
@@ -339,6 +345,8 @@
   }
 
   .selection {
+    // See .active above for padding/bgcolor
+
     font-size: 0.8em;
     overflow: hidden;
     margin-bottom: 0.5em;
@@ -359,13 +367,13 @@
 
     input[type="radio"]:checked + label, label:hover {
       color: white;
-      background-color: red;
+      background-color: $search-background-color;
     }
 
     label {
       font-weight: normal;
-      padding: 6px 10px;
-      border: 1px solid red;
+      padding: 4px 10px;
+      border: 2px solid $search-background-color;
       margin-right: -1px;
       background-color:white;
     }
@@ -376,15 +384,22 @@
   }
 
   .allocations {
-    text-transform: uppercase;
-    float: right;
+    color: rgba(255, 255, 255, 0.5);
 
+    p {
+      display:inline-block;
+    }
     ol {
-      float: left;
+      display:inline-block;
       padding: 0;
+      padding-left: 12px;
+
+      &::before {
+        content: " Show only:";
+      }
 
       & > li {
-        float: left;
+        display:inline-block;
       }
 
       li:first-child {
@@ -393,23 +408,32 @@
 
       &.shown > li, &.more > li, &.onrequest >  li {
         list-style: none;
+        display:inline;
         padding: 6px 10px;
-        border: 1px solid red;
         margin-left: -1px;
-        background-color:white;
         overflow: hidden;
 
         &:hover {
+          cursor: pointer;
           color: white;
-          background-color: red;
+          text-decoration: underline;
         }
 
         .text {
-          float: left;
-          margin-right: 1em;
+          display: inline;
+          text-transform: capitalize;
+          color:white;
         }
+
         .count {
-          float: right;
+          display: inline;
+
+          &::before {
+            content: " (";
+          }
+          &::after {
+            content: ")";
+          }
         }
       }
 
