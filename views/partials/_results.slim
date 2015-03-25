@@ -15,6 +15,12 @@
             label class="middle" for="platform_ios" <span>iOS</span>
             input value="on:osx" type="radio" id="platform_osx" name="platform" checked==(@platform == :osx)
             label class="right" for="platform_osx" <span>OSX</span>
+        
+          .sorting
+            input value="popularity" type="radio" id="sorting_popularity" name="sorting" checked==(!@sorting || @sorting == :popularity)
+            label class="left" for="sorting_popularity" <span>Popularity</span>
+            input value="name" type="radio" id="sorting_name" name="sorting" checked==(@platform == :name)
+            label class="right" for="sorting_name" <span>A-Z</span>
 
 
     .container
