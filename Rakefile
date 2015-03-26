@@ -34,12 +34,6 @@ end
 
 desc "Deploy to staging"
 task :deploy_staging do
-  Bundler.with_clean_env do
-    sh "cd middleman && bundle exec middleman build"
-    sh "cd .."
-    sh "git add ."
-    sh "git commit -m 'build static'"
-  end
   branch = `git rev-parse --abbrev-ref HEAD`.strip
   sh "git push heroku_staging #{branch}:master"
 end
