@@ -357,9 +357,10 @@
     }
   }
 
-  .platform {
+  .platform, .sorting {
     display: none;
     float: left;
+    margin-right: 1em;
 
     input[type="radio"] {
       display: none;
@@ -394,7 +395,7 @@
       padding: 0;
       padding-left: 12px;
 
-      &::before {
+      &.shown::before {
         content: " Show only:";
       }
 
@@ -435,12 +436,6 @@
             content: ")";
           }
         }
-      }
-
-      &.more {
-        float: left;
-        text-align: center;
-        text-transform: uppercase;
       }
     }
 

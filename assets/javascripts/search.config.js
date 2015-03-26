@@ -14,6 +14,7 @@ $(window).ready(function() {
 
   var platformRemoverRegexp = /\b(platform|on\:\w+\s?)+/;
   var platformSelect = $("#search_results div.platform");
+  var sortingSelect =  $("#search_results div.sorting");
 
   var allocationSelect = $('#search_results div.allocations');
   var resultsContainer = $('#results_container');
@@ -52,6 +53,9 @@ $(window).ready(function() {
   var selectCheckedPlatform = function() {
     platformSelect.find('label').removeClass('selected');
     platformSelect.find('input:checked + label').addClass('selected');
+    
+    sortingSelect.find('label').removeClass('selected');
+    sortingSelect.find('input:checked + label').addClass('selected');
   };
 
   // Hide the header.
@@ -84,6 +88,7 @@ $(window).ready(function() {
     $('#search span.amount').hide();
     $('#search span#search_loupe').show();
     platformSelect.hide();
+    sortingSelect.hide();
     allocationSelect.hide();
     $('#search_results div.results').hide();
   };
@@ -98,6 +103,7 @@ $(window).ready(function() {
 
   var resultsSearchInterface = function() {
     platformSelect.show();
+    sortingSelect.show();
     allocationSelect.show();
     // $('#search div.results').show(); // Picky does this already.
   };
@@ -111,6 +117,7 @@ $(window).ready(function() {
   var noResultsSearchInterface = function(query) {
     // $('#search_results .no_results').show(); // Picky does this already.
     platformSelect.show();
+    sortingSelect.show();
     allocationSelect.hide();
 
     // Get special no_results hash from the search API:
@@ -303,7 +310,7 @@ $(window).ready(function() {
     // Before a query is run, we add a few params.
     //
     beforeParams: function(params) {
-      params['sort'] = 'popularity'; // TODO @orta - have fun with this!
+      params['sort'] = sortingSelect.find('input:checked').val();
       return params;
     },
     // Before Picky sends any data to the server.
@@ -597,6 +604,14 @@ $(window).ready(function() {
     trackPlatformSelection();
     pickyClient.resend();
     selectCheckedPlatform();
+  });
+  
+  // Resend query on sorting selection.
+  //
+  // Note: Also updates the label & tracks.
+  //
+  sortingSelect.find('input').bind('change', function(event) {
+    pickyClient.resend();
   });
 
   // Make all clicks in the search container set focus.
