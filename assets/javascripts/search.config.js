@@ -53,7 +53,7 @@ $(window).ready(function() {
   var selectCheckedPlatform = function() {
     platformSelect.find('label').removeClass('selected');
     platformSelect.find('input:checked + label').addClass('selected');
-    
+
     sortingSelect.find('label').removeClass('selected');
     sortingSelect.find('input:checked + label').addClass('selected');
   };
@@ -230,6 +230,7 @@ $(window).ready(function() {
 
     // render with ICanHaz, see _search-templates
     if (entry.cocoadocs) {
+      entry.site_link = "/pods/" + entry.id
       return ich.expandable_search_result(entry, true)
     } else {
       return ich.search_result(entry, true)
@@ -471,6 +472,8 @@ $(window).ready(function() {
           target = $(event.target).parents("li.result")
         }
 
+        // Allow new tabs
+        if (event.metaKey == true) { return true }
         if (target.hasClass("is-expanded")) { return true }
         if (target.data("pod-name") == undefined) { return true }
 
@@ -605,7 +608,7 @@ $(window).ready(function() {
     pickyClient.resend();
     selectCheckedPlatform();
   });
-  
+
   // Resend query on sorting selection.
   //
   // Note: Also updates the label & tracks.
