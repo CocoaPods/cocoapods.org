@@ -66,8 +66,6 @@ GEM
     multipart-post (2.0.0)
     nap (0.8.0)
     naught (1.0.0)
-    net-http-persistent (2.9.4)
-    netrc (0.10.3)
     pg (0.17.1)
     posix-spawn (0.3.10)
     pygments.rb (0.6.2)
@@ -77,9 +75,6 @@ GEM
     rack-protection (1.5.3)
       rack
     rake (10.4.0)
-    rest (3.0.6)
-      net-http-persistent (>= 2.9.1)
-      netrc
     sass (3.4.13)
     simple_oauth (0.3.1)
     sinatra (1.4.5)
@@ -131,10 +126,10 @@ DEPENDENCIES
   foreman
   github-markup
   link_header
+  nap
   pygments.rb
   rake
   redcarpet!
-  rest
   sass
   sinatra
   slim (< 2.0)

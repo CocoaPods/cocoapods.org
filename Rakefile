@@ -117,12 +117,12 @@ task :generate_contributors do
 
   def download_list(url)
     # Downloads a list of objects from the URL using `Link` header to paginate
-    response = RestClient.get(url)
-    return [] if response.code == 204
+    response = REST.get(url)
+    return [] if response.status_code == 204
     items = JSON.parse(response.body)
 
-    if response.headers[:link]
-      link_header = LinkHeader.parse(response.headers[:link])
+    if link = response.headers['link']
+      link_header = LinkHeader.parse(link.join)
       next_url = link_header.find_link(['rel', 'next'])
       items += download_list(next_url.href) if next_url
     end
