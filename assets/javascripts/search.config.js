@@ -614,6 +614,9 @@ $(window).ready(function() {
     var anchor = sortingSelect.find('> a')
     anchor.html( $(this).text() + ' <span class="caret">' );
     anchor.attr("data-sorting", $(this).data("sorting") );
+
+    sortingSelect.find("ul li a.selected").removeClass("selected");
+    $(this).addClass("selected");
     pickyClient.resend();
   });
 
