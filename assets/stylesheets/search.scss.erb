@@ -347,8 +347,8 @@
   .selection {
     // See .active above for padding/bgcolor
 
+    overflow: visible;
     font-size: 0.8em;
-    overflow: hidden;
     margin-bottom: 0.5em;
 
     li, label, ol {
@@ -357,7 +357,7 @@
     }
   }
 
-  .platform, .sorting {
+  .platform {
     display: none;
     float: left;
     margin-right: 1em;
@@ -381,6 +381,36 @@
 
     label:last-child {
       margin-right: 0px;
+    }
+  }
+
+  .sorting {
+    float:right;
+
+    > a {
+      font-weight: normal;
+      padding: 4px 10px;
+      border: 2px solid $search-background-color;
+      margin-left:12px;
+      background-color:white;
+      color:black;
+      display:inline-block;
+
+      &:hover {
+        text-decoration:none;
+        background-color:$content-background-color;
+      }
+    }
+
+    ul.dropdown-menu {
+      border-radius:0;
+      li {
+        // padding:8px;
+        // border-bottom: 1px solid  $search-background-color;
+        // &:hover {
+        //   background-color:darken(white, 20);
+        // }
+      }
     }
   }
 

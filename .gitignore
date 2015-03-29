@@ -1,5 +1,4 @@
 .env
-
 middleman/.sass-cache
 middleman/.idea
 vendor/

@@ -15,21 +15,24 @@
             label class="middle" for="platform_ios" <span>iOS</span>
             input value="on:osx" type="radio" id="platform_osx" name="platform" checked==(@platform == :osx)
             label class="right" for="platform_osx" <span>OSX</span>
-        
-          .sorting
-            input value="popularity" type="radio" id="sorting_popularity" name="sorting" checked==(!@sorting || @sorting == :popularity)
-            label class="left" for="sorting_popularity" <span>Popularity</span>
-            input value="name" type="radio" id="sorting_name" name="sorting" checked==(@sorting == :name)
-            label class="middle" for="sorting_name" <span>A-Z</span>
-            input value="contributors" type="radio" id="sorting_contributors" name="sorting" checked==(@sorting == :contributors)
-            label class="middle" for="sorting_contributors" <span>Contributors</span>
-            input value="forks" type="radio" id="sorting_forks" name="sorting" checked==(@sorting == :forks)
-            label class="middle" for="sorting_forks" <span>Forks</span>
-            input value="stars" type="radio" id="sorting_stars" name="sorting" checked==(@sorting == :stars)
-            label class="middle" for="sorting_stars" <span>Stars</span>
-            input value="watchers" type="radio" id="sorting_watchers" name="sorting" checked==(@sorting == :watchers)
-            label class="right" for="sorting_watchers" <span>Watchers</span>
 
+          .sorting.dropdown
+            | Sort by:
+            a data-target="#" data-toggle="dropdown" data-sorting="popularity" aria-haspopup="true" role="button" aria-expanded="false" Popularity <span class="caret">
+
+            ul.dropdown-menu role="menu" aria-labelledby="dLabel"
+              li
+                a data-sorting="popularity" Popularity
+              li
+                a data-sorting="name" A-Z
+              li
+                a data-sorting="contributors" Contributors
+              li
+                a data-sorting="forks" Forks
+              li
+                a data-sorting="stars" Stars
+              li
+                a data-sorting="watchers" Watchers
 
     .container
       section.row

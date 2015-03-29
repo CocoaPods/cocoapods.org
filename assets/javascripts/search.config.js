@@ -53,9 +53,6 @@ $(window).ready(function() {
   var selectCheckedPlatform = function() {
     platformSelect.find('label').removeClass('selected');
     platformSelect.find('input:checked + label').addClass('selected');
-
-    sortingSelect.find('label').removeClass('selected');
-    sortingSelect.find('input:checked + label').addClass('selected');
   };
 
   // Hide the header.
@@ -311,7 +308,7 @@ $(window).ready(function() {
     // Before a query is run, we add a few params.
     //
     beforeParams: function(params) {
-      params['sort'] = sortingSelect.find('input:checked').val();
+      params['sort'] = sortingSelect.find('> a').attr("data-sorting");
       return params;
     },
     // Before Picky sends any data to the server.
@@ -613,7 +610,10 @@ $(window).ready(function() {
   //
   // Note: Also updates the label & tracks.
   //
-  sortingSelect.find('input').bind('change', function(event) {
+  sortingSelect.find("ul li a").click(function(){
+    var anchor = sortingSelect.find('> a')
+    anchor.html( $(this).text() + ' <span class="caret">' );
+    anchor.attr("data-sorting", $(this).data("sorting") );
     pickyClient.resend();
   });
 
