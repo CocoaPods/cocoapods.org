@@ -10,7 +10,6 @@ gem 'dm-do-adapter', require: true
 gem 'dm-postgres-adapter', require: true
 
 gem 'redcarpet', github: 'vmg/redcarpet'
-gem 'rake'
 gem 'sass'
 
 gem 'slim', '< 2.0'
@@ -20,7 +19,7 @@ gem 'activesupport'
 gem 'pygments.rb'
 gem 'github-markup'
 
-gem "rest"
+gem "nap"
 gem "twitter"
 
 gem 'link_header'
