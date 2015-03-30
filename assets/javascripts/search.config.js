@@ -617,6 +617,7 @@ $(window).ready(function() {
 
     sortingSelect.find("ul li a.selected").removeClass("selected");
     $(this).addClass("selected");
+
     pickyClient.resend();
   });
 
