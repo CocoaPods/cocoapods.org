@@ -172,7 +172,6 @@ $(window).ready(function() {
     });
   }
 
-
   // Renders an entry, then returns the rendered HTML.
   //
   // TODO Improve. This is just a quick prototype.
@@ -224,13 +223,19 @@ $(window).ready(function() {
     } else {
       entry.deprecated_in_favor_of_link = ""
     }
-
+    
+    // April 1
+    var ad = '';
+    if (Math.random() > 0.90) {
+      ad = ich.cocoa_ad(entry, true);
+    }
+    
     // render with ICanHaz, see _search-templates
     if (entry.cocoadocs) {
       entry.site_link = "/pods/" + entry.id
-      return ich.expandable_search_result(entry, true)
+      return ich.expandable_search_result(entry, true) + ad;
     } else {
-      return ich.search_result(entry, true)
+      return ich.search_result(entry, true) + ad;
     }
 
   };
