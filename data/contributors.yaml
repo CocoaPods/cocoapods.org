@@ -3,25 +3,25 @@
   :commits: 4427
   :avatar_url: https://avatars.githubusercontent.com/u/1048705?v=3
 - :name: alloy
-  :commits: 2910
+  :commits: 2917
   :avatar_url: https://avatars.githubusercontent.com/u/2320?v=3
 - :name: orta
-  :commits: 1570
+  :commits: 1579
   :avatar_url: https://avatars.githubusercontent.com/u/49038?v=3
 - :name: floere
   :commits: 1512
   :avatar_url: https://avatars.githubusercontent.com/u/3022?v=3
 - :name: segiddins
-  :commits: 901
+  :commits: 932
   :avatar_url: https://avatars.githubusercontent.com/u/1946610?v=3
 - :name: kylef
-  :commits: 644
+  :commits: 652
   :avatar_url: https://avatars.githubusercontent.com/u/44164?v=3
 - :name: mrackwitz
-  :commits: 407
+  :commits: 417
   :avatar_url: https://avatars.githubusercontent.com/u/1389011?v=3
 - :name: neonichu
-  :commits: 362
+  :commits: 363
   :avatar_url: https://avatars.githubusercontent.com/u/118992?v=3
 - :name: AliSoftware
   :commits: 200
@@ -167,6 +167,9 @@
 - :name: dlvenable
   :commits: 8
   :avatar_url: https://avatars.githubusercontent.com/u/293424?v=3
+- :name: dtorres
+  :commits: 8
+  :avatar_url: https://avatars.githubusercontent.com/u/71180?v=3
 - :name: farcaller
   :commits: 8
   :avatar_url: https://avatars.githubusercontent.com/u/693?v=3
@@ -563,9 +566,6 @@
 - :name: dongle
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/124001?v=3
-- :name: dtorres
-  :commits: 1
-  :avatar_url: https://avatars.githubusercontent.com/u/71180?v=3
 - :name: Erikmitk
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/180686?v=3
@@ -728,9 +728,6 @@
 - :name: rawrjustin
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/551441?v=3
-- :name: redshirtrob
-  :commits: 1
-  :avatar_url: https://avatars.githubusercontent.com/u/1319277?v=3
 - :name: ricobeck
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/155457?v=3
@@ -755,6 +752,9 @@
 - :name: shams-ahmed
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/2887472?v=3
+- :name: shepting
+  :commits: 1
+  :avatar_url: https://avatars.githubusercontent.com/u/48065?v=3
 - :name: shreeve
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/142875?v=3
