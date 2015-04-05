@@ -220,7 +220,7 @@ $(window).ready(function() {
     }
 
     if (entry.deprecated_in_favor_of) {
-      entry.deprecated_in_favor_of_link = "http://cocoapods.org?q=" + entry.deprecated_in_favor_of;
+      entry.deprecated_in_favor_of_link = "https://cocoapods.org?q=" + entry.deprecated_in_favor_of;
     } else {
       entry.deprecated_in_favor_of_link = ""
     }

@@ -26,7 +26,7 @@ module Pod
     end
 
     def or_cocoapods_url
-      "http://cocoapods.org/pods/#{ name }"
+      "https://cocoapods.org/pods/#{ name }"
     end
 
     def or_cocoadocs_url
