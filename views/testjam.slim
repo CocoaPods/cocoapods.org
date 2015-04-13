@@ -1,0 +1,116 @@
+javascript:
+
+  $(document).ready(function(){
+  })
+  g
+css:
+
+  h3.underlined {
+    text-align:center;
+  }
+  
+  #content-wrapper ul {
+    padding-left:0;
+  }
+  
+  li.result {
+    padding:10px;
+    background-color:white;
+    margin-bottom:12px;
+    list-style:none;
+    min-height: 64px;
+  }
+  
+  li.result:hover {
+    background-color: #eeeeee;
+    cursor:pointer;
+  }
+  
+  li.result a {
+    display:block;
+  }
+  
+  li.result img {
+    float:left;
+    height:44px;
+    width:44px;
+    margin-right:12px;
+  }
+  
+  li.result h3 {
+    padding:0;
+    margin:0;
+    font-size:18px;
+    color:black;
+    font-weight:normal;
+  }
+
+  li.result h4 {
+    padding:0;
+    margin:0 0 0 0;
+    margin-top:4px;
+    font-size:18px;
+    color:black;
+    font-weight:normal;
+  }
+
+  li.result h3 em {
+    color:rgba(0,0,0,0.3);
+  }
+  
+  li.result h4 em {
+    color:#48A4EC;
+  }
+  
+  ul.bash-list {
+    height:480px;
+    overflow:scroll;
+  }
+  
+  li.triage a {
+    display:inline;
+  }
+  
+  li.triage p {
+    margin-bottom: 6px;
+    margin-top: 6px;
+    
+  }
+
+
+script id="top_contributor" type="text/html"
+  li.result.large id="{{ username }}"
+    img src="{{ avatar_url }}"
+    h3 {{ name }} <em>{{username}}</em>
+    h4 {{ triages }} Triages, {{ points }} points
+
+script id="recent_triage" type="text/html"
+  li.result 
+    a href="{{ issue.url }}"
+      img src="{{ user.avatar_url }}"
+      h3 {{ user.name }} <em>{{user.username}}</em>
+      h4 {{ state }} on <em>{{ issue.repository }}\#{{ issue.number }}<em>
+
+script id="sub_triage" type="text/html"
+  li.triage
+    <p>{{ state }} on <a href="{{ issue.url }}">{{ issue.repository }}\#{{ issue.number }}</a></p>
+
+
+
+section.container
+  article.row
+    col-lg-12.col-sm-12.col-xs-12
+      h1 CocoaPods Test Jam
+      
+#content-wrapper
+  section.container
+
+    article.row
+      .col-sm-12
+        center
+          p Please check the <a href="http://blog.cocoapods.org">CocoaPods blog</a> for details.
+          
+    article.row
+      .col-sm-12
+        h3.underlined Come back soon for more information
+        <div class="header-horizontal-divider"><div class="index-arrow-down"></div><div class="index-enclosed-arrow-down"></div></div>
