@@ -9,11 +9,6 @@
       description: Add support for Xcode projects to a Podspec.
 
     - repos: CocoaPods / Core
-      title: CocoaPods Download Cache
-      issue_url: https://github.com/CocoaPods/CocoaPods/issues/2863
-      description: Add support for caching a Podspec
-
-    - repos: CocoaPods / Core
       title: Split CocoaPods into plugins
       issue_url: https://github.com/CocoaPods/CocoaPods/issues/2729
       description: Take the CocoaPods project and split it into a collection of gems based around functionally, such as the creation of the workspace, the resolver and the downloader.
@@ -22,21 +17,22 @@
   project_bio: The CocoaPods website reaches hundreds of thousands of hits a month. It's a high profile website with many interleaved components from search, to documentation & metric generation.
 
   projects:
-    - repos: analytics.cocoapods.org
-      title: CocoaPods Analytics
-      issue_url: https://github.com/CocoaPods/cocoapods.org/issues/55
-      description: Create an analytics server for CocoaPods, so that Pod Authors can find out how many downloads their library has recieved.
 
     - repos: lists.cocoapods.org
       title: CocoaPods Lists
       issue_url: http://orta.io/rebase/from/a/higher-vantage/
-      description: Create an website that allows user-generated lists of Pods. These can come with user annotations allowing for favourite lists, or for allowing for official "best of class" libraries.
+      description: Create an website that allows user-generated lists of Pods. These can come with user annotations allowing for favourite lists, or for allowing for official "best of class" libraries. In a similar vein to ruby-toolbox.com
 
 
 - project_name: COCOAPODS.APP
   project_bio: The command line is not the only way. We have a working implemntation of a hosted CocoaPods environment within an App, and we can take it to the next level. These are good choices if you're interested in working in Objective-C.
 
   projects:
+    - repos: cocoapods.app
+      title: Add Launcher Window
+      issue_url: https://github.com/CocoaPods/CocoaPods.app/issues/30
+      description: Create a launch window so that when the App is loaded you can see what has changed on CocoaPods, and what projects you had open recently.
+
     - repos: cocoapods.app
       title: Add Launcher Window
       issue_url: https://github.com/CocoaPods/CocoaPods.app/issues/30
