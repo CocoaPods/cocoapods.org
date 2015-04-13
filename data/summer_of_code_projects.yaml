@@ -34,6 +34,6 @@
       description: Create a launch window so that when the App is loaded you can see what has changed on CocoaPods, and what projects you had open recently.
 
     - repos: cocoapods.app
-      title: Add Launcher Window
-      issue_url: https://github.com/CocoaPods/CocoaPods.app/issues/30
-      description: Create a launch window so that when the App is loaded you can see what has changed on CocoaPods, and what projects you had open recently.
+      title: Add in-app Pod database
+      issue_url: https://github.com/CocoaPods/CocoaPods.app/issues/37
+      description: Create a local cached pods database so that when editing a Podfile we can give autocompletion and allow for fast searching
