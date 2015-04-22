@@ -133,10 +133,10 @@ ruby:
           li.github-link
             a href=@pod.or_github_url ="#{@pod.or_user}/#{@pod.or_repo}"
 
-        li.metadata.files.hidden-xs = @cocoadocs.total_files
-        li.metadata.forks.hidden-xs = @metrics.forks
-        li.metadata.watchers.hidden-xs = @metrics.subscribers
-        li.metadata.stars.hidden-xs = @metrics.stargazers
+        li.metadata.files.hidden-xs title='Number of files' = @cocoadocs.total_files
+        li.metadata.forks.hidden-xs title='Number of forks' = @metrics.forks
+        li.metadata.watchers.hidden-xs title='Number of watchers' = @metrics.subscribers
+        li.metadata.stars.hidden-xs title='Number of stars' = @metrics.stargazers
     .clearfix
 
     == @readme_html
