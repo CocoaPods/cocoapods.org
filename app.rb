@@ -108,21 +108,21 @@ class App < Sinatra::Base
   #
   sprockets = Sprockets::Environment.new
   
-  # We load the current git commit once.
+  # Generate an assets hash once on startup.
   #
-  GIT_HASH = `git rev-parse HEAD`.chomp
+  require 'securerandom'
+  ASSETS_HASH = SecureRandom.hex
   
   add_asset_hash = ->(path) do
     head, dot, ext = path.rpartition('.')
-    "#{head}-#{GIT_HASH}#{dot}#{ext}"
+    "#{head}-#{ASSETS_HASH}#{dot}#{ext}"
   end
-  
   sprockets.context_class.class_eval do
     define_method :asset, &add_asset_hash
   end
   define_method :asset, &add_asset_hash
   define_method :deasset do |path|
-    path.slice! "-#{GIT_HASH}"
+    path.slice! "-#{ASSETS_HASH}"
     path
   end
 
