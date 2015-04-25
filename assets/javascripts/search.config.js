@@ -41,7 +41,7 @@ $(window).ready(function() {
 
   // Tracking language
   var trackLanguageSelection = function() {
-    _gaq.push(['_trackEvent', 'language', 'switch language', platformSelect.find('input:checked').val(), 1]);
+    _gaq.push(['_trackEvent', 'language', 'switch language', languageSelect.find('input:checked').val(), 1]);
   }
 
   // Tracking category/categories selection.
