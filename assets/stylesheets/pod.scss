@@ -12,12 +12,14 @@ $warning-color: #B80E3D;
 .readme-content {
   border-right: 2px solid black;
   padding-bottom: 20px;
-  padding-top: 15px;
+  padding-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
 
   > nav {
     background-color: whitesmoke;
     height: 48px;
-    margin: 0 -15px -15px;
+    margin: 0 -30px -30px;
     margin-bottom: 15px;
     padding: 12px 15px 15px;
 
@@ -58,7 +60,6 @@ $warning-color: #B80E3D;
   }
 
   h1 {
-    border-left: 4px $highlight-color solid;
     padding-left: 20px;
     margin-left:-30px;
     font-size: 48px;
@@ -457,12 +458,12 @@ li.twitter {
   word-break: break-all;
 }
 
-h1.inline-headline {
+.inline-headline h1 {
   margin-top:12px;
-  font-size: 3em;
+  font-size: 5em;
 }
 
-h1.inline-headline span {
+.inline-headline h1 span {
   color: #d1c4c0;
 }
 
