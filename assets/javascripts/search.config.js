@@ -15,6 +15,9 @@ $(window).ready(function() {
   var platformRemoverRegexp = /\b(platform|on\:\w+\s?)+/;
   var platformSelect = $("#search_results div.platform");
   var sortingSelect =  $("#search_results div.sorting");
+  var languageRemoverRegexp = /\b(lang\:\w+\s?)+/;
+  var languageSelect = $("#search_results div.language");
+  
 
   var allocationSelect = $('#search_results div.allocations');
   var resultsContainer = $('#results_container');
@@ -36,6 +39,11 @@ $(window).ready(function() {
     _gaq.push(['_trackEvent', 'platform', 'switch platform', platformSelect.find('input:checked').val(), 1]);
   }
 
+  // Tracking language
+  var trackLanguageSelection = function() {
+    _gaq.push(['_trackEvent', 'language', 'switch language', platformSelect.find('input:checked').val(), 1]);
+  }
+
   // Tracking category/categories selection.
   //
   var trackAllocationSelection = function(category, count) {
@@ -54,6 +62,12 @@ $(window).ready(function() {
     platformSelect.find('label').removeClass('selected');
     platformSelect.find('input:checked + label').addClass('selected');
   };
+
+  var selectCheckedLanguage = function() {
+    languageSelect.find('label').removeClass('selected');
+    languageSelect.find('input:checked + label').addClass('selected');
+  };
+
 
   // Hide the header.
   //
@@ -85,6 +99,7 @@ $(window).ready(function() {
     $('#search span.amount').hide();
     $('#search span#search_loupe').show();
     platformSelect.hide();
+    languageSelect.hide();
     sortingSelect.hide();
     allocationSelect.hide();
     $('#search_results div.results').hide();
@@ -100,6 +115,7 @@ $(window).ready(function() {
 
   var resultsSearchInterface = function() {
     platformSelect.show();
+    languageSelect.show();
     sortingSelect.show();
     allocationSelect.show();
     // $('#search div.results').show(); // Picky does this already.
@@ -109,11 +125,16 @@ $(window).ready(function() {
     return query.replace(platformRemoverRegexp, '');
   };
 
+  var removeLanguage = function(query) {
+    return query.replace(languageRemoverRegexp, '');
+  };
+
   //
   //
   var noResultsSearchInterface = function(query) {
     // $('#search_results .no_results').show(); // Picky does this already.
     platformSelect.show();
+    languageSelect.show();
     sortingSelect.show();
     allocationSelect.hide();
 
@@ -124,7 +145,7 @@ $(window).ready(function() {
     // TODO There's the problem that we query without platform,
     //      but then the result might be wrong.
     //
-    $.getJSON(noResultsURL, 'query=' + removePlatform(query), function(data, textStatus, jqXHR) {
+    $.getJSON(noResultsURL, 'query=' + removeLanguage(removePlatform(query)), function(data, textStatus, jqXHR) {
       var suggested_query = data.split[0].join(' ');
       var total = data.split[1];
 
@@ -289,12 +310,13 @@ $(window).ready(function() {
     // Before a query is inserted into the search field
     // we clean it of any platform terms.
     //
-    // And if there are any platform terms, we select
+    // And if there are any platform /language terms, we select
     // the right platform selector.
     //
     beforeInsert: function(query) {
       if ('' != query) {
         prepareSearchInterfaceForResults();
+        
         var platforms = query.match(platformRemoverRegexp);
         if (platforms) {
           var chosenPlatform = platformSelect.find('input[value="' + platforms[0].replace(/\s+$/g, '') + '"]');
@@ -302,8 +324,18 @@ $(window).ready(function() {
           platformSelect.find('label').removeClass('selected');
           platformSelect.find('input:checked + label').addClass('selected');
         }
-        return removePlatform(query);
+        query = removePlatform(query);
+        
+        var language = query.match(languageRemoverRegexp)
+        if (language) {
+          var chosenLanguage = languageSelect.find('input[value="' + language[0].replace(/\s+$/g, '') + '"]');
+          chosenLanguage.attr('checked', 'checked');
+          languageSelect.find('label').removeClass('selected');
+          languageSelect.find('input:checked + label').addClass('selected');
+        }
+        return removeLanguage(query);
       }
+      
     },
     // Before a query is run, we add a few params.
     //
@@ -332,6 +364,12 @@ $(window).ready(function() {
       var platformModifier = platformSelect.find("input:checked").val();
       if (platformModifier !== undefined && platformModifier != '') {
         query = platformModifier + ' ' + query;
+      }
+
+      query = query.replace(languageRemoverRegexp, '');
+      var languageModifier = languageSelect.find("input:checked").val();
+      if (languageModifier !== undefined && languageModifier != '') {
+        query = languageModifier + ' ' + query;
       }
 
       // We remember the query if it hasn't just run.
@@ -604,6 +642,12 @@ $(window).ready(function() {
     trackPlatformSelection();
     pickyClient.resend();
     selectCheckedPlatform();
+  });
+
+  languageSelect.find('input').bind('change', function(event) {
+    trackLanguageSelection();
+    pickyClient.resend();
+    selectCheckedLanguage();
   });
 
   // Resend query on sorting selection.
