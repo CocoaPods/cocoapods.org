@@ -67,6 +67,26 @@ $(window).ready(function() {
     languageSelect.find('label').removeClass('selected');
     languageSelect.find('input:checked + label').addClass('selected');
   };
+  
+  var currentPlatform = function() {
+    return platformSelect.find("input:checked");
+  };
+  var defaultPlatform = function() {
+    return platformSelect.find("input:first")
+  };
+  var selectDefaultPlatform = function() {
+    defaultPlatform().prop('checked', true);
+  };
+  
+  var currentLanguage = function() {
+    return languageSelect.find("input:checked");
+  };
+  var defaultLanguage = function() {
+    return languageSelect.find("input:first")
+  };
+  var selectDefaultLanguage = function() {
+    defaultLanguage().prop('checked', true);
+  };
 
 
   // Hide the header.
@@ -151,7 +171,7 @@ $(window).ready(function() {
 
       var splitsContainer = $('#results_container .no_results .splits');
       if (suggested_query && total > 0) {
-        splitsContainer.html("<p>We found " + total + " results searching for <a href='javascript:pickyClient.insert(\"" + suggested_query + "\");'>" + suggested_query + "</a>.</p>")
+        splitsContainer.html("<p>We found " + total + " results searching for just <a href='javascript:pickyClient.resetFiltersAndInsert(\"" + suggested_query + "\");'>'" + suggested_query + "' without filters</a>.</p>")
       } else {
         splitsContainer.html('');
       }
@@ -637,6 +657,11 @@ $(window).ready(function() {
     //   }
     // }
   });
+  pickyClient.resetFiltersAndInsert = function(query) {
+    selectDefaultPlatform();
+    selectDefaultLanguage();
+    this.insert(query);
+  };
 
   // Reset the search if it has been cleared and track when it has.
   //
