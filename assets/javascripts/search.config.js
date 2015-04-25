@@ -524,7 +524,8 @@ $(window).ready(function() {
     qualifiers: {
       en:{
         dependencies: 'uses',
-        platform: 'on'
+        platform: 'on',
+        language: 'lang'
       }
     },
 
@@ -536,7 +537,10 @@ $(window).ready(function() {
     // the start of the explanation of the choices (also, we can
     // simply not show it).
     //
-    groups: [['platform']],
+    groups: [
+      ['platform'],
+      ['language']
+    ],
 
     // This is used for formatting inside the choice groups.
     //
@@ -546,6 +550,7 @@ $(window).ready(function() {
     choices: {
       en: {
         'platform': '', // platform is simply not shown.
+        'language': '', // language is simply not shown.
 
         'name': 'name',
         'author': 'author',
@@ -596,6 +601,7 @@ $(window).ready(function() {
         dependencies: 'using',
         name: 'named',
         // platform: 'on', See below.
+        // language: 'in', See below.
         summary: 'with summary',
         tags: 'tagged as',
         subspecs: 'with subspec'
@@ -605,14 +611,23 @@ $(window).ready(function() {
       en: 'and'
     },
     explanationTokenCallback: function(category, tokens) {
+      var length = tokens.length;
+      
       // Special case to clarify when both platforms are AND-ed.
       //
       if (category == 'platform') {
-        var length = tokens.length;
         if (length == 2) {
           return '<strong>on</strong> both ' + tokens.join(' & ');
         } else {
           return 'only <strong>on</strong> ' + tokens[0];
+        }
+      } else if (category == 'language') {
+        if (length == 2) {
+          // This case yields no results, and only occurs if a user
+          // enters text explicitly.
+          return '(both ' + tokens.join(' & ') + ')';
+        } else {
+          return '– ' + tokens[0] + ' only,';
         }
       }
     }
