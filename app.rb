@@ -104,11 +104,30 @@ class App < Sinatra::Base
         .join(:cocoadocs_pod_metrics).on(:id => :pod_id)
   end
 
-  # Setup image assets
+  # Setup assets.
   #
+  sprockets = Sprockets::Environment.new
+  
+  # We load the current git commit once.
+  #
+  GIT_HASH = `git rev-parse HEAD`.chomp
+  
+  add_asset_hash = ->(path) do
+    head, dot, ext = path.rpartition('.')
+    "#{head}-#{GIT_HASH}#{dot}#{ext}"
+  end
+  
+  sprockets.context_class.class_eval do
+    define_method :asset, &add_asset_hash
+  end
+  define_method :asset, &add_asset_hash
+  define_method :deasset do |path|
+    path.slice! "-#{GIT_HASH}"
+    path
+  end
 
-  set :assets, Sprockets::Environment.new
-
+  set :assets, sprockets
+  
   # Configure sprockets
   ["img", "js", "fonts", "includes", "sass"].each do |shared|
     settings.assets.append_path "shared/#{shared}"
@@ -120,28 +139,28 @@ class App < Sinatra::Base
 
   get "/javascripts/:file.js" do
     content_type "application/javascript"
-    settings.assets["#{params[:file]}.js"]
+    settings.assets["#{deasset(params[:file])}.js"]
   end
 
   get "/stylesheets/:file.css" do
     content_type "text/css"
-    settings.assets["#{params[:file]}.css"]
+    settings.assets["#{deasset(params[:file])}.css"]
   end
 
   get "/images/:file.svg" do
     content_type "image/svg+xml"
-    settings.assets["#{params[:file]}.svg"]
+    settings.assets["#{deasset(params[:file])}.svg"]
   end
 
   get "/flashes/:file.swf" do
     content_type "application/x-shockwave-flash"
-    settings.assets["#{params[:file]}.swf"]
+    settings.assets["#{deasset(params[:file])}.swf"]
   end
 
   ["images", "favicons"].each do |folder|
     get "/#{folder}/:file" do
       content_type "image/png"
-      settings.assets["#{params[:file]}"]
+      settings.assets["#{deasset(params[:file])}"]
     end
   end
 
