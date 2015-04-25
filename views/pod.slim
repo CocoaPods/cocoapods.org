@@ -112,8 +112,6 @@ ruby:
     div.inline-headline
       h1.hidden-xs == "<a href='/pods/#{@pod.name}'>" + @pod.name + "</a> <span>" + @pod.version.to_s + "</span>"
 
-    / img.copy src="/images/copy-to-clipboard.png" data-clipboard-text=clipboard_text data-toggle="popover"  data-container="body" data-html="true"data-content=popover_html
-
     ul.attribution
       li By
       li = @pod.or_contributors_to_spec
