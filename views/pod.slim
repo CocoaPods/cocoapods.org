@@ -131,7 +131,8 @@ ruby:
       ul
         - if @pod.or_is_github?
           li.github-link
-            a href=@pod.or_github_url ="#{@pod.or_user}/#{@pod.or_repo}"
+            a.hidden-xs href=@pod.or_github_url ="#{@pod.or_user}/#{@pod.or_repo}"
+            a.visible-xs href=@pod.or_github_url ="GitHub Repo"
 
         li.metadata.files.hidden-xs title='Number of files' = @cocoadocs.total_files
         li.metadata.forks.hidden-xs title='Number of forks' = @metrics.forks
