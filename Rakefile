@@ -1,8 +1,3 @@
-require 'json'
-require 'yaml'
-
-Bundler.require
-
 desc "Initializes your working copy to have the correct submodules and gems"
 task :bootstrap do
   puts "Updating submodules..."
@@ -11,6 +6,12 @@ task :bootstrap do
   puts "Installing gems..."
   `bundle install`
 end
+
+begin
+
+require 'json'
+require 'yaml'
+Bundler.require
 
 desc 'Start up the dynamic site'
 task :serve do
@@ -165,5 +166,17 @@ task :generate_contributors do
     File.open("data/contributors.yaml", "w") do |out|
       YAML.dump(contributors, out)
     end
+  end
+end
+
+rescue LoadError, NameError => e
+  $stderr.puts "\033[0;31m" \
+    '[!] Some Rake tasks haven been disabled because the environment' \
+    ' couldn’t be loaded. Be sure to run `rake bootstrap` first or use the ' \
+    "VERBOSE environment variable to see errors.\e[0m"
+  if ENV['VERBOSE']
+    $stderr.puts e.message
+    $stderr.puts e.backtrace
+    $stderr.puts
   end
 end
