@@ -1,6 +1,5 @@
 require 'json'
 require 'yaml'
-require 'twitter'
 require 'rest'
 require 'link_header'
 
@@ -57,6 +56,8 @@ task :generate_team do
 
   # Think this is rate limited to 15 calls every 15 minutes
   # so don't generate twice in a row ;)
+  
+  require 'twitter'
 
   client = Twitter::REST::Client.new do |config|
     config.consumer_key        = "1QaLPhCqKhOeji8WW7Rgrg"
