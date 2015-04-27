@@ -12,7 +12,7 @@ Ideally this website should be ran through a sub-folder of [Strata](https://gith
 
 1. `bundle exec foreman start`
 
-The server will run on http://localhost:3000
+The server will run on http://localhost:5000
 
 ## Things to note
 
