@@ -19,7 +19,7 @@ gem 'activesupport'
 gem 'pygments.rb'
 gem 'github-markup'
 
-gem "nap"
+gem "nap", require: 'rest'
 gem "twitter"
 
 gem 'link_header'
