@@ -82,7 +82,7 @@ ruby:
           - @pod.dependencies.each do |dep|
             tr
               td
-                a href="/pod/#{dep.name}" =dep.name
+                a href="/pods/#{dep.name}" =dep.name
               td = dep.requirement.to_s
 
           tr
