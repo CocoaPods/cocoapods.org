@@ -3,28 +3,28 @@
   :commits: 4427
   :avatar_url: https://avatars.githubusercontent.com/u/1048705?v=3
 - :name: alloy
-  :commits: 2948
+  :commits: 2949
   :avatar_url: https://avatars.githubusercontent.com/u/2320?v=3
 - :name: orta
-  :commits: 1629
+  :commits: 1645
   :avatar_url: https://avatars.githubusercontent.com/u/49038?v=3
 - :name: floere
-  :commits: 1599
+  :commits: 1606
   :avatar_url: https://avatars.githubusercontent.com/u/3022?v=3
 - :name: segiddins
-  :commits: 1075
+  :commits: 1107
   :avatar_url: https://avatars.githubusercontent.com/u/1946610?v=3
 - :name: kylef
-  :commits: 714
+  :commits: 719
   :avatar_url: https://avatars.githubusercontent.com/u/44164?v=3
 - :name: mrackwitz
-  :commits: 486
+  :commits: 492
   :avatar_url: https://avatars.githubusercontent.com/u/1389011?v=3
 - :name: neonichu
   :commits: 378
   :avatar_url: https://avatars.githubusercontent.com/u/118992?v=3
 - :name: AliSoftware
-  :commits: 205
+  :commits: 206
   :avatar_url: https://avatars.githubusercontent.com/u/216089?v=3
 - :name: lukeredpath
   :commits: 136
@@ -32,7 +32,7 @@
 - :name: Kapin
   :commits: 104
   :avatar_url: https://avatars.githubusercontent.com/u/995382?v=3
-- :name: Keithbsmiley
+- :name: keith
   :commits: 95
   :avatar_url: https://avatars.githubusercontent.com/u/283886?v=3
 - :name: mtitolo
@@ -338,6 +338,9 @@
 - :name: Inferis
   :commits: 3
   :avatar_url: https://avatars.githubusercontent.com/u/8215?v=3
+- :name: jhersh
+  :commits: 3
+  :avatar_url: https://avatars.githubusercontent.com/u/175139?v=3
 - :name: marcelofabri
   :commits: 3
   :avatar_url: https://avatars.githubusercontent.com/u/833072?v=3
@@ -395,6 +398,9 @@
 - :name: daveverwer
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/5180?v=3
+- :name: dbarden
+  :commits: 2
+  :avatar_url: https://avatars.githubusercontent.com/u/104456?v=3
 - :name: duemunk
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/489138?v=3
@@ -434,9 +440,6 @@
 - :name: Jaym3s
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/178023?v=3
-- :name: jhersh
-  :commits: 2
-  :avatar_url: https://avatars.githubusercontent.com/u/175139?v=3
 - :name: jinthagerman
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/1154508?v=3
@@ -455,9 +458,15 @@
 - :name: laiso
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/39830?v=3
+- :name: lembacon
+  :commits: 2
+  :avatar_url: https://avatars.githubusercontent.com/u/251435?v=3
 - :name: maikg
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/9554?v=3
+- :name: mglidden
+  :commits: 2
+  :avatar_url: https://avatars.githubusercontent.com/u/1319930?v=3
 - :name: mipmip
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/658612?v=3
@@ -677,6 +686,9 @@
 - :name: kastiglione
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/43429?v=3
+- :name: kerrizor
+  :commits: 1
+  :avatar_url: https://avatars.githubusercontent.com/u/257689?v=3
 - :name: KishanBagaria
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/1093313?v=3
@@ -692,9 +704,6 @@
 - :name: leberwurstsaft
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/108899?v=3
-- :name: lembacon
-  :commits: 1
-  :avatar_url: https://avatars.githubusercontent.com/u/251435?v=3
 - :name: lrz
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/8759?v=3
@@ -707,15 +716,12 @@
 - :name: mattlacey
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/1256283?v=3
-- :name: metatation
-  :commits: 1
-  :avatar_url: https://avatars.githubusercontent.com/u/135034?v=3
-- :name: mglidden
-  :commits: 1
-  :avatar_url: https://avatars.githubusercontent.com/u/1319930?v=3
 - :name: michalkonturek
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/288030?v=3
+- :name: mjbeauregard
+  :commits: 1
+  :avatar_url: https://avatars.githubusercontent.com/u/135034?v=3
 - :name: mmorearty
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/207671?v=3
