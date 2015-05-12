@@ -5,6 +5,7 @@ require 'net/http'
 require 'cocoapods-core'
 require 'yaml'
 require_relative 'spec_extensions'
+require_relative 'lib/pod_quality_estimate'
 require 'sprockets'
 require 'set'
 require 'digest/md5'
@@ -91,6 +92,12 @@ class App < Sinatra::Base
     @gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar}.png?d=retro&r=PG&s=240"
 
     slim :owner
+  end
+
+  get '/pods/:name/quality' do
+    @name = params[:name]
+    @quality = PodQualityEstimate.load_quality_estimate(@name)
+    slim :pod_quality
   end
 
   def pod_page_for_result result
