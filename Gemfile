@@ -25,6 +25,8 @@ gem "twitter"
 gem 'link_header'
 gem 'sprockets'
 
+gem 'httparty'
+
 group :development, :production do
   gem 'foreman'
   gem 'thin'
