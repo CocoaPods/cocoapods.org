@@ -1,0 +1,60 @@
+css:
+  h3.estimate-step-title {
+    margin-top: 0;
+    color: #fb0006;
+  }
+  div.base-score, div.negative-score {
+    color: #fb0006;
+  }
+
+  div.positive-score {
+    color: #72CC1D;
+  }
+
+  div.score h2 {
+    margin: 0;
+    height: 100%;
+    line-height: 100%;
+  }
+
+  div.score {
+    position: relative;
+    padding: 0;
+  }
+
+  div.score:before {
+    content: "";
+    display: block;
+    padding-top: 100%;  /* initial ratio of 1:1*/
+  }
+
+  div.score > .content {
+    position:  absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+section.container
+  article.row#headline
+    .col-lg-12.col-sm-12.col-xs-12
+      h1 == @name
+
+#content-wrapper
+  section.container
+    article.row
+      .quality-content.col-sm-12
+        - @quality.calculation_steps.each do |step|
+          .row
+            .col-sm-1.score.col-sm-offset-1 class=(step.css_class)
+              .content
+                h2 == step.score_text
+            .col-sm-9.col-sm-offset-1
+              - if step.title
+                h3.estimate-step-title == step.title
+              p == step.description
+        .row
+          .col-sm-1.score.col-sm-offset-1
+            h2 == @quality.total_score
+
