@@ -25,11 +25,12 @@ DB = Flounder.domain connection do |dom|
   #
   dom.entity :owners, :owner, 'owners'
   dom.entity :pods, :pod, 'pods'
+  dom.entity :owners_pods, :owners_pod, 'owners_pods'
 
   # Metrics
   #
   dom.entity :github_pod_metrics, :github_pod_metric, 'github_pod_metrics'
-  
+    
   # CocoaDocs
   #
   dom.entity :cocoadocs_pod_metrics, :cocoadocs_pod_metric, 'cocoadocs_pod_metrics'

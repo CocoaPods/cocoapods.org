@@ -40,6 +40,10 @@ task :deploy_staging_db do
   end
 end
 
+desc 'Starts a interactive console with the db env loaded'
+task :console do
+  exec({"RACK_ENV" => "development"}, "pry -I #{File.expand_path('../', __FILE__)} -r domain -e 'DB.entities.each do |entity|;name = entity.plural;define_method name do DB[name] end end'")
+end
 
 desc "Generate dev team and contributor infos for the about page."
 task :generate do

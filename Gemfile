@@ -28,4 +28,5 @@ gem 'sprockets'
 group :development, :production do
   gem 'foreman'
   gem 'thin'
+  gem 'pry'
 end

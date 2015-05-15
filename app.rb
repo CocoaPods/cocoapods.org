@@ -6,6 +6,8 @@ require 'cocoapods-core'
 require 'yaml'
 require_relative 'spec_extensions'
 require 'sprockets'
+require 'set'
+require 'digest/md5'
 
 class App < Sinatra::Base
   configure do
@@ -59,7 +61,7 @@ class App < Sinatra::Base
   get '/pods/:name' do
     STDOUT.sync = true
 
-    result = metrics.where(pods[:name] => params[:name]).first
+    result = metrics.where(pods[:deleted] => false, pods[:name] => params[:name]).first
     halt 404, "404 - Pod not found" unless result
 
     @content = pod_page_for_result result
@@ -69,10 +71,25 @@ class App < Sinatra::Base
   get '/pods/:name/inline' do
     response['Access-Control-Allow-Origin'] = '*'
 
-    result = metrics.where(pods[:name] => params[:name]).first
+    result = metrics.where(pods[:deleted] => false, pods[:name] => params[:name]).first
     halt 404, "404 - Pod not found" unless result
 
     pod_page_for_result result
+  end
+  
+  get '/owners/:id' do
+    @owner = owners.where(:id => params[:id]).first
+    halt 404, "404 - Owner not found" unless @owner
+        
+    pod_ids = Set.new owners_pods.where(:owner_id => @owner[:id]).map do |owners_pod|
+      owners_pod[:pod_id]
+    end
+
+    @pods = metrics.where(pods[:deleted] => false, pods[:id] => pod_ids).to_a
+    gravatar = Digest::MD5.hexdigest(@owner.email.downcase)
+    @gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar}.png?d=retro&r=PG&s=300"
+
+    slim :owner
   end
 
   def pod_page_for_result result
@@ -80,8 +97,6 @@ class App < Sinatra::Base
     @pod_db = result.pod
     @metrics = result.github_pod_metric
     @cocoadocs = result.cocoadocs_pod_metric
-    # @cloc = cocoadocs_cloc_metrics.where(pod_id: @pod_db.id)
-
     @version = pod_versions
                 .where(pod_id: @pod_db.id)
                 .sort_by { |v| Pod::Version.new(v.name) }
@@ -100,8 +115,7 @@ class App < Sinatra::Base
   # joined pods/metrics query proxy.
   #
   def metrics
-    pods.join(:github_pod_metrics).on(:id => :pod_id)
-        .join(:cocoadocs_pod_metrics).on(:id => :pod_id)
+    pods.join(:github_pod_metrics).on(:id => :pod_id).join(:cocoadocs_pod_metrics).on(:id => :pod_id)
   end
 
   # Setup assets.

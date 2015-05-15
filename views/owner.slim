@@ -1,0 +1,101 @@
+ruby:
+  def testing_quote tests 
+    case tests
+    when -1..1 then "No Tests"
+    when 2..10 then "Some Tests"
+    when 11..30 then "Has Tests"
+    when 31..80 then "Amply Tested"
+    when 81..150 then "Well Tested"
+    else "Great Tests"
+    end
+  end
+  
+  def doc_quote doc
+    case doc
+    when -1..5 then "No Docs"
+    when 6..20 then "Partial Docs"
+    when 21..50 then "Documented"
+    when 51..80 then "Good Docs"
+    else "Great Docs"
+    end
+  end
+  
+css:
+  #headline {
+    height:320px;
+    padding:0;
+  }
+  
+  #headline > div {
+    position: relative;
+    height:100%;
+  }
+    
+  #headline > div > h1 {
+    bottom: 20px;
+    left: 0px;
+    font-size: 72px;
+    font-weight:normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 74px;
+    line-height: 63px;
+    color: #ED0015;
+    position: absolute;
+    padding: 0;
+    margin-bottom: 0; 
+    width:100%;
+  }
+  
+  #headline img#gravatar {
+    border-radius:60px;
+    bottom: 20px;
+    right: 20px;
+    position: absolute;
+  }
+  
+  h1 span {
+    color: whitesmoke;
+  }
+  
+  @media (max-width:768px){
+    #headline {
+      height:120px;
+    }
+    #headline > div > h1 {
+      font-size:32px;
+      text-align:center;
+    }
+  }
+  
+  #owner {
+    padding-top:60px;
+  }
+  
+  #owner .row {
+    background-color:white;
+  }
+
+section.container
+  article.row#headline  
+    .col-lg-12.col-sm-12.col-xs-12
+      h1 == @owner.name
+      img#gravatar src=@gravatar_url width=120 height=120
+
+#content-wrapper
+  section.container#owner
+    article.row
+      .col-sm-offset-1.col-sm-10.col-xs-12
+      
+        - for pod in @pods do
+          a href="/pods/#{pod[:name]}" 
+            h2 == pod[:name]
+
+          ul 
+            li == pod[:cocoadocs_pod_metric][:dominant_language]
+            li == pod[:github_pod_metric][:stargazers].to_s + " Stars"
+            li == testing_quote pod[:cocoadocs_pod_metric][:total_testing_expectations]
+            li == doc_quote pod[:cocoadocs_pod_metric][:doc_percent]
+
+          hr
