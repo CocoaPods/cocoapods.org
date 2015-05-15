@@ -67,6 +67,12 @@ css:
       font-size:32px;
       text-align:center;
     }
+    #headline img#gravatar {
+      border-radius:40px;
+      height:80px;
+      width:80px;
+    }
+    
   }
   
   #owner {
@@ -95,7 +101,7 @@ section.container
           ul 
             li == pod[:cocoadocs_pod_metric][:dominant_language]
             li == pod[:github_pod_metric][:stargazers].to_s + " Stars"
-            li == testing_quote pod[:cocoadocs_pod_metric][:total_testing_expectations]
+            li == testing_quote pod[:cocoadocs_pod_metric][:total_test_expectations]
             li == doc_quote pod[:cocoadocs_pod_metric][:doc_percent]
 
           hr

@@ -85,9 +85,10 @@ class App < Sinatra::Base
       owners_pod[:pod_id]
     end
 
-    @pods = metrics.where(pods[:deleted] => false, pods[:id] => pod_ids).to_a
+    @pods = metrics.where(pods[:deleted] => false, pods[:id] => pod_ids).sort_by { |pod| pod[:github_pod_metric][:stargazers] || 0 }.reverse
+    
     gravatar = Digest::MD5.hexdigest(@owner.email.downcase)
-    @gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar}.png?d=retro&r=PG&s=300"
+    @gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar}.png?d=retro&r=PG&s=240"
 
     slim :owner
   end
@@ -109,7 +110,6 @@ class App < Sinatra::Base
     @readme_html = res.body.force_encoding('UTF-8') if res.is_a?(Net::HTTPSuccess)
     slim :pod, :layout => false
   end
-
 
   # Helper method that will give you a
   # joined pods/metrics query proxy.
