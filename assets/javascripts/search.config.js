@@ -191,6 +191,7 @@ $(window).ready(function() {
   var expandSearchResult = function(result) {
     result = $(result)
     result.addClass("loading")
+    result.removeClass("expandable")
 
     var url = "/pods/" + result.data("pod-name") + "/inline";
 
