@@ -1,0 +1,96 @@
+css:
+  h3.estimate-step-title {
+    margin-top: 0;
+    color: #fb0006;
+  }
+  div.base-score, div.negative-score {
+    color: #fb0006;
+  }
+
+  div.positive-score {
+    color: #72CC1D;
+  }
+
+  div.score h1 {
+    font-size: 45px;
+    line-height: 140%;
+    height: 40%;
+  }
+
+  div.score {
+    position: relative;
+    padding: 0;
+  }
+
+  div.score:before {
+    content: "";
+    display: block;
+    padding-top: 100%;  /* initial ratio of 1:1*/
+  }
+
+  div.score > .content {
+    position:  absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  div.details {
+    margin-left: 35px;
+  }
+
+  div.divider {
+    margin-top: -25px;
+    margin-bottom: -30px;
+  }
+
+  div.single {
+    width: 4px;
+    background-color: #f5f5f5;
+    align-content: center;
+    position: absolute;
+    top: 0px;
+    bottom: 5px;
+  }
+
+  div.details > p {
+    margin-top: -10px;
+  }
+
+section.container
+  article.row#headline
+    .col-lg-12.col-sm-12.col-xs-12
+      h1 == @name
+
+#content-wrapper
+  section.container
+    article.row
+      .quality-content.col-sm-12
+        - @quality.calculation_steps.each do |step|
+          - if step.title
+            .row.divider
+              .col-sm-1.col-sm-offset-1
+                .row
+                  .col-sm-offset-6.single
+          .row
+            .col-sm-1.score.col-sm-offset-1 class=(step.css_class)
+              .content
+                h1 == step.score_text
+            .col-sm-9.details
+              - if step.title
+                h3.estimate-step-title == step.title
+              - else
+                h3.estimate-step-title == "<br/>"
+              p == step.description
+        .row.divider
+              .col-sm-1.col-sm-offset-1
+                .row
+                  .col-sm-offset-5.single
+                  .col-sm-offset-7.single
+        .row
+          .col-sm-1.score.col-sm-offset-1
+            .content
+              h1 == @quality.total_score
+        
+
