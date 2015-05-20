@@ -19,9 +19,9 @@ CalculationStep = Struct.new(:description, :title, :score, :type) do
   end
 
   def score_text
-    return "#{score}" if score < 0 || type == :base_score
+    return "#{score}".gsub(/\s+/, "") if score < 0 || type == :base_score
 
-    "+ #{score}"
+    "+#{score}"
   end
 end
 

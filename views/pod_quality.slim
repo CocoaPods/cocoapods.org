@@ -11,10 +11,10 @@ css:
     color: #72CC1D;
   }
 
-  div.score h2 {
-    margin: 0;
-    height: 100%;
-    line-height: 100%;
+  div.score h1 {
+    font-size: 45px;
+    line-height: 140%;
+    height: 40%;
   }
 
   div.score {
@@ -36,6 +36,10 @@ css:
     right: 0;
   }
 
+  div.details {
+    margin-left: 35px;
+  }
+
 section.container
   article.row#headline
     .col-lg-12.col-sm-12.col-xs-12
@@ -49,8 +53,8 @@ section.container
           .row
             .col-sm-1.score.col-sm-offset-1 class=(step.css_class)
               .content
-                h2 == step.score_text
-            .col-sm-9.col-sm-offset-1
+                h1 == step.score_text
+            .col-sm-9.details
               - if step.title
                 h3.estimate-step-title == step.title
               - else
@@ -58,5 +62,6 @@ section.container
               p == step.description
         .row
           .col-sm-1.score.col-sm-offset-1
-            h2 == @quality.total_score
+            .content
+              h1 == @quality.total_score
 
