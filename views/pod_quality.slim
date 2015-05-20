@@ -40,6 +40,24 @@ css:
     margin-left: 35px;
   }
 
+  div.divider {
+    margin-top: -25px;
+    margin-bottom: -30px;
+  }
+
+  div.single {
+    width: 4px;
+    background-color: #f5f5f5;
+    align-content: center;
+    position: absolute;
+    top: 0px;
+    bottom: 5px;
+  }
+
+  div.details > p {
+    margin-top: -10px;
+  }
+
 section.container
   article.row#headline
     .col-lg-12.col-sm-12.col-xs-12
@@ -50,6 +68,11 @@ section.container
     article.row
       .quality-content.col-sm-12
         - @quality.calculation_steps.each do |step|
+          - if step.title
+            .row.divider
+              .col-sm-1.col-sm-offset-1
+                .row
+                  .col-sm-offset-6.single
           .row
             .col-sm-1.score.col-sm-offset-1 class=(step.css_class)
               .content
@@ -60,8 +83,14 @@ section.container
               - else
                 h3.estimate-step-title == "<br/>"
               p == step.description
+        .row.divider
+              .col-sm-1.col-sm-offset-1
+                .row
+                  .col-sm-offset-5.single
+                  .col-sm-offset-7.single
         .row
           .col-sm-1.score.col-sm-offset-1
             .content
               h1 == @quality.total_score
+        
 
