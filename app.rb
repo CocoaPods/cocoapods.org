@@ -69,7 +69,7 @@ class App < Sinatra::Base
       
       # Support redirecting to the pods homepage if we can't do it.
       version = pod_versions.where(pod_id: result["id"]).sort_by { |v| Pod::Version.new(v.name) }.last
-      commit = commits.where(pod_version_id: version.id).first
+      commit = commits.where(pod_version_id: @version.id, deleted_file_during_import: false).first
       pod = Pod::Specification.from_json commit.specification_data
       redirect pod.homepage
     end
@@ -119,8 +119,9 @@ class App < Sinatra::Base
                 .sort_by { |v| Pod::Version.new(v.name) }
                 .last
 
-    @commit = commits.where(pod_version_id: @version.id).first
+    @commit = commits.where(pod_version_id: @version.id, deleted_file_during_import: false).first
     @pod = Pod::Specification.from_json @commit.specification_data
+        
     uri = URI(@cocoadocs["rendered_readme_url"])
     res = Net::HTTP.get_response(uri)
     @readme_html = res.body.force_encoding('UTF-8') if res.is_a?(Net::HTTPSuccess)
