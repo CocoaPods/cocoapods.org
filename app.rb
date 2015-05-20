@@ -62,8 +62,17 @@ class App < Sinatra::Base
   get '/pods/:name' do
     STDOUT.sync = true
 
-    result = metrics.where(pods[:deleted] => false, pods[:name] => params[:name]).first
-    halt 404, "404 - Pod not found" unless result
+    result = metrics.where(pods[:deleted] => false, pods[:normalized_name] => params[:name].downcase).first
+    unless result
+      result = pods.where(pods[:deleted] => false, pods[:normalized_name] => params[:name].downcase).first
+      halt 404, "404 - Pod not found" unless result
+      
+      # Support redirecting to the pods homepage if we can't do it.
+      version = pod_versions.where(pod_id: result["id"]).sort_by { |v| Pod::Version.new(v.name) }.last
+      commit = commits.where(pod_version_id: version.id).first
+      pod = Pod::Specification.from_json commit.specification_data
+      redirect pod.homepage
+    end
 
     @content = pod_page_for_result result
     slim :pod_page
