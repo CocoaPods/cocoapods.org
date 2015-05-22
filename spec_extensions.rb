@@ -8,12 +8,17 @@ end
 
 module Pod
   class Specification
+    
+    def or_homepage
+      homepage || ""
+    end
+    
     def or_is_github?
-      homepage.include?("github.com") || (source[:git] && source[:git].include?("github.com"))
+      or_homepage.include?("github.com") || (source[:git] && source[:git].include?("github.com"))
     end
 
     def or_github_url
-      return homepage if homepage.include?("github.com")
+      return homepage if or_homepage.include?("github.com")
       return source[:git] if source[:git] && source[:git].include?("github.com")
     end
 

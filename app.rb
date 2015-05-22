@@ -114,12 +114,9 @@ class App < Sinatra::Base
     @pod_db = result.pod
     @metrics = result.github_pod_metric
     @cocoadocs = result.cocoadocs_pod_metric
-    @version = pod_versions
-                .where(pod_id: @pod_db.id)
-                .sort_by { |v| Pod::Version.new(v.name) }
-                .last
+    @version = pod_versions.where(pod_id: @pod_db.id).sort_by { |v| Pod::Version.new(v.name) }.last
 
-    @commit = commits.where(pod_version_id: @version.id, deleted_file_during_import: false).first
+    @commit = commits.where(pod_version_id: @version.id, deleted_file_during_import: false).order_by(:created_at.desc).first
     @pod = Pod::Specification.from_json @commit.specification_data
         
     uri = URI(@cocoadocs["rendered_readme_url"])
