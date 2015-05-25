@@ -74,6 +74,7 @@ class App < Sinatra::Base
       redirect pod.homepage
     end
 
+    @page_title = "#{params[:name]} - CocoaPods.org"
     @content = pod_page_for_result result
     slim :pod_page
   end
