@@ -8,32 +8,73 @@ ruby:
   docs_description = @cocoadocs["doc_percent"] > 70 ? "Documented" : "Well Documented"
   lang_small = @metrics["language"] == "Objective-C" ? "Obj-C" : @metrics["language"]
 
+  def section(title, include_zero=true, properties)
+    header = "<h3>#{title}</h3><table style='width:100%'><tbody>"
+    body = properties.map do |key, value|
+      "<tr><td>#{key}</td><td>#{value}</td></tr>" if include_zero || value.to_i != 0
+    end.join()
+    header + body + "</tbody></table>"
+  end
+
+  def alt_spans(type="lg", small, large)
+    <<-eos
+      <span class='hidden-#{type}-span'>#{small}</span><span class='visible-#{type}-span'>#{large}</span>
+    eos
+  end
+
+  def link_to(url, name)
+    <<-eos
+      <a href='#{url}'>#{name}</a>
+    eos
+  end
+
 .pod_result
   div.pod-metadata.clearfix
 
   div.sideline.col-sm-3.col-xs-12.col-sm-push-9
     h1.visible-xs.inline-headline == "<a href='/pods/#{@pod.name}'>" + @pod.name + "</a> <span>" + @pod.version.to_s + "</span>"
-    p == @pod.or_longer_description
+
+
+    == section("",
+      { "Documented" => has_docs ? "✓":"✗",
+        "Tests" => has_tests ? "✓":"✗",
+        "Language" => alt_spans(lang_small, @metrics["language"]),
+        "License" => link_to(@cocoadocs["license_canonical_url"], @cocoadocs["license_short_name"]),
+        "Last Release" => @commit["created_at"].strftime("%b %Y"),
+        # "Start Date" => @cocoadocs["initial_commit_date"].strftime "%Y/%m/%d",
+      })
+
     hr
-    table style="width:100%"
-      tbody
-        tr
-          td Documented
-          td = has_docs ? "✓":"✗"
-        tr
-          td = tested_description
-          td = has_tests ? "✓":"✗"
-        tr
-          td Language
-          td
-            span.hidden-lg-span = lang_small
-            span.visible-lg-span = @metrics["language"]
 
-        tr
-          td License
-          td
-            a href=@cocoadocs["license_canonical_url"] =@cocoadocs["license_short_name"]
+    - if @stats
+      == section("Downloads",
+        { "Total" => @stats["download_total"],
+          "Week" => @stats["download_week"],
+          "Month" => @stats["download_month"],
+        })
 
+      == section("Installs", false,
+        { "Apps" => @stats["app_total"],
+          alt_spans("Apps Week","New Apps This Week") => @stats["app_week"],
+          "Test Targets" => @stats["tests_total"],
+          alt_spans("Test Week","New Tests This week") => @stats["tests_week"],
+          "Extensions" => @stats["extensions_total"],
+          alt_spans("Extensions Week","New Tests This week") => @stats["extensions_week"],
+          "Watch Apps" => @stats["watch_total"],
+          alt_spans("Watch Apps Week","New Watch Apps This week") => @stats["watch_week"],
+        })
+
+    p.footnote powered by <a href="https://segment.com">Segment</a>
+    hr
+
+    - if @pod.or_github_url
+      == section("GitHub",
+        { "Stars" => @stats["download_total"],
+          "Watchers" => @stats["download_week"],
+          "Forks" => @stats["download_month"],
+          "Issues" => @metrics["open_issues"],
+          "Pull Requests" => @metrics["open_pull_requests"],
+        })
     hr
 
     ul.links
@@ -41,7 +82,6 @@ ruby:
         a href=@pod.or_podspec_url See Podspec
       li
         a href=@pod.or_web_documentation_url Documentation
-
 
       - if @pod.or_github_url
         li
@@ -52,21 +92,10 @@ ruby:
           a href=@pod.homepage Homepage
       li
         a href=@pod.or_cocoapods_url Page on CocoaPods.org
-
-
-
     hr
 
     table style="width:100%"
       tbody
-
-        - if @pod.or_is_github?
-          tr
-            td Issues
-            td=@metrics["open_issues"]
-          tr
-            td Open PRs
-            td=@metrics["open_pull_requests"]
 
         - if @pod.dependencies.count > 1
           tr
@@ -85,18 +114,6 @@ ruby:
           tr
             td &nbsp;
             td
-
-        / tr
-          / This isn't coming in from CocoaDocs correctly - https://github.com/CocoaPods/cocoadocs.org/issues/317
-
-          / td Start Date
-          / td = @cocoadocs.initial_commit_date.strftime "%Y/%m/%d"
-
-        - unless @commit["imported"]
-          tr
-            td Last Release
-            td = @commit["created_at"].strftime "%b %Y"
-
 
     - if @pod.screenshots
       hr
