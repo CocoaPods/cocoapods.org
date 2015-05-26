@@ -8,6 +8,7 @@ ruby:
   docs_description = @cocoadocs["doc_percent"] > 70 ? "Documented" : "Well Documented"
   lang_small = @cocoadocs["dominant_language"] == "Objective C" ? "Obj-C" : @cocoadocs["dominant_language"]
   owner_urls = @owners.map{ |o| "<a href='/owners/#{o["owner_id"]}'>#{o["owner"]["name"]}</a>"}.join ", "
+  quality_group = (@cocoadocs["quality_estimate"] / 20) + 1
 
   def section(title, table_class="inset", include_zero=true, properties)
     header = "<h3>#{title}</h3><table class='#{table_class}'><tbody>"
@@ -68,22 +69,23 @@ ruby:
       sub powered by <a href="https://segment.com">Segment</a>
       hr
 
-    - if @pod.or_github_url
+    - if @metrics["not_found"] == 0
       == section("GitHub",
-        { "Stars" => @stats["download_total"],
-          "Watchers" => @stats["download_week"],
-          "Forks" => @stats["download_month"],
+        { "Stars" => @metrics["stargazers"],
+          "Watchers" => @metrics["subscribers"],
+          "Forks" => @metrics["forks"],
           "Issues" => @metrics["open_issues"],
           "Pull Requests" => @metrics["open_pull_requests"],
         })
+
       hr
 
     == section("Code",
-    { "Files" => @cocoadocs["total_files"],
-      alt_spans("Size", "Integration Size") => @cocoadocs["download_size"].to_s + " kb",
-      alt_spans("Framework", "Creates Framework") => @cocoadocs["carthage_support"] ? "✓": nil,
-      alt_spans("LOC", "Lines of Code") => @cocoadocs["total_lines_of_code"],
-    })
+      { "Files" => @cocoadocs["total_files"],
+        alt_spans("Size", "Integration Size") => @cocoadocs["download_size"].to_s + " kb",
+        alt_spans("Framework", "Creates Framework") => @cocoadocs["carthage_support"] ? "✓": nil,
+        alt_spans("LOC", "Lines of Code") => @cocoadocs["total_lines_of_code"],
+      })
 
     ul.links
       li
@@ -153,10 +155,12 @@ ruby:
             a.hidden-xs
             a.visible-xs href=@pod.or_github_url ="GitHub Repo"
 
+        a href="/pods/#{@pod.name}/quality"
+          li class="metadata quality_indicator quality_#{quality_group}"
+            == File.read('assets/images/pod.svg')
         li.metadata.files.hidden-xs title='Number of files' = @cocoadocs.total_files
         li.metadata.forks.hidden-xs title='Number of forks' = @metrics.forks
         li.metadata.watchers.hidden-xs title='Number of watchers' = @metrics.subscribers
-        li.metadata.stars.hidden-xs title='Number of stars' = @metrics.stargazers
     .clearfix
 
     == @readme_html
