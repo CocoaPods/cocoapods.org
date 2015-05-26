@@ -32,6 +32,11 @@ class App < Sinatra::Base
     end
   end
 
+  not_found do
+    status 404
+    slim :not_found
+  end
+
   # Some special cases for the routing
   #
 
