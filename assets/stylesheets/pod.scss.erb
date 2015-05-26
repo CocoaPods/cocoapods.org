@@ -498,12 +498,23 @@ li.twitter {
   }
 }
 
-.sideline{
+.sideline {
   ul {
     padding-left: 0;
   }
    tr td:last-child {
     text-align:right;
+  }
+  sub {
+    text-align:right;
+    display:block;
+    margin-top:20px;
+  }
+  table {
+    width: 100%;
+    &.inset td {
+      padding-left: 8px;
+    }
   }
 }
 
@@ -513,7 +524,7 @@ li.twitter {
   margin: 0;
   font-size: 3em;
   word-break: break-all;
-  
+
   span {
     word-break: normal;
   }
