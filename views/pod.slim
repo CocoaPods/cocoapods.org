@@ -6,12 +6,13 @@ ruby:
   tested_description = @cocoadocs["total_test_expectations"] > 20 ? "Tested" : "Well Tested"
   has_docs = @cocoadocs["doc_percent"] > 20
   docs_description = @cocoadocs["doc_percent"] > 70 ? "Documented" : "Well Documented"
-  lang_small = @metrics["language"] == "Objective-C" ? "Obj-C" : @metrics["language"]
+  lang_small = @cocoadocs["dominant_language"] == "Objective C" ? "Obj-C" : @cocoadocs["dominant_language"]
+  owner_urls = @owners.map{ |o| "<a href='/owners/#{o["owner_id"]}'>#{o["owner"]["name"]}</a>"}.join ", "
 
   def section(title, table_class="inset", include_zero=true, properties)
     header = "<h3>#{title}</h3><table class='#{table_class}'><tbody>"
     body = properties.map do |key, value|
-      "<tr><td>#{key}</td><td>#{value}</td></tr>" if include_zero || value.to_i != 0
+      "<tr><td>#{key}</td><td>#{value}</td></tr>" if value && include_zero || value.to_i != 0
     end.join()
     header + body + "</tbody></table>"
   end
@@ -34,15 +35,15 @@ ruby:
   div.sideline.col-sm-3.col-xs-12.col-sm-push-9
     h1.visible-xs.inline-headline == "<a href='/pods/#{@pod.name}'>" + @pod.name + "</a> <span>" + @pod.version.to_s + "</span>"
 
-
     == section("","header",
-      { "Documented" => has_docs ? "✓":"✗",
+      { alt_spans("Docs", "Documented") => has_docs ? "✓":"✗",
         "Tests" => has_tests ? "✓":"✗",
-        "Language" => alt_spans(lang_small, @metrics["language"]),
+        "Language" => alt_spans(lang_small, @cocoadocs["dominant_language"]),
         "License" => link_to(@cocoadocs["license_canonical_url"], @cocoadocs["license_short_name"]),
-        "Last Release" => @commit["created_at"].strftime("%b %Y"),
+        alt_spans("Released", "Last Release") => @commit["created_at"].strftime("%b %Y"),
         # "Start Date" => @cocoadocs["initial_commit_date"].strftime "%Y/%m/%d",
       })
+    p =="Maintained by #{owner_urls}."
 
     hr
 
@@ -64,8 +65,8 @@ ruby:
           alt_spans("Watch Apps Week","New Watch Apps This week") => @stats["watch_week"],
         })
 
-    sub powered by <a href="https://segment.com">Segment</a>
-    hr
+      sub powered by <a href="https://segment.com">Segment</a>
+      hr
 
     - if @pod.or_github_url
       == section("GitHub",
@@ -75,7 +76,14 @@ ruby:
           "Issues" => @metrics["open_issues"],
           "Pull Requests" => @metrics["open_pull_requests"],
         })
-    hr
+      hr
+
+    == section("Code",
+    { "Files" => @cocoadocs["total_files"],
+      alt_spans("Size", "Integration Size") => @cocoadocs["download_size"].to_s + " kb",
+      alt_spans("Framework", "Creates Framework") => @cocoadocs["carthage_support"] ? "✓": nil,
+      alt_spans("LOC", "Lines of Code") => @cocoadocs["total_lines_of_code"],
+    })
 
     ul.links
       li
@@ -92,6 +100,7 @@ ruby:
           a href=@pod.homepage Homepage
       li
         a href=@pod.or_cocoapods_url Page on CocoaPods.org
+
     hr
 
     - if @pod.dependencies.count > 1
@@ -141,7 +150,7 @@ ruby:
       ul
         - if @pod.or_is_github?
           li.github-link
-            a.hidden-xs href=@pod.or_github_url ="#{@pod.or_user}/#{@pod.or_repo}"
+            a.hidden-xs
             a.visible-xs href=@pod.or_github_url ="GitHub Repo"
 
         li.metadata.files.hidden-xs title='Number of files' = @cocoadocs.total_files

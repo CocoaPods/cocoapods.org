@@ -121,7 +121,7 @@ class App < Sinatra::Base
     @cocoadocs = result.cocoadocs_pod_metric
     @stats = stats_metrics.where(pod_id: @pod_db.id).first
     @version = pod_versions.where(pod_id: @pod_db.id).sort_by { |v| Pod::Version.new(v.name) }.last
-
+    @owners = owners_pods.join(:owners).on(:owner_id => :id).where(pod_id: @pod_db.id).to_a
     @commit = commits.where(pod_version_id: @version.id, deleted_file_during_import: false).order_by(:created_at.desc).first
     @pod = Pod::Specification.from_json @commit.specification_data
 
