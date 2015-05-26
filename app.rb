@@ -32,6 +32,11 @@ class App < Sinatra::Base
     end
   end
 
+  not_found do
+    status 404
+    slim :not_found
+  end
+
   # Some special cases for the routing
   #
 
@@ -74,6 +79,7 @@ class App < Sinatra::Base
       redirect pod.homepage
     end
 
+    @page_title = "#{params[:name]} - CocoaPods.org"
     @content = pod_page_for_result result
     slim :pod_page
   end
