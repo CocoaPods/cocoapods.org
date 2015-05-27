@@ -135,7 +135,7 @@ class App < Sinatra::Base
   # joined pods/metrics query proxy.
   #
   def metrics
-    pods.join(:github_pod_metrics).on(:id => :pod_id).join(:cocoadocs_pod_metrics).on(:id => :pod_id)
+    pods.outer_join(:github_pod_metrics).on(:id => :pod_id).join(:cocoadocs_pod_metrics).on(:id => :pod_id)
   end
 
   # Setup assets.

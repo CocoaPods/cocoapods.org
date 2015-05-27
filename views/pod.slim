@@ -6,7 +6,7 @@ ruby:
   tested_description = @cocoadocs["total_test_expectations"] > 20 ? "Tested" : "Well Tested"
   has_docs = @cocoadocs["doc_percent"] > 20
   docs_description = @cocoadocs["doc_percent"] > 70 ? "Documented" : "Well Documented"
-  lang_small = @metrics["language"] == "Objective-C" ? "Obj-C" : @metrics["language"]
+  lang_small = @metrics["language"] == "Objective-C" ? "Obj-C" : @metrics["language"] if @metrics["language"]
 
 .pod_result
   div.pod-metadata.clearfix
@@ -23,6 +23,7 @@ ruby:
         tr
           td = tested_description
           td = has_tests ? "✓":"✗"
+      - if @metrics["language"]
         tr
           td Language
           td
