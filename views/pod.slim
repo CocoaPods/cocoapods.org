@@ -23,12 +23,12 @@ ruby:
         tr
           td = tested_description
           td = has_tests ? "✓":"✗"
-      - if @metrics["language"]
-        tr
-          td Language
-          td
-            span.hidden-lg-span = lang_small
-            span.visible-lg-span = @metrics["language"]
+          - if @metrics["language"]
+            tr
+              td Language
+              td
+                span.hidden-lg-span = lang_small
+                span.visible-lg-span = @metrics["language"]
 
         tr
           td License
