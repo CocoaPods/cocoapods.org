@@ -1,4 +1,12 @@
 ruby:
+  def hide_stars pod
+   pod[:github_pod_metric][:stargazers] == nil && pod[:github_pod_metric][:stargazers] != 0
+  end
+  
+  def hide_tests pod 
+   pod[:cocoadocs_pod_metric][:total_test_expectations] == nil && pod[:cocoadocs_pod_metric][:total_test_expectations] != 0
+  end
+  
   def testing_quote tests 
     case tests
     when -1..1 then "No Tests"
@@ -58,6 +66,9 @@ css:
   h1 span {
     color: whitesmoke;
   }
+  h2 {
+    word-wrap:break-word;
+  }
   
   @media (max-width:768px){
     #headline {
@@ -94,14 +105,23 @@ section.container
     article.row
       .col-sm-offset-1.col-sm-10.col-xs-12
       
-        - for pod in @pods do
-          a href="/pods/#{pod[:name]}" 
-            h2 == pod[:name]
+        - @pods.each_with_index do |pod, index|
+          .col-sm-5
+            a href="/pods/#{pod[:name]}" 
+              h2 == pod[:name]
 
-          ul 
-            li == pod[:cocoadocs_pod_metric][:dominant_language]
-            li == pod[:github_pod_metric][:stargazers].to_s + " Stars"
-            li == testing_quote pod[:cocoadocs_pod_metric][:total_test_expectations]
-            li == doc_quote pod[:cocoadocs_pod_metric][:doc_percent]
+            ul 
+              li == pod[:cocoadocs_pod_metric][:dominant_language]
 
-          hr
+              - unless hide_stars pod
+                li == pod[:github_pod_metric][:stargazers].to_s + " Stars"
+
+              - unless hide_tests pod
+                li == testing_quote pod[:cocoadocs_pod_metric][:total_test_expectations]
+
+              li == doc_quote pod[:cocoadocs_pod_metric][:doc_percent]
+
+            hr
+            
+          - if index % 2 != 0
+            .clearfix
