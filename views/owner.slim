@@ -1,5 +1,14 @@
 ruby:
-  def testing_quote tests 
+  def hide_stars pod
+   pod[:github_pod_metric][:stargazers] == nil && pod[:github_pod_metric][:stargazers] != 0
+  end
+
+  def hide_tests pod
+   pod[:cocoadocs_pod_metric][:is_vendored_framework] == true ||
+   pod[:cocoadocs_pod_metric][:total_test_expectations] == nil && pod[:cocoadocs_pod_metric][:total_test_expectations] != 0
+  end
+
+  def testing_quote tests
     case tests
     when -1..1 then "No Tests"
     when 2..10 then "Some Tests"
@@ -9,7 +18,7 @@ ruby:
     else "Great Tests"
     end
   end
-  
+
   def doc_quote doc
     case doc
     when -1..5 then "No Docs"
@@ -19,18 +28,18 @@ ruby:
     else "Great Docs"
     end
   end
-  
+
 css:
   #headline {
     height:320px;
     padding:0;
   }
-  
+
   #headline > div {
     position: relative;
     height:100%;
   }
-    
+
   #headline > div > h1 {
     bottom: 20px;
     left: 0px;
@@ -44,21 +53,24 @@ css:
     color: #ED0015;
     position: absolute;
     padding: 0;
-    margin-bottom: 0; 
+    margin-bottom: 0;
     width:100%;
   }
-  
+
   #headline img#gravatar {
     border-radius:60px;
     bottom: 20px;
     right: 20px;
     position: absolute;
   }
-  
+
   h1 span {
     color: whitesmoke;
   }
-  
+  h2 {
+    word-wrap:break-word;
+  }
+
   @media (max-width:768px){
     #headline {
       height:120px;
@@ -72,19 +84,19 @@ css:
       height:80px;
       width:80px;
     }
-    
+
   }
-  
+
   #owner {
     padding-top:60px;
   }
-  
+
   #owner .row {
     background-color:white;
   }
 
 section.container
-  article.row#headline  
+  article.row#headline
     .col-lg-12.col-sm-12.col-xs-12
       h1 == @owner.name
       img#gravatar src=@gravatar_url width=120 height=120
@@ -93,15 +105,24 @@ section.container
   section.container#owner
     article.row
       .col-sm-offset-1.col-sm-10.col-xs-12
-      
-        - for pod in @pods do
-          a href="/pods/#{pod[:name]}" 
-            h2 == pod[:name]
 
-          ul 
-            li == pod[:cocoadocs_pod_metric][:dominant_language]
-            li == pod[:github_pod_metric][:stargazers].to_s + " Stars"
-            li == testing_quote pod[:cocoadocs_pod_metric][:total_test_expectations]
-            li == doc_quote pod[:cocoadocs_pod_metric][:doc_percent]
+        - @pods.each_with_index do |pod, index|
+          .col-sm-6
+            a href="/pods/#{pod[:name]}"
+              h2 == pod[:name]
 
-          hr
+            ul
+              li == pod[:cocoadocs_pod_metric][:dominant_language]
+
+              - unless hide_stars pod
+                li == pod[:github_pod_metric][:stargazers].to_s + " Stars"
+
+              - unless hide_tests pod
+                li == testing_quote pod[:cocoadocs_pod_metric][:total_test_expectations]
+
+              li == doc_quote pod[:cocoadocs_pod_metric][:doc_percent]
+
+            hr
+
+          - if index % 2 != 0
+            .clearfix

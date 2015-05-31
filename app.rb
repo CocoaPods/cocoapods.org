@@ -66,7 +66,6 @@ class App < Sinatra::Base
   #
   get '/pods/:name' do
     STDOUT.sync = true
-
     result = metrics.where(pods[:deleted] => false, pods[:normalized_name] => params[:name].downcase).first
     unless result
       result = pods.where(pods[:deleted] => false, pods[:normalized_name] => params[:name].downcase).first
@@ -79,7 +78,7 @@ class App < Sinatra::Base
       redirect pod.homepage
     end
 
-    @page_title = "#{params[:name]} - CocoaPods.org"
+    @page_title = "#{result.pod.name} - CocoaPods.org"
     @content = pod_page_for_result result
     slim :pod_page
   end
@@ -137,7 +136,7 @@ class App < Sinatra::Base
   # joined pods/metrics query proxy.
   #
   def metrics
-    pods.join(:github_pod_metrics).on(:id => :pod_id).join(:cocoadocs_pod_metrics).on(:id => :pod_id)
+    pods.outer_join(:github_pod_metrics).on(:id => :pod_id).join(:cocoadocs_pod_metrics).on(:id => :pod_id)
   end
 
   # Setup assets.

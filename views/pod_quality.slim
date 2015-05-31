@@ -3,11 +3,12 @@ css:
     margin-top: 0;
     color: #fb0006;
   }
-  div.base-score, div.negative-score {
+
+  .negative-score {
     color: #fb0006;
   }
 
-  div.positive-score {
+  .positive-score {
     color: #72CC1D;
   }
 
@@ -25,7 +26,15 @@ css:
   div.score:before {
     content: "";
     display: block;
-    padding-top: 100%;  /* initial ratio of 1:1*/
+    padding-top: 100%;  /* initial ratio of 1:1 */
+  }
+
+  @media (max-width:765px){
+    div.totals:before {
+      content: "";
+      display: block;
+      padding-top: 25%;
+    }
   }
 
   div.score > .content {
@@ -58,6 +67,25 @@ css:
     margin-top: -10px;
   }
 
+  div.xs-divider {
+    margin-top: -45px;
+  }
+
+  a.button {
+    background-color: #fb0006;
+    height:44px;
+    text-align:center;
+    color: white;
+    padding-top:10px;
+    cursor:pointer;
+  }
+  a.button:hover {
+    background-color: #d10c11;
+    text-decoration:none;
+  }
+
+<meta name="viewport" content="width=device-width" />
+
 section.container
   article.row#headline
     .col-lg-12.col-sm-12.col-xs-12
@@ -74,14 +102,24 @@ section.container
                 .row
                   .col-sm-offset-6.single
           .row
-            .col-sm-1.score.col-sm-offset-1 class=(step.css_class)
-              .content
-                h1 == step.score_text
-            .col-sm-9.details
+            - if step.title
+              .col-sm-1.score.col-sm-offset-1.score.col-xs-3.col-xs-offset-1 class=(step.css_class)
+                .content
+                  h1 == step.score_text
+            - else
+              .col-sm-1.score.col-sm-offset-1.score class=((step.css_class) + (' totals'))
+                .content
+                  h1 == step.score_text
+
+            .col-sm-9.details.col-xs-6.col-xs-offset-1.details
               - if step.title
                 h3.estimate-step-title == step.title
               - else
                 h3.estimate-step-title == "<br/>"
+              p.hidden-xs == step.description
+
+          .row.visible-xs.xs-divider
+            .col-xs-10.col-xs-offset-1
               p == step.description
         .row.divider
               .col-sm-1.col-sm-offset-1
@@ -89,8 +127,21 @@ section.container
                   .col-sm-offset-5.single
                   .col-sm-offset-7.single
         .row
-          .col-sm-1.score.col-sm-offset-1
+          .col-sm-1.score.col-sm-offset-1.totals
             .content
               h1 == @quality.total_score
-        
 
+      - if @quality.unaffected_steps.length
+        .row
+          a.col-sm-4.col-sm-offset-4.button onclick="$('#not-applied').show();$(this).hide();" Show metrics not applied
+
+        .quality-content.row#not-applied style="display:none"
+          .col-sm-8.col-sm-offset-2
+            h2 Metrics not applied
+            ul
+              - @quality.unaffected_steps.each do |step|
+                li
+                  h4 == "#{step.title} <span class='#{step.css_class}'>#{step.score_text}</span>"
+                  p == step.description
+
+            p Interested in how it works? <a href="https://github.com/CocoaPods/cocoadocs-api/blob/master/quality_modifiers.rb">See the metrics code</a>
