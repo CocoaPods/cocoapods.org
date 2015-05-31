@@ -9,7 +9,7 @@
           .platform
             input value="" type="radio" id="platform_either" name="platform" checked=true
             label class="left" for="platform_either" <span>Any</span>
-            input value="on:osx on:ios" type="radio" id="platform_both" name="platform" 
+            input value="on:osx on:ios" type="radio" id="platform_both" name="platform"
             label class="middle" for="platform_both" <span>Universal</span>
             input value="on:ios" type="radio" id="platform_ios" name="platform"
             label class="middle" for="platform_ios" <span>iOS</span>
@@ -19,20 +19,20 @@
           .language
             input value="" type="radio" id="language_all" name="language" checked=true
             label class="left" for="language_all" <span>All</span>
-            input value="lang:swift" type="radio" id="language_swift" name="language" 
+            input value="lang:swift" type="radio" id="language_swift" name="language"
             label class="middle" for="language_swift" <span>Swift</span>
             input value="lang:objc" type="radio" id="platform_objc" name="language"
             label class="right" for="platform_objc" <span>Obj-C</span>
-            
+
           .sorting.dropdown
             | Sort by:
-            a data-target="#" data-toggle="dropdown" data-sorting="popularity" aria-haspopup="true" role="button" aria-expanded="false" Popularity <span class="caret">
+            a data-target="#" data-toggle="dropdown" data-sorting="quality" aria-haspopup="true" role="button" aria-expanded="false" Quality <span class="caret">
 
             ul.dropdown-menu role="menu" aria-labelledby="dLabel"
               li
-                a.selected data-sorting="popularity" Popularity
+                a.selected data-sorting="quality" Quality
               li
-                a data-sorting="quality" Quality
+                a data-sorting="popularity" Popularity
               li
                 a data-sorting="name" A-Z
               li
