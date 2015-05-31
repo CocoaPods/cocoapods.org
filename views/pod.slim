@@ -6,70 +6,92 @@ ruby:
   tested_description = @cocoadocs["total_test_expectations"] > 20 ? "Tested" : "Well Tested"
   has_docs = @cocoadocs["doc_percent"] > 20
   docs_description = @cocoadocs["doc_percent"] > 70 ? "Documented" : "Well Documented"
-  lang_small = @metrics["language"] == "Objective-C" ? "Obj-C" : @metrics["language"] if @metrics["language"]
+  lang_small = @cocoadocs["dominant_language"] == "Objective C" ? "Obj-C" : @cocoadocs["dominant_language"]
+  owner_urls = @owners.map{ |o| "<a href='/owners/#{o["owner_id"]}'>#{o["owner"]["name"]}</a>"}.join ", "
+  quality_group = (@cocoadocs["quality_estimate"] / 20) + 1
+
+  def section(title, table_class="inset", include_zero=true, properties)
+    header = "<h3>#{title}</h3><table class='#{table_class}'><tbody>"
+    body = properties.map do |key, value|
+      "<tr><td>#{key}</td><td>#{value}</td></tr>" if value && include_zero || value.to_i != 0
+    end.join()
+    header + body + "</tbody></table>"
+  end
+
+  def alt_spans(type="lg", small, large)
+    <<-eos
+      <span class='hidden-#{type}-span'>#{small}</span><span class='visible-#{type}-span'>#{large}</span>
+    eos
+  end
+
+  def link_to(url, name)
+    <<-eos
+      <a href='#{url}'>#{name}</a>
+    eos
+  end
 
 .pod_result
   div.pod-metadata.clearfix
 
   div.sideline.col-sm-3.col-xs-12.col-sm-push-9
     h1.visible-xs.inline-headline == "<a href='/pods/#{@pod.name}'>" + @pod.name + "</a> <span>" + @pod.version.to_s + "</span>"
-    p == @pod.or_longer_description
-    hr
-    table style="width:100%"
-      tbody
-        tr
-          td Documented
-          td = has_docs ? "✓":"✗"
-        tr
-          td = tested_description
-          td = has_tests ? "✓":"✗"
-          - if @metrics["language"]
-            tr
-              td Language
-              td
-                span.hidden-lg-span = lang_small
-                span.visible-lg-span = @metrics["language"]
 
-        tr
-          td License
-          td
-            a href=@cocoadocs["license_canonical_url"] =@cocoadocs["license_short_name"]
+    == section("","header",
+      { alt_spans("Docs", "Documented") => has_docs ? "✓":"✗",
+        "Tests" => has_tests ? "✓":"✗",
+        "Language" => alt_spans(lang_small, @cocoadocs["dominant_language"]),
+        "License" => link_to(@cocoadocs["license_canonical_url"], @cocoadocs["license_short_name"]),
+        alt_spans("Released", "Last Release") => @commit["created_at"].strftime("%b %Y"),
+        # "Start Date" => @cocoadocs["initial_commit_date"].strftime "%Y/%m/%d",
+      })
+    p =="Maintained by #{owner_urls}."
 
     hr
 
-    ul.links
-      li
-        a href=@pod.or_podspec_url See Podspec
-      li
-        a href=@pod.or_web_documentation_url Documentation
+    - if @stats
+      == section("Downloads",
+        { "Total" => @stats["download_total"],
+          "Week" => @stats["download_week"],
+          "Month" => @stats["download_month"],
+        })
 
+      == section("Installs", "inset", false,
+        { "Apps" => @stats["app_total"],
+          alt_spans("Apps Week","New Apps This Week") => @stats["app_week"],
+          "Test Targets" => @stats["tests_total"],
+          alt_spans("Test Week","New Tests This week") => @stats["tests_week"],
+          "Extensions" => @stats["extensions_total"],
+          alt_spans("Extensions Week","New Tests This week") => @stats["extensions_week"],
+          "Watch Apps" => @stats["watch_total"],
+          alt_spans("Watch Apps Week","New Watch Apps This week") => @stats["watch_week"],
+        })
 
-      - if @pod.or_github_url
-        li
-          a href=@pod.or_github_url GitHub
+      sub powered by <a href="https://segment.com">Segment</a>
+      hr
 
-      - if @pod.homepage && @pod.homepage != @pod.or_github_url
-        li
-          a href=@pod.homepage Homepage
-      li
-        a href=@pod.or_cocoapods_url Page on CocoaPods.org
+    - if @metrics["not_found"] == 0
+      == section("GitHub",
+        { "Stars" => @metrics["stargazers"],
+          "Watchers" => @metrics["subscribers"],
+          "Forks" => @metrics["forks"],
+          "Issues" => @metrics["open_issues"],
+          "Pull Requests" => @metrics["open_pull_requests"],
+        })
 
+      hr
 
+    == section("Code",
+      { "Files" => @cocoadocs["total_files"],
+        alt_spans("Size", "Integration Size") => @cocoadocs["download_size"].to_s + " kb",
+        alt_spans("Framework", "Creates Framework") => @cocoadocs["carthage_support"] ? "✓": nil,
+        alt_spans("LOC", "Lines of Code") => @cocoadocs["total_lines_of_code"],
+      })
 
     hr
 
-    table style="width:100%"
-      tbody
-
-        - if @pod.or_is_github?
-          tr
-            td Issues
-            td=@metrics["open_issues"]
-          tr
-            td Open PRs
-            td=@metrics["open_pull_requests"]
-
-        - if @pod.dependencies.count > 1
+    - if @pod.dependencies.count > 1
+      table
+        tbody
           tr
             td &nbsp;
             td
@@ -86,24 +108,29 @@ ruby:
           tr
             td &nbsp;
             td
-
-        / tr
-          / This isn't coming in from CocoaDocs correctly - https://github.com/CocoaPods/cocoadocs.org/issues/317
-
-          / td Start Date
-          / td = @cocoadocs.initial_commit_date.strftime "%Y/%m/%d"
-
-        - unless @commit["imported"]
-          tr
-            td Last Release
-            td = @commit["created_at"].strftime "%b %Y"
-
-
-    - if @pod.screenshots
       hr
+
+    - if @pod.screenshots.count < 0
       ul.screenshots
         - @pod.screenshots.each do |screenshot|
           img src="#{screenshot}"
+      hr
+
+    ul.links
+      li
+        a href=@pod.or_podspec_url See Podspec
+      li
+        a href=@pod.or_web_documentation_url Documentation
+
+      - if @pod.or_github_url
+        li
+          a href=@pod.or_github_url GitHub
+
+      - if @pod.homepage && @pod.homepage != @pod.or_github_url
+        li
+          a href=@pod.homepage Homepage
+      li
+        a href=@pod.or_cocoapods_url Page on CocoaPods.org
 
 
   div.readme-content.col-sm-9.col-xs-12.col-sm-pull-3
@@ -122,18 +149,16 @@ ruby:
         li.social
            a href=@pod.social_media_url =@pod.or_social_media_title
 
-
     nav
       ul
         - if @pod.or_is_github?
           li.github-link
             a.hidden-xs href=@pod.or_github_url ="#{@pod.or_user}/#{@pod.or_repo}"
-            a.visible-xs href=@pod.or_github_url ="GitHub Repo"
+            a.visible-xs href=@pod.or_github_url GitHub Repo
 
-        li.metadata.files.hidden-xs title='Number of files' = @cocoadocs.total_files
-        li.metadata.forks.hidden-xs title='Number of forks' = @metrics.forks
-        li.metadata.watchers.hidden-xs title='Number of watchers' = @metrics.subscribers
-        li.metadata.stars.hidden-xs title='Number of stars' = @metrics.stargazers
+        a href="/pods/#{@pod.name}/quality"
+          li class="metadata quality_indicator quality_#{quality_group}"
+            == File.read('assets/images/pod.svg')
     .clearfix
 
     == @readme_html
