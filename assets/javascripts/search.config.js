@@ -17,7 +17,7 @@ $(window).ready(function() {
   var sortingSelect =  $("#search_results div.sorting");
   var languageRemoverRegexp = /\b(lang\:\w+\s?)+/;
   var languageSelect = $("#search_results div.language");
-  
+
 
   var allocationSelect = $('#search_results div.allocations');
   var resultsContainer = $('#results_container');
@@ -67,7 +67,7 @@ $(window).ready(function() {
     languageSelect.find('label').removeClass('selected');
     languageSelect.find('input:checked + label').addClass('selected');
   };
-  
+
   var currentPlatform = function() {
     return platformSelect.find("input:checked");
   };
@@ -77,7 +77,7 @@ $(window).ready(function() {
   var selectDefaultPlatform = function() {
     defaultPlatform().prop('checked', true);
   };
-  
+
   var currentLanguage = function() {
     return languageSelect.find("input:checked");
   };
@@ -337,7 +337,7 @@ $(window).ready(function() {
     beforeInsert: function(query) {
       if ('' != query) {
         prepareSearchInterfaceForResults();
-        
+
         var platforms = query.match(platformRemoverRegexp);
         if (platforms) {
           var chosenPlatform = platformSelect.find('input[value="' + platforms[0].replace(/\s+$/g, '') + '"]');
@@ -346,7 +346,7 @@ $(window).ready(function() {
           platformSelect.find('input:checked + label').addClass('selected');
         }
         query = removePlatform(query);
-        
+
         var language = query.match(languageRemoverRegexp)
         if (language) {
           var chosenLanguage = languageSelect.find('input[value="' + language[0].replace(/\s+$/g, '') + '"]');
@@ -356,7 +356,7 @@ $(window).ready(function() {
         }
         return removeLanguage(query);
       }
-      
+
     },
     // Before a query is run, we add a few params.
     //
@@ -530,6 +530,8 @@ $(window).ready(function() {
 
         // Allow new tabs
         if (event.metaKey == true) { return true }
+        // Support middle clicking
+        if (event.which == 2) { return true }
         if (target.hasClass("is-expanded")) { return true }
         if (target.data("pod-name") == undefined) { return true }
 
@@ -633,7 +635,7 @@ $(window).ready(function() {
     },
     explanationTokenCallback: function(category, tokens) {
       var length = tokens.length;
-      
+
       // Special case to clarify when both platforms are AND-ed.
       //
       if (category == 'platform') {
