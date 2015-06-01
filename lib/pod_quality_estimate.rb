@@ -27,8 +27,8 @@ end
 
 class PodQualityEstimate
   include HTTParty
-  # base_uri 'https://cocoadocs-api-cocoapods-org.herokuapp.com'
-  base_uri 'http://localhost:3333'
+  base_uri 'https://cocoadocs-api-cocoapods-org.herokuapp.com'
+  # base_uri 'http://localhost:3333'
   format :json
   attr_reader :calculation_steps, :unaffected_steps
 
