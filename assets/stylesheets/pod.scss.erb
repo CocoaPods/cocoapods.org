@@ -6,8 +6,10 @@ $highlight-dark-color: #A90010;
 $darker-color: #C6B7B2;
 $darker-dark-color: #A8A8A8;
 $background-color: #F2F2F2;
+$base-color: #380200;
 $alt-link-color: #B7233F;
 $warning-color: #B80E3D;
+$quality-pod-color: $highlight-color;
 
 #headline {
   height:320px;
@@ -88,7 +90,7 @@ h1 span {
 
   ul.attribution {
     clear: both;
-    margin-bottom: 8px;
+    margin-bottom: 14px;
     margin-top: 0;
     padding-left: 0;
 
@@ -473,11 +475,47 @@ li.github-link {
   background: no-repeat url(<%= asset '/images/github-cat.svg' %>);
   padding-left:36px;
   height:32px;
+  display:block;
 }
 
 li.twitter {
   background: no-repeat url(<%= asset '/images/twitter.svg' %>);
   padding-left:28px;
+}
+
+li.metadata.quality_indicator {
+  height:30px;
+  width:30px;
+  padding-left: 0;
+  margin-top: -3px;
+  margin-right: 0;
+  margin-left: 12px;
+
+  &.quality_1 {
+    svg path#bottom-left { fill: $quality-pod-color; }
+  }
+  &.quality_2 {
+    svg path#bottom-left { fill: $quality-pod-color; }
+    svg path#bottom-right { fill: $quality-pod-color; }
+  }
+  &.quality_3 {
+    svg path#bottom-left { fill: $quality-pod-color; }
+    svg path#bottom-right { fill: $quality-pod-color; }
+    svg path#right { fill: $quality-pod-color; }
+  }
+  &.quality_4 {
+    svg path#bottom-left { fill: $quality-pod-color; }
+    svg path#bottom-right { fill: $quality-pod-color; }
+    svg path#right { fill: $quality-pod-color; }
+    svg path#top { fill: $quality-pod-color; }
+  }
+  &.quality_5 {
+    svg path#bottom-right { fill: $quality-pod-color; }
+    svg path#bottom-left { fill: $quality-pod-color; }
+    svg path#right { fill: $quality-pod-color; }
+    svg path#top { fill: $quality-pod-color; }
+    svg path#left { fill: $quality-pod-color; }
+  }
 }
 
 .pod-metadata, .sideline, .readme-content {
@@ -498,12 +536,29 @@ li.twitter {
   }
 }
 
-.sideline{
+.sideline {
   ul {
     padding-left: 0;
   }
    tr td:last-child {
     text-align:right;
+  }
+  sub {
+    text-align:right;
+    display:block;
+    margin-top:20px;
+  }
+  table {
+    width: 100%;
+    &.inset td {
+      padding-left: 8px;
+    }
+  }
+  > .btn {
+    color: #565656;
+    background-color: $background-color;
+    margin:4px auto;
+    display:block;
   }
 }
 
@@ -513,7 +568,7 @@ li.twitter {
   margin: 0;
   font-size: 3em;
   word-break: break-all;
-  
+
   span {
     word-break: normal;
   }
@@ -551,4 +606,8 @@ li.twitter {
 
 .pod_result .pod-metadata h1 span {
   color: #d1c4c0;
+}
+
+.modal-dialog p {
+  margin:18px 0;
 }
