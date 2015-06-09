@@ -189,9 +189,6 @@ ruby:
         a href="/pods/#{@pod.name}/quality"
           li class="metadata quality_indicator quality_#{quality_group}"
             == File.read('assets/images/pod.svg')
-        li.metadata.files.hidden-xs title='Number of files' = @cocoadocs.total_files
-        li.metadata.forks.hidden-xs title='Number of forks' = @metrics.forks
-        li.metadata.watchers.hidden-xs title='Number of watchers' = @metrics.subscribers
     .clearfix
 
     == @readme_html
