@@ -34,6 +34,7 @@ class PodQualityEstimate
 
   def self.load_quality_estimate(pod_name)
     response = self.get("/pods/#{pod_name}/stats", headers: { 'Content-Type' => 'application/json; charset=UTF-8' })
+    return nil, response.code if response.code < 200 || response.code >= 300
 
     steps = []
     base = response.parsed_response['base']
@@ -43,7 +44,7 @@ class PodQualityEstimate
       CalculationStep.new(m['description'], m['title'], m['modifier'], :modifier, m['applies_for_pod'])
     end
 
-    self.new(pod_name, steps.flatten)
+    return self.new(pod_name, steps.flatten), response.code
   end
 
   def initialize(pod_name, calculation_steps)

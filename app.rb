@@ -110,8 +110,13 @@ class App < Sinatra::Base
 
   get '/pods/:name/quality' do
     @name = params[:name]
-    @quality = PodQualityEstimate.load_quality_estimate(@name)
-    slim :pod_quality
+    @quality, response_code = PodQualityEstimate.load_quality_estimate(@name)
+
+    if response_code == 404
+      not_found
+    else
+      slim :pod_quality
+    end
   end
 
   def pod_page_for_result result
