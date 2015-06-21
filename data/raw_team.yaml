@@ -30,3 +30,7 @@
 - name: 'Olivier Halligon'
   twitter_username: 'aligatr'
   cocoapods_bio: "Guardian of Consistency."
+
+- name: 'Hugo Tunius'
+  twitter_username: 'k0nserv'
+  cocoapods_bio: "Quality Index Assurange."
