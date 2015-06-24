@@ -53,27 +53,26 @@ ruby:
 
     hr
 
-    div style="display:none;"
-      - if @stats
-        == section("Downloads",
-          { "Total" => @stats["download_total"],
-            "Week" => @stats["download_week"],
-            "Month" => @stats["download_month"],
-          })
+    - if @stats && @stats["is_active"]
+      == section("Downloads",
+        { "Total" => @stats["download_total"],
+          "Week" => @stats["download_week"],
+          "Month" => @stats["download_month"],
+        })
 
-        == section("Installs", "inset", false,
-          { "Apps" => @stats["app_total"],
-            alt_spans("Apps Week","New Apps This Week") => @stats["app_week"],
-            "Test Targets" => @stats["tests_total"],
-            alt_spans("Test Week","New Tests This week") => @stats["tests_week"],
-            "Extensions" => @stats["extensions_total"],
-            alt_spans("Extensions Week","New Tests This week") => @stats["extensions_week"],
-            "Watch Apps" => @stats["watch_total"],
-            alt_spans("Watch Apps Week","New Watch Apps This week") => @stats["watch_week"],
-          })
+      == section("Installs", "inset", false,
+        { "Apps" => @stats["app_total"],
+          alt_spans("Apps Week","New Apps This Week") => @stats["app_week"],
+          "Test Targets" => @stats["tests_total"],
+          alt_spans("Test Week","New Tests This week") => @stats["tests_week"],
+          "Extensions" => @stats["extensions_total"],
+          alt_spans("Extensions Week","New Tests This week") => @stats["extensions_week"],
+          "Watch Apps" => @stats["watch_total"],
+          alt_spans("Watch Apps Week","New Watch Apps This week") => @stats["watch_week"],
+        })
 
-        sub powered by <a href="https://segment.com">Segment</a>
-        hr
+      sub powered by <a href="https://segment.com">Segment</a>
+      hr
 
     - if @metrics["not_found"] == 0
       == section("GitHub",
