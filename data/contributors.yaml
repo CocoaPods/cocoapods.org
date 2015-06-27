@@ -6,22 +6,22 @@
   :commits: 2949
   :avatar_url: https://avatars.githubusercontent.com/u/2320?v=3
 - :name: orta
-  :commits: 1852
+  :commits: 1867
   :avatar_url: https://avatars.githubusercontent.com/u/49038?v=3
 - :name: floere
   :commits: 1631
   :avatar_url: https://avatars.githubusercontent.com/u/3022?v=3
 - :name: segiddins
-  :commits: 1240
+  :commits: 1310
   :avatar_url: https://avatars.githubusercontent.com/u/1946610?v=3
 - :name: kylef
-  :commits: 776
+  :commits: 777
   :avatar_url: https://avatars.githubusercontent.com/u/44164?v=3
 - :name: mrackwitz
-  :commits: 520
+  :commits: 600
   :avatar_url: https://avatars.githubusercontent.com/u/1389011?v=3
 - :name: neonichu
-  :commits: 412
+  :commits: 450
   :avatar_url: https://avatars.githubusercontent.com/u/118992?v=3
 - :name: AliSoftware
   :commits: 228
@@ -209,6 +209,9 @@
 - :name: mbishop-fiksu
   :commits: 6
   :avatar_url: https://avatars.githubusercontent.com/u/6313439?v=3
+- :name: nschum
+  :commits: 6
+  :avatar_url: https://avatars.githubusercontent.com/u/81999?v=3
 - :name: paulmelnikow
   :commits: 6
   :avatar_url: https://avatars.githubusercontent.com/u/1487036?v=3
@@ -353,6 +356,9 @@
 - :name: Inferis
   :commits: 3
   :avatar_url: https://avatars.githubusercontent.com/u/8215?v=3
+- :name: KrauseFx
+  :commits: 3
+  :avatar_url: https://avatars.githubusercontent.com/u/869950?v=3
 - :name: marcelofabri
   :commits: 3
   :avatar_url: https://avatars.githubusercontent.com/u/833072?v=3
@@ -362,9 +368,6 @@
 - :name: mowens
   :commits: 3
   :avatar_url: https://avatars.githubusercontent.com/u/4575216?v=3
-- :name: nschum
-  :commits: 3
-  :avatar_url: https://avatars.githubusercontent.com/u/81999?v=3
 - :name: petergoldstein
   :commits: 3
   :avatar_url: https://avatars.githubusercontent.com/u/421488?v=3
@@ -470,9 +473,6 @@
 - :name: jverkoey
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/45670?v=3
-- :name: KrauseFx
-  :commits: 2
-  :avatar_url: https://avatars.githubusercontent.com/u/869950?v=3
 - :name: Kurry
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/857247?v=3
