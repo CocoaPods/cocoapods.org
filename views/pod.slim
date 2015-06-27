@@ -87,7 +87,7 @@ ruby:
 
     == section("Code",
       { "Files" => @cocoadocs["total_files"],
-        alt_spans("Size", "Integration Size") => @cocoadocs["download_size"].to_s + " kb",
+        alt_spans("Size", "Integration Size") => @cocoadocs["installation_size"].to_s + " kb",
         alt_spans("Framework", "Creates Framework") => @cocoadocs["carthage_support"] ? "✓": nil,
         alt_spans("LOC", "Lines of Code") => @cocoadocs["total_lines_of_code"],
       })
