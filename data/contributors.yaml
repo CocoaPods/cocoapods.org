@@ -6,22 +6,22 @@
   :commits: 2949
   :avatar_url: https://avatars.githubusercontent.com/u/2320?v=3
 - :name: orta
-  :commits: 1867
+  :commits: 1882
   :avatar_url: https://avatars.githubusercontent.com/u/49038?v=3
 - :name: floere
-  :commits: 1631
+  :commits: 1652
   :avatar_url: https://avatars.githubusercontent.com/u/3022?v=3
 - :name: segiddins
-  :commits: 1310
+  :commits: 1417
   :avatar_url: https://avatars.githubusercontent.com/u/1946610?v=3
 - :name: kylef
-  :commits: 777
+  :commits: 779
   :avatar_url: https://avatars.githubusercontent.com/u/44164?v=3
 - :name: mrackwitz
   :commits: 600
   :avatar_url: https://avatars.githubusercontent.com/u/1389011?v=3
 - :name: neonichu
-  :commits: 450
+  :commits: 455
   :avatar_url: https://avatars.githubusercontent.com/u/118992?v=3
 - :name: AliSoftware
   :commits: 228
@@ -125,6 +125,9 @@
 - :name: palewar
   :commits: 13
   :avatar_url: https://avatars.githubusercontent.com/u/1754538?v=3
+- :name: vincentisambart
+  :commits: 13
+  :avatar_url: https://avatars.githubusercontent.com/u/34704?v=3
 - :name: blakewatters
   :commits: 12
   :avatar_url: https://avatars.githubusercontent.com/u/8392?v=3
@@ -137,9 +140,6 @@
 - :name: tayhalla
   :commits: 12
   :avatar_url: https://avatars.githubusercontent.com/u/1266416?v=3
-- :name: vincentisambart
-  :commits: 12
-  :avatar_url: https://avatars.githubusercontent.com/u/34704?v=3
 - :name: andreamazz
   :commits: 11
   :avatar_url: https://avatars.githubusercontent.com/u/570797?v=3
@@ -206,6 +206,9 @@
 - :name: jtreanor
   :commits: 6
   :avatar_url: https://avatars.githubusercontent.com/u/1773641?v=3
+- :name: marcelofabri
+  :commits: 6
+  :avatar_url: https://avatars.githubusercontent.com/u/833072?v=3
 - :name: mbishop-fiksu
   :commits: 6
   :avatar_url: https://avatars.githubusercontent.com/u/6313439?v=3
@@ -359,9 +362,6 @@
 - :name: KrauseFx
   :commits: 3
   :avatar_url: https://avatars.githubusercontent.com/u/869950?v=3
-- :name: marcelofabri
-  :commits: 3
-  :avatar_url: https://avatars.githubusercontent.com/u/833072?v=3
 - :name: mickeyreiss
   :commits: 3
   :avatar_url: https://avatars.githubusercontent.com/u/47405?v=3
@@ -521,6 +521,9 @@
 - :name: shepting
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/48065?v=3
+- :name: SpacyRicochet
+  :commits: 2
+  :avatar_url: https://avatars.githubusercontent.com/u/904596?v=3
 - :name: stigi
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/13815?v=3
@@ -560,6 +563,9 @@
 - :name: andybons
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/365204?v=3
+- :name: AndyChenW
+  :commits: 1
+  :avatar_url: https://avatars.githubusercontent.com/u/2155462?v=3
 - :name: ashtom
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/70720?v=3
