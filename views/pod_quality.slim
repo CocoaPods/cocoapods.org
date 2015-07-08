@@ -89,7 +89,8 @@ css:
 section.container
   article.row#headline
     .col-lg-12.col-sm-12.col-xs-12
-      h1 == @name
+      h1
+        a href="/pods/#{@name}" == @name
 
 #content-wrapper
   section.container
@@ -144,4 +145,4 @@ section.container
                   h4 == "#{step.title} <span class='#{step.css_class}'>#{step.score_text}</span>"
                   p == step.description
 
-            p Interested in how it works? <a href="https://github.com/CocoaPods/cocoadocs-api/blob/master/quality_modifiers.rb">See the metrics code</a>
+            p Interested in how it works? <a href="https://guides.cocoapods.org/making/quality-indexes">Read the Guide</a>
