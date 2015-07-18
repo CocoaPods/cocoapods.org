@@ -8,6 +8,10 @@ ruby:
    pod[:cocoadocs_pod_metric][:total_test_expectations] == nil && pod[:cocoadocs_pod_metric][:total_test_expectations] != 0
   end
 
+  def show_framework pod
+   pod[:cocoadocs_pod_metric][:is_vendored_framework] == true
+  end
+
   def testing_quote tests
     case tests
     when -1..1 then "No Tests"
@@ -119,6 +123,9 @@ section.container
 
               - unless hide_tests pod
                 li == testing_quote pod[:cocoadocs_pod_metric][:total_test_expectations]
+
+              - if show_framework pod
+                li Is a binary Pod
 
               li == doc_quote pod[:cocoadocs_pod_metric][:doc_percent]
 

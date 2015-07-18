@@ -14,6 +14,7 @@ ruby:
   owner_urls = @owners.map{ |o| "<a href='/owners/#{o["owner_id"]}'>#{o["owner"]["name"]}</a>"}.join ", "
   quality_group = (@cocoadocs["quality_estimate"] / 20) + 1
   is_for_testing = @pod.attributes_hash["frameworks"] && @pod.attributes_hash["frameworks"].include?("XCTest")
+  is_binary = @cocoadocs["is_vendored_framework"]
 
   def section(title, table_class="inset", include_zero=true, properties)
     header = "<h3>#{title}</h3><table class='#{table_class}'><tbody>"
@@ -41,14 +42,20 @@ ruby:
   div.sideline.col-sm-3.col-xs-12.col-sm-push-9
     h1.visible-xs.inline-headline == "<a href='/pods/#{@pod.name}'>" + @pod.name + "</a> <span>" + @pod.version.to_s + "</span>"
 
-    == section("","header",
-      { alt_spans("Docs", "Documented") => has_docs ? "✓":"✗",
-        "Tests" => has_tests ? "✓":"✗",
-        "Language" => alt_spans(lang_small, @cocoadocs["dominant_language"]),
+    ruby:
+      header = { alt_spans("Docs", "Documented") => has_docs ? "✓":"✗",
+        alt_spans("Tests", "Tested") => has_tests ? "✓":"✗",
+        alt_spans("Lang", "Language") => alt_spans(lang_small, @cocoadocs["dominant_language"]),
         "License" => link_to(@cocoadocs["license_canonical_url"], @cocoadocs["license_short_name"]),
         alt_spans("Released", "Last Release") => @commit["created_at"].strftime("%b %Y"),
         # "Start Date" => @cocoadocs["initial_commit_date"].strftime "%Y/%m/%d",
-      })
+      }
+      if is_binary
+        header.delete alt_spans("Tests", "Tested")
+        header.delete alt_spans("Lang", "Language")
+      end
+
+    == section("","header", header)
     p =="Maintained by #{owner_urls}."
 
     hr
@@ -63,6 +70,8 @@ ruby:
       == section("Installs", "inset", false,
         { "Apps" => @stats["app_total"],
           alt_spans("Apps Week","New Apps This Week") => @stats["app_week"],
+          "Pod Tries" => @stats["pod_try_total"],
+          alt_spans("Pod Tries Week","Pod Tries This Week") => @stats["pod_try_week"],
           "Test Targets" => @stats["tests_total"],
           alt_spans("Test Week","New Tests This week") => @stats["tests_week"],
           "Extensions" => @stats["extensions_total"],
@@ -85,12 +94,16 @@ ruby:
 
       hr
 
-    == section("Code",
-      { "Files" => @cocoadocs["total_files"],
-        alt_spans("Size", "Integration Size") => @cocoadocs["install_size"].to_s + " kb",
-        alt_spans("Framework", "Creates Framework") => @cocoadocs["builds_independently"] ? "✓": nil,
-        alt_spans("LOC", "Lines of Code") => @cocoadocs["total_lines_of_code"],
-      })
+    - if is_binary
+      == section("Library", { alt_spans("Size", "Integration Size") => @cocoadocs["install_size"].to_s + " kb" })
+
+    - else
+      == section("Code",
+        { "Files" => @cocoadocs["total_files"],
+          alt_spans("Size", "Integration Size") => @cocoadocs["install_size"].to_s + " kb",
+          alt_spans("Framework", "Creates Framework") => @cocoadocs["builds_independently"] ? "✓": nil,
+          alt_spans("LOC", "Lines of Code") => @cocoadocs["total_lines_of_code"],
+        })
 
     hr
 
@@ -115,6 +128,9 @@ ruby:
                   == "target 'MyApp' do\n  #{clipboard_text}\nend"
 
             p Then run a <code>pod install</code> inside your terminal, or from CocoaPods.app.
+            hr
+            p Alternatively to give it a test run, run the command:
+            p == "<code>pod try #{@pod.name}</code>"
 
     hr
 
