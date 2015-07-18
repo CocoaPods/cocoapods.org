@@ -106,21 +106,6 @@ class App < Sinatra::Base
     halt 404, "404 - CHANGELOG not found at #{changelog_url}"
   end
 
-  get '/pods/:name/readme' do
-    response['Access-Control-Allow-Origin'] = '*'
-
-    result = metrics.where(pods[:deleted] => false, pods[:name] => params[:name]).first
-    halt 404, "404 - Pod not found" unless result
-
-    changelog_url = result.cocoadocs_pod_metric["rendered_changelog_url"]
-    halt 404, "404 - Pod does not have an associated CHANGELOG" unless changelog_url
-
-    res = Net::HTTP.get_response(URI(changelog_url))
-    return res.body.force_encoding('UTF-8') if res.is_a?(Net::HTTPSuccess)
-    halt 404, "404 - CHANGELOG not found at #{changelog_url}"
-  end
-
-
   get '/owners/:id' do
     @owner = owners.where(:id => params[:id]).first
     halt 404, "404 - Owner not found" unless @owner
