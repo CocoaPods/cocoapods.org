@@ -138,7 +138,6 @@ $(window).ready(function() {
     languageSelect.show();
     sortingSelect.show();
     allocationSelect.show();
-    // $('#search div.results').show(); // Picky does this already.
   };
 
   var removePlatform = function(query) {
@@ -152,7 +151,6 @@ $(window).ready(function() {
   //
   //
   var noResultsSearchInterface = function(query) {
-    // $('#search_results .no_results').show(); // Picky does this already.
     platformSelect.show();
     languageSelect.show();
     sortingSelect.show();
@@ -209,11 +207,12 @@ $(window).ready(function() {
       result.removeClass("loading")
       $(result, ".expanded .content")[0].innerHTML = html
 
+      /// This can be found in application.js
+      post_expansion_setup()
     }).fail(function() {
       result.removeClass("loading")
     });
   }
-
 
   // Renders an entry, then returns the rendered HTML.
   //
@@ -491,7 +490,7 @@ $(window).ready(function() {
         });
       });
 
-      // When Flash works, jusst do a normal popover
+      // When Flash works, just do a normal popover
       clip.on("load", function(client) {
 
         client.on( "complete", function(client, args) {

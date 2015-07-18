@@ -89,6 +89,44 @@ h1 span {
     }
   }
 
+  > .nav-tabs {
+    height: 36px;
+    display:inline-block;
+
+    margin: 0 -30px;
+    margin-bottom: 15px;
+    padding: 0 0 0 12px;
+    border-bottom: none;
+    background-color: $background-color;
+
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+
+    li:first-child {
+      border-right: 2px solid #f5f5f5;
+    }
+
+    li > a:hover {
+      background-color: transparent;
+      border: none;
+      margin-right: 2px;
+    }
+
+    li > a {
+      background-color: transparent;
+      border: none;
+      padding: 5px 15px;
+      color: #7F7F7F;
+    }
+
+    li.active a {
+      color:black;
+      text-decoration:underline;
+      background-color: transparent;
+      border: none;
+    }
+  }
+
   ul.attribution {
     clear: both;
     margin-bottom: 14px;

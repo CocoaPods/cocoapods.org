@@ -15,6 +15,7 @@ ruby:
   quality_group = (@cocoadocs["quality_estimate"] / 20) + 1
   is_for_testing = @pod.attributes_hash["frameworks"] && @pod.attributes_hash["frameworks"].include?("XCTest")
   is_binary = @cocoadocs["is_vendored_framework"]
+  has_changelog = @cocoadocs["rendered_changelog_url"]
 
   def section(title, table_class="inset", include_zero=true, properties)
     header = "<h3>#{title}</h3><table class='#{table_class}'><tbody>"
@@ -207,6 +208,18 @@ ruby:
             == File.read('assets/images/pod.svg')
     .clearfix
 
-    == @readme_html
+    - if has_changelog
+      ul.nav.nav-tabs#asset_switcher role="tablist"
+        li.active
+          a.media_node.span href="#" data-target="#readme" id="readme_tab" aria-controls="README" data-toggle="tab" README
+        li
+          a.media_node.span href="/pods/#{@pod.name}/changelog" data-target="#changelog" class="media_node span" id="changelog_tab" data-toggle="tabajax" aria-controls="CHANGELOG" CHANGELOG
+
+    .tab-content
+      .tab-pane.active#readme
+        == @readme_html
+
+      .tab-pane#changelog
+
 
   .clearfix
