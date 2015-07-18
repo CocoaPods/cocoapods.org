@@ -83,12 +83,13 @@ ruby:
       sub powered by <a href="https://segment.com">Segment</a>
       hr
 
-    - if @metrics["not_found"] == 0
+    - if @metrics["not_found"] == 0 && @pod.or_is_github?
       == section("GitHub",
         { "Stars" => @metrics["stargazers"],
           "Watchers" => @metrics["subscribers"],
           "Forks" => @metrics["forks"],
           "Issues" => @metrics["open_issues"],
+          "Contributors" => @metrics["contributors"],
           "Pull Requests" => @metrics["open_pull_requests"],
         })
 
