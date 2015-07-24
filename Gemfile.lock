@@ -152,3 +152,6 @@ DEPENDENCIES
   thin
   twitter
   yard (~> 0.8.6.2)
+
+BUNDLED WITH
+   1.10.2

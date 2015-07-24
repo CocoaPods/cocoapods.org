@@ -12,6 +12,27 @@
 *= require ICanHaz.js
 */
 
+// Sets up tabs for README/CHANGELOGs
+// Placed here so it can be accessed
+// by search results, and pod pages.
+//
+var post_expansion_setup = function(){
+  $("#asset_switcher").tab();
+  $('[data-toggle="tabajax"]').click(function(e) {
+    var $this = $(this)
+    var loadurl = $this.attr('href')
+    var target = $this.attr('data-target')
+    if ($(target).children().length == 0) {
+      $.get(loadurl, function(data) {
+        $(target).html(data);
+      });
+    }
+
+    $this.tab('show');
+    return false;
+  });
+}
+
 // Remove keyboard on scroll
 //
 $(document).bind("touchmove", function(e){
@@ -33,8 +54,10 @@ $( document ).ready( function(){
   })
 
   // Support non-flash clipboard stuff
-
+  //
   if( hasFlash() ) {
     $("html").addClass("flash")
   }
+
+  post_expansion_setup();
 });

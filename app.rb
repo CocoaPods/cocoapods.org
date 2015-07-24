@@ -66,12 +66,11 @@ class App < Sinatra::Base
   #
   get '/pods/:name' do
     STDOUT.sync = true
-
     result = metrics.where(pods[:deleted] => false, pods[:normalized_name] => params[:name].downcase).first
     unless result
       result = pods.where(pods[:deleted] => false, pods[:normalized_name] => params[:name].downcase).first
       halt 404, "404 - Pod not found" unless result
-      
+
       # Support redirecting to the pods homepage if we can't do it.
       version = pod_versions.where(pod_id: result["id"]).sort_by { |v| Pod::Version.new(v.name) }.last
       commit = commits.where(pod_version_id: version.id, deleted_file_during_import: false).first
@@ -79,7 +78,7 @@ class App < Sinatra::Base
       redirect pod.homepage
     end
 
-    @page_title = "#{params[:name]} - CocoaPods.org"
+    @page_title = "#{result.pod.name} - CocoaPods.org"
     @content = pod_page_for_result result
     slim :pod_page
   end
@@ -92,17 +91,31 @@ class App < Sinatra::Base
 
     pod_page_for_result result
   end
-  
+
+  get '/pods/:name/changelog' do
+    response['Access-Control-Allow-Origin'] = '*'
+
+    result = metrics.where(pods[:deleted] => false, pods[:name] => params[:name]).first
+    halt 404, "404 - Pod not found" unless result
+
+    changelog_url = result.cocoadocs_pod_metric["rendered_changelog_url"]
+    halt 404, "404 - Pod does not have an associated CHANGELOG" unless changelog_url
+
+    res = Net::HTTP.get_response(URI(changelog_url))
+    return res.body.force_encoding('UTF-8') if res.is_a?(Net::HTTPSuccess)
+    halt 404, "404 - CHANGELOG not found at #{changelog_url}"
+  end
+
   get '/owners/:id' do
     @owner = owners.where(:id => params[:id]).first
     halt 404, "404 - Owner not found" unless @owner
-        
+
     pod_ids = Set.new owners_pods.where(:owner_id => @owner[:id]).map do |owners_pod|
       owners_pod[:pod_id]
     end
 
     @pods = metrics.where(pods[:deleted] => false, pods[:id] => pod_ids).sort_by { |pod| pod[:github_pod_metric][:stargazers] || 0 }.reverse
-    
+
     gravatar = Digest::MD5.hexdigest(@owner.email.downcase)
     @gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar}.png?d=retro&r=PG&s=240"
 
@@ -111,8 +124,13 @@ class App < Sinatra::Base
 
   get '/pods/:name/quality' do
     @name = params[:name]
-    @quality = PodQualityEstimate.load_quality_estimate(@name)
-    slim :pod_quality
+    @quality, response_code = PodQualityEstimate.load_quality_estimate(@name)
+
+    if response_code == 404
+      not_found
+    else
+      slim :pod_quality
+    end
   end
 
   def pod_page_for_result result
@@ -120,14 +138,16 @@ class App < Sinatra::Base
     @pod_db = result.pod
     @metrics = result.github_pod_metric
     @cocoadocs = result.cocoadocs_pod_metric
+    @stats = stats_metrics.where(pod_id: @pod_db.id).first
     @version = pod_versions.where(pod_id: @pod_db.id).sort_by { |v| Pod::Version.new(v.name) }.last
-
+    @owners = owners_pods.join(:owners).on(:owner_id => :id).where(pod_id: @pod_db.id).to_a
     @commit = commits.where(pod_version_id: @version.id, deleted_file_during_import: false).order_by(:created_at.desc).first
     @pod = Pod::Specification.from_json @commit.specification_data
-        
+
     uri = URI(@cocoadocs["rendered_readme_url"])
     res = Net::HTTP.get_response(uri)
     @readme_html = res.body.force_encoding('UTF-8') if res.is_a?(Net::HTTPSuccess)
+    # @readme_html = ""
     slim :pod, :layout => false
   end
 
@@ -141,12 +161,12 @@ class App < Sinatra::Base
   # Setup assets.
   #
   sprockets = Sprockets::Environment.new
-  
+
   # Generate an assets hash once on startup.
   #
   require 'securerandom'
   ASSETS_HASH = SecureRandom.hex
-  
+
   add_asset_hash = ->(path) do
     head, dot, ext = path.rpartition('.')
     "#{head}-#{ASSETS_HASH}#{dot}#{ext}"
@@ -161,7 +181,7 @@ class App < Sinatra::Base
   end
 
   set :assets, sprockets
-  
+
   # Configure sprockets
   ["img", "js", "fonts", "includes", "sass"].each do |shared|
     settings.assets.append_path "shared/#{shared}"
