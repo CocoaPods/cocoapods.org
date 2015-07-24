@@ -213,13 +213,13 @@ ruby:
         li.active
           a.media_node.span href="#" data-target="#readme" id="readme_tab" aria-controls="README" data-toggle="tab" README
         li
-          a.media_node.span href="/pods/#{@pod.name}/changelog" data-target="#changelog" class="media_node span" id="changelog_tab" data-toggle="tabajax" aria-controls="CHANGELOG" CHANGELOG
+          a.media_node.span href="/pods/#{@pod.name}/changelog" data-target="#changelog_content" class="media_node span" id="changelog_tab" data-toggle="tabajax" aria-controls="CHANGELOG" CHANGELOG
 
     .tab-content
       .tab-pane.active#readme
         == @readme_html
 
-      .tab-pane#changelog
+      .tab-pane#changelog_content
 
 
   .clearfix

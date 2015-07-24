@@ -45,7 +45,6 @@ $( document ).ready( function(){
   // Add support for animating the marker on the homepages
   //
   $('.underscore a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-
     var index = $(e.target.parentElement).index()
     var width = $(window).width();
     var constant = (width < 768) ? 33: 40;
