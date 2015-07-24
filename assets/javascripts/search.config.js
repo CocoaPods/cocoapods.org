@@ -207,6 +207,9 @@ $(window).ready(function() {
       result.removeClass("loading")
       $(result, ".expanded .content")[0].innerHTML = html
 
+      // Track the page views for inline pods
+      _gaq.push(['_trackPageview'], "/pods/" + result.data("pod-name"));
+      
       /// This can be found in application.js
       post_expansion_setup()
     }).fail(function() {

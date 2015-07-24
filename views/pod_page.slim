@@ -77,11 +77,12 @@ javascript:
       $("#changelog_tab").click()
     }
     
-    // Make it easy to get a changelog URL for C+P
+    // Make it easy to get a changelog URL for C+Ping
     $('#asset_switcher a').on('shown.bs.tab', function (e) { 
-      var is_changelog = $(e.target).data("target") == "#changelog"
+      var is_changelog = $(e.target).data("target") == "#changelog_content"
       var new_hash = (is_changelog) ? "#changelog" : ""
-      history.replaceState(null, null, new_hash)
+      var current_url = window.location.toString().split('#')[0]
+      history.replaceState(null, null, current_url + new_hash)
     })
     
   })
