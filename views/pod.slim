@@ -70,15 +70,15 @@ ruby:
 
       == section("Installs", "inset", false,
         { "Apps" => @stats["app_total"],
-          alt_spans("Apps Week","New Apps This Week") => @stats["app_week"],
+          alt_spans("Apps Week", "Apps This Week") => @stats["app_week"],
           "Pod Tries" => @stats["pod_try_total"],
-          alt_spans("Pod Tries Week","Pod Tries This Week") => @stats["pod_try_week"],
+          alt_spans("Pod Tries Week", "Pod Tries This Week") => @stats["pod_try_week"],
           "Test Targets" => @stats["tests_total"],
-          alt_spans("Test Week","New Tests This week") => @stats["tests_week"],
+          alt_spans("Test Week", "Tests This week") => @stats["tests_week"],
           "Extensions" => @stats["extensions_total"],
-          alt_spans("Extensions Week","New Tests This week") => @stats["extensions_week"],
+          alt_spans("Extensions Week", "Tests This week") => @stats["extensions_week"],
           "Watch Apps" => @stats["watch_total"],
-          alt_spans("Watch Apps Week","New Watch Apps This week") => @stats["watch_week"],
+          alt_spans("Watch Apps Week", "Watch Apps This week") => @stats["watch_week"],
         })
 
       sub powered by <a href="https://segment.com">Segment</a>
