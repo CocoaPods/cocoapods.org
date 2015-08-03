@@ -71,7 +71,7 @@ task :generate_team do
 
   ["team", "alumni"].each do |team_name|
     yaml_data = []
-    deactivated = %w(andyrmyers kattrali)
+    deactivated = %w()
 
     team = YAML.load_file("data/raw_" + team_name + '.yaml')
     team.each do |member|
@@ -83,21 +83,6 @@ task :generate_team do
       member["twitter_banner_url"] = twitter_user.profile_banner_uri.to_s
 
       yaml_data << member
-    end
-
-    if team_name == "alumni"
-      yaml_data << {
-        "name" => "Delisa Mason",
-        "cocoapods_bio" => "Toolsmith lvl 99.",
-        "twitter_profile_url" => "https://pbs.twimg.com/profile_images/542803639316664320/Jzcs814D.png",
-        "twitter_banner_url" => "http://pbs.twimg.com/profile_banners/40614452/1386607496/web",
-      }
-      yaml_data << {
-        "name" => "Andy Myers",
-        "cocoapods_bio" => "Really doing the design.",
-        "twitter_profile_url" => "https://pbs.twimg.com/profile_images/415145378627862528/TDAPjav-.jpeg",
-        "twitter_banner_url" => "http://pbs.twimg.com/profile_banners/15503664/1387813885/web",
-      }
     end
 
     File.open("data/#{ team_name }.yaml", "w") do |out|

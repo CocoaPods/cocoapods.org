@@ -9,6 +9,11 @@
   cocoapods_bio: Master of the Specs.
   twitter_profile_url: https://pbs.twimg.com/profile_images/506666166723416065/0H_wxP0l.jpeg
   twitter_banner_url: http://pbs.twimg.com/profile_banners/14429563/1401592562/web
+- name: Andy Myers
+  twitter_username: andyrmyers
+  cocoapods_bio: Really doing the design.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/602210216529285120/Ig78OT4W.jpg
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/2982589991/1432413140/web
 - name: Marin Usalj
   twitter_username: _supermarin
   cocoapods_bio: Breaking software.
@@ -25,10 +30,7 @@
   twitter_profile_url: https://pbs.twimg.com/profile_images/497834054515838977/LUnZAQE8.jpeg
   twitter_banner_url: http://pbs.twimg.com/profile_banners/17796584/1376361936/web
 - name: Delisa Mason
+  twitter_username: kattrali
   cocoapods_bio: Toolsmith lvl 99.
   twitter_profile_url: https://pbs.twimg.com/profile_images/542803639316664320/Jzcs814D.png
   twitter_banner_url: http://pbs.twimg.com/profile_banners/40614452/1386607496/web
-- name: Andy Myers
-  cocoapods_bio: Really doing the design.
-  twitter_profile_url: https://pbs.twimg.com/profile_images/415145378627862528/TDAPjav-.jpeg
-  twitter_banner_url: http://pbs.twimg.com/profile_banners/15503664/1387813885/web

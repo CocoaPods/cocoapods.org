@@ -1,31 +1,32 @@
 ---
-- name: 'Eloy Durán'
-  twitter_username: 'alloy'
-  cocoapods_bio: "Creator, maintainer, instigator, and gesticulator."
 
-- name: 'orta'
-  twitter_username: 'orta'
-  cocoapods_bio: "Design Dictator."
-
-- name: 'Kyle Fuller'
-  twitter_username: 'kylefuller'
-  cocoapods_bio: "Perfectionist."
-
-- name: 'Florian Hanke'
-  twitter_username: 'hanke'
-  cocoapods_bio: "Picky about search."
+- name: 'Boris Bügling'
+  twitter_username: 'neonacho'
+  cocoapods_bio: "Triagemaster General."
 
 - name: 'Samuel Giddins'
   twitter_username: 'segiddins'
   cocoapods_bio: "Patch Master & Bundler of Joy."
 
+- name: 'orta'
+  twitter_username: 'orta'
+  cocoapods_bio: "Design Dictator."
+
+- name: 'Florian Hanke'
+  twitter_username: 'hanke'
+  cocoapods_bio: "Picky about search."
+
+- name: 'Eloy Durán'
+  twitter_username: 'alloy'
+  cocoapods_bio: "Creator, maintainer, instigator, and gesticulator."
+
 - name: 'Marius Rackwitz'
   twitter_username: 'mrackwitz'
   cocoapods_bio: 'Swift Pioneer.'
 
-- name: 'Boris Bügling'
-  twitter_username: 'neonacho'
-  cocoapods_bio: "Triagemaster General."
+- name: 'Kyle Fuller'
+  twitter_username: 'kylefuller'
+  cocoapods_bio: "Perfectionist."
 
 - name: 'Olivier Halligon'
   twitter_username: 'aligatr'

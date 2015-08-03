@@ -1,39 +1,39 @@
 ---
-- name: Eloy Durán
-  twitter_username: alloy
-  cocoapods_bio: Creator, maintainer, instigator, and gesticulator.
-  twitter_profile_url: https://pbs.twimg.com/profile_images/2725004110/7f078219b3519e1a5d617de15080adcc.png
-  twitter_banner_url: http://pbs.twimg.com/profile_banners/12459132/1386509819/web
-- name: orta
-  twitter_username: orta
-  cocoapods_bio: Design Dictator.
-  twitter_profile_url: https://pbs.twimg.com/profile_images/594954985244360705/YWx3Fuju.png
-  twitter_banner_url: http://pbs.twimg.com/profile_banners/2569881/1397940683/web
-- name: Kyle Fuller
-  twitter_username: kylefuller
-  cocoapods_bio: Perfectionist.
-  twitter_profile_url: https://pbs.twimg.com/profile_images/533316590465327104/NA1Cgv3g.png
-  twitter_banner_url: http://pbs.twimg.com/profile_banners/21154599/1413140308/web
-- name: Florian Hanke
-  twitter_username: hanke
-  cocoapods_bio: Picky about search.
-  twitter_profile_url: https://pbs.twimg.com/profile_images/455654999561752576/YBlwiW10.png
-  twitter_banner_url: http://pbs.twimg.com/profile_banners/1018421/1353384663/web
-- name: Samuel Giddins
-  twitter_username: segiddins
-  cocoapods_bio: Patch Master & Bundler of Joy.
-  twitter_profile_url: https://pbs.twimg.com/profile_images/584006061020979200/ETcNpn_6.jpg
-  twitter_banner_url: http://pbs.twimg.com/profile_banners/73644377/1398205852/web
-- name: Marius Rackwitz
-  twitter_username: mrackwitz
-  cocoapods_bio: Swift Pioneer.
-  twitter_profile_url: https://pbs.twimg.com/profile_images/466573618059964416/bne_4gDo.jpeg
-  twitter_banner_url: http://pbs.twimg.com/profile_banners/902525377/1410561513/web
 - name: Boris Bügling
   twitter_username: neonacho
   cocoapods_bio: Triagemaster General.
   twitter_profile_url: https://pbs.twimg.com/profile_images/472860850475122688/ti6GD7OB.jpeg
   twitter_banner_url: http://pbs.twimg.com/profile_banners/10341052/1398205935/web
+- name: Samuel Giddins
+  twitter_username: segiddins
+  cocoapods_bio: Patch Master & Bundler of Joy.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/584006061020979200/ETcNpn_6.jpg
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/73644377/1398205852/web
+- name: orta
+  twitter_username: orta
+  cocoapods_bio: Design Dictator.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/594954985244360705/YWx3Fuju.png
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/2569881/1397940683/web
+- name: Florian Hanke
+  twitter_username: hanke
+  cocoapods_bio: Picky about search.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/455654999561752576/YBlwiW10.png
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/1018421/1353384663/web
+- name: Eloy Durán
+  twitter_username: alloy
+  cocoapods_bio: Creator, maintainer, instigator, and gesticulator.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/2725004110/7f078219b3519e1a5d617de15080adcc.png
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/12459132/1386509819/web
+- name: Marius Rackwitz
+  twitter_username: mrackwitz
+  cocoapods_bio: Swift Pioneer.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/466573618059964416/bne_4gDo.jpeg
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/902525377/1410561513/web
+- name: Kyle Fuller
+  twitter_username: kylefuller
+  cocoapods_bio: Perfectionist.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/533316590465327104/NA1Cgv3g.png
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/21154599/1413140308/web
 - name: Olivier Halligon
   twitter_username: aligatr
   cocoapods_bio: Guardian of Consistency.
