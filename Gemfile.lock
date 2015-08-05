@@ -5,7 +5,7 @@ GIT
     redcarpet (3.2.0)
 
 GIT
-  remote: git@github.com:CocoaPods/Core.git
+  remote: https://github.com/CocoaPods/Core.git
   revision: 74f8fdcfd840a332fa8aee46112e26ea6a6090c8
   specs:
     cocoapods-core (0.38.2)
