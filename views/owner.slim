@@ -119,7 +119,7 @@ section.container
               li == pod[:cocoadocs_pod_metric][:dominant_language]
 
               - unless hide_stars pod
-                li == pod[:github_pod_metric][:stargazers].to_s + " Stars"
+                li == pod[:github_pod_metric][:stargazers].to_s + " #{ pod[:github_pod_metric][:stargazers] == 1 ? "Star" : "Stars"}"
 
               - unless hide_tests pod
                 li == testing_quote pod[:cocoadocs_pod_metric][:total_test_expectations]
