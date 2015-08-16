@@ -16,6 +16,7 @@ ruby:
   is_for_testing = @pod.attributes_hash["frameworks"] && @pod.attributes_hash["frameworks"].include?("XCTest")
   is_binary = @cocoadocs["is_vendored_framework"]
   has_changelog = @cocoadocs["rendered_changelog_url"]
+  is_deprecated = @pod.deprecated || @pod.deprecated_in_favor_of
 
   def section(title, table_class="inset", include_zero=true, properties)
     header = "<h3>#{title}</h3><table class='#{table_class}'><tbody>"
@@ -207,6 +208,13 @@ ruby:
           li class="metadata quality_indicator quality_#{quality_group}"
             == File.read('assets/images/pod.svg')
     .clearfix
+
+    - if is_deprecated
+      .deprecated
+        - if @pod.deprecated_in_favor_of
+          a href="/pods/#{@pod.deprecated_in_favor_of}" This library is deprecated, it is recommended you look at #{@pod.deprecated_in_favor_of}.
+        - else
+          a href="#" This library is deprecated.
 
     - if has_changelog
       ul.nav.nav-tabs#asset_switcher role="tablist"
