@@ -209,7 +209,7 @@ $(window).ready(function() {
 
       // Track the page views for inline pods
       _gaq.push(['_trackPageview'], "/pods/" + result.data("pod-name"));
-      
+
       /// This can be found in application.js
       post_expansion_setup()
     }).fail(function() {
@@ -534,7 +534,12 @@ $(window).ready(function() {
         if (event.metaKey == true) { return true }
         // Support middle clicking
         if (event.which == 2) { return true }
+        // Don't run expansion multiple times
         if (target.hasClass("is-expanded")) { return true }
+        // If it's deprecated, you have to tap "Expand" otherwise we allow
+        // for clicking on the inline links
+        if (target.data("deprecated") == true && $(event.target).text() != "Expand") { return true }
+        // For results which don't need expansion
         if (target.data("pod-name") == undefined) { return true }
 
         expandSearchResult(target)
