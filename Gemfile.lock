@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: https://github.com/CocoaPods/Core.git
-  revision: 74f8fdcfd840a332fa8aee46112e26ea6a6090c8
+  revision: 19e3efa3495ae7de15711160f22fd68ac555f56b
   specs:
     cocoapods-core (0.38.2)
       activesupport (>= 3.2.15)
@@ -72,7 +72,7 @@ GEM
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.8.2)
-    minitest (5.7.0)
+    minitest (5.8.0)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
