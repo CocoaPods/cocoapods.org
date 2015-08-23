@@ -1,0 +1,36 @@
+$quality-pod-color: $highlight-color;
+
+.quality_indicator {
+  height:30px;
+  width:30px;
+  padding-left: 0;
+  margin-top: -3px;
+  margin-right: 0;
+  margin-left: 12px;
+
+  &.quality_1 {
+    svg path#bottom-left { fill: $quality-pod-color; }
+  }
+  &.quality_2 {
+    svg path#bottom-left { fill: $quality-pod-color; }
+    svg path#bottom-right { fill: $quality-pod-color; }
+  }
+  &.quality_3 {
+    svg path#bottom-left { fill: $quality-pod-color; }
+    svg path#bottom-right { fill: $quality-pod-color; }
+    svg path#right { fill: $quality-pod-color; }
+  }
+  &.quality_4 {
+    svg path#bottom-left { fill: $quality-pod-color; }
+    svg path#bottom-right { fill: $quality-pod-color; }
+    svg path#right { fill: $quality-pod-color; }
+    svg path#top { fill: $quality-pod-color; }
+  }
+  &.quality_5 {
+    svg path#bottom-right { fill: $quality-pod-color; }
+    svg path#bottom-left { fill: $quality-pod-color; }
+    svg path#right { fill: $quality-pod-color; }
+    svg path#top { fill: $quality-pod-color; }
+    svg path#left { fill: $quality-pod-color; }
+  }
+}

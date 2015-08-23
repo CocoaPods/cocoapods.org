@@ -30,6 +30,10 @@ class App < Sinatra::Base
     def data(name)
       YAML.load_file "data/#{name}.yaml"
     end
+
+    def quality_indicator_svg
+      @quality_indicator_svg ||= File.read('assets/images/pod.svg')
+    end
   end
 
   not_found do
@@ -114,7 +118,8 @@ class App < Sinatra::Base
       owners_pod[:pod_id]
     end
 
-    @pods = metrics.where(pods[:deleted] => false, pods[:id] => pod_ids).sort_by { |pod| pod[:github_pod_metric][:stargazers] || 0 }.reverse
+    all_dbs = metrics.join(:stats_metrics).on(:id => :pod_id)
+    @pods = all_dbs.where(pods[:deleted] => false, pods[:id] => pod_ids).sort_by { |pod| pod[:github_pod_metric][:stargazers] || 0 }.reverse
 
     gravatar = Digest::MD5.hexdigest(@owner.email.downcase)
     @gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar}.png?d=retro&r=PG&s=240"

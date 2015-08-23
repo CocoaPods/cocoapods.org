@@ -33,6 +33,19 @@ ruby:
     end
   end
 
+  impact = @pods.reduce({}) do |sum, pod|
+    sum[:qi] = pod[:cocoadocs_pod_metric][:quality_estimate] + (sum[:qi] || 0)
+    sum[:apps] = pod[:stat_metric][:app_total] + (sum[:apps] || 0)
+    sum[:downloads] = pod[:stat_metric][:download_total] + (sum[:downloads] || 0)
+    sum[:stars] = (pod[:github_pod_metric][:stargazers] || 0) + (sum[:stars] || 0)
+    sum[:loc] = pod[:cocoadocs_pod_metric][:total_lines_of_code] + (sum[:loc] || 0)
+    sum
+  end
+
+  average_qi = impact[:qi] / @pods.count
+  average_quality_group = average_qi > 100 ? "5" : (average_qi / 20) + 1
+
+
 css:
   #headline {
     height:320px;
@@ -68,11 +81,44 @@ css:
     position: absolute;
   }
 
+  hr {
+    margin-top:8px;
+    border-top: 3px solid whitesmoke;
+    margin-bottom: 60px;
+  }
+
   h1 span {
     color: whitesmoke;
   }
+
   h2 {
     word-wrap:break-word;
+    margin-bottom:0px;
+    padding-left:12px;
+    padding-top:18px;
+  }
+
+  ul {
+    display:block;
+    clear:left;
+    padding:0;
+    margin-left:-12px;
+    margin-bottom:2px;
+  }
+
+  ul li {
+    display:inline-block;
+    padding:0 24px;
+    padding-top:4px;
+    font-size: 18px;
+    color: rgba(37,37,37,0.44);
+    line-height: 24px;
+    border-right: 2px whitesmoke solid;
+    height: 36px;
+  }
+
+  ul li:last-child {
+    border-right:none;
   }
 
   @media (max-width:768px){
@@ -88,48 +134,116 @@ css:
       height:80px;
       width:80px;
     }
-
   }
 
   #owner {
     padding-top:60px;
   }
 
-  #owner .row {
+  .owner .pods, .owner .impact {
     background-color:white;
+    margin-top:48px;
+  }
+
+  .owner .pods {
+    margin-top:24px;
+    margin-bottom: 24px;
+  }
+
+  table thead h2 {
+    padding-left:0;
+    margin-top:0;
+    padding-top:0;
+    margin-bottom:16px;
+  }
+  table tr {
+    display: inline-block;
+    padding:0 12px;
+  }
+
+  table tr td {
+    display: block;
+    height: 48px;
+  }
+
+  table tr td.result {
+    font-size: 36px;
+    margin-top:12px;
+  }
+
+  table tr td.result.pod_count {
+    font-size: 64px;
+    line-height: 32px;
+    font-weight:bold;
   }
 
 section.container
   article.row#headline
-    .col-lg-12.col-sm-12.col-xs-12
+    .col-xs-12
       h1 == @owner.name
       img#gravatar src=@gravatar_url width=120 height=120
 
-#content-wrapper
-  section.container#owner
+#content-wrapper.owner
+  section.container
+    article.row.impact
+      .col-xs-12
+        table
+          thead
+            tr
+              th
+                h2 Community Impact
+
+          tbody
+            tr
+              td Pods<br/>
+              td.result.pod_count = @pods.length
+            tr
+              td Average<br/>Quality
+              / td = impact[:qi] / @pods.length
+
+              td class="quality_indicator quality_#{average_quality_group}"
+                == quality_indicator_svg
+
+            tr
+              td Apps</br>touched
+              td.result = impact[:apps].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+            tr
+              td Combined</br>Downloads
+              td.result = impact[:downloads].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+
+            - if impact[:stars] > 0
+              tr
+                td Stargazers
+                td.result = impact[:stars].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+
+            - if impact[:loc] > 0
+              tr
+                td Lines</br>of Code
+                td.result = impact[:loc].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+
+
     article.row
-      .col-sm-offset-1.col-sm-10.col-xs-12
+      - @pods.each do |pod|
+        .col-sm-12.pods
+          a href="/pods/#{pod[:name]}"
+            h2 == pod[:name]
 
-        - @pods.each_with_index do |pod, index|
-          .col-sm-6
-            a href="/pods/#{pod[:name]}"
-              h2 == pod[:name]
+          .col-sm-8
+            == pod[:cocoadocs_pod_metric][:rendered_summary]
 
-            ul
-              li == pod[:cocoadocs_pod_metric][:dominant_language]
+          .col-sm-4
+            p == "License: <a href='#{pod[:cocoadocs_pod_metric][:license_canonical_url]}'>#{pod[:cocoadocs_pod_metric][:license_short_name]}</a>"
 
-              - unless hide_stars pod
-                li == pod[:github_pod_metric][:stargazers].to_s + " #{ pod[:github_pod_metric][:stargazers] == 1 ? "Star" : "Stars"}"
+          ul
+            - unless hide_stars pod
+              li == pod[:github_pod_metric][:stargazers].to_s + " #{ pod[:github_pod_metric][:stargazers] == 1 ? "Star" : "Stars"}"
 
-              - unless hide_tests pod
-                li == testing_quote pod[:cocoadocs_pod_metric][:total_test_expectations]
+            - unless hide_tests pod
+              li == testing_quote pod[:cocoadocs_pod_metric][:total_test_expectations]
 
-              - if show_framework pod
-                li Is a binary Pod
+            - if show_framework pod
+              li Is a binary Pod
 
-              li == doc_quote pod[:cocoadocs_pod_metric][:doc_percent]
+            li == doc_quote pod[:cocoadocs_pod_metric][:doc_percent]
 
-            hr
-
-          - if index % 2 != 0
-            .clearfix
+            li == pod[:cocoadocs_pod_metric][:dominant_language]
