@@ -161,10 +161,11 @@ css:
   
   .owner .impact p span {
     font-size: 96px;
+    color:black;
   }
   
   .owner .impact p {
-    font-size: 14px;
+    font-size: 16px;
     color: #7D7D7D;
     line-height: 19px;
   }
@@ -173,7 +174,14 @@ css:
     position: absolute;
     bottom: 0;
     left: 32px;
-    color:black;
+  }
+  @media (max-width:768px){
+    .owner .impact p span {
+      font-size: 36px;
+    }
+    .owner .impact.title p {
+      left:16px;
+    }
   }
   
   .owner .pods {
@@ -188,6 +196,7 @@ css:
     margin-bottom:0;
     font-size:24px;
   }
+  
   table tr {
     display: inline-block;
     padding:0 12px;
