@@ -34,6 +34,10 @@ class App < Sinatra::Base
     def quality_indicator_svg
       @quality_indicator_svg ||= File.read('assets/images/pod.svg')
     end
+
+    def quality_indicator_group input
+      input > 100 ? "5" : (input / 20) + 1
+    end
   end
 
   not_found do
@@ -119,7 +123,7 @@ class App < Sinatra::Base
     end
 
     all_dbs = metrics.join(:stats_metrics).on(:id => :pod_id)
-    @pods = all_dbs.where(pods[:deleted] => false, pods[:id] => pod_ids).sort_by { |pod| pod[:github_pod_metric][:stargazers] || 0 }.reverse
+    @pods = all_dbs.where(pods[:deleted] => false, pods[:id] => pod_ids).sort_by { |pod| pod[:cocoadocs_pod_metric][:quality_estimate] || 0 }.reverse
 
     gravatar = Digest::MD5.hexdigest(@owner.email.downcase)
     @gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar}.png?d=retro&r=PG&s=240"

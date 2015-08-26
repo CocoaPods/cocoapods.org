@@ -43,7 +43,7 @@ ruby:
   end
 
   average_qi = impact[:qi] / @pods.count
-  average_quality_group = average_qi > 100 ? "5" : (average_qi / 20) + 1
+  average_qi_group = quality_indicator_group average_qi
 
 
 css:
@@ -98,7 +98,7 @@ css:
     padding-top:18px;
   }
 
-  ul {
+  ul.metrics {
     display:block;
     clear:left;
     padding:0;
@@ -106,7 +106,7 @@ css:
     margin-bottom:2px;
   }
 
-  ul li {
+  ul.metrics li {
     display:inline-block;
     padding:0 24px;
     padding-top:4px;
@@ -117,9 +117,19 @@ css:
     height: 36px;
   }
 
-  ul li:last-child {
+  ul.metrics li:last-child {
     border-right:none;
   }
+
+  ul.metrics li:first-child {
+    position:relative;
+    top:6px;
+    height:38px;
+  }
+
+  ul.metrics li:first-child .quality_indicator {
+    margin-left:0;
+  }  
 
   @media (max-width:768px){
     #headline {
@@ -144,7 +154,28 @@ css:
     background-color:white;
     margin-top:48px;
   }
-
+  
+  .owner .impact {
+    min-height:180px;  
+  }
+  
+  .owner .impact p span {
+    font-size: 96px;
+  }
+  
+  .owner .impact p {
+    font-size: 14px;
+    color: #7D7D7D;
+    line-height: 19px;
+  }
+  
+  .owner .impact.title p {
+    position: absolute;
+    bottom: 0;
+    left: 32px;
+    color:black;
+  }
+  
   .owner .pods {
     margin-top:24px;
     margin-bottom: 24px;
@@ -152,9 +183,10 @@ css:
 
   table thead h2 {
     padding-left:0;
-    margin-top:0;
+    margin-top:10px;
     padding-top:0;
-    margin-bottom:16px;
+    margin-bottom:0;
+    font-size:24px;
   }
   table tr {
     display: inline-block;
@@ -164,11 +196,15 @@ css:
   table tr td {
     display: block;
     height: 48px;
+    font-size:16px;
+    color: #7D7D7D;
+
   }
 
   table tr td.result {
     font-size: 36px;
     margin-top:12px;
+    color:black;
   }
 
   table tr td.result.pod_count {
@@ -185,41 +221,38 @@ section.container
 
 #content-wrapper.owner
   section.container
-    article.row.impact
-      .col-xs-12
+    article.row
+      .col-xs-3.impact.title
+        p == "<span>" + @pods.length.to_s + "</span>pods"
+      
+      .col-xs-push-1.col-xs-8.impact
+
         table
           thead
             tr
               th
                 h2 Community Impact
-
           tbody
+            / tr
+            /   td Average</br>quality
+            /   td class="quality_indicator quality_#{average_qi_group}"
+            /     == quality_indicator_svg
             tr
-              td Pods<br/>
-              td.result.pod_count = @pods.length
-            tr
-              td Average<br/>Quality
-              / td = impact[:qi] / @pods.length
-
-              td class="quality_indicator quality_#{average_quality_group}"
-                == quality_indicator_svg
-
-            tr
-              td Apps</br>touched
               td.result = impact[:apps].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+              td apps touched
             tr
-              td Combined</br>Downloads
               td.result = impact[:downloads].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+              td combined downloads
 
             - if impact[:stars] > 0
               tr
-                td Stargazers
                 td.result = impact[:stars].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+                td stargazers
 
             - if impact[:loc] > 0
               tr
-                td Lines</br>of Code
                 td.result = impact[:loc].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+                td lines of code
 
 
     article.row
@@ -234,7 +267,12 @@ section.container
           .col-sm-4
             p == "License: <a href='#{pod[:cocoadocs_pod_metric][:license_canonical_url]}'>#{pod[:cocoadocs_pod_metric][:license_short_name]}</a>"
 
-          ul
+          ul.metrics
+            li
+              div class="quality_indicator quality_#{quality_indicator_group pod[:cocoadocs_pod_metric][:quality_estimate]}"
+                a href="/pods/#{pod[:name]}/quality"
+                  == quality_indicator_svg
+
             - unless hide_stars pod
               li == pod[:github_pod_metric][:stargazers].to_s + " #{ pod[:github_pod_metric][:stargazers] == 1 ? "Star" : "Stars"}"
 
