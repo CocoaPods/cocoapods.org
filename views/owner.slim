@@ -239,10 +239,6 @@ section.container
               th
                 h2 Community Impact
           tbody
-            / tr
-            /   td Average</br>quality
-            /   td class="quality_indicator quality_#{average_qi_group}"
-            /     == quality_indicator_svg
             tr
               td.result = impact[:apps].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
               td apps touched
