@@ -33,7 +33,8 @@ ruby:
     end
   end
 
-  impact = @pods.reduce({}) do |sum, pod|
+  default = Hash.new(0)
+  impact = @pods.reduce(default) do |sum, pod|
     sum[:qi] = pod[:cocoadocs_pod_metric][:quality_estimate] + (sum[:qi] || 0)
     sum[:apps] = pod[:stat_metric][:app_total] + (sum[:apps] || 0)
     sum[:downloads] = pod[:stat_metric][:download_total] + (sum[:downloads] || 0)
@@ -41,10 +42,6 @@ ruby:
     sum[:loc] = pod[:cocoadocs_pod_metric][:total_lines_of_code] + (sum[:loc] || 0)
     sum
   end
-
-  average_qi = impact[:qi] / @pods.count
-  average_qi_group = quality_indicator_group average_qi
-
 
 css:
   #headline {
