@@ -12,7 +12,7 @@ ruby:
   docs_description = @cocoadocs["doc_percent"] > 70 ? "Documented" : "Well Documented"
   lang_small = @cocoadocs["dominant_language"] == "Objective C" ? "Obj-C" : @cocoadocs["dominant_language"]
   owner_urls = @owners.map{ |o| "<a href='/owners/#{o["owner_id"]}'>#{o["owner"]["name"]}</a>"}.join ", "
-  quality_group = @cocoadocs["quality_estimate"] > 100 ? "5" : (@cocoadocs["quality_estimate"] / 20) + 1
+  quality_group = quality_indicator_group @cocoadocs["quality_estimate"]
   is_for_testing = @pod.attributes_hash["frameworks"] && @pod.attributes_hash["frameworks"].include?("XCTest")
   is_binary = @cocoadocs["is_vendored_framework"]
   has_changelog = @cocoadocs["rendered_changelog_url"]
@@ -206,7 +206,7 @@ ruby:
 
         a href="/pods/#{@pod.name}/quality"
           li class="metadata quality_indicator quality_#{quality_group}"
-            == File.read('assets/images/pod.svg')
+            == quality_indicator_svg
     .clearfix
 
     - if is_deprecated

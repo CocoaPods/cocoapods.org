@@ -33,6 +33,19 @@ ruby:
     end
   end
 
+  impact = @pods.reduce({}) do |sum, pod|
+    sum[:qi] = pod[:cocoadocs_pod_metric][:quality_estimate] + (sum[:qi] || 0)
+    sum[:apps] = pod[:stat_metric][:app_total] + (sum[:apps] || 0)
+    sum[:downloads] = pod[:stat_metric][:download_total] + (sum[:downloads] || 0)
+    sum[:stars] = (pod[:github_pod_metric][:stargazers] || 0) + (sum[:stars] || 0)
+    sum[:loc] = pod[:cocoadocs_pod_metric][:total_lines_of_code] + (sum[:loc] || 0)
+    sum
+  end
+
+  average_qi = impact[:qi] / @pods.count
+  average_qi_group = quality_indicator_group average_qi
+
+
 css:
   #headline {
     height:320px;
@@ -68,12 +81,55 @@ css:
     position: absolute;
   }
 
+  hr {
+    margin-top:8px;
+    border-top: 3px solid whitesmoke;
+    margin-bottom: 60px;
+  }
+
   h1 span {
     color: whitesmoke;
   }
+
   h2 {
     word-wrap:break-word;
+    margin-bottom:0px;
+    padding-left:12px;
+    padding-top:18px;
   }
+
+  ul.metrics {
+    display:block;
+    clear:left;
+    padding:0;
+    margin-left:-12px;
+    margin-bottom:2px;
+  }
+
+  ul.metrics li {
+    display:inline-block;
+    padding:0 24px;
+    padding-top:4px;
+    font-size: 18px;
+    color: rgba(37,37,37,0.44);
+    line-height: 24px;
+    border-right: 2px whitesmoke solid;
+    height: 36px;
+  }
+
+  ul.metrics li:last-child {
+    border-right:none;
+  }
+
+  ul.metrics li:first-child {
+    position:relative;
+    top:6px;
+    height:38px;
+  }
+
+  ul.metrics li:first-child .quality_indicator {
+    margin-left:0;
+  }  
 
   @media (max-width:768px){
     #headline {
@@ -88,48 +144,153 @@ css:
       height:80px;
       width:80px;
     }
-
   }
 
   #owner {
     padding-top:60px;
   }
 
-  #owner .row {
+  .owner .pods, .owner .impact {
     background-color:white;
+    margin-top:48px;
+  }
+  
+  .owner .impact {
+    min-height:180px;  
+  }
+  
+  .owner .impact p span {
+    font-size: 96px;
+    color:black;
+  }
+  
+  .owner .impact p {
+    font-size: 16px;
+    color: #7D7D7D;
+    line-height: 19px;
+  }
+  
+  .owner .impact.title p {
+    position: absolute;
+    bottom: 0;
+    left: 32px;
+  }
+  @media (max-width:768px){
+    .owner .impact p span {
+      font-size: 36px;
+    }
+    .owner .impact.title p {
+      left:16px;
+    }
+  }
+  
+  .owner .pods {
+    margin-top:24px;
+    margin-bottom: 24px;
+  }
+
+  table thead h2 {
+    padding-left:0;
+    margin-top:10px;
+    padding-top:0;
+    margin-bottom:0;
+    font-size:24px;
+  }
+  
+  table tr {
+    display: inline-block;
+    padding:0 12px;
+  }
+
+  table tr td {
+    display: block;
+    height: 48px;
+    font-size:16px;
+    color: #7D7D7D;
+
+  }
+
+  table tr td.result {
+    font-size: 36px;
+    margin-top:12px;
+    color:black;
+  }
+
+  table tr td.result.pod_count {
+    font-size: 64px;
+    line-height: 32px;
+    font-weight:bold;
   }
 
 section.container
   article.row#headline
-    .col-lg-12.col-sm-12.col-xs-12
+    .col-xs-12
       h1 == @owner.name
       img#gravatar src=@gravatar_url width=120 height=120
 
-#content-wrapper
-  section.container#owner
+#content-wrapper.owner
+  section.container
     article.row
-      .col-sm-offset-1.col-sm-10.col-xs-12
+      .col-xs-3.impact.title
+        p == "<span>" + @pods.length.to_s + "</span>pods"
+      
+      .col-xs-push-1.col-xs-8.impact
 
-        - @pods.each_with_index do |pod, index|
-          .col-sm-6
-            a href="/pods/#{pod[:name]}"
-              h2 == pod[:name]
+        table
+          thead
+            tr
+              th
+                h2 Community Impact
+          tbody
+            / tr
+            /   td Average</br>quality
+            /   td class="quality_indicator quality_#{average_qi_group}"
+            /     == quality_indicator_svg
+            tr
+              td.result = impact[:apps].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+              td apps touched
+            tr
+              td.result = impact[:downloads].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+              td combined downloads
 
-            ul
-              li == pod[:cocoadocs_pod_metric][:dominant_language]
+            - if impact[:stars] > 0
+              tr
+                td.result = impact[:stars].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+                td stargazers
 
-              - unless hide_stars pod
-                li == pod[:github_pod_metric][:stargazers].to_s + " #{ pod[:github_pod_metric][:stargazers] == 1 ? "Star" : "Stars"}"
+            - if impact[:loc] > 0
+              tr
+                td.result = impact[:loc].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+                td lines of code
 
-              - unless hide_tests pod
-                li == testing_quote pod[:cocoadocs_pod_metric][:total_test_expectations]
 
-              - if show_framework pod
-                li Is a binary Pod
+    article.row
+      - @pods.each do |pod|
+        .col-sm-12.pods
+          a href="/pods/#{pod[:name]}"
+            h2 == pod[:name]
 
-              li == doc_quote pod[:cocoadocs_pod_metric][:doc_percent]
+          .col-sm-8
+            == pod[:cocoadocs_pod_metric][:rendered_summary]
 
-            hr
+          .col-sm-4
+            p == "License: <a href='#{pod[:cocoadocs_pod_metric][:license_canonical_url]}'>#{pod[:cocoadocs_pod_metric][:license_short_name]}</a>"
 
-          - if index % 2 != 0
-            .clearfix
+          ul.metrics
+            li
+              div class="quality_indicator quality_#{quality_indicator_group pod[:cocoadocs_pod_metric][:quality_estimate]}"
+                a href="/pods/#{pod[:name]}/quality"
+                  == quality_indicator_svg
+
+            - unless hide_stars pod
+              li == pod[:github_pod_metric][:stargazers].to_s + " #{ pod[:github_pod_metric][:stargazers] == 1 ? "Star" : "Stars"}"
+
+            - unless hide_tests pod
+              li == testing_quote pod[:cocoadocs_pod_metric][:total_test_expectations]
+
+            - if show_framework pod
+              li Is a binary Pod
+
+            li == doc_quote pod[:cocoadocs_pod_metric][:doc_percent]
+
+            li == pod[:cocoadocs_pod_metric][:dominant_language]

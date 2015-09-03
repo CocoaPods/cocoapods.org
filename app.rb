@@ -30,6 +30,14 @@ class App < Sinatra::Base
     def data(name)
       YAML.load_file "data/#{name}.yaml"
     end
+
+    def quality_indicator_svg
+      @quality_indicator_svg ||= File.read('assets/images/pod.svg')
+    end
+
+    def quality_indicator_group input
+      input > 100 ? "5" : (input / 20) + 1
+    end
   end
 
   not_found do
@@ -78,7 +86,6 @@ class App < Sinatra::Base
       redirect pod.homepage
     end
 
-    @page_title = "#{result.pod.name} - CocoaPods.org"
     @content = pod_page_for_result result
     slim :pod_page
   end
@@ -114,17 +121,20 @@ class App < Sinatra::Base
       owners_pod[:pod_id]
     end
 
-    @pods = metrics.where(pods[:deleted] => false, pods[:id] => pod_ids).sort_by { |pod| pod[:github_pod_metric][:stargazers] || 0 }.reverse
+    all_dbs = metrics.join(:stats_metrics).on(:id => :pod_id)
+    @pods = all_dbs.where(pods[:deleted] => false, pods[:id] => pod_ids).sort_by { |pod| pod[:cocoadocs_pod_metric][:quality_estimate] || 0 }.reverse
 
     gravatar = Digest::MD5.hexdigest(@owner.email.downcase)
     @gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar}.png?d=retro&r=PG&s=240"
-
+    @page_title = "#{@owner[:name]}'s account on CocoaPods.org"
+    @page_description = "#{@pods.length} pods by #{@owner[:name]}."
     slim :owner
   end
 
   get '/pods/:name/quality' do
     @name = params[:name]
     @quality, response_code = PodQualityEstimate.load_quality_estimate(@name)
+    @page_title = "#{@name}s Quality Estimate on CocoaPods.org"
 
     if response_code == 404
       not_found
@@ -143,7 +153,8 @@ class App < Sinatra::Base
     @owners = owners_pods.join(:owners).on(:owner_id => :id).where(pod_id: @pod_db.id).to_a
     @commit = commits.where(pod_version_id: @version.id, deleted_file_during_import: false).order_by(:created_at.desc).first
     @pod = Pod::Specification.from_json @commit.specification_data
-
+    @page_title = "#{@pod.name} on CocoaPods.org"
+    @page_description = @pod.summary
     uri = URI(@cocoadocs["rendered_readme_url"])
     res = Net::HTTP.get_response(uri)
     @readme_html = res.body.force_encoding('UTF-8') if res.is_a?(Net::HTTPSuccess)
@@ -219,8 +230,8 @@ class App < Sinatra::Base
   end
 
   # If it can't be found elsewhere, it's
-  # probably an html file.
-  # E.g. /about -> /about.html
+  # probably represented by a slim file.
+  # E.g. /about -> /about.slim
   #
   get '/:filename' do
     name = params[:filename]
