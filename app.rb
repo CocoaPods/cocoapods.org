@@ -36,7 +36,7 @@ class App < Sinatra::Base
     end
 
     def quality_indicator_group input
-      input > 100 ? "5" : (input / 20) + 1
+      input >= 100 ? "5" : (input / 20) + 1
     end
   end
 
