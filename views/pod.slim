@@ -45,7 +45,7 @@ ruby:
     h1.visible-xs.inline-headline == "<a href='/pods/#{@pod.name}'>" + @pod.name + "</a> <span>" + @pod.version.to_s + "</span>"
     
     .close-expanded
-      a href="#" X
+      a href="#" &times;
     
     ruby:
       header = { alt_spans("Docs", "Documented") => has_docs ? "✓":"✗",
