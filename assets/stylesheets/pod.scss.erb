@@ -5,6 +5,7 @@ $highlight-color: #ED0015;
 $highlight-dark-color: #A90010;
 $darker-color: #C6B7B2;
 $darker-dark-color: #A8A8A8;
+$faded-background-color: #d1c4c0;
 $background-color: #F2F2F2;
 $base-color: #380200;
 $alt-link-color: #B7233F;
@@ -30,7 +31,7 @@ $warning-color: #B80E3D;
   text-overflow: ellipsis;
   height: 74px;
   line-height: 63px;
-  color: #ED0015;
+  color: $highlight-color;
   position: absolute;
   padding: 0;
   margin-bottom: 0;
@@ -543,7 +544,7 @@ li.twitter {
 }
 
 .pod_result .readme-content {
-  border-right: 2px solid #d1c4c0;
+  border-right: 2px solid $faded-background-color;
 }
 
 @media (max-width: 767px){
@@ -576,10 +577,29 @@ li.twitter {
     margin:4px auto;
     display:block;
   }
+
+  .close-expanded a {
+    font-size: 1.3em;
+    color: white;
+    padding: 0.5em 1em;
+    background-color: $faded-background-color;
+    margin-bottom: 20px;
+    float:right;
+    margin-top:-8px;
+
+    &:hover {
+      background-color: $highlight-color;
+      text-decoration: none;
+    }
+  }
+}
+
+#pod-page .close-expanded a {
+  display: none;
 }
 
 .pod-metadata h1 {
-  color: #fb0006;
+  color: $highlight-color;
   font-weight:normal;
   margin: 0;
   font-size: 3em;
@@ -588,6 +608,10 @@ li.twitter {
   span {
     word-break: normal;
   }
+}
+
+#results_container ol.results > li.is-expanded {
+  border: none;
 }
 
 .is-expanded .readme-content > .nav-tabs li > a {
@@ -606,7 +630,7 @@ li.twitter {
 }
 
 .inline-headline h1 span {
-  color: #d1c4c0;
+  color: $faded-background-color;
 }
 
 #pod-page .inline-headline {
@@ -626,7 +650,7 @@ li.twitter {
 }
 
 .pod_result .pod-metadata h1 span {
-  color: #d1c4c0;
+  color: $faded-background-color;
 }
 
 .modal-dialog p {
