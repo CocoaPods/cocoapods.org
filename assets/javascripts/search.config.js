@@ -205,22 +205,39 @@ $(window).ready(function() {
       result.data("span", "2")
       result.addClass("is-expanded")
       result.removeClass("loading")
-      $(result, ".expanded .content")[0].innerHTML = html
+      result.children(".expanded").children(".content")[0].innerHTML = html
 
       // Track the page views for inline pods
       _gaq.push(['_trackPageview'], "/pods/" + result.data("pod-name"));
 
       /// This can be found in application.js
       post_expansion_setup()
+      addCloseButton()
     }).fail(function() {
       result.removeClass("loading")
     });
   }
 
-  // Renders an entry, then returns the rendered HTML.
-  //
-  // TODO Improve. This is just a quick prototype.
-  //
+  var addCloseButton = function() {
+    $('.close-expanded a').click(function(e) {
+      var target = $(event.target)
+      if (target.is("li.result") == false) {
+        target = $(event.target).parents("li.result")
+      }
+      console.log(target)
+      reduceSearchResult(target)
+      event.stopPropagation()
+      return false;
+    });
+  }
+
+  var reduceSearchResult = function(result) {
+    result = $(result)
+    result.addClass("expandable")
+    result.removeClass("is-expanded")
+    $(result, ".expanded .content").innerHTML = ""
+  }
+
   var platformMapping = {
     ios: 'iOS',
     osx: 'OS X'
@@ -732,9 +749,11 @@ $(window).ready(function() {
   var nextResult = function(selected){
     return selected.next();
   }
+
   var previousResult = function(selected){
     return selected.prev();
   }
+
   var selectResult = function(provideNext) {
     var results = $('ol.results li.result');
     var selected = results.closest('.selected').first();
@@ -746,6 +765,7 @@ $(window).ready(function() {
     }
     selected.addClass('selected');
   }
+
   var openSelection = function(){
     var selected = $('ol.results li.result.selected').first();
     if (selected.length > 0) {
