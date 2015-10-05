@@ -52,6 +52,10 @@ class App < Sinatra::Base
     slim :index
   end
 
+  get '/get-started' do
+    redirect "https://github.com/cocoapods/cocoapods/issues?q=is%3Aopen+is%3Aissue+label%3Ad1%3Aeasy"
+  end
+
   get '/opensearch.xml' do
     content_type "application/xml"
     slim :opensearch, :layout => false
