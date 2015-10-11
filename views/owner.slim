@@ -43,6 +43,11 @@ ruby:
     sum
   end
 
+  if @pods.count > 0
+    average_qi = impact[:qi] / @pods.count
+    average_qi_group = quality_indicator_group average_qi
+  end
+
 css:
   #headline {
     height:320px;
@@ -239,6 +244,11 @@ section.container
               th
                 h2 Community Impact
           tbody
+            - if average_qi_group
+              tr
+                td class="quality_indicator quality_#{average_qi_group}"
+                  == quality_indicator_svg
+                td Average<br/>quality
             tr
               td.result = impact[:apps].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
               td apps touched
