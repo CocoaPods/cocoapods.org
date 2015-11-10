@@ -1,0 +1,143 @@
+ruby:
+  require 'cocoapods-core'
+  cp_version = Pod::CORE_VERSION
+
+css:
+  img#headline {
+    max-width:573px;
+    max-height:215px;
+    margin-top:-30px;
+  }
+
+  .intro {
+    height:320px;
+    padding:0;
+    text-align:center;
+    background-color:white;
+    text-align:center;
+  }
+
+  h2 {
+    margin-top:20px;
+    line-height: 68px;
+    font-size: 60px;
+  }
+
+  .integration {
+    background: whitesmoke;
+    overflow-y:hidden
+  }
+
+  .integration img {
+    max-height:initial;
+    max-width:700px;
+    position:absolute;
+    right:40px;
+  }
+
+  .bundled_ruby {
+    background: #380200;
+    color:white;
+    overflow-y:hidden
+  }
+
+  .bundled_ruby img {
+    max-height:initial;
+    max-width:700px;
+    position:absolute;
+    left:40px;
+  }
+
+  @media(max-width:990px) {
+    .bundled_ruby img, .integration img {
+      position:relative;
+      max-width:100%;
+      margin: auto 0;
+      left:0;
+      right:0;
+    }
+  }
+
+  .download_title {
+    text-align:center;
+  }
+
+  .download {
+    background: whitesmoke;
+  }
+
+  .download_button {
+    margin-top: 100px;
+    background: #4A90E2;
+    border-radius: 12px;
+    color:white;
+    padding: 20px;
+  }
+
+  @media(max-width:990px) {
+    .download {
+      text-align:center;
+    }
+  }
+
+.container
+  section.row.intro
+    .col-sm-12
+      img#headline src="/images/app-task-switcher.png"
+      h2 Less Hassle, More OSS
+
+section.integration
+  .container
+    section.row.integrations
+      .col-md-6.col-lg-6.col-sm-12
+        img src="/images/app-podfile-editor.png"
+
+      .col-md-4.col-lg-4.col-sm-12
+        markdown:
+          #### The Integration Specialist
+
+          Edit your Podfile in a custom environment.
+
+          Have easy access to running `pod install` and `pod update` on your projects.  It also supports running every CocoaPods command via a hosted ruby environment.
+
+          We’re just  getting starting with this app, want to help out and make contributions to hundreds of thousands of developer’s work flow? [Get involved](https://github.com/cocoapods/cocoapods-app).
+
+section.bundled_ruby
+  .container
+    section.row
+      .col-md-4.col-lg-4.col-sm-12.col-md-offset-2
+        markdown:
+          #### Bundled Ruby
+
+          You know how Xcode bundles the iOS simulators and compilers in an app? The CocoaPods app deal with hosting the ruby environment and gems in the same way.
+
+          This means everything you need for running is handled by people who know what they’re doing.
+
+          You can use the CocoaPods App’s version of `pod` in the terminal with one click. So you can still do everything you did before.
+
+      .col-md-6.col-lg-6.col-sm-12
+        img src="/images/app-terminal.png"
+
+
+section
+  .container
+    section.row.download_title
+      .col-sm-12
+        h2 Download
+
+section.download
+  .container
+    section.row
+      .col-md-4.col-lg-4.col-sm-12.col-md-offset-2
+        p
+          'You can look at all of our releases on the
+          a href="https://github.com/cocoapods/cocoapods-app" CocoaPods/CocoaPods-App
+          '  GitHub
+          a href="https://github.com/CocoaPods/CocoaPods-app/releases" releases page
+          '.
+
+      .col-md-4.col-lg-4.col-sm-12.col-md-offset-1
+
+        p Our most recent release is #{cp_version}
+        p
+          a.download_button href="https://github.com/CocoaPods/CocoaPods-app/releases/download/#{cp_version}/CocoaPods.app-#{cp_version}.tar.bz2/" Download CocoaPods.app
