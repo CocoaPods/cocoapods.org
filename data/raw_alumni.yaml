@@ -7,10 +7,18 @@
 - name: 'Keith Smiley'
   twitter_username: 'smileykeith'
   cocoapods_bio: "Master of the Specs."
-  
+
 - name: 'Andy Myers'
   twitter_username: 'andyrmyers'
   cocoapods_bio: "Really doing the design."
+
+- name: 'Karla Sandoval'
+  twitter_username: 'kisabelyogi'
+  cocoapods_bio: "Pushing those Plugins."
+
+- name: 'Emma Koszinowski '
+  twitter_username: 'emkosz'
+  cocoapods_bio: "Separating Search."
 
 - name: 'Marin Usalj'
   twitter_username: '_supermarin'

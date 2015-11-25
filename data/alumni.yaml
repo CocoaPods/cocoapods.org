@@ -14,6 +14,16 @@
   cocoapods_bio: Really doing the design.
   twitter_profile_url: https://pbs.twimg.com/profile_images/602210216529285120/Ig78OT4W.jpg
   twitter_banner_url: http://pbs.twimg.com/profile_banners/2982589991/1432413140/web
+- name: Karla Sandoval
+  twitter_username: kisabelyogi
+  cocoapods_bio: Pushing those Plugins.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/649521529361797120/opVLYovn.jpg
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/2668517719/1437809498/web
+- name: 'Emma Koszinowski '
+  twitter_username: emkosz
+  cocoapods_bio: Separating Search.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/641487079415791616/3tUtmZR_.jpg
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/16285559/1418970856/web
 - name: Marin Usalj
   twitter_username: _supermarin
   cocoapods_bio: Breaking software.
