@@ -84,7 +84,7 @@ class App < Sinatra::Base
       halt 404, "404 - Pod not found" unless result
 
       # Support redirecting to the pods homepage if we can't do it.
-      version = pod_versions.where(pod_id: result["id"]).sort_by { |v| Pod::Version.new(v.name) }.last
+      version = pod_versions.where(pod_id: result["id"], deleted: false).sort_by { |v| Pod::Version.new(v.name) }.last
       commit = commits.where(pod_version_id: version.id, deleted_file_during_import: false).first
       pod = Pod::Specification.from_json commit.specification_data
       redirect pod.homepage
@@ -153,7 +153,7 @@ class App < Sinatra::Base
     @metrics = result.github_pod_metric
     @cocoadocs = result.cocoadocs_pod_metric
     @stats = stats_metrics.where(pod_id: @pod_db.id).first
-    @version = pod_versions.where(pod_id: @pod_db.id).sort_by { |v| Pod::Version.new(v.name) }.last
+    @version = pod_versions.where(pod_id: @pod_db.id, deleted: false).sort_by { |v| Pod::Version.new(v.name) }.last
     @owners = owners_pods.join(:owners).on(:owner_id => :id).where(pod_id: @pod_db.id).to_a
     @commit = commits.where(pod_version_id: @version.id, deleted_file_during_import: false).order_by(:created_at.desc).first
     @pod = Pod::Specification.from_json @commit.specification_data
