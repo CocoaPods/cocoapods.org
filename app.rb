@@ -6,6 +6,7 @@ require 'cocoapods-core'
 require 'yaml'
 require_relative 'spec_extensions'
 require_relative 'lib/pod_quality_estimate'
+require_relative 'lib/number_helper'
 require 'sprockets'
 require 'set'
 require 'digest/md5'
@@ -14,6 +15,8 @@ class App < Sinatra::Base
   configure do
     use Rack::Deflater
   end
+  include NumberHelper
+  I18n.config.available_locales = 'en-GB'
 
   helpers do
     # Note: This is a hack that needs to be extracted into the
@@ -150,9 +153,14 @@ class App < Sinatra::Base
   def pod_page_for_result result
 
     @pod_db = result.pod
-    @metrics = result.github_pod_metric
-    @cocoadocs = result.cocoadocs_pod_metric
-    @stats = stats_metrics.where(pod_id: @pod_db.id).first
+    @metrics = localize_numbers(result.github_pod_metric.to_h,
+                                %(stargazers subscribers forks open_issues contributors open_pull_requests))
+    @cocoadocs = localize_numbers(result.cocoadocs_pod_metric.to_h,
+                                  %(install_size total_files total_lines_of_code))
+    @stats = localize_numbers(stats_metrics.where(pod_id: @pod_db.id).first.to_h,
+                          %w(download_total download_week download_month app_total app_week
+                             pod_try_total pod_try_week tests_total tests_week extensions_total
+                             extensions_week watch_total watch_week))
     @version = pod_versions.where(pod_id: @pod_db.id, deleted: false).sort_by { |v| Pod::Version.new(v.name) }.last
     @owners = owners_pods.join(:owners).on(:owner_id => :id).where(pod_id: @pod_db.id).to_a
     @commit = commits.where(pod_version_id: @version.id, deleted_file_during_import: false).order_by(:created_at.desc).first
