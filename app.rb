@@ -141,7 +141,7 @@ class App < Sinatra::Base
   get '/pods/:name/quality' do
     @name = params[:name]
     @quality, response_code = PodQualityEstimate.load_quality_estimate(@name)
-    @page_title = "#{@name}s Quality Estimate on CocoaPods.org"
+    @page_title = "#{@name}'s Quality Estimate on CocoaPods.org"
 
     if response_code == 404
       not_found
