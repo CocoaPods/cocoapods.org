@@ -24,6 +24,7 @@ GEM
     coderay (1.1.0)
     connection_pool (2.2.0)
     daemons (1.1.9)
+    dalli (2.7.4)
     data_objects (0.10.14)
       addressable (~> 2.1)
     dm-core (1.2.1)
@@ -84,6 +85,8 @@ GEM
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.2.0)
     rack (1.5.2)
+    rack-attack (4.3.0)
+      rack
     rack-protection (1.5.3)
       rack
     rake (10.4.0)
@@ -132,6 +135,7 @@ PLATFORMS
 DEPENDENCIES
   activesupport
   cocoapods-core
+  dalli (~> 2.7.4)
   dm-core
   dm-do-adapter
   dm-postgres-adapter
@@ -143,6 +147,7 @@ DEPENDENCIES
   nap
   pry
   pygments.rb
+  rack-attack (~> 4.3.0)
   rake
   redcarpet!
   sass

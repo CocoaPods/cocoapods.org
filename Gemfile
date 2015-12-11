@@ -26,6 +26,8 @@ gem 'link_header'
 gem 'sprockets'
 
 gem 'httparty'
+gem 'rack-attack', '~> 4.3.0'
+gem 'dalli', '~> 2.7.4'
 
 group :development, :production do
   gem 'foreman'
