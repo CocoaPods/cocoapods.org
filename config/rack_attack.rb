@@ -6,14 +6,16 @@ def hourly_limit
 end
 
 def memcache_host
-  unless ENV.has_key? 'RATE_LIMIT_MEMCACHE_HOST'
-    raise ArgumentError, 'RATE_LIMIT_MEMCACHE_HOST not set in environment' 
+  unless ENV.has_key? 'MEMCACHEDCLOUD_USERNAME'
+    raise ArgumentError, 'MEMCACHEDCLOUD_USERNAME not set in environment'
   end
-  ENV['RATE_LIMIT_MEMCACHE_HOST']
+  ENV['MEMCACHEDCLOUD_USERNAME']
 end
 
-options = { namespace: 'cocoapods', compress: true }
-Rack::Attack.cache.store = Dalli::Client.new(memcache_host, options) 
+options = { :namespace => 'cocoapods', :compress => true }
+memcache_servers = { :username => memcache_host, :password => ENV["MEMCACHEDCLOUD_PASSWORD"] }
+Rack::Attack.cache.store = Dalli::Client.new(ENV["MEMCACHEDCLOUD_SERVERS"].split(','), options.merge(memcache_servers) )
+
 # Always allow requests from localhost
 # (blacklist & throttles are skipped)
 Rack::Attack.whitelist('allow from localhost') do |req|
