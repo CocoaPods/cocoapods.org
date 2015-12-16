@@ -33,6 +33,14 @@ ruby:
     end
   end
 
+  def pod_owner_pods
+    if @pods.length == 1
+      "<span>1</span>pod"
+    else
+      "<span>" + @pods.length.to_s + "</span>pods"
+    end
+  end
+
   default = Hash.new(0)
   impact = @pods.reduce(default) do |sum, pod|
     sum[:qi] = pod[:cocoadocs_pod_metric][:quality_estimate] + (sum[:qi] || 0)
@@ -131,7 +139,7 @@ css:
 
   ul.metrics li:first-child .quality_indicator {
     margin-left:0;
-  }  
+  }
 
   @media (max-width:768px){
     #headline {
@@ -156,22 +164,22 @@ css:
     background-color:white;
     margin-top:48px;
   }
-  
+
   .owner .impact {
-    min-height:180px;  
+    min-height:180px;
   }
-  
+
   .owner .impact p span {
     font-size: 96px;
     color:black;
   }
-  
+
   .owner .impact p {
     font-size: 16px;
     color: #7D7D7D;
     line-height: 19px;
   }
-  
+
   .owner .impact.title p {
     position: absolute;
     bottom: 0;
@@ -185,7 +193,7 @@ css:
       left:16px;
     }
   }
-  
+
   .owner .pods {
     margin-top:24px;
     margin-bottom: 24px;
@@ -198,7 +206,7 @@ css:
     margin-bottom:0;
     font-size:24px;
   }
-  
+
   table tr {
     display: inline-block;
     padding:0 12px;
@@ -234,11 +242,7 @@ section.container
   section.container
     article.row
       .col-xs-3.impact.title
-      if @pods.length == 1
-        p == "<span>1</span>pod"
-      else
-        p == "<span>" + @pods.length.to_s + "</span>pods"
-      end
+        p == pod_owner_pods
 
       .col-xs-push-1.col-xs-8.impact
 
