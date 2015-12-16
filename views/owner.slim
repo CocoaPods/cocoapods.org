@@ -234,8 +234,12 @@ section.container
   section.container
     article.row
       .col-xs-3.impact.title
+      if @pods.length == 1
+        p == "<span>1</span>pod"
+      else
         p == "<span>" + @pods.length.to_s + "</span>pods"
-      
+      end
+
       .col-xs-push-1.col-xs-8.impact
 
         table
