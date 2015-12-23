@@ -141,7 +141,7 @@ section.container
           .col-sm-8.col-sm-offset-2
             h2 Metrics not applied
             ul
-              - @quality.unaffected_steps.each do |step|
+              - @quality.unaffected_steps.reject { |step| step.title == "Verified Owner" }.each do |step|
                 li
                   h4 == "#{step.title} <span class='#{step.css_class}'>#{step.score_text}</span>"
                   p == step.description
