@@ -451,10 +451,9 @@ $(window).ready(function() {
 
       // Render the JSON into HTML.
       //
-      // Note: we unique because of #226
       var allocations = data.allocations;
       allocations.each(function(i, allocation) {
-        allocation.entries = jQuery.unique(allocation.entries).map(function(i, entry) {
+        allocation.entries = allocation.entries.map(function(i, entry) {
           return render(entry);
         });
       });
