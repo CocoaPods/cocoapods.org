@@ -1,3 +1,7 @@
+ruby:
+  require 'cocoapods-core'
+  cp_version = Pod::CORE_VERSION
+
 link href="/stylesheets/about.css" media="screen" rel="stylesheet" type="text/css"
 
 section.title.container.about-section
@@ -156,17 +160,14 @@ section.title.container.about-section
 
           p You can use all the features you know and love from the Terminal and some features with a GUI. Best of both worlds.
 
-          a.btn href="/app" Preview the Release
+          a.btn.download href="https://github.com/CocoaPods/CocoaPods-app/releases/download/#{cp_version}/CocoaPods.app-#{cp_version}.tar.bz2/" Download
+          a.btn href="/app" Learn More…
 
         .terminal.col-lg-6.col-md-6.col-sm-6
           markdown:
             Installation via the command line is easy. Follow [this guide](https://guides.cocoapods.org/using/getting-started.html#getting-started) for more info.
 
              <pre> [sudo] gem install cocoapods</pre>
-
-          / a.btn href="#"
-          /   |Copy command
-          /   span.circle-arrow-down
 
 
       article.row.one-column
