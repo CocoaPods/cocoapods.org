@@ -32,21 +32,26 @@ section.title.container.about-section
           <pre class="highlight"><span class="c"># open source</span>
           <span class="c">source</span> <span class="s">'https://github.com/CocoaPods/Specs.git'</span>
 
-          <span class="c">pod</span> <span class="nv">'FLKAutoLayout'</span>
-          <span class="c">pod</span> <span class="nv">'ISO8601DateFormatter', '0.7'</span>
-          <span class="c">pod</span> <span class="nv">'AFNetworking', '~> 2.0'</span>
+          <span class="c"># my work</span>
+          <span class="c">source</span> <span class="s">'https://github.com/Artsy/Specs.git'</span>
+          
+          <span class="k">target</span> <span class="nv">'App'</span> <span class="k">do</span>
+        
+            <span class="c">pod</span> <span class="nv">'Artsy+UIColors'</span>
+            <span class="c">pod</span> <span class="nv">'Artsy+UIButtons'</span>
 
-          <span class="c"># my company</span>
-          <span class="c">source</span> <span class="s">'https://github.com/artsy/Specs.git'</span>
+            <span class="c">pod</span> <span class="nv">'FLKAutoLayout'</span>
+            <span class="c">pod</span> <span class="nv">'ISO8601DateFormatter', '0.7'</span>
+            <span class="c">pod</span> <span class="nv">'AFNetworking', '~> 2.0'</span>
 
-          <span class="c">pod</span> <span class="nv">'Artsy+UIColors'</span>
-          <span class="c">pod</span> <span class="nv">'Artsy+UIButtons'</span>
-
-          <span class="k">target</span> <span class="nv">'AppTests'</span> <span class="k">do</span>
-            <span class="c">pod</span> <span class="nv">'FBSnapshotTestCase'</span>
-            <span class="c">pod</span> <span class="nv">'Quick'</span>
-            <span class="c">pod</span> <span class="nv">'Nimble'</span>
+            <span class="k">target</span> <span class="nv">'AppTests'</span> <span class="k">do</span>
+              <span class="c">pod</span> <span class="nv">'FBSnapshotTestCase'</span>
+              <span class="c">pod</span> <span class="nv">'Quick'</span>
+              <span class="c">pod</span> <span class="nv">'Nimble'</span>
+            <span class="k">end</span>
           <span class="k">end</span></pre>
+          
+
 
         javascript:
           (function() {
@@ -119,13 +124,12 @@ section.title.container.about-section
            Experiment with new [plugins](https://github.com/CocoaPods/cocoapods-plugins/blob/master/plugins.json) like [packager](https://github.com/CocoaPods/cocoapods-packager), [keys](https://github.com/orta/cocoapods-keys), [roulette](https://github.com/sirlantis/cocoapods-roulette), [deintegrate](https://github.com/kylef/cocoapods-deintegrate), [repo-svn](https://github.com/clarkda/cocoapods-repo-svn), [release](https://github.com/Sparrow-Labs/cocoapods-release) and [sorted-search](https://github.com/DenHeadless/cocoapods-sorted-search).
 
         .col-sm-3.col-xs-12
-          h3 Skip Integration
+          markdown:
+            ### Skip Integration
+            
+            Want to handle integration yourself? You can disable our integration using the Podfile attribute: `install! 'cocoapods', :integrate_targets => false`.
 
-          p Don't trust CocoaPods? You can disable our integration
-            <span class="hidden-lg-span">with the flag <code>--no-integrate</code></span>
-            <span class="visible-lg-span">using <code>pod install --no-integrate</code></span>
-
-          p Then you can decide how to move your pods into your app.
+            Then you can decide how to move your pods into your app.
 
         .col-sm-3.col-xs-12
           h3 Outreach
