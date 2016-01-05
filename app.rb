@@ -143,7 +143,7 @@ class App < Sinatra::Base
     @quality, response_code = PodQualityEstimate.load_quality_estimate(@name)
     @page_title = "#{@name}'s Quality Estimate on CocoaPods.org"
 
-    if response_code == 404
+    if (400...600).cover? response_code
       not_found
     else
       slim :pod_quality
