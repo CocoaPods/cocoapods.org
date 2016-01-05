@@ -138,7 +138,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport
-  cocoapods-core (= 1.0.0.beta.1)
+  cocoapods-core (>= 0.a)
   dalli (~> 2.7.4)
   dm-core
   dm-do-adapter
