@@ -4,61 +4,61 @@ javascript:
     getRecent();
     getTop();
   })
-  
+
   function getRecent() {
     $.getJSON("http://cocoapods-bashbot.herokuapp.com/triages", function( data ) {
-      
+
       var recent_html = ""
       $.each( data["triages"], function( index, triage ) {
         recent_html += ich.recent_triage(triage, true)
       });
- 
+
       $( "<ul/>", {
         "class": "bash-list recent-triages",
         html: recent_html
       }).appendTo("#recent_triages_list");
-      
+
     })
   }
-  
+
   function getTop() {
     $.getJSON("http://cocoapods-bashbot.herokuapp.com/users", function( data ) {
-      
+
       var recent_html = ""
-      
+
       data = data.sort(function(a, b) {
          return b["points"] - a["points"]
       })
-      
+
       $.each( data, function( index, triage ) {
         recent_html += ich.top_contributor(triage, true)
       });
- 
+
       $( "<ul/>", {
         "class": "bash-list top_contributors",
         html: recent_html
       }).appendTo("#top_contributors_list");
-      
-      
+
+
       $("ul.top_contributors li").click(function(event){
         var tappedON = this;
 
         $.getJSON("http://cocoapods-bashbot.herokuapp.com/users/" + this.id, function( data ) {
-          
-          var triages_html = "" 
+
+          var triages_html = ""
           $.each( data["triages"], function( index, triage ) {
             triages_html += ich.sub_triage(triage, true)
           });
-        
+
           $( "<ul/>", {
             html: triages_html
           }).appendTo(tappedON);
-        
+
         })
-        
+
       });
     })
-    
+
   }
 
 css:
@@ -66,11 +66,11 @@ css:
   h3.underlined {
     text-align:center;
   }
-  
+
   #content-wrapper ul {
     padding-left:0;
   }
-  
+
   li.result {
     padding:10px;
     background-color:white;
@@ -78,23 +78,23 @@ css:
     list-style:none;
     min-height: 64px;
   }
-  
+
   li.result:hover {
     background-color: #eeeeee;
     cursor:pointer;
   }
-  
+
   li.result a {
     display:block;
   }
-  
+
   li.result img {
     float:left;
     height:44px;
     width:44px;
     margin-right:12px;
   }
-  
+
   li.result h3 {
     padding:0;
     margin:0;
@@ -115,24 +115,24 @@ css:
   li.result h3 em {
     color:rgba(0,0,0,0.3);
   }
-  
+
   li.result h4 em {
     color:#48A4EC;
   }
-  
+
   ul.bash-list {
     height:480px;
     overflow:scroll;
   }
-  
+
   li.triage a {
     display:inline;
   }
-  
+
   li.triage p {
     margin-bottom: 6px;
     margin-top: 6px;
-    
+
   }
 
 
@@ -143,7 +143,7 @@ script id="top_contributor" type="text/html"
     h4 {{ triages }} Triages, {{ points }} points
 
 script id="recent_triage" type="text/html"
-  li.result 
+  li.result
     a href="{{ issue.url }}"
       img src="{{ user.avatar_url }}"
       h3 {{ user.name }} <em>{{user.username}}</em>
@@ -163,9 +163,9 @@ section.container
 #content-wrapper
   section.container
     article.row
-    
+
       section.row
-  
+
         .col-md-4.col-lg-4.col-sm-12.col-md-offset-1.col-lg-offset-1.col-sm-offset-0#top_contributors_list
           h3.underlined Top Contributors
           <div class="header-horizontal-divider"><div class="index-arrow-down"></div><div class="index-enclosed-arrow-down"></div></div>
@@ -173,4 +173,3 @@ section.container
         .col-md-4.col-lg-4.col-sm-12.col-md-offset-2.col-lg-offset-2.col-sm-offset-0#recent_triages_list
           h3.underlined Recent Triages
           <div class="header-horizontal-divider"><div class="index-arrow-down"></div><div class="index-enclosed-arrow-down"></div></div>
-

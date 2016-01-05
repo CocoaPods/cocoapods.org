@@ -69,20 +69,20 @@ javascript:
       $(this).popover('hide')
     });
   });
-  
+
   // When the page loads up check for a #changelog and load the changelog instead of the README if possible
   $(document).ready(function() {
     if ($("#asset_switcher").length == 0) { return }
     if (location.hash == "#changelog") {
       $("#changelog_tab").click()
     }
-    
+
     // Make it easy to get a changelog URL for C+Ping
-    $('#asset_switcher a').on('shown.bs.tab', function (e) { 
+    $('#asset_switcher a').on('shown.bs.tab', function (e) {
       var is_changelog = $(e.target).data("target") == "#changelog_content"
       var new_hash = (is_changelog) ? "#changelog" : ""
       var current_url = window.location.toString().split('#')[0]
       history.replaceState(null, null, current_url + new_hash)
     })
-    
+
   })
