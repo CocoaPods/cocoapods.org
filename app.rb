@@ -218,28 +218,37 @@ class App < Sinatra::Base
     settings.assets.append_path file
   end
 
+  def static_content_cache_headers
+    cache_control :public, :must_revalidated, max_age: 60 * 60 * 24 * 31 * 2
+  end
+
   get "/javascripts/:file.js" do
+    static_content_cache_headers
     content_type "application/javascript"
     settings.assets["#{deasset(params[:file])}.js"]
   end
 
   get "/stylesheets/:file.css" do
+    static_content_cache_headers
     content_type "text/css"
     settings.assets["#{deasset(params[:file])}.css"]
   end
 
   get "/images/:file.svg" do
+    static_content_cache_headers
     content_type "image/svg+xml"
     settings.assets["#{deasset(params[:file])}.svg"]
   end
 
   get "/flashes/:file.swf" do
+    static_content_cache_headers
     content_type "application/x-shockwave-flash"
     settings.assets["#{deasset(params[:file])}.swf"]
   end
 
   ["images", "favicons"].each do |folder|
     get "/#{folder}/:file" do
+      static_content_cache_headers
       content_type "image/png"
       settings.assets["#{deasset(params[:file])}"]
     end
