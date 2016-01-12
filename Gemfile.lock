@@ -17,7 +17,7 @@ GEM
     aggregate (0.2.2)
     arel (5.0.1.20140414130214)
     buftok (0.2.0)
-    cocoapods-core (1.0.0.beta.1)
+    cocoapods-core (1.0.0.beta.2)
       activesupport (>= 4.0.2)
       fuzzy_match (~> 2.0.4)
       nap (~> 1.0)
@@ -134,7 +134,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport
-  cocoapods-core (= 1.0.0.beta.1)
+  cocoapods-core (= 1.0.0.beta.2)
   dalli (~> 2.7.4)
   dm-core
   dm-do-adapter
