@@ -17,6 +17,7 @@ ruby:
   is_binary = @cocoadocs["is_vendored_framework"]
   has_changelog = @cocoadocs["rendered_changelog_url"]
   is_deprecated = @pod.deprecated || @pod.deprecated_in_favor_of
+  is_swift = @cocoadocs["dominant_language"] == "Swift"
 
   def section(title, table_class="inset", include_zero=true, properties)
     header = "<h3>#{title}</h3><table class='#{table_class}'><tbody>"
@@ -43,17 +44,17 @@ ruby:
 
   div.sideline.col-sm-3.col-xs-12.col-sm-push-9
     h1.visible-xs.inline-headline == "<a href='/pods/#{@pod.name}'>" + @pod.name + "</a> <span>" + @pod.version.to_s + "</span>"
-    
+
     .close-expanded
       a href="#" &times;
-    
+
     ruby:
       header = { alt_spans("Docs", "Documented") => has_docs ? "✓":"✗",
         alt_spans("Tests", "Tested") => has_tests ? "✓":"✗",
         alt_spans("Lang", "Language") => alt_spans(lang_small, @cocoadocs["dominant_language"]),
         "License" => link_to(@cocoadocs["license_canonical_url"], @cocoadocs["license_short_name"]),
         alt_spans("Released", "Last Release") => @commit["created_at"].strftime("%b %Y"),
-        # "Start Date" => @cocoadocs["initial_commit_date"].strftime "%Y/%m/%d",
+        alt_spans("SPM", "Supports SPM") => @cocoadocs["spm_support"] ? "✓":  is_swift ? "✗": nil,
       }
       if is_binary
         header.delete alt_spans("Tests", "Tested")
