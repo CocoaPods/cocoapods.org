@@ -5,12 +5,12 @@
 - :name: alloy
   :commits: 3016
   :avatar_url: https://avatars.githubusercontent.com/u/2320?v=3
-- :name: orta
-  :commits: 2338
-  :avatar_url: https://avatars.githubusercontent.com/u/49038?v=3
 - :name: segiddins
-  :commits: 2325
+  :commits: 2372
   :avatar_url: https://avatars.githubusercontent.com/u/1946610?v=3
+- :name: orta
+  :commits: 2339
+  :avatar_url: https://avatars.githubusercontent.com/u/49038?v=3
 - :name: floere
   :commits: 1748
   :avatar_url: https://avatars.githubusercontent.com/u/3022?v=3
@@ -21,7 +21,7 @@
   :commits: 647
   :avatar_url: https://avatars.githubusercontent.com/u/1389011?v=3
 - :name: neonichu
-  :commits: 547
+  :commits: 555
   :avatar_url: https://avatars.githubusercontent.com/u/118992?v=3
 - :name: AliSoftware
   :commits: 262

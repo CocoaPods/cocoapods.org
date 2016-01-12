@@ -184,6 +184,10 @@ class App < Sinatra::Base
   # Setup assets.
   #
   sprockets = Sprockets::Environment.new
+  unless environment == :development
+    sprockets.js_compressor  = :uglify
+    sprockets.css_compressor = :scss
+  end
 
   # Generate an assets hash once on startup.
   #
