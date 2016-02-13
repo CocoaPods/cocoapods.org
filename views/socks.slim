@@ -21,9 +21,39 @@ css:
     color: white;
   }
 
-  section.grey {
-    background-color: #380200;
+  section.white {
+    background-color: white;
   }
+
+  .tldr p, .tldr h2 {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+
+  .tldr h2 {
+    margin-top: 0;
+    font-size: 72px;
+    padding-right:30px;
+  }
+
+  .tldr a {
+    float: right;
+    margin-top: 19px;
+  }
+
+  .button {
+    margin-top: 100px;
+    background: #4A90E2;
+    border-radius: 12px;
+    color: white;
+    padding: 20px;
+  }
+  .button:hover {
+    background: #2d90c2;
+    text-decoration: none;
+    color: white;
+  }
+
 
 
 section.title.container.header-section
@@ -36,35 +66,18 @@ section.title.container.header-section
     .container
       article.row
           h3 CocoaPods Donation Drive for
-          p "[IMG]"
+          p style="text-align:center;"
+            img src="/images/wateraid-logo.png" width="445"
 
-  section.podfile.container.about-section
-
+  section.podfile.container.tldr
     article.row
-      .col-lg-6.col-md-6.col-sm-6
-        h2 TLDR:
-        p We’re doing crowd-funded socks for charity, using Knitout. All profits will be going to WaterAid.
-        p
-          a.button.download_button href="https://github.com/CocoaPods/CocoaPods-app/releases/download/#{cp_version}/CocoaPods.app-#{cp_version}.tar.bz2/" Download CocoaPods.app
+      .col-xs-12
+        div
+          h2 TLDR:
+          p We’re doing crowd-funded socks for charity, using Knitout.<br/>With all profit going to WaterAid.
+          a.button.download_button href="https://knitout.com/campaigns/8866" Get CocoaPods Socks <span>$16</span>
 
-
-      .col-lg-6.col-md-6.col-sm-6.podfile
-
-        javascript:
-          (function() {
-              var pre = document.getElementsByTagName('pre');
-              var pl = pre.length;
-              for (var i = 0; i < pl; i++) {
-                  pre[i].innerHTML = '<span class="line-numbers"></span>' + pre[i].innerHTML;
-                  var num = pre[i].innerHTML.split(/\n/).length;
-                  for (var j = 0; j < num; j++) {
-                      var line_num = pre[i].getElementsByTagName('span')[0];
-                      line_num.innerHTML += '<span>' + (j + 1) + '</span>';
-                  }
-              }
-          })();
-
-  section.water.about-section
+  section.water.about-section.white
     .container
       article.row
         .col-lg-6.col-md-6.col-sm-12
@@ -72,20 +85,23 @@ section.title.container.header-section
             CocoaPods was started in 2011. We are a community run project, with no large-scale corporate backing. We’ve previously asked that people donate time, not money. However, with 1.0 so close, we wanted to offer a way to give back, that helps others outside our small community.
 
         .col-lg-6.col-md-6.col-sm-12
-          <pre class="textmate-source"><span class='linenum'>    1</span> <span class="source source_ruby">project <span class="string string_quoted string_quoted_single string_quoted_single_ruby"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_ruby">'</span>the world<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_ruby">'</span></span>
-          <span class='linenum'>    2</span> target <span class="string string_quoted string_quoted_single string_quoted_single_ruby"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_ruby">'</span>My Feed’ do
-          <span class='linenum'>    3</span>   pod <span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_ruby">'</span></span><span class="variable variable_other variable_other_constant variable_other_constant_ruby">CPSocks</span>’
-          <span class='linenum'>    4</span> <span class="keyword keyword_control keyword_control_ruby">end</span>
-          <span class='linenum'>    5</span>
-          <span class='linenum'>    6</span> post_install <span class="keyword keyword_control keyword_control_start-block keyword_control_start-block_ruby">do
-          </span><span class='linenum'>    7</span>   water_aid<span class="punctuation punctuation_separator punctuation_separator_method punctuation_separator_method_ruby">.</span>donate<span class="punctuation punctuation_section punctuation_section_function punctuation_section_function_ruby">()</span>
-          <span class='linenum'>    8</span> <span class="keyword keyword_control keyword_control_ruby">end</span></span></pre>
+          markdown:
+            <pre>
+            project 'the world'
+            target 'My Feed’ do
+              pod 'CPSocks’
+            end
+
+            post_install do
+              water_aid.donate()
+            end
+            </pre>
 
   section.about-section
     .container
       article.row
         p style="text-align:center;"
-          a.button.download_button href="https://github.com/CocoaPods/CocoaPods-app/releases/download/#{cp_version}/CocoaPods.app-#{cp_version}.tar.bz2/" Download CocoaPods.app
+            a.button.download_button href="https://knitout.com/campaigns/8866" Get CocoaPods Socks
 
   section.about-section
     .container
