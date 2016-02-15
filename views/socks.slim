@@ -16,7 +16,7 @@ css:
     background-color: #380200;
   }
 
-  section.dark h3 {
+  section.dark h3 {t
     text-align: center;
     color: white;
   }
@@ -24,6 +24,12 @@ css:
   section.white {
     background-color: white;
   }
+
+  section.blue {
+    background-color: #4A90E2;
+    color: white;
+  }
+
 
   .tldr p, .tldr h2 {
     display: inline-block;
@@ -46,7 +52,9 @@ css:
     background: #4A90E2;
     border-radius: 12px;
     color: white;
-    padding: 20px;
+    width: auto;
+    padding: 10px;
+    display: inline-block;
   }
   .button:hover {
     background: #2d90c2;
@@ -54,6 +62,42 @@ css:
     color: white;
   }
 
+  a.button span {
+    font-size: 36px;
+    vertical-align: middle;
+  }
+
+  div.download_call_to_action {
+    position: relative;
+    margin: 0 auto;
+    width: 260px;
+  }
+
+  .midway div.download_call_to_action a {
+    margin-top:20px;
+    margin-bottom:20px;
+  }
+
+  .finale div.download_call_to_action a {
+    margin-top:0;
+    margin-bottom:90px;
+  }
+
+  img.hanging_sock {
+    position:absolute;
+    right: -64px;
+    top: 46px;
+  }
+
+  img.hanging_sock#behind {
+    transform: rotate(-12deg);
+  }
+
+  img.hanging_sock#infront {
+    transform: rotate(12deg);
+    right: -28px;
+    top: 50px;
+  }
 
 
 section.title.container.header-section
@@ -65,9 +109,8 @@ section.title.container.header-section
   section.dark
     .container
       article.row
-          h3 CocoaPods Donation Drive for
           p style="text-align:center;"
-            img src="/images/wateraid-logo.png" width="445"
+            img src="/images/charity-drive.png" width="415"
 
   section.podfile.container.tldr
     article.row
@@ -75,7 +118,8 @@ section.title.container.header-section
         div
           h2 TLDR:
           p We’re doing crowd-funded socks for charity, using Knitout.<br/>With all profit going to WaterAid.
-          a.button.download_button href="https://knitout.com/campaigns/8866" Get CocoaPods Socks <span>$16</span>
+          a.button.download_button href="https://knitout.com/campaigns/8866"
+            div Get CocoaPods Socks <span>$16</span>
 
   section.water.about-section.white
     .container
@@ -97,13 +141,15 @@ section.title.container.header-section
             end
             </pre>
 
-  section.about-section
+  section.midway
     .container
       article.row
-        p style="text-align:center;"
-            a.button.download_button href="https://knitout.com/campaigns/8866" Get CocoaPods Socks
+        div.download_call_to_action
+          a.button.download_button href="https://knitout.com/campaigns/8866"
+            div Get CocoaPods Socks <span>$16</span>
 
-  section.about-section
+
+  section.about-section.white
     .container
       article.row
 
@@ -112,3 +158,48 @@ section.title.container.header-section
 
         .col-md-4
         p We’re putting all profits directly into WaterAid. It’s a great charity, doing important work.
+
+  section.water.about-section.blue
+    .container
+      article.row
+        .col-lg-6.col-md-6.col-sm-12
+          img src="/images/wateraid-logo.png" width="445"
+
+        .col-lg-6.col-md-6.col-sm-12
+          markdown:
+            Everyone needs clean water.
+
+            WaterAid works with local partners to deliver clean water and toilets and promote good hygiene,
+            and campaign to make change happen for
+            everyone everywhere.
+
+            Rated 97/100 on the Charity Navigator
+
+
+  section.about-section.white
+    .container
+      article.row
+
+        .col-md-6
+          markdown:
+            We know a bubble when we see one. We see a great oppertunity to get in early on the Cocoa Socks business before Apple comes in and deprecates us with the Socks Packaging Manager.
+
+            So we went to the creators of the infamous Slack socks, and worked with them on designs.
+
+            To grab a pair, jump over to Knitout. They use Stripe to deal with all the payments - so it’s safe and secure.
+
+            We’re excited to be buying our own ones too!
+
+        .col-md-6
+          p Final bit
+
+  section.finale
+    .container
+      article.row
+        .col-sm-12
+          p style="text-align:center;"
+            div.download_call_to_action
+              a.button.download_button href="https://knitout.com/campaigns/8866"
+                div Get CocoaPods Socks <span>$16</span>
+              img.hanging_sock#behind src="/images/sock-small.png" width="86"
+              img.hanging_sock#infront src="/images/sock-small.png" width="86"
