@@ -2,7 +2,6 @@ ruby:
   require 'cocoapods-core'
   cp_version = Pod::CORE_VERSION
 
-
 css:
   #header {
     min-height: 400px;
@@ -30,7 +29,6 @@ css:
     color: white;
   }
 
-
   .tldr p, .tldr h2 {
     display: inline-block;
     margin-bottom: 0;
@@ -56,11 +54,19 @@ css:
     padding: 10px;
     display: inline-block;
   }
+
   .button:hover {
-    background: #2d90c2;
+    background: #380200;
     text-decoration: none;
     color: white;
   }
+
+  .button:active {
+    background: black;
+    text-decoration: none;
+    color: white;
+  }
+
 
   a.button span {
     font-size: 36px;
@@ -81,11 +87,12 @@ css:
   .finale div.download_call_to_action a {
     margin-top:0;
     margin-bottom:90px;
+    width: 270px;
   }
 
   img.hanging_sock {
     position:absolute;
-    right: -64px;
+    right: -74px;
     top: 46px;
   }
 
@@ -95,8 +102,15 @@ css:
 
   img.hanging_sock#infront {
     transform: rotate(12deg);
-    right: -28px;
+    right: -38px;
     top: 50px;
+  }
+
+  p.signature {
+    padding-bottom: 8px;
+    padding-right: 12px;
+    border-bottom: 3px dashed #D2D2D2;
+    display: inline-block;
   }
 
 
@@ -110,7 +124,8 @@ section.title.container.header-section
     .container
       article.row
           p style="text-align:center;"
-            img src="/images/charity-drive.png" width="415"
+            a href="https://charitywater.org/" target="_blank"
+              img src="/images/charity-drive.png" width="415"
 
   section.podfile.container.tldr
     article.row
@@ -124,22 +139,23 @@ section.title.container.header-section
   section.water.about-section.white
     .container
       article.row
-        .col-lg-6.col-md-6.col-sm-12
+        .col-sm-6
           markdown:
             CocoaPods was started in 2011. We are a community run project, with no large-scale corporate backing. We’ve previously asked that people donate time, not money. However, with 1.0 so close, we wanted to offer a way to give back, that helps others outside our small community.
 
-        .col-lg-6.col-md-6.col-sm-12
-          markdown:
-            <pre>
-            project 'the world'
-            target 'My Feed’ do
-              pod 'CPSocks’
-            end
+        .col-sm-6
+          p
+            markdown:
+              <pre>
+              project 'the world'
+              target 'My Feed’ do
+                pod 'CPSocks’
+              end
 
-            post_install do
-              water_aid.donate()
-            end
-            </pre>
+              post_install do
+                water_aid.donate()
+              end
+              </pre>
 
   section.midway
     .container
@@ -163,7 +179,9 @@ section.title.container.header-section
     .container
       article.row
         .col-lg-6.col-md-6.col-sm-12
-          img src="/images/wateraid-logo.png" width="445"
+          p
+            a href="https://charitywater.org/" target="_blank"
+              img src="/images/charity-water-2.png" width="294" style="float:right;"
 
         .col-lg-6.col-md-6.col-sm-12
           markdown:
@@ -190,6 +208,11 @@ section.title.container.header-section
 
             We’re excited to be buying our own ones too!
 
+          p.signature
+            img src="/images/fabbo_signature.png" width="154"
+
+
+
         .col-md-6
           p Final bit
 
@@ -200,6 +223,6 @@ section.title.container.header-section
           p style="text-align:center;"
             div.download_call_to_action
               a.button.download_button href="https://knitout.com/campaigns/8866"
-                div Get CocoaPods Socks <span>$16</span>
+                div OK, you can click now, <span>$16</span>
               img.hanging_sock#behind src="/images/sock-small.png" width="86"
               img.hanging_sock#infront src="/images/sock-small.png" width="86"
