@@ -144,6 +144,13 @@ section.integration {
     padding-bottom: 1.5em;
     margin-top:0em;
   }
+
+  @media (min-width:1200px) {
+    p {
+      padding-bottom: 3em;
+    }
+  }
+
 }
 
 section.developers {
@@ -218,6 +225,7 @@ section.getting-it {
 
   .cocoapods-app {
     padding: 2.0em 2.5em 3.5em 7.2em;
+
     a.btn.download {
       margin-right: 1em;
     }
@@ -256,7 +264,6 @@ section.getting-it {
     }
   }
 
-
   @media (min-width: 992px) {
     h2 {
       margin-bottom: 1em;
@@ -266,7 +273,12 @@ section.getting-it {
       background: url(<%= asset_data_uri "cocoapods-app.png" %>) no-repeat 50% top;
       background-size: 452px 320px;
     }
+  }
 
+  @media (min-width: 1200px) {
+    .cocoapods-app {
+      padding: 2.0em 3.5em 3.5em 9.2em;
+    }
   }
 
   @media (min-width: 768px) {
