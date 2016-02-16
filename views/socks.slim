@@ -113,6 +113,17 @@ css:
     display: inline-block;
   }
 
+  javascript:
+
+    $(document).ready( function(){
+      $('a.button').click(function(e) {
+        e = $(e)
+        e.css("width", e.width())
+        e.css("text-align", "center")
+        e.text = "Thanks 🎉"
+      })
+    })
+
 
 section.title.container.header-section
   article.row
@@ -200,11 +211,11 @@ section.title.container.header-section
 
         .col-md-6
           markdown:
-            We know a bubble when we see one. We see a great oppertunity to get in early on the Cocoa Socks business before Apple comes in and deprecates us with the Socks Packaging Manager.
+            We know a [bubble](http://www.buzzfeed.com/jessicamisener/buzzfeet#.xu2baWQ4X) when we see one. We see a great opportunity to get in early on the Cocoa Socks business before Apple comes in and deprecates us with the Socks Packaging Manager.
 
-            So we went to the creators of the infamous Slack socks, and worked with them on designs.
+            So we went straight to the source of the in-famous Slack socks, and worked with them on socks of our own. We're not rolling in money, to bootstrap this and mail all the socks out. So, we're going to use their kickstarter for socks project Knitout
 
-            To grab a pair, jump over to Knitout. They use Stripe to deal with all the payments - so it’s safe and secure.
+            To grab a pair, jump over to [our CocoaPods Knitout](https://knitout.com/campaigns/8866). They use Stripe to deal with all the payments - so it’s safe and secure.
 
             We’re excited to be buying our own ones too!
 
