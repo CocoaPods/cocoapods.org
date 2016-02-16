@@ -1,6 +1,7 @@
 ruby:
   require 'cocoapods-core'
   cp_version = Pod::CORE_VERSION
+  enable_follow_links = false
 
 link href="/stylesheets/about.css" media="screen" rel="stylesheet" type="text/css"
 
@@ -34,9 +35,9 @@ section.title.container.about-section
 
           <span class="c"># my work</span>
           <span class="c">source</span> <span class="s">'https://github.com/Artsy/Specs.git'</span>
-          
+
           <span class="k">target</span> <span class="nv">'App'</span> <span class="k">do</span>
-        
+
             <span class="c">pod</span> <span class="nv">'Artsy+UIColors'</span>
             <span class="c">pod</span> <span class="nv">'Artsy+UIButtons'</span>
 
@@ -50,7 +51,7 @@ section.title.container.about-section
               <span class="c">pod</span> <span class="nv">'Nimble'</span>
             <span class="k">end</span>
           <span class="k">end</span></pre>
-          
+
 
 
 
@@ -128,7 +129,7 @@ section.title.container.about-section
         .col-sm-3.col-xs-12
           markdown:
             ### Skip Integration
-            Want to handle integration yourself? You can disable our integration using the Podfile attribute: `install! 'cocoapods', :integrate_targets => false`.
+            Want to handle integration yourself? You can disable our integration using the [`install!`](https://guides.cocoapods.org/syntax/podfile.html#install_bang) directive.
 
             Then you can decide how to move your pods into your app.
 
@@ -138,9 +139,9 @@ section.title.container.about-section
           p
             'Discover interesting library authors via
             a href="https://twitter.com/cocoapodsfeed" @CocoaPodsFeed
-            ' +
+            ' &nbsp;+&nbsp;
             a href="https://twitter.com/CremeDeLaPods" @CremeDeLaPods
-            ' on twitter.
+            ' &nbsp;on twitter.
 
           p The CocoaPods search sorts libraries on the homepage so the <a href="https://cocoapods.org/?q=a">highest quality</a> rise to the top.
 
@@ -207,8 +208,8 @@ section.title.container.about-section
 
             h3 = dev["name"]
 
-            - if dev["twitter_username"]
-              a href="https://twitter.com/#{dev["twitter_username"]}" class="twitter-follow-button" data-show-count="false" data-lang="en" = "Follow @#{dev["twitter_username"]}"
+            - if dev["twitter_username"] && enable_follow_links
+              a href="https://twitter.com/#{dev["twitter_username"]}" class="twitter-follow-button"  data-dnt="true" = "Follow @#{dev["twitter_username"]}"
 
             p = dev["cocoapods_bio"]
 
@@ -221,7 +222,6 @@ section.title.container.about-section
 
         .col-lg-4.col-sm-6.col-xs-12.alum
           .background style="background-image:url(#{alumn["twitter_banner_url"]})"
-
             a.col-xs-4 href="https://twitter.com/#{alumn["twitter_username"]}"
               img.twitter_avatar src=alumn["twitter_profile_url"]
 
@@ -230,8 +230,9 @@ section.title.container.about-section
 
               p = alumn["cocoapods_bio"]
 
-            - if alumn["twitter_username"]
-              a href="https://twitter.com/#{alumn["twitter_username"]}" class="twitter-follow-button" data-show-count="false" data-lang="en" = "Follow @#{alumn["twitter_username"]}"
+            - if dev["twitter_username"] && enable_follow_links
+
+              a href="https://twitter.com/#{alumn["twitter_username"]}" class="twitter-follow-button" data-show-count="false" data-dnt="true" = "Follow @#{alumn["twitter_username"]}"
 
   section.community.container
     article.row
