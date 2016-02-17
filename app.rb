@@ -79,7 +79,7 @@ class App < Sinatra::Base
 
   # Gets a Pod Page
   #
-  get '/pods/:name' do
+  get '/pods/:name/?' do
     STDOUT.sync = true
     result = metrics.where(pods[:deleted] => false, pods[:normalized_name] => params[:name].downcase).first
     unless result
