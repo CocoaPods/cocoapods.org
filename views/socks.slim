@@ -3,6 +3,8 @@ script  src="//cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min
 ruby:
   require 'cocoapods-core'
   cp_version = Pod::CORE_VERSION
+  modal_joke_header = ["CocoaPods Socks &amp; Chill", "Some people say CocoaPods sucks. To those people, we say: CocoaPods socks.", "Did you remember to run `bundle exec sock install`?"].sample
+  
 
 css:
   #header {
@@ -77,8 +79,8 @@ css:
     color: white;
   }
 
-
   a.button span {
+    padding-left:16px;
     font-size: 36px;
     vertical-align: middle;
   }
@@ -160,9 +162,16 @@ css:
     position: absolute;
   }
 
+  .modal-dialog {
+    width:100%;
+  }
+  video {
+    max-width:100%;
+  }
+
   @media (max-width: 768px) {
     #header h1 {
-      font-size: 36px;
+      font-size: 32px;
     }
     
     .about-section {
@@ -187,7 +196,6 @@ css:
     section.title {
       overflow-x: hidden;
     }
-    
   }
   
 
@@ -200,6 +208,18 @@ javascript:
         e.text = "Thanks 🎉"
       })
     });
+    
+    $(document).on('show.bs.modal', function(){
+        $("#orta-grin").attr('src', "https://cocoapods.s3.amazonaws.com/vids/orta-grin.mov");
+        var v = document.getElementsByTagName("video")[0];
+        v.play();
+    });
+    
+    $('.modal').on('hidden.bs.modal', function () {
+        $('video').each(function() {
+          this.player.pause();
+        });
+    })
 
 canvas#water
 section.title.container.header-section
@@ -223,7 +243,7 @@ section.title.container.header-section
       .col-xs-12
         div
           h2 TLDR:
-          p We’re doing crowd-funded socks for charity, using Knitout.<br/>With all profit going to WaterAid.
+          p We’re doing crowd-funded socks for charity, using Knitout.<br/>With all profit going to charity: water.
           a.button.download_button href="https://knitout.com/campaigns/8866"
             div Get CocoaPods Socks <span>$16</span>
 
@@ -234,7 +254,7 @@ section.title.container.header-section
           markdown:
             CocoaPods was started in 2011. We are a community run project, with no large-scale corporate backing. We're often asked if we'd do something like t-shirts or hoodies. 
             
-            We don't want to use CocoaPods' popularity to make money. So, we are making sure all profits go to charity.
+            We don't want to use CocoaPods' popularity to make money. So, we are putting all profits into a charity.
         .col-sm-2
         .col-sm-4
           p
@@ -247,24 +267,6 @@ section.title.container.header-section
                 <span class="n">  charity_water</span><span class="p">.</span><span class="nf">donate</span><span class="p">()</span><br/>
                 <span class="k">end</span>
               </code>
-            
-  section.midway
-    .container
-      article.row
-        div.download_call_to_action
-          a.button.download_button href="https://knitout.com/campaigns/8866"
-            div Get CocoaPods Socks <span>$16</span>
-
-
-  section.about-section.white
-    .container
-      article.row
-
-        .col-md-8
-          p Obviously we love having code sent our way, and we’re being asked more and more how people can financially contribute to CocoaPods. We want to take that energy and make it easy for everyone to help.
-
-        .col-md-4
-          p We’re putting all profits directly into WaterAid. It’s a great charity, doing important work.
 
   section.everyone-needs-water.about-section.blue
     .container
@@ -294,9 +296,9 @@ section.title.container.header-section
 
         .col-md-5.col-md-pull-5
           markdown:
-            We know a [bubble](http://www.buzzfeed.com/jessicamisener/buzzfeet#.xu2baWQ4X) when we see one. We see a great opportunity to get in early on the Cocoa Socks business before Apple comes in and deprecates us with the Socks Packaging Manager.
+            <p>We know a <a src="http://www.buzzfeed.com/jessicamisener/buzzfeet#.xu2baWQ4X" target="_blank">bubble</a> when we see one. We see a great opportunity to get in early on the Cocoa Socks business before Apple comes in and deprecates us with the Socks Packaging Manager. <a data-toggle="modal" data-target="#chill-out">:D</a></p>
 
-            So we went straight to the source of the in-famous Slack socks, and worked with them on socks of our own. We're not rolling in money, to bootstrap this and mail all the socks out. So, we're going to use their kickstarter for socks project Knitout
+            So we went straight to the source of the renowned [Slack socks](https://twitter.com/slackhq/status/467457718270189568), and worked with them on socks of our own. We're going to use their Knitout crowd-funding platform for our socks project 
 
             To grab a pair, jump over to [our CocoaPods Knitout](https://knitout.com/campaigns/8866). They [use tilt](https://www.tilt.com/learn) to deal with all the payments - so it’s safe and secure.
 
@@ -304,8 +306,6 @@ section.title.container.header-section
 
           p.signature
             img src="/images/fabbo_signature.png" width="154"
-
-
 
   section.finale
     .container
@@ -319,6 +319,19 @@ section.title.container.header-section
               img.hanging_sock#infront src="/images/sock-big.png" width="86"
 
 
+  .modal.fade#chill-out tabindex="-1" role="dialog" aria-labelledby="installation_label" aria-hidden="true"
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close type="button" data-dismiss="modal" aria-label="Close"
+            span aria-hidden="true" &times
+
+          h6.modal-title#installation_label == modal_joke_header
+
+        .modal-body
+          video#orta-grin width="1080" height="720" 
+          
+  
 
 javascript:
 
@@ -496,10 +509,4 @@ javascript:
     processing.endShape()
   }
   
-  // handle page resizing
-  $(window).resize(function() {
-    var pjs = Processing.getInstanceById('water');
-    pjs.resizeSketch(document.width,  340);
-    
-  });
   
