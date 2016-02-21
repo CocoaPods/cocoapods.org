@@ -166,13 +166,23 @@ css:
     width:100%;
     max-height:60%;
   }
+  
   video {
     max-width:100%;
   }
 
+    .tiny-info {
+      display:none;
+    }
+
+    .normal-info {
+      display:block;      
+    }
+
   @media (max-width: 768px) {
     #header h1 {
-      font-size: 32px;
+      padding-top:96px;
+      font-size: 50px;
     }
     
     .about-section {
@@ -185,6 +195,19 @@ css:
   
     section {
       overflow-x: hidden;
+    }
+
+    video {
+      height:300px;
+    }
+    
+    .tiny-info {
+      display:block;
+      padding-bottom:20px;
+    }
+
+    .normal-info {
+      display:none;
     }
   }
   
@@ -215,7 +238,8 @@ canvas#water
 section.title.container.header-section
   article.row
     .col-lg-7.col-sm-12.col-xs-10#header
-      h1 CocoaPods...</br>Socks...
+      h1.normal-info CocoaPods...</br>Socks..?
+      h1.tiny-info CP...<br/>Socks?
       img.big_hanging_sock#behind src="/images/sock-big.png" width="161"
       img.big_hanging_sock#infront src="/images/sock-big.png" width="161"
       
