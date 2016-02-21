@@ -30,6 +30,10 @@ css:
     background-color: #4A90E2;
     color: white;
   }
+  section.blue a {
+    color: white;
+    text-decoration: underline;
+  }
   
   .everyone-needs-water p.center {
     text-align:center;
@@ -100,36 +104,42 @@ css:
   img.big_hanging_sock {
     position:absolute;
     right: -74px;
-    top: -50px;
+    top: -40px;
   }
+  
   img.big_hanging_sock#behind {
     transform: rotate(-12deg);
+    -webkit-transform: rotate(-12deg);
   }
 
   img.big_hanging_sock#infront {
     transform: rotate(12deg);
+    -webkit-transform: rotate(12deg);
+    
     right: -38px;
-    top: -50px;
+    top: -35px;
     z-index:1001;
   }
   
-
-
   /* On the DL button */
   img.hanging_sock {
     position:absolute;
     right: -74px;
-    top: 46px;
+    top: 54px;
   }
 
   img.hanging_sock#behind {
     transform: rotate(-12deg);
+    -webkit-transform: rotate(-12deg);
+    
   }
 
   img.hanging_sock#infront {
     transform: rotate(12deg);
+    -webkit-transform: rotate(12deg);
+    
     right: -38px;
-    top: 50px;
+    top: 53px;
   }
 
   p.signature {
@@ -149,6 +159,37 @@ css:
     width:100%;
     position: absolute;
   }
+
+  @media (max-width: 768px) {
+    #header h1 {
+      font-size: 36px;
+    }
+    
+    .about-section {
+      min-height: 0px;
+    }
+    
+    .instagram-media {
+      margin-bottom: 64px !important;
+    }
+    
+    img.hanging_sock#behind {
+      left: -5px;
+      transform: rotate(-6deg);
+      -webkit-transform: rotate(-6deg);
+      
+    }
+
+    img.hanging_sock#infront {
+      left: -10px;
+    }
+  
+    section.title {
+      overflow-x: hidden;
+    }
+    
+  }
+  
 
 javascript:
     $(document).ready( function(){
@@ -173,7 +214,7 @@ section.title.container.header-section
   section.dark
     .container
       article.row
-          p style="text-align:center;"
+          p style="text-align:center; padding:0 20px;"
             a href="https://charitywater.org/" target="_blank"
               img src="/images/charity-drive.png" width="415"
 
@@ -201,7 +242,7 @@ section.title.container.header-section
               <code class="highlight ruby"><span class="n">project</span> <span class="s1">'the world'</span></br>
                 <span class="n">target</span> <span class="s1">'My Feed’ </span><span class="k">do</span><br/>
                 <span class="k">  pod <span><span class="s1">'CPSocks'</span></br>
-                <span class="k">end</span></br></br>
+                <span class="k">end</span></br>
                 <span class="n"><br/>post_install</span> <span class="k">do</span></br>
                 <span class="n">  charity_water</span><span class="p">.</span><span class="nf">donate</span><span class="p">()</span><br/>
                 <span class="k">end</span>
@@ -223,38 +264,41 @@ section.title.container.header-section
           p Obviously we love having code sent our way, and we’re being asked more and more how people can financially contribute to CocoaPods. We want to take that energy and make it easy for everyone to help.
 
         .col-md-4
-        p We’re putting all profits directly into WaterAid. It’s a great charity, doing important work.
+          p We’re putting all profits directly into WaterAid. It’s a great charity, doing important work.
 
   section.everyone-needs-water.about-section.blue
     .container
       article.row
-        .col-lg-6.col-md-6.col-sm-12
+        .col-md-5
           p.center
             a href="https://charitywater.org/" target="_blank"
               img src="/images/charity-water-2.png" width="294"
 
-        .col-lg-6.col-md-6.col-sm-12
+        .col-md-7
           markdown:
-            Everyone needs clean water.
+            charity: water is a non-profit organization bringing clean and safe drinking water to people in developing countries.
 
-            WaterAid works with local partners to deliver clean water and toilets and promote good hygiene,
-            and campaign to make change happen for
-            everyone everywhere.
+            They inspire giving and empower others to fundraise alongside us for sustainable water solutions. Then they [use 100%](http://www.charitywater.org/100percent/) of public donations to invest in local partners on the ground that build and [implement the water projects](http://www.charitywater.org/projects/approach/).
+            
+            When the projects are complete, they [prove them](http://www.charitywater.org/projects/completed-projects/) with GPS coordinates, photos and information about the impacted communities. They're passionate about connecting those who gave to the communities they've transformed. 
 
-            Rated 97/100 on the Charity Navigator
+            Rated 97/100 on [the Charity Navigator](http://www.charitynavigator.org/index.cfm?bay=search.summary&orgid=12548)
 
 
   section.about-section.white
     .container
       article.row
 
-        .col-md-5
+        .col-md-5.col-md-push-7
+          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="6" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAGFBMVEUiIiI9PT0eHh4gIB4hIBkcHBwcHBwcHBydr+JQAAAACHRSTlMABA4YHyQsM5jtaMwAAADfSURBVDjL7ZVBEgMhCAQBAf//42xcNbpAqakcM0ftUmFAAIBE81IqBJdS3lS6zs3bIpB9WED3YYXFPmHRfT8sgyrCP1x8uEUxLMzNWElFOYCV6mHWWwMzdPEKHlhLw7NWJqkHc4uIZphavDzA2JPzUDsBZziNae2S6owH8xPmX8G7zzgKEOPUoYHvGz1TBCxMkd3kwNVbU0gKHkx+iZILf77IofhrY1nYFnB/lQPb79drWOyJVa/DAvg9B/rLB4cC+Nqgdz/TvBbBnr6GBReqn/nRmDgaQEej7WhonozjF+Y2I/fZou/qAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/5H30ypoIIP/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">A smattering of our custom Sock Swag! If you can dream it, we can knit it 💫 #knitout #sockvibes #sockgame #socks #sockswag #sockclub #madeintheusa #freestyle #elvisduran #KUTX #bitly #velocity #dapperbear #slack #wooga #cdw #modest</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A photo posted by knitout - Crowd Designed Socks (@knitout) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2015-07-14T16:18:58+00:00">Jul 14, 2015 at 9:18am PDT</time></p></div></blockquote> <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+
+        .col-md-5.col-md-pull-5
           markdown:
             We know a [bubble](http://www.buzzfeed.com/jessicamisener/buzzfeet#.xu2baWQ4X) when we see one. We see a great opportunity to get in early on the Cocoa Socks business before Apple comes in and deprecates us with the Socks Packaging Manager.
 
             So we went straight to the source of the in-famous Slack socks, and worked with them on socks of our own. We're not rolling in money, to bootstrap this and mail all the socks out. So, we're going to use their kickstarter for socks project Knitout
 
-            To grab a pair, jump over to [our CocoaPods Knitout](https://knitout.com/campaigns/8866). They use Stripe to deal with all the payments - so it’s safe and secure.
+            To grab a pair, jump over to [our CocoaPods Knitout](https://knitout.com/campaigns/8866). They [use tilt](https://www.tilt.com/learn) to deal with all the payments - so it’s safe and secure.
 
             We’re excited to be buying our own ones too!
 
@@ -262,9 +306,6 @@ section.title.container.header-section
             img src="/images/fabbo_signature.png" width="154"
 
 
-        .col-md-2
-        .col-md-5
-          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="6" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAGFBMVEUiIiI9PT0eHh4gIB4hIBkcHBwcHBwcHBydr+JQAAAACHRSTlMABA4YHyQsM5jtaMwAAADfSURBVDjL7ZVBEgMhCAQBAf//42xcNbpAqakcM0ftUmFAAIBE81IqBJdS3lS6zs3bIpB9WED3YYXFPmHRfT8sgyrCP1x8uEUxLMzNWElFOYCV6mHWWwMzdPEKHlhLw7NWJqkHc4uIZphavDzA2JPzUDsBZziNae2S6owH8xPmX8G7zzgKEOPUoYHvGz1TBCxMkd3kwNVbU0gKHkx+iZILf77IofhrY1nYFnB/lQPb79drWOyJVa/DAvg9B/rLB4cC+Nqgdz/TvBbBnr6GBReqn/nRmDgaQEej7WhonozjF+Y2I/fZou/qAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/5H30ypoIIP/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">A smattering of our custom Sock Swag! If you can dream it, we can knit it 💫 #knitout #sockvibes #sockgame #socks #sockswag #sockclub #madeintheusa #freestyle #elvisduran #KUTX #bitly #velocity #dapperbear #slack #wooga #cdw #modest</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A photo posted by knitout - Crowd Designed Socks (@knitout) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2015-07-14T16:18:58+00:00">Jul 14, 2015 at 9:18am PDT</time></p></div></blockquote> <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
 
   section.finale
     .container
@@ -454,3 +495,11 @@ javascript:
     processing.vertex(document.width, 360)
     processing.endShape()
   }
+  
+  // handle page resizing
+  $(window).resize(function() {
+    var pjs = Processing.getInstanceById('water');
+    pjs.resizeSketch(document.width,  340);
+    
+  });
+  
