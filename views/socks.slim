@@ -164,6 +164,7 @@ css:
 
   .modal-dialog {
     width:100%;
+    max-height:60%;
   }
   video {
     max-width:100%;
@@ -182,7 +183,7 @@ css:
       margin-bottom: 64px !important;
     }
   
-    section.title {
+    section {
       overflow-x: hidden;
     }
   }
@@ -285,7 +286,7 @@ section.title.container.header-section
 
         .col-md-5.col-md-pull-5
           markdown:
-            <p>We know a <a src="http://www.buzzfeed.com/jessicamisener/buzzfeet#.xu2baWQ4X" target="_blank">bubble</a> when we see one. We see a great opportunity to get in early on the Cocoa Socks business before Apple comes in and deprecates us with the Socks Packaging Manager. <a data-toggle="modal" data-target="#chill-out">:D</a></p>
+            <p>We know a <a src="http://www.buzzfeed.com/jessicamisener/buzzfeet#.xu2baWQ4X" target="_blank">bubble</a> when we see one. We see a great opportunity to get in early on the Cocoa Socks business before Apple comes in and deprecates us with the Socks Packaging Manager. <a href="#" data-toggle="modal" data-target="#chill-out">:D</a></p>
 
             So we went straight to the source of the renowned [Slack socks](https://twitter.com/slackhq/status/467457718270189568), and worked with them on socks of our own. We're going to use their Knitout crowd-funding platform for our socks project 
 
@@ -318,7 +319,8 @@ section.title.container.header-section
           h6.modal-title#installation_label == modal_joke_header
 
         .modal-body
-          video#orta-grin width="1080" height="720" 
+          p style="text-align:center;"
+            video#orta-grin width="1080" height="720" 
           
   
 
