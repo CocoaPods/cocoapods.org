@@ -4,7 +4,7 @@ ruby:
   require 'cocoapods-core'
   cp_version = Pod::CORE_VERSION
   modal_joke_header = ["CocoaPods Socks &amp; Chill", "Some people say CocoaPods sucks. To those people, we say: CocoaPods socks.", "Did you remember to run `bundle exec sock install`?"].sample
-  
+
 
 css:
   #header {
@@ -36,7 +36,7 @@ css:
     color: white;
     text-decoration: underline;
   }
-  
+
   .everyone-needs-water p.center {
     text-align:center;
   }
@@ -108,7 +108,7 @@ css:
     right: -74px;
     top: -40px;
   }
-  
+
   img.big_hanging_sock#behind {
     transform: rotate(-12deg);
     -webkit-transform: rotate(-12deg);
@@ -117,12 +117,12 @@ css:
   img.big_hanging_sock#infront {
     transform: rotate(12deg);
     -webkit-transform: rotate(12deg);
-    
+
     right: -38px;
     top: -35px;
     z-index:1001;
   }
-  
+
   /* On the DL button */
   img.hanging_sock {
     position:absolute;
@@ -133,13 +133,13 @@ css:
   img.hanging_sock#behind {
     transform: rotate(-12deg);
     -webkit-transform: rotate(-12deg);
-    
+
   }
 
   img.hanging_sock#infront {
     transform: rotate(12deg);
     -webkit-transform: rotate(12deg);
-    
+
     right: -38px;
     top: 53px;
   }
@@ -150,11 +150,11 @@ css:
     border-bottom: 3px dashed #D2D2D2;
     display: inline-block;
   }
-  
+
   blockquote {
     float: right:
   }
-  
+
   canvas {
     margin-top:100px;
     height: 340px;
@@ -166,7 +166,7 @@ css:
     width:100%;
     max-height:60%;
   }
-  
+
   video {
     max-width:100%;
   }
@@ -176,7 +176,7 @@ css:
     }
 
     .normal-info {
-      display:block;      
+      display:block;
     }
 
   @media (max-width: 768px) {
@@ -184,15 +184,15 @@ css:
       padding-top:96px;
       font-size: 50px;
     }
-    
+
     .about-section {
       min-height: 0px;
     }
-    
+
     .instagram-media {
       margin-bottom: 64px !important;
     }
-  
+
     section {
       overflow-x: hidden;
     }
@@ -200,7 +200,7 @@ css:
     video {
       height:300px;
     }
-    
+
     .tiny-info {
       display:block;
       padding-bottom:20px;
@@ -210,7 +210,7 @@ css:
       display:none;
     }
   }
-  
+
 
 javascript:
     $(document).ready( function(){
@@ -221,13 +221,13 @@ javascript:
         e.text = "Thanks 🎉"
       })
     });
-    
+
     $(document).on('show.bs.modal', function(){
         $("#orta-grin").attr('src', "https://cocoapods.s3.amazonaws.com/vids/orta-grin.mov");
         var v = document.getElementsByTagName("video")[0];
         v.play();
     });
-    
+
     $('.modal').on('hidden.bs.modal', function () {
         $('video').each(function() {
           this.player.pause();
@@ -242,7 +242,7 @@ section.title.container.header-section
       h1.tiny-info CP...<br/>Socks?
       img.big_hanging_sock#behind src="/images/sock-big.png" width="161"
       img.big_hanging_sock#infront src="/images/sock-big.png" width="161"
-      
+
 
 #content-wrapper
   section.dark
@@ -256,8 +256,8 @@ section.title.container.header-section
     article.row
       .col-xs-12
         div
-          h2 TLDR:
-          p We’re doing crowd-funded socks for charity, using Knitout.<br/>With all profit going to charity: water.
+          h2 TL;DR:
+          p You can buy CocoaPods socks, via Knitout.<br/>With all profit going to charity: water.
           a.button.download_button href="https://knitout.com/campaigns/8866"
             div Get CocoaPods Socks <span>$16</span>
 
@@ -277,15 +277,15 @@ section.title.container.header-section
       article.row
         .col-sm-6
           markdown:
-            CocoaPods was started in 2011. We are a community run project, with no large-scale corporate backing. We're often asked if we'd do something like t-shirts or hoodies. 
-            
+            CocoaPods was started in 2011. We are a community run project, with no large-scale corporate backing. We're often asked if we'd do something like t-shirts or hoodies.
+
             We don't want to use CocoaPods' popularity to make money. So, we are putting all profits into a charity.
         .col-sm-2
         .col-sm-4
           p
             pre
               <code class="highlight ruby"><span class="n">project</span> <span class="s1">'the world'</span></br>
-                <span class="n">target</span> <span class="s1">'My Feed’ </span><span class="k">do</span><br/>
+                <span class="n">target</span> <span class="s1">'My Feet’ </span><span class="k">do</span><br/>
                 <span class="k">  pod <span><span class="s1">'CPSocks'</span></br>
                 <span class="k">end</span></br>
                 <span class="n"><br/>post_install</span> <span class="k">do</span></br>
@@ -306,8 +306,8 @@ section.title.container.header-section
             charity: water is a non-profit organization bringing clean and safe drinking water to people in developing countries.
 
             They inspire giving and empower others to fundraise alongside us for sustainable water solutions. Then they [use 100%](http://www.charitywater.org/100percent/) of public donations to invest in local partners on the ground that build and [implement the water projects](http://www.charitywater.org/projects/approach/).
-            
-            When the projects are complete, they [prove them](http://www.charitywater.org/projects/completed-projects/) with GPS coordinates, photos and information about the impacted communities. They're passionate about connecting those who gave to the communities they've transformed. 
+
+            When the projects are complete, they [prove them](http://www.charitywater.org/projects/completed-projects/) with GPS coordinates, photos and information about the impacted communities. They're passionate about connecting those who gave to the communities they've transformed.
 
             Rated 97/100 on [the Charity Navigator](http://www.charitynavigator.org/index.cfm?bay=search.summary&orgid=12548)
 
@@ -321,9 +321,9 @@ section.title.container.header-section
 
         .col-md-5.col-md-pull-5
           markdown:
-            <p>We know a <a src="http://www.buzzfeed.com/jessicamisener/buzzfeet#.xu2baWQ4X" target="_blank">bubble</a> when we see one. We see a great opportunity to get in early on the Cocoa Socks business before Apple comes in and deprecates us with the Socks Packaging Manager. <a href="#" data-toggle="modal" data-target="#chill-out">:D</a></p>
+            <p>We know a <a href="http://www.buzzfeed.com/jessicamisener/buzzfeet#.xu2baWQ4X" target="_blank">bubble</a> when we see one. We see a great opportunity to get in early on the Cocoa Socks business before Apple comes in and deprecates us with the Socks Packaging Manager. <a href="#" data-toggle="modal" data-target="#chill-out">:D</a></p>
 
-            So we went straight to the source of the renowned [Slack socks](https://twitter.com/slackhq/status/467457718270189568), and worked with them on socks of our own. We're going to use their Knitout crowd-funding platform for our socks project 
+            So we went straight to the source of the renowned [Slack socks](https://twitter.com/slackhq/status/467457718270189568), and worked with them on socks of our own. We're going to use their Knitout crowd-funding platform for our socks project
 
             To grab a pair, jump over to [our CocoaPods Knitout](https://knitout.com/campaigns/8866). They [use tilt](https://www.tilt.com/learn) to deal with all the payments - so it’s safe and secure.
 
@@ -357,15 +357,15 @@ section.title.container.header-section
 
         .modal-body
           p style="text-align:center;"
-            video#orta-grin width="1080" height="720" 
-          
-  
+            video#orta-grin width="1080" height="720"
+
+
 
 javascript:
 
   // This is heavily based on http://codepen.io/ryanmcnz/pen/EDtun
   // it has been simplified, and made to look water-y
-  
+
   // Resolution of simulation
   var NUM_POINTS = 80;
   // Width of simulation
@@ -389,24 +389,24 @@ javascript:
   var BACKGROUND_WAVE_MAX_HEIGHT = 6;
   var BACKGROUND_WAVE_COMPRESSION = 1/4;
 
-  function sketchProc(processing) {  
+  function sketchProc(processing) {
     processing.draw = function () {
       //Clear the drawing area
-      processing.background(255);   
+      processing.background(255);
       var now = + new Date;
       var dt = now - lastUpdate;
       lastUpdate = now;
       update(dt);
       draw(processing);
     };
-    
+
     processing.setup = function () {
        processing.size( WIDTH, 300 );
        processing.frameRate( 60 );
     };
 
   }
-  
+
   var canvas = document.getElementById("water");
   // attaching the sketchProc function to the canvas
   var lastUpdate = + new Date;
@@ -457,8 +457,8 @@ javascript:
       for (var i = 0;i < NUM_BACKGROUND_WAVES; i++) {
           result = result
               + sineOffsets[i]
-              + sineAmplitudes[i] 
-              * Math.sin(x * sineStretches[i] + offset * offsetStretches[i]);     
+              + sineAmplitudes[i]
+              * Math.sin(x * sineStretches[i] + offset * offsetStretches[i]);
       }
       return result;
   }
@@ -503,7 +503,7 @@ javascript:
 
   			// Calculate acceleration
   			var acceleration = force / p.mass;
- 
+
 
   			// Apply acceleration (with damping)
   			p.spd.y = DAMPING * p.spd.y + acceleration;
@@ -522,7 +522,7 @@ javascript:
   function draw(processing) {
     processing.fill(74,144,226)
     processing.stroke(74,144,226)
-    
+
     processing.beginShape();
     processing.vertex(0 , 360)
     for (var n = 0; n < wavePoints.length;n++) {
@@ -531,10 +531,9 @@ javascript:
     		var leftPoint = wavePoints[n-1];
         processing.vertex(leftPoint.x, leftPoint.y + overlapSines(leftPoint.x));
         processing.vertex(p.x, p.y + overlapSines(p.x));
-    	}    
+    	}
     }
     processing.vertex(document.width, 360)
     processing.endShape()
   }
-  
-  
+
