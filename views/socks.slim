@@ -1,0 +1,539 @@
+script  src="//cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"
+
+ruby:
+  require 'cocoapods-core'
+  cp_version = Pod::CORE_VERSION
+  modal_joke_header = ["CocoaPods Socks &amp; Chill", "Some people say CocoaPods sucks. To those people, we say: CocoaPods socks.", "Did you remember to run `bundle exec sock install`?"].sample
+
+
+css:
+  #header {
+    min-height: 400px;
+  }
+
+  #header h1 {
+    font-size: 72px;
+  }
+
+  section.dark {
+    background-color: #380200;
+  }
+
+  section.dark h3 {t
+    text-align: center;
+    color: white;
+  }
+
+  section.white {
+    background-color: white;
+  }
+
+  section.blue {
+    background-color: #4A90E2;
+    color: white;
+  }
+  section.blue a {
+    color: white;
+    text-decoration: underline;
+  }
+
+  .everyone-needs-water p.center {
+    text-align:center;
+  }
+
+  .tldr p, .tldr h2 {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+
+  .tldr h2 {
+    margin-top: 0;
+    font-size: 72px;
+    padding-right:30px;
+  }
+
+  .tldr a {
+    float: right;
+    margin-top: 19px;
+  }
+
+  .button {
+    margin-top: 100px;
+    background: #4A90E2;
+    border-radius: 12px;
+    color: white;
+    width: auto;
+    padding: 10px;
+    display: inline-block;
+  }
+
+  .button:hover {
+    background: #380200;
+    text-decoration: none;
+    color: white;
+  }
+
+  .button:active {
+    background: black;
+    text-decoration: none;
+    color: white;
+  }
+
+  a.button span {
+    padding-left:16px;
+    font-size: 36px;
+    vertical-align: middle;
+  }
+
+  div.download_call_to_action {
+    position: relative;
+    margin: 0 auto;
+    width: 260px;
+  }
+
+  .midway div.download_call_to_action a {
+    margin-top:20px;
+    margin-bottom:20px;
+  }
+
+  .finale div.download_call_to_action a {
+    margin-top:0;
+    margin-bottom:90px;
+    width: 270px;
+  }
+
+  /* On the top */
+  img.big_hanging_sock {
+    position:absolute;
+    right: -74px;
+    top: -40px;
+  }
+
+  img.big_hanging_sock#behind {
+    transform: rotate(-12deg);
+    -webkit-transform: rotate(-12deg);
+  }
+
+  img.big_hanging_sock#infront {
+    transform: rotate(12deg);
+    -webkit-transform: rotate(12deg);
+
+    right: -38px;
+    top: -35px;
+    z-index:1001;
+  }
+
+  /* On the DL button */
+  img.hanging_sock {
+    position:absolute;
+    right: -74px;
+    top: 54px;
+  }
+
+  img.hanging_sock#behind {
+    transform: rotate(-12deg);
+    -webkit-transform: rotate(-12deg);
+
+  }
+
+  img.hanging_sock#infront {
+    transform: rotate(12deg);
+    -webkit-transform: rotate(12deg);
+
+    right: -38px;
+    top: 53px;
+  }
+
+  p.signature {
+    padding-bottom: 8px;
+    padding-right: 12px;
+    border-bottom: 3px dashed #D2D2D2;
+    display: inline-block;
+  }
+
+  blockquote {
+    float: right:
+  }
+
+  canvas {
+    margin-top:100px;
+    height: 340px;
+    width:100%;
+    position: absolute;
+  }
+
+  .modal-dialog {
+    width:100%;
+    max-height:60%;
+  }
+
+  video {
+    max-width:100%;
+  }
+
+    .tiny-info {
+      display:none;
+    }
+
+    .normal-info {
+      display:block;
+    }
+
+  @media (max-width: 768px) {
+    #header h1 {
+      padding-top:96px;
+      font-size: 50px;
+    }
+
+    .about-section {
+      min-height: 0px;
+    }
+
+    .instagram-media {
+      margin-bottom: 64px !important;
+    }
+
+    section {
+      overflow-x: hidden;
+    }
+
+    video {
+      height:300px;
+    }
+
+    .tiny-info {
+      display:block;
+      padding-bottom:20px;
+    }
+
+    .normal-info {
+      display:none;
+    }
+  }
+
+
+javascript:
+    $(document).ready( function(){
+      $('a.button').click(function(e) {
+        e = $(e)
+        e.css("width", e.width())
+        e.css("text-align", "center")
+        e.text = "Thanks 🎉"
+      })
+    });
+
+    $(document).on('show.bs.modal', function(){
+        $("#orta-grin").attr('src', "https://cocoapods.s3.amazonaws.com/vids/orta-grin.mov");
+        var v = document.getElementsByTagName("video")[0];
+        v.play();
+    });
+
+    $('.modal').on('hidden.bs.modal', function () {
+        $('video').each(function() {
+          this.player.pause();
+        });
+    })
+
+canvas#water
+section.title.container.header-section
+  article.row
+    .col-lg-7.col-sm-12.col-xs-10#header
+      h1.normal-info CocoaPods...</br>Socks..?
+      h1.tiny-info CP...<br/>Socks?
+      img.big_hanging_sock#behind src="/images/sock-big.png" width="161"
+      img.big_hanging_sock#infront src="/images/sock-big.png" width="161"
+
+
+#content-wrapper
+  section.dark
+    .container
+      article.row
+          p style="text-align:center; padding:0 20px;"
+            a href="https://charitywater.org/" target="_blank"
+              img src="/images/charity-drive.png" width="415"
+
+  section.podfile.container.tldr
+    article.row
+      .col-xs-12
+        div
+          h2 TL;DR:
+          p You can buy CocoaPods socks, via Knitout.<br/>With all profit going to charity: water.
+          a.button.download_button href="https://knitout.com/campaigns/8866"
+            div Get CocoaPods Socks <span>$16</span>
+
+
+  section.water.about-section.white
+    .container
+      article.row
+        .col-sm-12 style="text-align:center;color: #f8f8f8;"
+          h1 ↓
+
+          h1 ↓
+
+          h1 ↓
+
+  section.water.about-section
+    .container
+      article.row
+        .col-sm-6
+          markdown:
+            CocoaPods was started in 2011. We are a community run project, with no large-scale corporate backing. We're often asked if we'd do something like t-shirts or hoodies.
+
+            We don't want to use CocoaPods' popularity to make money. So, we are putting all profits into a charity.
+        .col-sm-2
+        .col-sm-4
+          p
+            pre
+              <code class="highlight ruby"><span class="n">project</span> <span class="s1">'the world'</span></br>
+                <span class="n">target</span> <span class="s1">'My Feet’ </span><span class="k">do</span><br/>
+                <span class="k">  pod <span><span class="s1">'CPSocks'</span></br>
+                <span class="k">end</span></br>
+                <span class="n"><br/>post_install</span> <span class="k">do</span></br>
+                <span class="n">  charity_water</span><span class="p">.</span><span class="nf">donate</span><span class="p">()</span><br/>
+                <span class="k">end</span>
+              </code>
+
+  section.everyone-needs-water.about-section.blue
+    .container
+      article.row
+        .col-md-5
+          p.center
+            a href="https://charitywater.org/" target="_blank"
+              img src="/images/charity-water-2.png" width="294"
+
+        .col-md-7
+          markdown:
+            charity: water is a non-profit organization bringing clean and safe drinking water to people in developing countries.
+
+            They inspire giving and empower others to fundraise alongside us for sustainable water solutions. Then they [use 100%](http://www.charitywater.org/100percent/) of public donations to invest in local partners on the ground that build and [implement the water projects](http://www.charitywater.org/projects/approach/).
+
+            When the projects are complete, they [prove them](http://www.charitywater.org/projects/completed-projects/) with GPS coordinates, photos and information about the impacted communities. They're passionate about connecting those who gave to the communities they've transformed.
+
+            Rated 97/100 on [the Charity Navigator](http://www.charitynavigator.org/index.cfm?bay=search.summary&orgid=12548)
+
+
+  section.about-section.white
+    .container
+      article.row
+
+        .col-md-5.col-md-push-7
+          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="6" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAGFBMVEUiIiI9PT0eHh4gIB4hIBkcHBwcHBwcHBydr+JQAAAACHRSTlMABA4YHyQsM5jtaMwAAADfSURBVDjL7ZVBEgMhCAQBAf//42xcNbpAqakcM0ftUmFAAIBE81IqBJdS3lS6zs3bIpB9WED3YYXFPmHRfT8sgyrCP1x8uEUxLMzNWElFOYCV6mHWWwMzdPEKHlhLw7NWJqkHc4uIZphavDzA2JPzUDsBZziNae2S6owH8xPmX8G7zzgKEOPUoYHvGz1TBCxMkd3kwNVbU0gKHkx+iZILf77IofhrY1nYFnB/lQPb79drWOyJVa/DAvg9B/rLB4cC+Nqgdz/TvBbBnr6GBReqn/nRmDgaQEej7WhonozjF+Y2I/fZou/qAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/5H30ypoIIP/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">A smattering of our custom Sock Swag! If you can dream it, we can knit it 💫 #knitout #sockvibes #sockgame #socks #sockswag #sockclub #madeintheusa #freestyle #elvisduran #KUTX #bitly #velocity #dapperbear #slack #wooga #cdw #modest</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A photo posted by knitout - Crowd Designed Socks (@knitout) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2015-07-14T16:18:58+00:00">Jul 14, 2015 at 9:18am PDT</time></p></div></blockquote> <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+
+        .col-md-5.col-md-pull-5
+          markdown:
+            <p>We know a <a href="http://www.buzzfeed.com/jessicamisener/buzzfeet#.xu2baWQ4X" target="_blank">bubble</a> when we see one. We see a great opportunity to get in early on the Cocoa Socks business before Apple comes in and deprecates us with the Socks Packaging Manager. <a href="#" data-toggle="modal" data-target="#chill-out">:D</a></p>
+
+            So we went straight to the source of the renowned [Slack socks](https://twitter.com/slackhq/status/467457718270189568), and worked with them on socks of our own. We're going to use their Knitout crowd-funding platform for our socks project
+
+            To grab a pair, jump over to [our CocoaPods Knitout](https://knitout.com/campaigns/8866). They [use tilt](https://www.tilt.com/learn) to deal with all the payments - so it’s safe and secure.
+
+            We’re excited to be buying our own ones too!
+
+          p.signature
+            img src="/images/fabbo_signature.png" width="154"
+
+  section.finale
+    .container
+      article.row
+        .col-sm-12
+          p style="text-align:center;"
+            h2 style="text-align:center;" Yes, I want socks, and clean water for others. 
+          
+            div.download_call_to_action              
+              a.button.download_button href="https://knitout.com/campaigns/8866" style="text-align:center;"
+                div <span>BUY</span>
+              img.hanging_sock#behind src="/images/sock-big.png" width="86"
+              img.hanging_sock#infront src="/images/sock-big.png" width="86"
+
+
+  .modal.fade#chill-out tabindex="-1" role="dialog" aria-labelledby="installation_label" aria-hidden="true"
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close type="button" data-dismiss="modal" aria-label="Close"
+            span aria-hidden="true" &times
+
+          h6.modal-title#installation_label == modal_joke_header
+
+        .modal-body
+          p style="text-align:center;"
+            video#orta-grin width="1080" height="720"
+
+
+
+javascript:
+
+  // This is heavily based on http://codepen.io/ryanmcnz/pen/EDtun
+  // it has been simplified, and made to look water-y
+
+  // Resolution of simulation
+  var NUM_POINTS = 80;
+  // Width of simulation
+  var WIDTH = document.width;
+  // Spring constant for forces applied by adjacent points
+  var SPRING_CONSTANT = 0.005;
+  // Sprint constant for force applied to baseline
+  var SPRING_CONSTANT_BASELINE = 0.005;
+  // Vertical draw offset of simulation
+  var Y_OFFSET = 200;
+  // Damping to apply to speed changes
+  var  DAMPING = 0.99;
+  // Number of iterations of point-influences-point to do on wave per step
+  // (this makes the waves animate faster)
+  var ITERATIONS = 5;
+
+  // A phase difference to apply to each sine
+  var offset = 0;
+
+  var NUM_BACKGROUND_WAVES = 7;
+  var BACKGROUND_WAVE_MAX_HEIGHT = 6;
+  var BACKGROUND_WAVE_COMPRESSION = 1/4;
+
+  function sketchProc(processing) {
+    processing.draw = function () {
+      //Clear the drawing area
+      processing.background(255);
+      var now = + new Date;
+      var dt = now - lastUpdate;
+      lastUpdate = now;
+      update(dt);
+      draw(processing);
+    };
+
+    processing.setup = function () {
+       processing.size( WIDTH, 300 );
+       processing.frameRate( 60 );
+    };
+
+  }
+
+  var canvas = document.getElementById("water");
+  // attaching the sketchProc function to the canvas
+  var lastUpdate = + new Date;
+  var pjs = new Processing(canvas, sketchProc);
+
+  // Make points to go on the wave
+  function makeWavePoints(numPoints) {
+      var t = [];
+      for (var n = 0; n < numPoints; n++) {
+          // This represents a point on the wave
+          var newPoint = {
+              x: n / (numPoints -1) * WIDTH,
+              y: Y_OFFSET,
+              spd: {y:0}, // speed with vertical component zero
+              mass: 2
+          }
+          t.push(newPoint);
+      }
+      return t;
+  }
+
+  // Amounts by which a particular sine is offset
+  var sineOffsets = [];
+  // Amounts by which a particular sine is amplified
+  var sineAmplitudes = [];
+  // Amounts by which a particular sine is stretched
+  var sineStretches = [];
+  // Amounts by which a particular sine's offset is multiplied
+  var offsetStretches = [];
+  // Set each sine's values to a reasonable random value
+  function preset1() {
+    sineOffsets = [-2.037, -2.665, 1.066, -1.173, 2.997, 0.999, 2.506];
+    sineAmplitudes = [4.881, 2.185, 8.527, 2.52, 6.466, 1.044, 3.937];
+    sineStretches = [0.012, 0.018, 0.03, 0.002, 0.045, 0.01, 0.032];
+    offsetStretches = [0.044, 0.041, 0.049, 0.09, 0.005, 0.037, 0.059];
+  }
+
+  preset1();
+
+  function outputNum(num) {
+     return Math.round(num*1000)/1000;
+  }
+
+  // This function sums together the sines generated above,
+  // given an input value x
+  function overlapSines(x) {
+      var result = 0;
+      for (var i = 0;i < NUM_BACKGROUND_WAVES; i++) {
+          result = result
+              + sineOffsets[i]
+              + sineAmplitudes[i]
+              * Math.sin(x * sineStretches[i] + offset * offsetStretches[i]);
+      }
+      return result;
+  }
+
+  var wavePoints = makeWavePoints(NUM_POINTS);
+
+  // Update the positions of each wave point
+  function updateWavePoints(points, dt) {
+    for (var i = 0; i < ITERATIONS ; i++) {
+
+  		for (var n = 0; n < points.length; n++) {
+  			var p = points[n];
+  			// force to apply to this point
+  			var force = 0;
+
+  			// forces caused by the point immediately to the left or the right
+  			var forceFromLeft, forceFromRight;
+
+  			if (n == 0) { // wrap to left-to-right
+  				var dy = points[points.length - 1].y - p.y;
+  				forceFromLeft = SPRING_CONSTANT * dy;
+  			} else { // normally
+  				var dy = points[n - 1].y - p.y;
+  				forceFromLeft = SPRING_CONSTANT * dy;
+  			}
+  			if (n == points.length - 1) { // wrap to right-to-left
+  				var dy = points[0].y - p.y;
+  				forceFromRight = SPRING_CONSTANT * dy;
+  			} else { // normally
+  				var dy = points[n + 1].y - p.y;
+  				forceFromRight = SPRING_CONSTANT * dy;
+  			}
+
+  			// Also apply force toward the baseline
+  			var dy = Y_OFFSET - p.y;
+  			forceToBaseline = SPRING_CONSTANT_BASELINE * dy;
+
+  			// Sum up forces
+  			force = force + forceFromLeft;
+  			force = force + forceFromRight;
+  			force = force + forceToBaseline;
+
+  			// Calculate acceleration
+  			var acceleration = force / p.mass;
+
+
+  			// Apply acceleration (with damping)
+  			p.spd.y = DAMPING * p.spd.y + acceleration;
+
+  			// Apply speed
+  			p.y = p.y + p.spd.y;
+  		}
+    }
+  }
+
+  function update(dt) {
+      offset = offset + 1;
+      updateWavePoints(wavePoints, dt);
+  }
+
+  function draw(processing) {
+    processing.fill(74,144,226)
+    processing.stroke(74,144,226)
+
+    processing.beginShape();
+    processing.vertex(0 , 360)
+    for (var n = 0; n < wavePoints.length;n++) {
+      var p = wavePoints[n];
+      if (n != 0) {
+    		var leftPoint = wavePoints[n-1];
+        processing.vertex(leftPoint.x, leftPoint.y + overlapSines(leftPoint.x));
+        processing.vertex(p.x, p.y + overlapSines(p.x));
+    	}
+    }
+    processing.vertex(document.width, 360)
+    processing.endShape()
+  }
+
