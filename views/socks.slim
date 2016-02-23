@@ -337,9 +337,9 @@ section.title.container.header-section
       article.row
         .col-sm-12
           p style="text-align:center;"
-            h2 style="text-align:center;" Yes, I want socks, and clean water for others. 
-          
-            div.download_call_to_action              
+            h2 style="text-align:center;" Yes, I want socks, and clean water for others.
+
+            div.download_call_to_action
               a.button.download_button href="https://knitout.com/campaigns/8866" style="text-align:center;"
                 div <span>BUY</span>
               img.hanging_sock#behind src="/images/sock-big.png" width="86"
@@ -369,7 +369,7 @@ javascript:
   // Resolution of simulation
   var NUM_POINTS = 80;
   // Width of simulation
-  var WIDTH = document.width;
+  var WIDTH = $(window).width();
   // Spring constant for forces applied by adjacent points
   var SPRING_CONSTANT = 0.005;
   // Sprint constant for force applied to baseline
@@ -389,6 +389,7 @@ javascript:
   var BACKGROUND_WAVE_MAX_HEIGHT = 6;
   var BACKGROUND_WAVE_COMPRESSION = 1/4;
 
+
   function sketchProc(processing) {
     processing.draw = function () {
       //Clear the drawing area
@@ -403,6 +404,16 @@ javascript:
     processing.setup = function () {
        processing.size( WIDTH, 300 );
        processing.frameRate( 60 );
+
+       // if (window.devicePixelRatio) {
+        //  var canvas = $("#water")
+        //  var hidefCanvasWidth = canvas.attr('width');
+        //  var hidefCanvasCssWidth = hidefCanvasWidth;
+
+        //  $(canvas).attr('width', hidefCanvasWidth * window.devicePixelRatio);
+        //  $(canvas).css('width', hidefCanvasCssWidth);
+        //  $("#water")[0].getContext('2d').scale(window.devicePixelRatio, window.devicePixelRatio);
+        // }
     };
 
   }
@@ -418,7 +429,7 @@ javascript:
       for (var n = 0; n < numPoints; n++) {
           // This represents a point on the wave
           var newPoint = {
-              x: n / (numPoints -1) * WIDTH,
+              x: n / (numPoints -1)  * $(window).width(),
               y: Y_OFFSET,
               spd: {y:0}, // speed with vertical component zero
               mass: 2
@@ -533,7 +544,7 @@ javascript:
         processing.vertex(p.x, p.y + overlapSines(p.x));
     	}
     }
-    processing.vertex(document.width, 360)
+    processing.vertex($(window).width(), 360)
     processing.endShape()
   }
 
