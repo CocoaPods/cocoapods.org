@@ -6,10 +6,10 @@
   :commits: 3024
   :avatar_url: https://avatars.githubusercontent.com/u/2320?v=3
 - :name: segiddins
-  :commits: 2820
+  :commits: 2859
   :avatar_url: https://avatars.githubusercontent.com/u/1946610?v=3
 - :name: orta
-  :commits: 2659
+  :commits: 2671
   :avatar_url: https://avatars.githubusercontent.com/u/49038?v=3
 - :name: floere
   :commits: 1748
@@ -50,12 +50,12 @@
 - :name: nolanw
   :commits: 60
   :avatar_url: https://avatars.githubusercontent.com/u/177228?v=3
+- :name: nwest
+  :commits: 60
+  :avatar_url: https://avatars.githubusercontent.com/u/466674?v=3
 - :name: goonzoid
   :commits: 57
   :avatar_url: https://avatars.githubusercontent.com/u/1255755?v=3
-- :name: nwest
-  :commits: 54
-  :avatar_url: https://avatars.githubusercontent.com/u/466674?v=3
 - :name: emkosz
   :commits: 46
   :avatar_url: https://avatars.githubusercontent.com/u/10301979?v=3
@@ -123,7 +123,7 @@
   :commits: 21
   :avatar_url: https://avatars.githubusercontent.com/u/570797?v=3
 - :name: mennenia
-  :commits: 20
+  :commits: 21
   :avatar_url: https://avatars.githubusercontent.com/u/373860?v=3
 - :name: mk
   :commits: 19
@@ -170,9 +170,6 @@
 - :name: vincentisambart
   :commits: 13
   :avatar_url: https://avatars.githubusercontent.com/u/34704?v=3
-- :name: blakewatters
-  :commits: 12
-  :avatar_url: https://avatars.githubusercontent.com/u/8392?v=3
 - :name: dlackty
   :commits: 12
   :avatar_url: https://avatars.githubusercontent.com/u/14349?v=3
@@ -215,6 +212,9 @@
 - :name: seaders
   :commits: 9
   :avatar_url: https://avatars.githubusercontent.com/u/955114?v=3
+- :name: blakewatters
+  :commits: 8
+  :avatar_url: https://avatars.githubusercontent.com/u/8392?v=3
 - :name: cjwirth
   :commits: 8
   :avatar_url: https://avatars.githubusercontent.com/u/1579644?v=3
@@ -236,6 +236,9 @@
 - :name: farcaller
   :commits: 8
   :avatar_url: https://avatars.githubusercontent.com/u/693?v=3
+- :name: fulldecent
+  :commits: 8
+  :avatar_url: https://avatars.githubusercontent.com/u/382183?v=3
 - :name: lazerwalker
   :commits: 8
   :avatar_url: https://avatars.githubusercontent.com/u/821238?v=3
@@ -263,9 +266,6 @@
 - :name: chriseidhof
   :commits: 6
   :avatar_url: https://avatars.githubusercontent.com/u/5382?v=3
-- :name: fulldecent
-  :commits: 6
-  :avatar_url: https://avatars.githubusercontent.com/u/382183?v=3
 - :name: jhersh
   :commits: 6
   :avatar_url: https://avatars.githubusercontent.com/u/175139?v=3
@@ -611,6 +611,9 @@
 - :name: marcc-orange
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/13434221?v=3
+- :name: markspanbroek
+  :commits: 2
+  :avatar_url: https://avatars.githubusercontent.com/u/1766771?v=3
 - :name: mipmip
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/658612?v=3
