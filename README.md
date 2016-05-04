@@ -7,6 +7,12 @@ Ideally this website should be run through a sub-folder of [Strata](https://gith
 1. Clone a copy of [Strata](https://github.com/CocoaPods/Strata) and run `rake clone`. Or if you just want this website `rake clone["cocoapods.org"]`.
 2. Run `rake db:migrate` in Strata to update the database to the latest version.
 3. Add a `.env` file with in CocoaPods.org ENVIRONMENT variables, see `sample.env`.
+4. You must have [Postgres installed](http://www.postgresql.org/download/macosx/). 
+5. Run `bundle install`. If you don't have Ruby 2.1.3 installed, you can comment out that line and use a modern OS X system Ruby. If you get errors installing native extensions, use the following environment variables:
+
+```sh
+ARCHFLAGS="-arch x86_64" PATH=$PATH:/Library/Postgres/9.x/bin bundle install
+```
 
 ## Running
 
