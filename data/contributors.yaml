@@ -1,15 +1,15 @@
 ---
 - :name: fabiopelosin
-  :commits: 4435
+  :commits: 4441
   :avatar_url: https://avatars.githubusercontent.com/u/1048705?v=3
 - :name: segiddins
-  :commits: 3053
+  :commits: 3087
   :avatar_url: https://avatars.githubusercontent.com/u/1946610?v=3
 - :name: alloy
   :commits: 3036
   :avatar_url: https://avatars.githubusercontent.com/u/2320?v=3
 - :name: orta
-  :commits: 2819
+  :commits: 2830
   :avatar_url: https://avatars.githubusercontent.com/u/49038?v=3
 - :name: floere
   :commits: 1748
@@ -18,20 +18,23 @@
   :commits: 832
   :avatar_url: https://avatars.githubusercontent.com/u/44164?v=3
 - :name: mrackwitz
-  :commits: 819
+  :commits: 829
   :avatar_url: https://avatars.githubusercontent.com/u/1389011?v=3
 - :name: neonichu
-  :commits: 584
+  :commits: 587
   :avatar_url: https://avatars.githubusercontent.com/u/118992?v=3
 - :name: AliSoftware
-  :commits: 280
+  :commits: 285
   :avatar_url: https://avatars.githubusercontent.com/u/216089?v=3
 - :name: lukeredpath
   :commits: 136
   :avatar_url: https://avatars.githubusercontent.com/u/613?v=3
 - :name: manuyavuz
-  :commits: 109
+  :commits: 110
   :avatar_url: https://avatars.githubusercontent.com/u/1665371?v=3
+- :name: nwest
+  :commits: 108
+  :avatar_url: https://avatars.githubusercontent.com/u/466674?v=3
 - :name: Kapin
   :commits: 105
   :avatar_url: https://avatars.githubusercontent.com/u/995382?v=3
@@ -42,11 +45,8 @@
   :commits: 92
   :avatar_url: https://avatars.githubusercontent.com/u/763698?v=3
 - :name: k0nserv
-  :commits: 86
+  :commits: 89
   :avatar_url: https://avatars.githubusercontent.com/u/1333960?v=3
-- :name: nwest
-  :commits: 85
-  :avatar_url: https://avatars.githubusercontent.com/u/466674?v=3
 - :name: Karla-Isabel-Sandoval
   :commits: 73
   :avatar_url: https://avatars.githubusercontent.com/u/10985090?v=3
@@ -176,6 +176,9 @@
 - :name: gfontenot
   :commits: 12
   :avatar_url: https://avatars.githubusercontent.com/u/124499?v=3
+- :name: marcboquet
+  :commits: 12
+  :avatar_url: https://avatars.githubusercontent.com/u/14408?v=3
 - :name: tayhalla
   :commits: 12
   :avatar_url: https://avatars.githubusercontent.com/u/1266416?v=3
@@ -221,6 +224,9 @@
 - :name: cjwirth
   :commits: 8
   :avatar_url: https://avatars.githubusercontent.com/u/1579644?v=3
+- :name: Coeur
+  :commits: 8
+  :avatar_url: https://avatars.githubusercontent.com/u/839992?v=3
 - :name: croach
   :commits: 8
   :avatar_url: https://avatars.githubusercontent.com/u/10200?v=3
@@ -242,6 +248,9 @@
 - :name: lazerwalker
   :commits: 8
   :avatar_url: https://avatars.githubusercontent.com/u/821238?v=3
+- :name: pedrovieira7
+  :commits: 8
+  :avatar_url: https://avatars.githubusercontent.com/u/1943188?v=3
 - :name: samstewart
   :commits: 8
   :avatar_url: https://avatars.githubusercontent.com/u/882520?v=3
@@ -266,9 +275,15 @@
 - :name: chriseidhof
   :commits: 6
   :avatar_url: https://avatars.githubusercontent.com/u/5382?v=3
+- :name: Coder-256
+  :commits: 6
+  :avatar_url: https://avatars.githubusercontent.com/u/10134823?v=3
 - :name: danielsdeleo
   :commits: 6
   :avatar_url: https://avatars.githubusercontent.com/u/37162?v=3
+- :name: efirestone
+  :commits: 6
+  :avatar_url: https://avatars.githubusercontent.com/u/656555?v=3
 - :name: jhersh
   :commits: 6
   :avatar_url: https://avatars.githubusercontent.com/u/175139?v=3
@@ -323,9 +338,6 @@
 - :name: drodriguez
   :commits: 5
   :avatar_url: https://avatars.githubusercontent.com/u/6338?v=3
-- :name: efirestone
-  :commits: 5
-  :avatar_url: https://avatars.githubusercontent.com/u/656555?v=3
 - :name: esttorhe
   :commits: 5
   :avatar_url: https://avatars.githubusercontent.com/u/2642850?v=3
@@ -410,9 +422,6 @@
 - :name: listrophy
   :commits: 4
   :avatar_url: https://avatars.githubusercontent.com/u/26813?v=3
-- :name: marcboquet
-  :commits: 4
-  :avatar_url: https://avatars.githubusercontent.com/u/14408?v=3
 - :name: martincik
   :commits: 4
   :avatar_url: https://avatars.githubusercontent.com/u/2183?v=3
@@ -452,9 +461,6 @@
 - :name: bartjacobs
   :commits: 3
   :avatar_url: https://avatars.githubusercontent.com/u/215708?v=3
-- :name: Coeur
-  :commits: 3
-  :avatar_url: https://avatars.githubusercontent.com/u/839992?v=3
 - :name: daveverwer
   :commits: 3
   :avatar_url: https://avatars.githubusercontent.com/u/5180?v=3
@@ -512,6 +518,9 @@
 - :name: angelolloqui
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/1382659?v=3
+- :name: araile
+  :commits: 2
+  :avatar_url: https://avatars.githubusercontent.com/u/14365947?v=3
 - :name: aspyct
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/1143093?v=3
@@ -530,6 +539,9 @@
 - :name: cellularmitosis
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/223396?v=3
+- :name: champo
+  :commits: 2
+  :avatar_url: https://avatars.githubusercontent.com/u/202728?v=3
 - :name: charliewilliams
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/510679?v=3
@@ -728,9 +740,6 @@
 - :name: AndyChenW
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/2155462?v=3
-- :name: araile
-  :commits: 1
-  :avatar_url: https://avatars.githubusercontent.com/u/14365947?v=3
 - :name: ashtom
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/70720?v=3
@@ -866,6 +875,9 @@
 - :name: irace
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/399560?v=3
+- :name: jberkel
+  :commits: 1
+  :avatar_url: https://avatars.githubusercontent.com/u/18891?v=3
 - :name: jdennes
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/65057?v=3
@@ -1007,9 +1019,6 @@
 - :name: pbendersky
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/1420884?v=3
-- :name: pedrovieira7
-  :commits: 1
-  :avatar_url: https://avatars.githubusercontent.com/u/1943188?v=3
 - :name: phillbaker
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/94505?v=3
@@ -1058,6 +1067,9 @@
 - :name: russbishop
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/302047?v=3
+- :name: samjarman
+  :commits: 1
+  :avatar_url: https://avatars.githubusercontent.com/u/343172?v=3
 - :name: scspijker
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/767645?v=3
@@ -1103,6 +1115,9 @@
 - :name: tapi
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/455558?v=3
+- :name: timfether
+  :commits: 1
+  :avatar_url: https://avatars.githubusercontent.com/u/5805493?v=3
 - :name: toco
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/272560?v=3
