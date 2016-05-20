@@ -239,6 +239,7 @@ section.title.container.about-section
         .card
           ul
             - for contributor in data("contributors") do
+              - commits = contributor[:commits] == 1 ? 'commit' : 'commits'
               li
                 a href="https://github.com/#{contributor[:name]}"
-                  img src="#{contributor[:avatar_url]}&size=96" width="48" height="48" title="#{contributor[:name]} - #{contributor[:commits]} commits to core projects"
+                  img src="#{contributor[:avatar_url]}&size=96" width="48" height="48" title="#{contributor[:name]} - #{contributor[:commits]} #{commits} to core projects"
