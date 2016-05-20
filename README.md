@@ -8,11 +8,16 @@ Ideally this website should be run through a sub-folder of [Strata](https://gith
 2. Run `rake db:migrate` in Strata to update the database to the latest version.
 3. Add a `.env` file with in CocoaPods.org ENVIRONMENT variables, see `sample.env`.
 
+Alternatively, direct set up:
+
+1. `git clone git@github.com:CocoaPods/cocoapods.org.git && cd cocoapods.org`
+2. `rake bootstrap`
+
 ## Running
 
-1. `bundle exec foreman start`
+1. `bundle exec rake serve`
 
-The server will run on http://localhost:5000
+The server will run on http://localhost:3000
 
 ## Things to note
 

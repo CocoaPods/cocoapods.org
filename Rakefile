@@ -5,6 +5,13 @@ task :bootstrap do
 
   puts "Installing gems..."
   `bundle install`
+
+  unless File.exists? '.env'
+    puts "Copying sample.env as .env..."
+    FileUtils.cp 'sample.env', '.env'
+    puts "Please edit .env for your configuration."
+  end
+
 end
 
 begin
@@ -20,7 +27,7 @@ end
 
 desc "Deploy to heroku"
 task :deploy do
-  sh "git push heroku master "
+  sh "git push heroku master"
 end
 
 desc "Deploy to staging"
