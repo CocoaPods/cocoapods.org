@@ -1,3 +1,10 @@
+ruby:
+  total_libs = pods.size.round(-3)
+  total_apps = total_stats.order_by(:id.desc).first[:app_total].round(-5)
+  libraries = ActiveSupport::NumberHelper.number_to_human(total_libs, locale: "en-GB").downcase
+  apps = ActiveSupport::NumberHelper.number_to_human(total_apps, locale: "en-GB").downcase
+
+
 == partial "search-templates"
 == partial "search"
 
@@ -12,9 +19,7 @@
         h3.underlined What is CocoaPods
         <div class="header-horizontal-divider"><div class="index-arrow-down"></div><div class="index-enclosed-arrow-down"></div></div>
 
-        markdown:
-          CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects. It has over eighteen thousand libraries and can help you scale your projects elegantly.
-          Interested in the news about Swift Package Manager? [Check our FAQ](https://guides.cocoapods.org/using/faq.html)
+        p == "CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects. It has over #{libraries} libraries and used in #{apps} apps. CocoaPods can help you scale your projects elegantly."
 
 
     section.row
