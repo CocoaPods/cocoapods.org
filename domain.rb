@@ -38,4 +38,8 @@ DB = Flounder.domain connection do |dom|
   dom.entity :commits, :commit, 'commits'
   dom.entity :pod_versions, :pod_version, 'pod_versions'
   dom.entity :stats_metrics, :stat_metric, 'stats_metrics'
+
+  # General Stats
+  #
+  dom.entity :total_stats, :total_stat, 'total_stats'
 end
