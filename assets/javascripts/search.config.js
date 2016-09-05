@@ -321,6 +321,19 @@ $(window).ready(function() {
     return true;
   };
 
+  // Removes all duplicates in an array according to their .id value
+  //
+  function removeDuplicatesByID(objectsArray) {
+      var ids = [], collection = [];
+      $.each(objectsArray, function (index, value) {
+          if ($.inArray(value.id, ids) == -1) {
+              ids.push(value.id);
+              collection.push(value);
+          }
+      });
+      return collection;
+  }
+
   pickyClient = new PickyClient({
     full: searchURL,
     fullResults: 20,
@@ -450,8 +463,10 @@ $(window).ready(function() {
       }
 
       // Render the JSON into HTML.
-      //
+      // Initially de-duping to avoid memory hiccups e.g. #231 #248
       var allocations = data.allocations;
+      allocations.allocations = removeDuplicatesByID(data.allocations.allocations);
+
       allocations.each(function(i, allocation) {
         allocation.entries = allocation.entries.map(function(i, entry) {
           return render(entry);
@@ -803,4 +818,5 @@ $(window).ready(function() {
   if (window.initial_query != "") {
     pickyClient.insertFromURL(window.initial_query);
   }
+
 });
