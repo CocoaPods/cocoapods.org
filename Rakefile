@@ -22,6 +22,7 @@ Bundler.require
 
 desc 'Start up the dynamic site'
 task :serve do
+  puts "Starting server at http://localhost:3000"
   sh "foreman start"
 end
 
