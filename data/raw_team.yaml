@@ -1,9 +1,5 @@
 ---
 
-- name: 'Boris Bügling'
-  twitter_username: 'neonacho'
-  cocoapods_bio: "Triagemaster General."
-
 - name: 'Samuel Giddins'
   twitter_username: 'segiddins'
   cocoapods_bio: "Patch Master & Bundler of Joy."
