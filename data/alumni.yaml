@@ -4,6 +4,11 @@
   cocoapods_bio: Programmer at Large.
   twitter_profile_url: https://pbs.twimg.com/profile_images/510335730736852992/-QbAB8kd.jpeg
   twitter_banner_url: http://pbs.twimg.com/profile_banners/14257260/1386516577/web
+- name: Boris Bügling
+  twitter_username: neonacho
+  cocoapods_bio: Triagemaster General.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/640257592103686144/6P6B4By0.jpg
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/10341052/1449082784/web
 - name: Keith Smiley
   twitter_username: smileykeith
   cocoapods_bio: Master of the Specs.
