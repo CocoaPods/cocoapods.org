@@ -1,8 +1,20 @@
 ---
 
+- name: 'Eloy Durán'
+  twitter_username: 'alloy'
+  cocoapods_bio: "Creator, maintainer, instigator, & gesticulator."
+
 - name: 'Fabio Pelosin'
   twitter_username: 'fabiopelosin'
   cocoapods_bio: "Programmer at Large."
+
+- name: 'Boris Bügling'
+  twitter_username: 'neonacho'
+  cocoapods_bio: "Triagemaster General."
+
+- name: 'Florian Hanke'
+  twitter_username: 'hanke'
+  cocoapods_bio: "Picky about search."
 
 - name: 'Keith Smiley'
   twitter_username: 'smileykeith'
@@ -35,3 +47,23 @@
 - name: 'Delisa Mason'
   twitter_username: 'kattrali'
   cocoapods_bio: "Toolsmith lvl 99."
+
+- name: 'Kyle Fuller'
+  twitter_username: 'kylefuller'
+  cocoapods_bio: "Perfectionist."
+
+- name: 'Olivier Halligon'
+  twitter_username: 'aligatr'
+  cocoapods_bio: "Guardian of Consistency."
+
+- name: 'Hugo Tunius'
+  twitter_username: 'k0nserv'
+  cocoapods_bio: "Quality Index Assurange."
+
+- name: 'Nate West'
+  twitter_username: 'nate_west'
+  cocoapods_bio: "Appsolutely Vigilant."
+
+- name: 'Muhammed Yavuz Nuzumlalı'
+  twitter_username: 'manuyavuz'
+  cocoapods_bio: 'Obsessive about performance.'
