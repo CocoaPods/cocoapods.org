@@ -8,34 +8,14 @@
   twitter_username: 'orta'
   cocoapods_bio: "Design Dictator."
 
-- name: 'Florian Hanke'
-  twitter_username: 'hanke'
-  cocoapods_bio: "Picky about search."
-
-- name: 'Eloy Durán'
-  twitter_username: 'alloy'
-  cocoapods_bio: "Creator, maintainer, instigator, and gesticulator."
-
 - name: 'Marius Rackwitz'
   twitter_username: 'mrackwitz'
   cocoapods_bio: 'Swift Pioneer.'
 
-- name: 'Kyle Fuller'
-  twitter_username: 'kylefuller'
-  cocoapods_bio: "Perfectionist."
+- name: 'Ben Asher'
+  twitter_username: 'benasher44'
+  cocoapods_bio: 'Fixing Frameworks.'
 
-- name: 'Olivier Halligon'
-  twitter_username: 'aligatr'
-  cocoapods_bio: "Guardian of Consistency."
-
-- name: 'Hugo Tunius'
-  twitter_username: 'k0nserv'
-  cocoapods_bio: "Quality Index Assurange."
-
-- name: 'Muhammed Yavuz Nuzumlalı'
-  twitter_username: 'manuyavuz'
-  cocoapods_bio: 'Obsessive about performance.'
-
-- name: 'Nate West'
-  twitter_username: 'nate_west'
-  cocoapods_bio: "Appsolutely Vigilant."
+- name: 'Danielle Tomlinson'
+  twitter_username: 'dantoml'
+  cocoapods_bio: 'Keeping the ship shipping.'

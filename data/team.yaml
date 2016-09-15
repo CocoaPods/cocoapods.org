@@ -9,43 +9,18 @@
   cocoapods_bio: Design Dictator.
   twitter_profile_url: https://pbs.twimg.com/profile_images/747890285460369409/uLM4SUBp.jpg
   twitter_banner_url: http://pbs.twimg.com/profile_banners/2569881/1397940683/web
-- name: Florian Hanke
-  twitter_username: hanke
-  cocoapods_bio: Picky about search.
-  twitter_profile_url: https://pbs.twimg.com/profile_images/455654999561752576/YBlwiW10.png
-  twitter_banner_url: http://pbs.twimg.com/profile_banners/1018421/1353384663/web
-- name: Eloy Durán
-  twitter_username: alloy
-  cocoapods_bio: Creator, maintainer, instigator, and gesticulator.
-  twitter_profile_url: https://pbs.twimg.com/profile_images/2725004110/7f078219b3519e1a5d617de15080adcc.png
-  twitter_banner_url: http://pbs.twimg.com/profile_banners/12459132/1386509819/web
 - name: Marius Rackwitz
   twitter_username: mrackwitz
   cocoapods_bio: Swift Pioneer.
   twitter_profile_url: https://pbs.twimg.com/profile_images/731475154400870405/b_k5MeJK.jpg
   twitter_banner_url: http://pbs.twimg.com/profile_banners/902525377/1463233866/web
-- name: Kyle Fuller
-  twitter_username: kylefuller
-  cocoapods_bio: Perfectionist.
-  twitter_profile_url: https://pbs.twimg.com/profile_images/533316590465327104/NA1Cgv3g.png
-  twitter_banner_url: http://pbs.twimg.com/profile_banners/21154599/1413140308/web
-- name: Olivier Halligon
-  twitter_username: aligatr
-  cocoapods_bio: Guardian of Consistency.
-  twitter_profile_url: https://pbs.twimg.com/profile_images/720638857062952960/qSoOKShr.jpg
-  twitter_banner_url: http://pbs.twimg.com/profile_banners/193277005/1460648471/web
-- name: Hugo Tunius
-  twitter_username: k0nserv
-  cocoapods_bio: Quality Index Assurange.
-  twitter_profile_url: https://pbs.twimg.com/profile_images/612606997792428032/im35-gl2.png
-  twitter_banner_url: http://pbs.twimg.com/profile_banners/572902128/1434890699/web
-- name: Muhammed Yavuz Nuzumlalı
-  twitter_username: manuyavuz
-  cocoapods_bio: Obsessive about performance.
-  twitter_profile_url: https://pbs.twimg.com/profile_images/608698669626318848/2297lZtt.jpg
-  twitter_banner_url: http://pbs.twimg.com/profile_banners/2352949808/1446566000/web
-- name: Nate West
-  twitter_username: nate_west
-  cocoapods_bio: Appsolutely Vigilant.
-  twitter_profile_url: https://pbs.twimg.com/profile_images/621323518450532352/CDg5wWmG.jpg
-  twitter_banner_url: http://pbs.twimg.com/profile_banners/942661/1463061093/web
+- name: Ben Asher
+  twitter_username: benasher44
+  cocoapods_bio: Fixing Frameworks.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/776261169854107653/SD0e698_.jpg
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/3268483618/1473910819/web
+- name: Danielle Tomlinson
+  twitter_username: dantoml
+  cocoapods_bio: Keeping the ship shipping.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/716094193345642496/GbeSliMV.jpg
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/233679538/1466806508/web

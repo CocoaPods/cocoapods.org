@@ -3,13 +3,13 @@
   :commits: 4441
   :avatar_url: https://avatars.githubusercontent.com/u/1048705?v=3
 - :name: segiddins
-  :commits: 3270
+  :commits: 3282
   :avatar_url: https://avatars.githubusercontent.com/u/1946610?v=3
 - :name: alloy
   :commits: 3036
   :avatar_url: https://avatars.githubusercontent.com/u/2320?v=3
 - :name: orta
-  :commits: 2916
+  :commits: 2919
   :avatar_url: https://avatars.githubusercontent.com/u/49038?v=3
 - :name: floere
   :commits: 1748
@@ -21,7 +21,7 @@
   :commits: 832
   :avatar_url: https://avatars.githubusercontent.com/u/44164?v=3
 - :name: neonichu
-  :commits: 684
+  :commits: 731
   :avatar_url: https://avatars.githubusercontent.com/u/118992?v=3
 - :name: AliSoftware
   :commits: 288
@@ -30,7 +30,7 @@
   :commits: 136
   :avatar_url: https://avatars.githubusercontent.com/u/613?v=3
 - :name: DanToml
-  :commits: 122
+  :commits: 128
   :avatar_url: https://avatars.githubusercontent.com/u/1330683?v=3
 - :name: manuyavuz
   :commits: 117
@@ -48,7 +48,7 @@
   :commits: 98
   :avatar_url: https://avatars.githubusercontent.com/u/1333960?v=3
 - :name: keith
-  :commits: 95
+  :commits: 98
   :avatar_url: https://avatars.githubusercontent.com/u/283886?v=3
 - :name: mtitolo
   :commits: 92
@@ -365,6 +365,9 @@
 - :name: EZ-NET
   :commits: 5
   :avatar_url: https://avatars.githubusercontent.com/u/2109837?v=3
+- :name: hwaxxer
+  :commits: 5
+  :avatar_url: https://avatars.githubusercontent.com/u/104157?v=3
 - :name: Lascorbe
   :commits: 5
   :avatar_url: https://avatars.githubusercontent.com/u/1515520?v=3
@@ -506,6 +509,9 @@
 - :name: mickeyreiss
   :commits: 3
   :avatar_url: https://avatars.githubusercontent.com/u/47405?v=3
+- :name: mjholgate
+  :commits: 3
+  :avatar_url: https://avatars.githubusercontent.com/u/1170271?v=3
 - :name: mowens
   :commits: 3
   :avatar_url: https://avatars.githubusercontent.com/u/4575216?v=3
@@ -608,9 +614,6 @@
 - :name: guillaumealgis
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/1041337?v=3
-- :name: hwaxxer
-  :commits: 2
-  :avatar_url: https://avatars.githubusercontent.com/u/104157?v=3
 - :name: imihaly
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/4698498?v=3
@@ -674,9 +677,6 @@
 - :name: mipmip
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/658612?v=3
-- :name: mjholgate
-  :commits: 2
-  :avatar_url: https://avatars.githubusercontent.com/u/1170271?v=3
 - :name: nubbel
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/118781?v=3

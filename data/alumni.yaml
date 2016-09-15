@@ -1,9 +1,24 @@
 ---
+- name: Eloy Durán
+  twitter_username: alloy
+  cocoapods_bio: Creator, maintainer, instigator, & gesticulator.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/2725004110/7f078219b3519e1a5d617de15080adcc.png
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/12459132/1473930641/web
 - name: Fabio Pelosin
   twitter_username: fabiopelosin
   cocoapods_bio: Programmer at Large.
   twitter_profile_url: https://pbs.twimg.com/profile_images/764045743250432000/NHBqeQEr.jpg
   twitter_banner_url: http://pbs.twimg.com/profile_banners/14257260/1473433171/web
+- name: Boris Bügling
+  twitter_username: neonacho
+  cocoapods_bio: Triagemaster General.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/640257592103686144/6P6B4By0.jpg
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/10341052/1473809460/web
+- name: Florian Hanke
+  twitter_username: hanke
+  cocoapods_bio: Picky about search.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/455654999561752576/YBlwiW10.png
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/1018421/1353384663/web
 - name: Keith Smiley
   twitter_username: smileykeith
   cocoapods_bio: Master of the Specs.
@@ -44,3 +59,28 @@
   cocoapods_bio: Toolsmith lvl 99.
   twitter_profile_url: https://pbs.twimg.com/profile_images/542803639316664320/Jzcs814D.png
   twitter_banner_url: http://pbs.twimg.com/profile_banners/40614452/1386607496/web
+- name: Kyle Fuller
+  twitter_username: kylefuller
+  cocoapods_bio: Perfectionist.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/533316590465327104/NA1Cgv3g.png
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/21154599/1413140308/web
+- name: Olivier Halligon
+  twitter_username: aligatr
+  cocoapods_bio: Guardian of Consistency.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/720638857062952960/qSoOKShr.jpg
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/193277005/1460648471/web
+- name: Hugo Tunius
+  twitter_username: k0nserv
+  cocoapods_bio: Quality Index Assurange.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/612606997792428032/im35-gl2.png
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/572902128/1434890699/web
+- name: Nate West
+  twitter_username: nate_west
+  cocoapods_bio: Appsolutely Vigilant.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/621323518450532352/CDg5wWmG.jpg
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/942661/1463061093/web
+- name: Muhammed Yavuz Nuzumlalı
+  twitter_username: manuyavuz
+  cocoapods_bio: Obsessive about performance.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/608698669626318848/2297lZtt.jpg
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/2352949808/1446566000/web
