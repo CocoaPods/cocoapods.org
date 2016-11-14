@@ -6,6 +6,8 @@ class Array
   end
 end
 
+MasterRepoMetadata = Pod::Source::Metadata.new 'prefix_lengths' => [1, 1, 1]
+
 module Pod
   class Specification
 
@@ -23,7 +25,8 @@ module Pod
     end
 
     def or_podspec_url
-      "https://github.com/CocoaPods/Specs/blob/master/Specs/#{ name }/#{ version }/#{ name }.podspec.json"
+      "https://github.com/CocoaPods/Specs/blob/master/Specs/" \
+        "#{MasterRepoMetadata.path_fragment(name, version)}/#{ name }.podspec.json"
     end
 
     def or_web_documentation_url
