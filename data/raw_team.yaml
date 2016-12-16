@@ -1,5 +1,17 @@
 ---
 
+- name: 'Ben Asher'
+  twitter_username: 'benasher44'
+  cocoapods_bio: 'Fixing Frameworks.'
+
+- name: 'Danielle Tomlinson'
+  twitter_username: 'dantoml'
+  cocoapods_bio: 'Keeping the ship shipping.'
+
+- name: 'Dimitris Koutsogiorgas'
+  twitter_username: "dnkoutso"
+  cocoapods_bio: 'Polishing Performance.'
+
 - name: 'Samuel Giddins'
   twitter_username: 'segiddins'
   cocoapods_bio: "Patch Master & Bundler of Joy."
@@ -11,11 +23,3 @@
 - name: 'Marius Rackwitz'
   twitter_username: 'mrackwitz'
   cocoapods_bio: 'Swift Pioneer.'
-
-- name: 'Ben Asher'
-  twitter_username: 'benasher44'
-  cocoapods_bio: 'Fixing Frameworks.'
-
-- name: 'Danielle Tomlinson'
-  twitter_username: 'dantoml'
-  cocoapods_bio: 'Keeping the ship shipping.'
