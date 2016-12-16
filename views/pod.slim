@@ -18,6 +18,7 @@ ruby:
   has_changelog = @cocoadocs["rendered_changelog_url"]
   is_deprecated = @pod.deprecated || @pod.deprecated_in_favor_of
   is_swift = @cocoadocs["dominant_language"] == "Swift"
+  swift_version = @pod.attributes_hash["pushed_with_swift_version"]
 
   def section(title, table_class="inset", include_zero=true, properties)
     header = "<h3>#{title}</h3><table class='#{table_class}'><tbody>"
@@ -54,6 +55,7 @@ ruby:
         alt_spans("Lang", "Language") => alt_spans(lang_small, @cocoadocs["dominant_language"]),
         "License" => link_to(@cocoadocs["license_canonical_url"], @cocoadocs["license_short_name"]),
         alt_spans("Released", "Last Release") => @commit["created_at"].strftime("%b %Y"),
+        alt_spans("Swift", "Swift Version") => swift_version,
         alt_spans("SPM", "Supports SPM") => @cocoadocs["spm_support"] ? "✓":  is_swift ? "✗": nil,
       }
       if is_binary
