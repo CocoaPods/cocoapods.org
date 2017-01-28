@@ -3,16 +3,16 @@
   :commits: 4441
   :avatar_url: https://avatars.githubusercontent.com/u/1048705?v=3
 - :name: segiddins
-  :commits: 3548
+  :commits: 3584
   :avatar_url: https://avatars.githubusercontent.com/u/1946610?v=3
-- :name: alloy
-  :commits: 3037
-  :avatar_url: https://avatars.githubusercontent.com/u/2320?v=3
 - :name: orta
-  :commits: 3017
+  :commits: 3043
   :avatar_url: https://avatars.githubusercontent.com/u/49038?v=3
+- :name: alloy
+  :commits: 3038
+  :avatar_url: https://avatars.githubusercontent.com/u/2320?v=3
 - :name: floere
-  :commits: 1748
+  :commits: 1753
   :avatar_url: https://avatars.githubusercontent.com/u/3022?v=3
 - :name: mrackwitz
   :commits: 858
@@ -23,14 +23,14 @@
 - :name: neonichu
   :commits: 737
   :avatar_url: https://avatars.githubusercontent.com/u/118992?v=3
+- :name: DanToml
+  :commits: 316
+  :avatar_url: https://avatars.githubusercontent.com/u/1330683?v=3
 - :name: AliSoftware
   :commits: 288
   :avatar_url: https://avatars.githubusercontent.com/u/216089?v=3
-- :name: DanToml
-  :commits: 283
-  :avatar_url: https://avatars.githubusercontent.com/u/1330683?v=3
 - :name: benasher44
-  :commits: 212
+  :commits: 215
   :avatar_url: https://avatars.githubusercontent.com/u/1120429?v=3
 - :name: lukeredpath
   :commits: 136
@@ -68,9 +68,6 @@
 - :name: siuying
   :commits: 46
   :avatar_url: https://avatars.githubusercontent.com/u/8608?v=3
-- :name: supermarin
-  :commits: 45
-  :avatar_url: https://avatars.githubusercontent.com/u/627285?v=3
 - :name: wjk
   :commits: 39
   :avatar_url: https://avatars.githubusercontent.com/u/1915951?v=3
@@ -374,9 +371,6 @@
 - :name: dhoerl
   :commits: 5
   :avatar_url: https://avatars.githubusercontent.com/u/812695?v=3
-- :name: Dreddik
-  :commits: 5
-  :avatar_url: https://avatars.githubusercontent.com/u/1570382?v=3
 - :name: drodriguez
   :commits: 5
   :avatar_url: https://avatars.githubusercontent.com/u/6338?v=3
@@ -413,6 +407,9 @@
 - :name: pereckerdal
   :commits: 5
   :avatar_url: https://avatars.githubusercontent.com/u/87926?v=3
+- :name: RomanTruba
+  :commits: 5
+  :avatar_url: https://avatars.githubusercontent.com/u/1570382?v=3
 - :name: schneiderandre
   :commits: 5
   :avatar_url: https://avatars.githubusercontent.com/u/975938?v=3
@@ -599,9 +596,6 @@
 - :name: bbodenmiller
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/1192780?v=3
-- :name: Brown-amazingness
-  :commits: 2
-  :avatar_url: https://avatars.githubusercontent.com/u/3974613?v=3
 - :name: bunchjesse
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/788291?v=3
@@ -683,6 +677,9 @@
 - :name: jschmid
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/574168?v=3
+- :name: jugutier
+  :commits: 2
+  :avatar_url: https://avatars.githubusercontent.com/u/2844185?v=3
 - :name: jverkoey
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/45670?v=3
@@ -785,6 +782,9 @@
 - :name: tiemevanveen
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/1330668?v=3
+- :name: Umar-M-Haroon
+  :commits: 2
+  :avatar_url: https://avatars.githubusercontent.com/u/3974613?v=3
 - :name: vslavik
   :commits: 2
   :avatar_url: https://avatars.githubusercontent.com/u/145881?v=3
@@ -860,9 +860,15 @@
 - :name: briansoule
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/1596183?v=3
+- :name: brunomacabeusbr
+  :commits: 1
+  :avatar_url: https://avatars.githubusercontent.com/u/9501115?v=3
 - :name: brutella
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/125641?v=3
+- :name: calebkleveter
+  :commits: 1
+  :avatar_url: https://avatars.githubusercontent.com/u/13837190?v=3
 - :name: CalQL8ed-K-OS
   :commits: 1
   :avatar_url: https://avatars.githubusercontent.com/u/300235?v=3

@@ -71,10 +71,10 @@ task :generate_team do
   # so don't generate twice in a row ;)
 
   client = Twitter::REST::Client.new do |config|
-    config.consumer_key        = "1QaLPhCqKhOeji8WW7Rgrg"
-    config.consumer_secret     = "dvnLGIP7rOMlM4FkLYECY08VPT0L6afsZTjhEfcw"
-    config.access_token        = "2232249636-4bqvbKfGwBsEsU78vSvnpk1JA6Zs8RKRtP466CF"
-    config.access_token_secret = "jcjML9tG93Nh76IyxzesejOXIostnbfri7iyDPlk6hCU5"
+    config.consumer_key        = "JZgGu6JA4YqdQwTgxSdyGD0Cg"
+    config.consumer_secret     = "vlMIopH8SJ8VhqyD7TfkhdEDgU5NVuzuTeSRKaa9vlKkldyC4E"
+    config.access_token        = "233679538-xFR4Ih37IGP7DUQhrpYLXSRMrxR3Or52igDIdDg6"
+    config.access_token_secret = "FLdAu6rTD8ipaTy9WrPWnt1ioawm81cQy9z8neQqxoYz4"
   end
 
   ["team", "alumni"].each do |team_name|
