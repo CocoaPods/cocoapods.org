@@ -3,13 +3,13 @@
   :commits: 4441
   :avatar_url: https://avatars3.githubusercontent.com/u/1048705?v=3
 - :name: segiddins
-  :commits: 3614
+  :commits: 3626
   :avatar_url: https://avatars2.githubusercontent.com/u/1946610?v=3
 - :name: orta
-  :commits: 3077
+  :commits: 3080
   :avatar_url: https://avatars1.githubusercontent.com/u/49038?v=3
 - :name: alloy
-  :commits: 3038
+  :commits: 3039
   :avatar_url: https://avatars1.githubusercontent.com/u/2320?v=3
 - :name: floere
   :commits: 1753
@@ -24,7 +24,7 @@
   :commits: 737
   :avatar_url: https://avatars3.githubusercontent.com/u/118992?v=3
 - :name: DanToml
-  :commits: 338
+  :commits: 349
   :avatar_url: https://avatars1.githubusercontent.com/u/1330683?v=3
 - :name: AliSoftware
   :commits: 288
@@ -131,12 +131,12 @@
 - :name: ashfurrow
   :commits: 20
   :avatar_url: https://avatars0.githubusercontent.com/u/498212?v=3
+- :name: dnkoutso
+  :commits: 20
+  :avatar_url: https://avatars1.githubusercontent.com/u/310370?v=3
 - :name: flufff42
   :commits: 20
   :avatar_url: https://avatars3.githubusercontent.com/u/252173?v=3
-- :name: dnkoutso
-  :commits: 19
-  :avatar_url: https://avatars1.githubusercontent.com/u/310370?v=3
 - :name: mk
   :commits: 19
   :avatar_url: https://avatars1.githubusercontent.com/u/1187?v=3
@@ -560,6 +560,9 @@
 - :name: petergoldstein
   :commits: 3
   :avatar_url: https://avatars1.githubusercontent.com/u/421488?v=3
+- :name: postmechanical
+  :commits: 3
+  :avatar_url: https://avatars2.githubusercontent.com/u/133463?v=3
 - :name: ryutamaki
   :commits: 3
   :avatar_url: https://avatars0.githubusercontent.com/u/762414?v=3
@@ -785,15 +788,15 @@
 - :name: taveras
   :commits: 2
   :avatar_url: https://avatars3.githubusercontent.com/u/114454?v=3
+- :name: teameh
+  :commits: 2
+  :avatar_url: https://avatars0.githubusercontent.com/u/1330668?v=3
 - :name: themackworth
   :commits: 2
   :avatar_url: https://avatars0.githubusercontent.com/u/746028?v=3
 - :name: thomasgallagher
   :commits: 2
   :avatar_url: https://avatars2.githubusercontent.com/u/11466?v=3
-- :name: tiemevanveen
-  :commits: 2
-  :avatar_url: https://avatars0.githubusercontent.com/u/1330668?v=3
 - :name: Umar-M-Haroon
   :commits: 2
   :avatar_url: https://avatars3.githubusercontent.com/u/3974613?v=3
@@ -812,6 +815,9 @@
 - :name: zygoat
   :commits: 2
   :avatar_url: https://avatars3.githubusercontent.com/u/2467235?v=3
+- :name: 1nput0utput
+  :commits: 1
+  :avatar_url: https://avatars3.githubusercontent.com/u/823899?v=3
 - :name: 4brunu
   :commits: 1
   :avatar_url: https://avatars0.githubusercontent.com/u/784666?v=3
@@ -1187,9 +1193,6 @@
 - :name: pnc
   :commits: 1
   :avatar_url: https://avatars3.githubusercontent.com/u/108524?v=3
-- :name: postmechanical
-  :commits: 1
-  :avatar_url: https://avatars2.githubusercontent.com/u/133463?v=3
 - :name: Pretz
   :commits: 1
   :avatar_url: https://avatars2.githubusercontent.com/u/35043?v=3
