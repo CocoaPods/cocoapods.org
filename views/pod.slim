@@ -50,7 +50,7 @@ ruby:
       a href="#" &times;
 
     ruby:
-      header = { alt_spans("Docs", "Documented") => has_docs ? "✓":"✗",
+      header = {
         alt_spans("Tests", "Tested") => has_tests ? "✓":"✗",
         alt_spans("Lang", "Language") => alt_spans(lang_small, @cocoadocs["dominant_language"]),
         "License" => link_to(@cocoadocs["license_canonical_url"], @cocoadocs["license_short_name"]),
@@ -109,8 +109,6 @@ ruby:
     - else
       == section("Code",
         { "Files" => @cocoadocs["total_files"],
-          alt_spans("Size", "Integration Size") => @cocoadocs["install_size"].to_s + " kb",
-          alt_spans("Framework", "Creates Framework") => @cocoadocs["builds_independently"] ? "✓": nil,
           alt_spans("LOC", "Lines of Code") => @cocoadocs["total_lines_of_code"],
         })
 
