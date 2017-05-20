@@ -8,8 +8,8 @@ ruby:
   clipboard_text = "pod '#{@pod.name}', '#{version}'"
   has_tests = @cocoadocs["total_test_expectations"] > 5
   tested_description = @cocoadocs["total_test_expectations"] > 20 ? "Tested" : "Well Tested"
-  has_docs = @cocoadocs["doc_percent"] > 20
-  docs_description = @cocoadocs["doc_percent"] > 70 ? "Documented" : "Well Documented"
+  has_docs = @cocoadocs["doc_percent"] && @cocoadocs["doc_percent"] > 20
+  docs_description = @cocoadocs["doc_percent"] && @cocoadocs["doc_percent"] > 70 ? "Documented" : "Well Documented"
   lang_small = @cocoadocs["dominant_language"] == "Objective C" ? "Obj-C" : @cocoadocs["dominant_language"]
   owner_urls = @owners.map{ |o| "<a href='/owners/#{o["owner_id"]}'>#{o["owner"]["name"]}</a>"}.join ", "
   quality_group = quality_indicator_group @cocoadocs["quality_estimate"]
