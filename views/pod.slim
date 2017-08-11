@@ -103,10 +103,6 @@ ruby:
 
       hr
 
-    - if is_binary
-      == section("Library", { alt_spans("Size", "Integration Size") => @cocoadocs["install_size"].to_s + " kb" })
-
-    - else
       == section("Code",
         { "Files" => @cocoadocs["total_files"],
           alt_spans("LOC", "Lines of Code") => @cocoadocs["total_lines_of_code"],
@@ -140,6 +136,71 @@ ruby:
             p == "<code>pod try #{@pod.name}</code>"
 
     hr
+
+    #space_for_appsight
+
+    javascript:
+      function showAppSight() {
+        $.getJSON("https://www.appsight.io/api/1.0/sdks/find?filter=top-apps-using&cocoapod=#{{@pod.name}}&callback=?", function( data ) {
+          console.log(data)
+          if (data.status && data.status.is_successful) {
+            if (data.result) {
+              $('<p>Apps using <a href="' +data.result.href + '">#{{@pod.name}}</a></p>').appendTo('#space_for_appsight')
+             
+              $.each(data.result.apps_using, function(i, app){
+                var a = $('<a href=' + app.href + '/>')
+                $('<img/>', {
+                  src: app.icons[0].url,
+                  title: app.name,
+                  style: 'margin: 2px;',
+                  "data-toggle": 'tooltip',
+                  "data-placement": 'top'
+                }).appendTo(a)
+                $(a).appendTo('#space_for_appsight')
+              })
+
+              $('#space_for_appsight [data-toggle="tooltip"]').tooltip()
+              $('<sub>powered by <a href="http://appsight.io">AppSight</a></sub>').appendTo('#space_for_appsight')
+              $('<hr/>').appendTo('#space_for_appsight')
+            }
+          }
+        });
+      }
+
+      if(!$.cookie('enable_appsight')) {
+        $("#space_for_appsight").append("<button class='btn' type='button'>Show Apps using #{@pod.name}</button>").on('click', function (e) {
+          $.cookie('enable_appsight', "sure")
+          showAppSight()
+        })
+
+      } else {
+        showAppSight()
+      }
+
+    .modal.fade#app_sight_info tabindex="-2" role="dialog" aria-labelledby="appsight_label" aria-hidden="true"
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close type="button" data-dismiss="modal" aria-label="Close"
+              span aria-hidden="true" &times
+
+            h4.modal-title#appsight_label == "AppSight Integration"
+
+          .modal-body
+            p == "You want to add <code>#{clipboard_text}</code> similar to the following to your Podfile:"
+            pre
+              code
+                - if is_for_testing
+                  == "target 'MyApp' do \n ...\nend\n\ntarget 'MyAppTests' do\n  #{clipboard_text}\nend"
+                - else
+                  == "target 'MyApp' do\n  #{clipboard_text}\nend"
+
+            p Then run a <code>pod install</code> inside your terminal, or from CocoaPods.app.
+            hr
+            p Alternatively to give it a test run, run the command:
+            p == "<code>pod try #{@pod.name}</code>"
+
+
 
     - if @pod.dependencies.count > 1
       table

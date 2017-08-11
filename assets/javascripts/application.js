@@ -10,6 +10,7 @@
 *= require zero-clipboard.min.js
 *= require has_flash.js
 *= require ICanHaz.js
+*= require jquery.cookie.js
 */
 
 // Sets up tabs for README/CHANGELOGs
