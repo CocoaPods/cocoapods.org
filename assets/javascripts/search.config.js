@@ -211,8 +211,8 @@ $(window).ready(function() {
       _gaq.push(['_trackPageview'], "/pods/" + result.data("pod-name"));
 
       /// This can be found in application.js
+      checkForAppSight(result.data("pod-name"))
       post_expansion_setup()
-      addCloseButton()
     }).fail(function() {
       result.removeClass("loading")
     });
@@ -224,7 +224,7 @@ $(window).ready(function() {
       if (target.is("li.result") == false) {
         target = $(event.target).parents("li.result")
       }
-      console.log(target)
+
       reduceSearchResult(target)
       event.stopPropagation()
       return false;

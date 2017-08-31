@@ -28,7 +28,7 @@ var post_expansion_setup = function(){
         $(target).html(data);
       });
     }
-
+    
     $this.tab('show');
     return false;
   });
@@ -61,3 +61,48 @@ $( document ).ready( function(){
 
   post_expansion_setup();
 });
+
+var rootSelector = ".space_for_appsight"
+
+var showAppSight = function(name) {
+  console.log("showing: " + name)
+
+  // if($(rootSelector + " button")) { }
+  $.getJSON("https://www.appsight.io/api/1.0/sdks/find?filter=top-apps-using&cocoapod=" + name + "&callback=?", function( data ) {
+    console.log("Data")
+    if (data.status && data.status.is_successful) {
+      if (data.result) {
+        $('<p>Apps using <a href="' + data.result.href + '">' + name + '</a></p>').appendTo(rootSelector)
+
+        $.each(data.result.apps_using, function(i, app){
+          var a = $('<a href=' + app.href + '/>')
+          $('<img/>', {
+            src: app.icons[0].url,
+            title: app.name,
+            style: 'margin: 2px;',
+            "data-toggle": 'tooltip',
+            "data-placement": 'top'
+          }).appendTo(a)
+          $(a).appendTo(rootSelector)
+        })
+
+        $(rootSelector + ' [data-toggle="tooltip"]').tooltip()
+        $('<sub>powered by <a href="http://appsight.io">AppSight.io</a></sub>').appendTo(rootSelector)
+        $('<hr/>').appendTo(rootSelector)
+      }
+    }
+  });
+}
+
+var checkForAppSight = function(name) {
+  console.log("check " + name)
+  if(!$.cookie('enable_appsight')) {
+    $(rootSelector).append("<button class='btn' type='button'>Show Apps using " + name + "</button>").on('click', function (e) {
+      $.cookie('enable_appsight', "sure")
+      showAppSight(name)
+    })
+
+  } else {
+    showAppSight(name)
+  }
+}

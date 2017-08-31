@@ -137,45 +137,7 @@ ruby:
 
     hr
 
-    #space_for_appsight
-
-    javascript:
-      function showAppSight() {
-        $.getJSON("https://www.appsight.io/api/1.0/sdks/find?filter=top-apps-using&cocoapod=#{{@pod.name}}&callback=?", function( data ) {
-          console.log(data)
-          if (data.status && data.status.is_successful) {
-            if (data.result) {
-              $('<p>Apps using <a href="' +data.result.href + '">#{{@pod.name}}</a></p>').appendTo('#space_for_appsight')
-             
-              $.each(data.result.apps_using, function(i, app){
-                var a = $('<a href=' + app.href + '/>')
-                $('<img/>', {
-                  src: app.icons[0].url,
-                  title: app.name,
-                  style: 'margin: 2px;',
-                  "data-toggle": 'tooltip',
-                  "data-placement": 'top'
-                }).appendTo(a)
-                $(a).appendTo('#space_for_appsight')
-              })
-
-              $('#space_for_appsight [data-toggle="tooltip"]').tooltip()
-              $('<sub>powered by <a href="http://appsight.io">AppSight</a></sub>').appendTo('#space_for_appsight')
-              $('<hr/>').appendTo('#space_for_appsight')
-            }
-          }
-        });
-      }
-
-      if(!$.cookie('enable_appsight')) {
-        $("#space_for_appsight").append("<button class='btn' type='button'>Show Apps using #{@pod.name}</button>").on('click', function (e) {
-          $.cookie('enable_appsight', "sure")
-          showAppSight()
-        })
-
-      } else {
-        showAppSight()
-      }
+    .space_for_appsight class="#{{@pod.name}}"
 
     .modal.fade#app_sight_info tabindex="-2" role="dialog" aria-labelledby="appsight_label" aria-hidden="true"
       .modal-dialog
