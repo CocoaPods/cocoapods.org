@@ -103,10 +103,11 @@ ruby:
 
       hr
 
-      == section("Code",
-        { "Files" => @cocoadocs["total_files"],
-          alt_spans("LOC", "Lines of Code") => @cocoadocs["total_lines_of_code"],
-        })
+      - unless is_binary
+        == section("Code",
+          { "Files" => @cocoadocs["total_files"],
+            alt_spans("LOC", "Lines of Code") => @cocoadocs["total_lines_of_code"],
+          })
 
     hr
 
@@ -146,22 +147,14 @@ ruby:
             button.close type="button" data-dismiss="modal" aria-label="Close"
               span aria-hidden="true" &times
 
-            h4.modal-title#appsight_label == "AppSight Integration"
+            h4.modal-title#appsight_label == "AppSight.io Integration"
 
           .modal-body
-            p == "You want to add <code>#{clipboard_text}</code> similar to the following to your Podfile:"
-            pre
-              code
-                - if is_for_testing
-                  == "target 'MyApp' do \n ...\nend\n\ntarget 'MyAppTests' do\n  #{clipboard_text}\nend"
-                - else
-                  == "target 'MyApp' do\n  #{clipboard_text}\nend"
-
-            p Then run a <code>pod install</code> inside your terminal, or from CocoaPods.app.
+            p The CocoaPods Website has an optional integration with <a href='http://appsight.io'>AppSight.io</a> that checks every pod you look at for apps which consume it.
+            p <a href='http://appsight.io'>AppSight.io</a> is a third-party service which tracks SDKs usage in the top iOS + Android apps.
+            p 
             hr
-            p Alternatively to give it a test run, run the command:
-            p == "<code>pod try #{@pod.name}</code>"
-
+            p You can turn it off by clicking here: <button type="button" class="btn btn-danger" onclick="disableAppSight('#{@pod.name}')">Disable</button>
 
 
     - if @pod.dependencies.count > 1

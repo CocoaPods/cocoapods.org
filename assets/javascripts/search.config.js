@@ -213,6 +213,7 @@ $(window).ready(function() {
       /// This can be found in application.js
       checkForAppSight(result.data("pod-name"))
       post_expansion_setup()
+      addCloseButton()
     }).fail(function() {
       result.removeClass("loading")
     });

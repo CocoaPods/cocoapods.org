@@ -65,17 +65,13 @@ $( document ).ready( function(){
 var rootSelector = ".space_for_appsight"
 
 var showAppSight = function(name) {
-  console.log("showing: " + name)
-
-  // if($(rootSelector + " button")) { }
   $.getJSON("https://www.appsight.io/api/1.0/sdks/find?filter=top-apps-using&cocoapod=" + name + "&callback=?", function( data ) {
-    console.log("Data")
     if (data.status && data.status.is_successful) {
       if (data.result) {
         $('<p>Apps using <a href="' + data.result.href + '">' + name + '</a></p>').appendTo(rootSelector)
 
         $.each(data.result.apps_using, function(i, app){
-          var a = $('<a href=' + app.href + '/>')
+          var a = $('<a href=' + app.href + ' targer="_blank"/>')
           $('<img/>', {
             src: app.icons[0].url,
             title: app.name,
@@ -87,21 +83,28 @@ var showAppSight = function(name) {
         })
 
         $(rootSelector + ' [data-toggle="tooltip"]').tooltip()
-        $('<sub>powered by <a href="http://appsight.io">AppSight.io</a></sub>').appendTo(rootSelector)
+        var settings = '<sub><a data-toggle="modal" data-target="#app_sight_info" href="#">Settings</a></sub>'
+        var poweredBy = '<sub>powered by <a href="http://appsight.io">AppSight.io</a></sub>'
+        $('<div style="display: flex; flex-direction: row; justify-content: space-between;">' + settings + poweredBy + '</div>').appendTo(rootSelector)
         $('<hr/>').appendTo(rootSelector)
       }
     }
   });
 }
 
+var disableAppSight = function(name) {
+  $.cookie('enable_appsight', 'nope')
+  $("#app_sight_info").modal('hide')
+  $(rootSelector).empty()
+  checkForAppSight(name)
+}
+
 var checkForAppSight = function(name) {
-  console.log("check " + name)
-  if(!$.cookie('enable_appsight')) {
-    $(rootSelector).append("<button class='btn' type='button'>Show Apps using " + name + "</button>").on('click', function (e) {
+  if($.cookie('enable_appsight') === "sure" ) {
+    $(rootSelector).append("<button class='btn' type='button'>Show Apps using " + name + "</button>").on('click', function (e) {  
       $.cookie('enable_appsight', "sure")
       showAppSight(name)
     })
-
   } else {
     showAppSight(name)
   }
