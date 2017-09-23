@@ -1,4 +1,4 @@
-desc "Initializes your working copy to have the correct submodules and gems"
+eventmachinedesc "Initializes your working copy to have the correct submodules and gems"
 task :bootstrap do
   puts "Updating submodules..."
   `git submodule update --init --recursive`
@@ -69,12 +69,11 @@ task :generate_team do
 
   # Think this is rate limited to 15 calls every 15 minutes
   # so don't generate twice in a row ;)
-
   client = Twitter::REST::Client.new do |config|
-    config.consumer_key        = "JZgGu6JA4YqdQwTgxSdyGD0Cg"
-    config.consumer_secret     = "vlMIopH8SJ8VhqyD7TfkhdEDgU5NVuzuTeSRKaa9vlKkldyC4E"
-    config.access_token        = "233679538-xFR4Ih37IGP7DUQhrpYLXSRMrxR3Or52igDIdDg6"
-    config.access_token_secret = "FLdAu6rTD8ipaTy9WrPWnt1ioawm81cQy9z8neQqxoYz4"
+    config.consumer_key        = 'EYRutegHyV4G9jpv1a1QoI4lf'
+    config.consumer_secret     = 'GQlYCvHyLQx8N0qbxZMzUKp7T9r4PoiqJS5RC2r5Y7aMKyEasG'
+    config.access_token        = '3330338902-ismc4FmfWPK3tAjqgs9AtOk0ehR59fGqSDEGAUO'
+    config.access_token_secret = 'NTtMdvqPknqUtnYPPtn2l4xnTH294qxqbgDheKtGscYzM'
   end
 
   ["team", "alumni"].each do |team_name|
