@@ -108,8 +108,7 @@ ruby:
           { "Files" => @cocoadocs["total_files"],
             alt_spans("LOC", "Lines of Code") => @cocoadocs["total_lines_of_code"],
           })
-
-    hr
+        hr
 
     button.btn type="button" data-toggle="modal" data-target="#installation_guide" Installation Guide
 
@@ -178,10 +177,11 @@ ruby:
             td
       hr
 
-    - if @pod.screenshots.count < 0
+    - if @pod.screenshots.count > 0
       ul.screenshots
         - @pod.screenshots.each do |screenshot|
-          img src="#{screenshot}"
+          a href=screenshot 
+          img src=screenshot
       hr
 
     ul.links

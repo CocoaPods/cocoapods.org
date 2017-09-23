@@ -65,6 +65,8 @@ $( document ).ready( function(){
 var rootSelector = ".space_for_appsight"
 
 var showAppSight = function(name) {
+  $(rootSelector).empty()
+  
   $.getJSON("https://www.appsight.io/api/1.0/sdks/find?filter=top-apps-using&cocoapod=" + name + "&callback=?", function( data ) {
     if (data.status && data.status.is_successful) {
       if (data.result) {
@@ -93,16 +95,17 @@ var showAppSight = function(name) {
 }
 
 var disableAppSight = function(name) {
-  $.cookie('enable_appsight', 'nope')
+  $.cookie('appsight', "false")
   $("#app_sight_info").modal('hide')
-  $(rootSelector).empty()
+  $(rootSelector).empty()  
   checkForAppSight(name)
 }
 
 var checkForAppSight = function(name) {
-  if($.cookie('enable_appsight') === "sure" ) {
-    $(rootSelector).append("<button class='btn' type='button'>Show Apps using " + name + "</button>").on('click', function (e) {  
-      $.cookie('enable_appsight', "sure")
+  if($.cookie('appsight') !== "enabled") {
+    $(rootSelector).append("<button class='btn' type='button'>Show Apps using " + name + "</button><hr/>")
+    $(rootSelector + " .btn").on('click', function (e) {  
+      $.cookie('appsight', "enabled")
       showAppSight(name)
     })
   } else {
