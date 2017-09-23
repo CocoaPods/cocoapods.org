@@ -24,11 +24,6 @@
   cocoapods_bio: Master of the Specs.
   twitter_profile_url: https://pbs.twimg.com/profile_images/506666166723416065/0H_wxP0l.jpeg
   twitter_banner_url: http://pbs.twimg.com/profile_banners/14429563/1401592562/web
-- name: Andy Myers
-  twitter_username: andyrmyers
-  cocoapods_bio: Really doing the design.
-  twitter_profile_url: https://pbs.twimg.com/profile_images/711886051741147136/r2lVAOy9.jpg
-  twitter_banner_url: http://pbs.twimg.com/profile_banners/2982589991/1432413140/web
 - name: Karla Sandoval
   twitter_username: kisabelyogi
   cocoapods_bio: Pushing those Plugins.
