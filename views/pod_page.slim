@@ -84,5 +84,9 @@ javascript:
       var current_url = window.location.toString().split('#')[0]
       history.replaceState(null, null, current_url + new_hash)
     })
-
   })
+
+    $(document).ready(function() {
+      checkForAppSight("#{{@pod.name}}")
+    })
+
