@@ -28,7 +28,7 @@ var post_expansion_setup = function(){
         $(target).html(data);
       });
     }
-    
+
     $this.tab('show');
     return false;
   });
@@ -89,6 +89,9 @@ var showAppSight = function(name) {
         var poweredBy = '<sub>powered by <a href="http://appsight.io">AppSight.io</a></sub>'
         $('<div style="display: flex; flex-direction: row; justify-content: space-between;">' + settings + poweredBy + '</div>').appendTo(rootSelector)
         $('<hr/>').appendTo(rootSelector)
+      }
+      else {
+        $('<p style="font-size: 14px">Could not find ' +  name + ' on <a data-toggle="modal" data-target="#app_sight_info" href="#">AppSight.io</p><hr />').appendTo(rootSelector)
       }
     }
   });
