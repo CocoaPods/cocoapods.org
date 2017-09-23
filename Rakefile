@@ -1,4 +1,4 @@
-desc "Initializes your working copy to have the correct submodules and gems"
+eventmachinedesc "Initializes your working copy to have the correct submodules and gems"
 task :bootstrap do
   puts "Updating submodules..."
   `git submodule update --init --recursive`
