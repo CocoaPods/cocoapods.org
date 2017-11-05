@@ -2,7 +2,9 @@
 
 ## Getting Help
 
-If you're here about your README on CocoaPods.org - first try running the command: `curl http://199.19.84.242:4567/redeploy/[MyPod]/latest`, and give it ~5-10m depending on how big your project's repo is.
+If you're here about your README on CocoaPods.org - first try running the command: 
+
+`curl http://199.19.84.242:4567/redeploy/[MyPod]/latest`, and give it ~5-10m depending on how big your project's repo is.
 
 ## Setup
 
