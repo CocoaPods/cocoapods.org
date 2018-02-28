@@ -4,21 +4,27 @@ ruby:
     minor_version = version.split('.').slice(0, 2).join(".")
     version = "~> " + minor_version;
   end
+  
+  # With cocoapods-metadata-service we might have partial cocoadocs data
+  has_full_metadata = @cocoadocs["total_test_expectations"]
 
   clipboard_text = "pod '#{@pod.name}', '#{version}'"
-  has_tests = @cocoadocs["total_test_expectations"] > 5
-  tested_description = @cocoadocs["total_test_expectations"] > 20 ? "Tested" : "Well Tested"
-  has_docs = @cocoadocs["doc_percent"] && @cocoadocs["doc_percent"] > 20
-  docs_description = @cocoadocs["doc_percent"] && @cocoadocs["doc_percent"] > 70 ? "Documented" : "Well Documented"
-  lang_small = @cocoadocs["dominant_language"] == "Objective C" ? "Obj-C" : @cocoadocs["dominant_language"]
+
   owner_urls = @owners.map{ |o| "<a href='/owners/#{o["owner_id"]}'>#{o["owner"]["name"]}</a>"}.join ", "
-  quality_group = quality_indicator_group @cocoadocs["quality_estimate"]
-  is_for_testing = @pod.attributes_hash["frameworks"] && @pod.attributes_hash["frameworks"].include?("XCTest")
-  is_binary = @cocoadocs["is_vendored_framework"]
-  has_changelog = @cocoadocs["rendered_changelog_url"]
   is_deprecated = @pod.deprecated || @pod.deprecated_in_favor_of
-  is_swift = @cocoadocs["dominant_language"] == "Swift"
   swift_version = @pod.attributes_hash["pushed_with_swift_version"]
+
+  # This is pretty unelegant
+  has_tests = has_full_metadata && @cocoadocs["total_test_expectations"] > 5
+  tested_description = has_full_metadata && @cocoadocs["total_test_expectations"] > 20 ? "Tested" : "Well Tested"
+  has_docs = has_full_metadata && @cocoadocs["doc_percent"] && @cocoadocs["doc_percent"] > 20
+  docs_description = has_full_metadata && @cocoadocs["doc_percent"] && @cocoadocs["doc_percent"] > 70 ? "Documented" : "Well Documented"
+  lang_small = has_full_metadata && @cocoadocs["dominant_language"] == "Objective C" ? "Obj-C" : @cocoadocs["dominant_language"]
+  is_for_testing = has_full_metadata && @pod.attributes_hash["frameworks"] && @pod.attributes_hash["frameworks"].include?("XCTest")
+  quality_group = has_full_metadata && quality_indicator_group(@cocoadocs["quality_estimate"])
+  is_binary = has_full_metadata && @cocoadocs["is_vendored_framework"]
+  has_changelog = has_full_metadata && @cocoadocs["rendered_changelog_url"]
+  is_swift = has_full_metadata && @cocoadocs["dominant_language"] == "Swift"
 
   def section(title, table_class="inset", include_zero=true, properties)
     header = "<h3>#{title}</h3><table class='#{table_class}'><tbody>"
@@ -63,7 +69,7 @@ ruby:
         header.delete alt_spans("Lang", "Language")
       end
 
-    == section("","header", header)
+    == has_full_metadata && section("","header", header)
     p =="Maintained by #{owner_urls}."
 
     hr
@@ -104,7 +110,7 @@ ruby:
       hr
 
       - unless is_binary
-        == section("Code",
+        == has_full_metadata && section("Code",
           { "Files" => @cocoadocs["total_files"],
             alt_spans("LOC", "Lines of Code") => @cocoadocs["total_lines_of_code"],
           })
@@ -224,9 +230,10 @@ ruby:
             a.hidden-xs href=@pod.or_github_url ="#{@pod.or_user}/#{@pod.or_repo}"
             a.visible-xs href=@pod.or_github_url GitHub Repo
 
-        a href="/pods/#{@pod.name}/quality"
-          li class="metadata quality_indicator quality_#{quality_group}"
-            == quality_indicator_svg
+        - if has_full_metadata
+          a href="/pods/#{@pod.name}/quality"
+            li class="metadata quality_indicator quality_#{quality_group}"
+              == quality_indicator_svg
     .clearfix
 
     - if is_deprecated
