@@ -79,3 +79,13 @@
   cocoapods_bio: Obsessive about performance.
   twitter_profile_url: https://pbs.twimg.com/profile_images/608698669626318848/2297lZtt.jpg
   twitter_banner_url: http://pbs.twimg.com/profile_banners/2352949808/1446566000/web
+- name: Ben Asher
+  twitter_username: benasher44
+  cocoapods_bio: Fixing Frameworks.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/776261169854107653/SD0e698_.jpg
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/3268483618/1473910819/web
+- name: Marius Rackwitz
+  twitter_username: mrackwitz
+  cocoapods_bio: Swift Pioneer.
+  twitter_profile_url: https://pbs.twimg.com/profile_images/731475154400870405/b_k5MeJK.jpg
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/902525377/1517664213/web

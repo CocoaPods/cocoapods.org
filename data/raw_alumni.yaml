@@ -67,3 +67,11 @@
 - name: 'Muhammed Yavuz Nuzumlalı'
   twitter_username: 'manuyavuz'
   cocoapods_bio: 'Obsessive about performance.'
+
+- name: 'Ben Asher'
+  twitter_username: 'benasher44'
+  cocoapods_bio: 'Fixing Frameworks.'
+
+- name: 'Marius Rackwitz'
+  twitter_username: 'mrackwitz'
+  cocoapods_bio: 'Swift Pioneer.'

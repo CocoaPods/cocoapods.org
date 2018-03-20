@@ -1,9 +1,5 @@
 ---
 
-- name: 'Ben Asher'
-  twitter_username: 'benasher44'
-  cocoapods_bio: 'Fixing Frameworks.'
-
 - name: 'Danielle Tomlinson'
   twitter_username: 'dantoml'
   cocoapods_bio: 'Keeping the ship shipping.'
@@ -16,10 +12,10 @@
   twitter_username: 'segiddins'
   cocoapods_bio: "Patch Master & Bundler of Joy."
 
+- name: 'Paul Beusterien'
+  twitter_username: 'paulbeusterien'
+  cocoapods_bio: "Transitively Transforming."
+
 - name: 'orta'
   twitter_username: 'orta'
   cocoapods_bio: "Design Dictator."
-
-- name: 'Marius Rackwitz'
-  twitter_username: 'mrackwitz'
-  cocoapods_bio: 'Swift Pioneer.'
