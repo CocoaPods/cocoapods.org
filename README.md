@@ -1,11 +1,5 @@
 # cocoapods.org
 
-## Getting Help
-
-If you're here about your README on CocoaPods.org - first try running the command: 
-
-`curl http://199.19.84.242:4567/redeploy/[MyPod]/latest`, and give it ~5-10m depending on how big your project's repo is.
-
 ## Setup
 
 Ideally this website should be run through a sub-folder of [Strata](https://github.com/CocoaPods/Strata).
