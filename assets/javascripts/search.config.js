@@ -25,35 +25,30 @@ $(window).ready(function() {
   // Tracking the search results.
   //
   var trackAnalytics = function(data, query) {
-    var total = data.total;
-    if (total > 0) {
-      _gaq.push(['_trackEvent', 'search', 'with results', query, total]);
-    } else {
-      _gaq.push(['_trackEvent', 'search', 'not found', query, 0]);
-    }
+    // NOOP
   }
 
   // Tracking platform selection.
   //
   var trackPlatformSelection = function() {
-    _gaq.push(['_trackEvent', 'platform', 'switch platform', platformSelect.find('input:checked').val(), 1]);
+    // NOOP
   }
 
   // Tracking language
   var trackLanguageSelection = function() {
-    _gaq.push(['_trackEvent', 'language', 'switch language', languageSelect.find('input:checked').val(), 1]);
+    // NOOP
   }
 
   // Tracking category/categories selection.
   //
   var trackAllocationSelection = function(category, count) {
-    _gaq.push(['_trackEvent', 'allocation', 'filter categories', category, count]);
+    // NOOP
   }
 
   // Tracking category/categories selection.
   //
   var trackResultLinkSelection = function(href) {
-    _gaq.push(['_trackEvent', 'resultlink', 'click outbound link', href, 1]);
+    // NOOP
   }
 
   // Sets the checkbox labels correctly.
@@ -206,9 +201,6 @@ $(window).ready(function() {
       result.addClass("is-expanded")
       result.removeClass("loading")
       result.children(".expanded").children(".content")[0].innerHTML = html
-
-      // Track the page views for inline pods
-      _gaq.push(['_trackPageview'], "/pods/" + result.data("pod-name"));
 
       /// This can be found in application.js
       checkForAppSight(result.data("pod-name"))
@@ -693,7 +685,6 @@ $(window).ready(function() {
   //
   searchInput.on('input', function(e) {
     if ('' == this.value) {
-      _gaq.push(['_trackEvent', 'clear']);
       resetSearchInterface();
     } else {
       prepareSearchInterfaceForResults();
