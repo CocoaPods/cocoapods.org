@@ -3,10 +3,10 @@
   :commits: 4441
   :avatar_url: https://avatars0.githubusercontent.com/u/1048705?v=4
 - :name: segiddins
-  :commits: 3981
+  :commits: 4008
   :avatar_url: https://avatars1.githubusercontent.com/u/1946610?v=4
 - :name: orta
-  :commits: 3258
+  :commits: 3268
   :avatar_url: https://avatars2.githubusercontent.com/u/49038?v=4
 - :name: alloy
   :commits: 3039
@@ -21,10 +21,10 @@
   :commits: 737
   :avatar_url: https://avatars0.githubusercontent.com/u/118992?v=4
 - :name: DanToml
-  :commits: 487
+  :commits: 489
   :avatar_url: https://avatars2.githubusercontent.com/u/1330683?v=4
 - :name: dnkoutso
-  :commits: 424
+  :commits: 426
   :avatar_url: https://avatars2.githubusercontent.com/u/310370?v=4
 - :name: AliSoftware
   :commits: 288
@@ -68,12 +68,12 @@
 - :name: emkosz
   :commits: 46
   :avatar_url: https://avatars0.githubusercontent.com/u/10301979?v=4
+- :name: greysteil
+  :commits: 46
+  :avatar_url: https://avatars0.githubusercontent.com/u/1144873?v=4
 - :name: siuying
   :commits: 46
   :avatar_url: https://avatars3.githubusercontent.com/u/8608?v=4
-- :name: greysteil
-  :commits: 45
-  :avatar_url: https://avatars0.githubusercontent.com/u/1144873?v=4
 - :name: marcelofabri
   :commits: 39
   :avatar_url: https://avatars1.githubusercontent.com/u/833072?v=4
@@ -86,6 +86,9 @@
 - :name: jasl8r
   :commits: 35
   :avatar_url: https://avatars3.githubusercontent.com/u/161671?v=4
+- :name: manicmaniac
+  :commits: 32
+  :avatar_url: https://avatars1.githubusercontent.com/u/1672393?v=4
 - :name: kommen
   :commits: 30
   :avatar_url: https://avatars3.githubusercontent.com/u/258?v=4
@@ -197,9 +200,6 @@
 - :name: luisdelarosa
   :commits: 13
   :avatar_url: https://avatars1.githubusercontent.com/u/12726?v=4
-- :name: manicmaniac
-  :commits: 13
-  :avatar_url: https://avatars1.githubusercontent.com/u/1672393?v=4
 - :name: palewar
   :commits: 13
   :avatar_url: https://avatars3.githubusercontent.com/u/1754538?v=4
@@ -623,12 +623,18 @@
 - :name: bamx23
   :commits: 2
   :avatar_url: https://avatars1.githubusercontent.com/u/443972?v=4
+- :name: BasThomas
+  :commits: 2
+  :avatar_url: https://avatars0.githubusercontent.com/u/4190298?v=4
 - :name: bbodenmiller
   :commits: 2
   :avatar_url: https://avatars0.githubusercontent.com/u/1192780?v=4
 - :name: bes
   :commits: 2
   :avatar_url: https://avatars2.githubusercontent.com/u/85731?v=4
+- :name: bradphilips
+  :commits: 2
+  :avatar_url: https://avatars2.githubusercontent.com/u/1027864?v=4
 - :name: bunchjesse
   :commits: 2
   :avatar_url: https://avatars2.githubusercontent.com/u/788291?v=4
@@ -1034,6 +1040,9 @@
 - :name: dulacp
   :commits: 1
   :avatar_url: https://avatars1.githubusercontent.com/u/328718?v=4
+- :name: einfallstoll
+  :commits: 1
+  :avatar_url: https://avatars3.githubusercontent.com/u/619048?v=4
 - :name: Erikmitk
   :commits: 1
   :avatar_url: https://avatars2.githubusercontent.com/u/180686?v=4
