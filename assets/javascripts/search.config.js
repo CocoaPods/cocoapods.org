@@ -127,10 +127,10 @@ $(window).ready(function() {
   };
 
   var resultsSearchInterface = function() {
-    platformSelect.show();
-    languageSelect.show();
-    sortingSelect.show();
-    allocationSelect.show();
+    // platformSelect.show();
+    // languageSelect.show();
+    // sortingSelect.show();
+    // allocationSelect.show();
   };
 
   var removePlatform = function(query) {
@@ -257,9 +257,8 @@ $(window).ready(function() {
     //   return '<a href="javascript:pickyClient.insert(\'' + name.replace(/[']/, "\\\\\'") + '\')">' + name + '</a>';
     // });
 
-    entry.docs_link = entry.documentation_url || 'http://cocoadocs.org/docsets/' + entry.id + '/' + entry.version;
-    entry.site_link = entry.link || extractRepoFromSource(entry)
-    entry.spec_link = 'https://github.com/CocoaPods/Specs/tree/master/Specs/' + entry.id + '/' + entry.version + '/' + entry.id + '.podspec.json'
+    entry.link = "https://cocoapods.org/pods/" + entry.name 
+    entry.site_link = entry.homepage || extractRepoFromSource(entry)
 
     // If the version string has any non-numeric characters (pre-release or build metadata flags),
     // the clipboard copy prompt should use the raw version number.
@@ -693,28 +692,27 @@ $(window).ready(function() {
       // document.body.append(script)
 
       var client = algoliasearch('WBHHAMHYNM', '4f7544ca8701f9bf2a4e55daff1b09e9');
-      var index = client.initIndex('cocoapods');    
+      var index = client.initIndex('cocoapods');
       index.search(this.value, function(err, content) {
         if (err) {
           console.log(err.message);
           console.log(err.debugData);
           return;
         }
-        console.log(content.hits);
+        if (0 == content.nbHits) {
+          // noResultsSearchInterface(this.value);
+          $(".results").hide()
+          return
+        } 
+
+          resultsSearchInterface();
+          const liStrings = content.hits.map(entry => render(entry));
+          $(".results").show()
+          $(".results").empty()
+          $(".results").append($("<ol class='results'/>"))
+          $(".results ol.results").append(liStrings)
+
       });
-
-      // var client = algoliasearch('WBHHAMHYNM', "ec568febb45df0876ab2b266a382af32");
-      // var index = client.initIndex('cocoapods');
-      // index.search(this.value, function(err, content) {
-      //   debugger
-      //   if (err) {
-      //     console.log(err.message);
-      //     console.log(err.debugData);
-      //     return;
-      //   }
-      //   console.log("Success")
-      //   console.log(content.hits);
-
       prepareSearchInterfaceForResults();
     }
   });
