@@ -224,7 +224,7 @@ class App < Sinatra::Base
 
   get "/javascripts/:file.js" do
     static_content_cache_headers
-    content_type "text/javascript"
+    content_type "application/javascript"
     settings.assets["#{deasset(params[:file])}.js"]
   end
 
