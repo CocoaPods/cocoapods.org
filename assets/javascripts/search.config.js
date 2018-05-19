@@ -706,7 +706,7 @@ $(window).ready(function() {
         } 
 
           resultsSearchInterface();
-          const liStrings = content.hits.map(entry => render(entry));
+          const liStrings = content.hits.map(function (entry) { return render(entry) });
           $(".results").show()
           $(".results").empty()
           $(".results").append($("<ol class='results'/>"))
