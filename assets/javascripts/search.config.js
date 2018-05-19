@@ -1,8 +1,8 @@
 $(window).ready(function() {
   // The search uses the convenience API on search.cocoapods.org.
   //
-  var domain = 'https://aws-search.cocoapods.org';
-  // var domain = 'http://localhost:8080';
+  // var domain = 'https://aws-search.cocoapods.org';
+  var domain = 'http://localhost:8080';
 
   var searchURL = domain + '/api/v1/pods.picky.hash.json';
   var noResultsURL = domain + '/no_results.json';
@@ -17,8 +17,6 @@ $(window).ready(function() {
   var sortingSelect =  $("#search_results div.sorting");
   var languageRemoverRegexp = /\b(lang\:\w+\s?)+/;
   var languageSelect = $("#search_results div.language");
-
-
   var allocationSelect = $('#search_results div.allocations');
   var resultsContainer = $('#results_container');
 
@@ -314,372 +312,373 @@ $(window).ready(function() {
     return true;
   };
 
-  pickyClient = new PickyClient({
-    full: searchURL,
-    fullResults: 20,
+  // pickyClient = new PickyClient({
+  //   full: searchURL,
+  //   fullResults: 20,
 
-    // The live query does a full query.
-    //
-    live: searchURL,
-    liveResults: 20,
-    liveRendered: true, // Experimental: Render live results as if they were full ones.
-    liveSearchInterval: 166, // Time between keystrokes before it sends the query.
-    maxSuggestions: 5, // Bootstrap currently hides .hidden class using !important, which blocks Picky's behaviour :( (we now use .onrequest)
-    alwaysShowResults: true, // Always show results, even when Picky does not know what categories the user wants.
-    alwaysShowSelection: true, // Always show the selection of what your search means, even when Picky would not show it normally.
-    wrapResults: '<ol class="results"></ol>', // Always wrap the results in an ol.results.
+  //   // The live query does a full query.
+  //   //
+  //   live: searchURL,
+  //   liveResults: 20,
+  //   liveRendered: true, // Experimental: Render live results as if they were full ones.
+  //   liveSearchInterval: 166, // Time between keystrokes before it sends the query.
+  //   maxSuggestions: 5, // Bootstrap currently hides .hidden class using !important, which blocks Picky's behaviour :( (we now use .onrequest)
+  //   alwaysShowResults: true, // Always show results, even when Picky does not know what categories the user wants.
+  //   alwaysShowSelection: true, // Always show the selection of what your search means, even when Picky would not show it normally.
+  //   wrapResults: '<ol class="results"></ol>', // Always wrap the results in an ol.results.
 
-    // Instead of enclosing the search in #picky,
-    // in the CocoaPods search we use #search.
-    //
-    enclosingSelector: '#search',
-    resultsSelector: '#search_results div.results',
-    noResultsSelector: '#results_container .no_results',
-    allocationsSelector: '#search_results div.allocations',
-    hiddenAllocations: '#search_results div.allocations .onrequest',
-    counterSelector: '#search_results span.amount',
-    moreSelector: '#search_results .allocations .more',
+  //   // Instead of enclosing the search in #picky,
+  //   // in the CocoaPods search we use #search.
+  //   //
+  //   enclosingSelector: '#search',
+  //   resultsSelector: '#search_results div.results',
+  //   noResultsSelector: '#results_container .no_results',
+  //   allocationsSelector: '#search_results div.allocations',
+  //   hiddenAllocations: '#search_results div.allocations .onrequest',
+  //   counterSelector: '#search_results span.amount',
+  //   moreSelector: '#search_results .allocations .more',
 
-    // Before a query is inserted into the search field
-    // we clean it of any platform terms.
-    //
-    // And if there are any platform /language terms, we select
-    // the right platform selector.
-    //
-    beforeInsert: function(query) {
-      if ('' != query) {
-        prepareSearchInterfaceForResults();
+  //   // Before a query is inserted into the search field
+  //   // we clean it of any platform terms.
+  //   //
+  //   // And if there are any platform /language terms, we select
+  //   // the right platform selector.
+  //   //
+  //   beforeInsert: function(query) {
+  //     if ('' != query) {
+  //       prepareSearchInterfaceForResults();
 
-        var platforms = query.match(platformRemoverRegexp);
-        if (platforms) {
-          var chosenPlatform = platformSelect.find('input[value="' + platforms[0].replace(/\s+$/g, '') + '"]');
-          chosenPlatform.attr('checked', 'checked');
-          platformSelect.find('label').removeClass('selected');
-          platformSelect.find('input:checked + label').addClass('selected');
-        }
-        query = removePlatform(query);
+  //       var platforms = query.match(platformRemoverRegexp);
+  //       if (platforms) {
+  //         var chosenPlatform = platformSelect.find('input[value="' + platforms[0].replace(/\s+$/g, '') + '"]');
+  //         chosenPlatform.attr('checked', 'checked');
+  //         platformSelect.find('label').removeClass('selected');
+  //         platformSelect.find('input:checked + label').addClass('selected');
+  //       }
+  //       query = removePlatform(query);
 
-        var language = query.match(languageRemoverRegexp)
-        if (language) {
-          var chosenLanguage = languageSelect.find('input[value="' + language[0].replace(/\s+$/g, '') + '"]');
-          chosenLanguage.attr('checked', 'checked');
-          languageSelect.find('label').removeClass('selected');
-          languageSelect.find('input:checked + label').addClass('selected');
-        }
-        return removeLanguage(query);
-      }
+  //       var language = query.match(languageRemoverRegexp)
+  //       if (language) {
+  //         var chosenLanguage = languageSelect.find('input[value="' + language[0].replace(/\s+$/g, '') + '"]');
+  //         chosenLanguage.attr('checked', 'checked');
+  //         languageSelect.find('label').removeClass('selected');
+  //         languageSelect.find('input:checked + label').addClass('selected');
+  //       }
+  //       return removeLanguage(query);
+  //     }
 
-    },
-    // Before a query is run, we add a few params.
-    //
-    beforeParams: function(params) {
-      params['sort'] = sortingSelect.find('> a').attr("data-sorting");
-      return params;
-    },
-    // Before Picky sends any data to the server.
-    //
-    // Adds the platform modifier to it if it isn't there already.
-    // Removes it if it is.
-    //
-    // Before Picky sends any data to the server.
-    //
-    // Adds the platform modifier to it if it isn't there already.
-    // Removes it if it is.
-    //
-    before: function(query, params) {
-      // We don't add the platform if it is empty (still saved in history as empty, though).
-      //
-      if (query == '') { return ''; }
+  //   },
+  //   // Before a query is run, we add a few params.
+  //   //
+  //   beforeParams: function(params) {
+  //     params['sort'] = sortingSelect.find('> a').attr("data-sorting");
+  //     return params;
+  //   },
+  //   // Before Picky sends any data to the server.
+  //   //
+  //   // Adds the platform modifier to it if it isn't there already.
+  //   // Removes it if it is.
+  //   //
+  //   // Before Picky sends any data to the server.
+  //   //
+  //   // Adds the platform modifier to it if it isn't there already.
+  //   // Removes it if it is.
+  //   //
+  //   before: function(query, params) {
+  //     // We don't add the platform if it is empty (still saved in history as empty, though).
+  //     //
+  //     if (query == '') { return ''; }
 
-      // Otherwise we add in the platform.
-      //
-      query = query.replace(platformRemoverRegexp, '');
-      var platformModifier = platformSelect.find("input:checked").val();
-      if (platformModifier !== undefined && platformModifier != '') {
-        query = platformModifier + ' ' + query;
-      }
+  //     // Otherwise we add in the platform.
+  //     //
+  //     query = query.replace(platformRemoverRegexp, '');
+  //     var platformModifier = platformSelect.find("input:checked").val();
+  //     if (platformModifier !== undefined && platformModifier != '') {
+  //       query = platformModifier + ' ' + query;
+  //     }
 
-      query = query.replace(languageRemoverRegexp, '');
-      var languageModifier = languageSelect.find("input:checked").val();
-      if (languageModifier !== undefined && languageModifier != '') {
-        query = languageModifier + ' ' + query;
-      }
+  //     query = query.replace(languageRemoverRegexp, '');
+  //     var languageModifier = languageSelect.find("input:checked").val();
+  //     if (languageModifier !== undefined && languageModifier != '') {
+  //       query = languageModifier + ' ' + query;
+  //     }
 
-      // We remember the query if it hasn't just run.
-      //
-      if (!addMostRecentQuery(query)) {
-        // It wasn't added (we just sent it off), so stop the query.
-        return;
-      }
+  //     // We remember the query if it hasn't just run.
+  //     //
+  //     if (!addMostRecentQuery(query)) {
+  //       // It wasn't added (we just sent it off), so stop the query.
+  //       return;
+  //     }
 
-      return query;
-    },
-    success: function(data, query) {
-      // Track query for analytics.
-      //
-      trackAnalytics(data, query);
+  //     return query;
+  //   },
+  //   success: function(data, query) {
+  //     // Track query for analytics.
+  //     //
+  //     trackAnalytics(data, query);
 
-      // If somebody cleared the search input, do not show any results
-      // arriving "late" (well, slower than the person can press backspace).
-      //
-      if ('' == searchInput.val()) {
-        resetSearchInterface();
-        return false;
-      }
+  //     // If somebody cleared the search input, do not show any results
+  //     // arriving "late" (well, slower than the person can press backspace).
+  //     //
+  //     if ('' == searchInput.val()) {
+  //       resetSearchInterface();
+  //       return false;
+  //     }
 
-      // If a newer query has already been
-      // shown, then do not show this query.
-      //
-      if (tooLateResponse(query)) {
-        return false;
-      }
+  //     // If a newer query has already been
+  //     // shown, then do not show this query.
+  //     //
+  //     if (tooLateResponse(query)) {
+  //       return false;
+  //     }
 
-      // If no results are found.
-      //
-      if (0 == data.total) {
-        noResultsSearchInterface(query);
-      } else {
-        resultsSearchInterface();
-      }
+  //     // If no results are found.
+  //     //
+  //     if (0 == data.total) {
+  //       noResultsSearchInterface(query);
+  //     } else {
+  //       resultsSearchInterface();
+  //     }
 
-      var allocations = data.allocations;
-      allocations.each(function(i, allocation) {
-        allocation.entries = allocation.entries.map(function(i, entry) {
-          return render(entry);
-        });
-      });
+  //     var allocations = data.allocations;
+  //     allocations.each(function(i, allocation) {
+  //       allocation.entries = allocation.entries.map(function(i, entry) {
+  //         return render(entry);
+  //       });
+  //     });
 
-      return data;
-    },
-    // After Picky has handled the data and updated the view.
-    //
-    after: function(data) {
+  //     return data;
+  //   },
+  //   // After Picky has handled the data and updated the view.
+  //   //
+  //   after: function(data) {
 
-      // Install Popovers for the copy to clipboard
-      // depending on whether ZeroClipboard succeeds
-      $copy_to_clipboard = $('ol.results img.copy')
+  //     // Install Popovers for the copy to clipboard
+  //     // depending on whether ZeroClipboard succeeds
+  //     $copy_to_clipboard = $('ol.results img.copy')
 
-      var clip = new ZeroClipboard(
-        $copy_to_clipboard, {
-          moviePath: "./flashes/ZeroClipboard.swf",
-          forceHandCursor: true
-        }
-      );
+  //     var clip = new ZeroClipboard(
+  //       $copy_to_clipboard, {
+  //         moviePath: "./flashes/ZeroClipboard.swf",
+  //         forceHandCursor: true
+  //       }
+  //     );
 
-      clip.on( 'noflash', function ( client, args ) {
+  //     clip.on( 'noflash', function ( client, args ) {
 
-        // provide a recursive wait method
-        // that checks for the hover on the popover/clipboard
-        // before hiding so you can select text
+  //       // provide a recursive wait method
+  //       // that checks for the hover on the popover/clipboard
+  //       // before hiding so you can select text
 
-        function closePopoverForNode(node){
-          setTimeout(function() {
-            if (!$(node).is(':hover') && !$(".popover:hover").length) {
-              $(node).popover("hide")
-            } else {
-              closePopoverForNode(node)
-            }
-          }, 500);
-        }
+  //       function closePopoverForNode(node){
+  //         setTimeout(function() {
+  //           if (!$(node).is(':hover') && !$(".popover:hover").length) {
+  //             $(node).popover("hide")
+  //           } else {
+  //             closePopoverForNode(node)
+  //           }
+  //         }, 500);
+  //       }
 
-        // With no flash you should be able to select the text
-        // in the popover
+  //       // With no flash you should be able to select the text
+  //       // in the popover
 
-        $copy_to_clipboard.popover({
-          trigger: "manual",
-          container: "body"
+  //       $copy_to_clipboard.popover({
+  //         trigger: "manual",
+  //         container: "body"
 
-        }).on("click", function(e) {
-          e.preventDefault();
+  //       }).on("click", function(e) {
+  //         e.preventDefault();
 
-        }).on("mouseenter", function() {
-          $(this).popover("show");
-          $(".popover input").select()
+  //       }).on("mouseenter", function() {
+  //         $(this).popover("show");
+  //         $(".popover input").select()
 
-        }).on("mouseleave", function() {
-          closePopoverForNode(this)
-        });
-      });
+  //       }).on("mouseleave", function() {
+  //         closePopoverForNode(this)
+  //       });
+  //     });
 
-      // When Flash works, just do a normal popover
-      clip.on("load", function(client) {
+  //     // When Flash works, just do a normal popover
+  //     clip.on("load", function(client) {
 
-        client.on( "complete", function(client, args) {
-          $("h4.has-flash").text("Saved to clipboard");
-          $(".popover").addClass("saved")
-        });
+  //       client.on( "complete", function(client, args) {
+  //         $("h4.has-flash").text("Saved to clipboard");
+  //         $(".popover").addClass("saved")
+  //       });
 
-        clip.on( 'mouseover', function ( client, args ) {
-          $(this).popover('show')
-        });
+  //       clip.on( 'mouseover', function ( client, args ) {
+  //         $(this).popover('show')
+  //       });
 
-        clip.on( 'mouseout', function ( client, args ) {
-          $(this).popover('hide')
-        });
-      });
+  //       clip.on( 'mouseout', function ( client, args ) {
+  //         $(this).popover('hide')
+  //       });
+  //     });
 
-      // Install tracking on the allocation selection.
-      //
-      allocationSelect.find('li').on('click', function(event) {
-        var li = $(event.currentTarget);
-        trackAllocationSelection(li.find('.text').text(), li.find('.count').text());
-        // Rest is handled in Picky JS.
-      });
+  //     // Install tracking on the allocation selection.
+  //     //
+  //     allocationSelect.find('li').on('click', function(event) {
+  //       var li = $(event.currentTarget);
+  //       trackAllocationSelection(li.find('.text').text(), li.find('.count').text());
+  //       // Rest is handled in Picky JS.
+  //     });
 
-      // Install tracking on each result link.
-      //
-      $('ol.results').find('a').on('click', function(event) {
-        trackResultLinkSelection(event.currentTarget.href);
-      });
+  //     // Install tracking on each result link.
+  //     //
+  //     $('ol.results').find('a').on('click', function(event) {
+  //       trackResultLinkSelection(event.currentTarget.href);
+  //     });
 
-      $('ol.results li').on('click', function(event) {
-        var target = $(event.target)
-        if (target.is("li.result") == false) {
-          target = $(event.target).parents("li.result")
-        }
+  //     $('ol.results li').on('click', function(event) {
+  //       var target = $(event.target)
+  //       if (target.is("li.result") == false) {
+  //         target = $(event.target).parents("li.result")
+  //       }
 
-        // Allow new tabs
-        if (event.metaKey == true) { return true }
-        // Support middle clicking
-        if (event.which == 2) { return true }
-        // Don't run expansion multiple times
-        if (target.hasClass("is-expanded")) { return true }
-        // If it's deprecated, you have to tap "Expand" otherwise we allow
-        // for clicking on the inline links
-        if (target.data("deprecated") == true && $(event.target).text() != "Expand") { return true }
-        // For results which don't need expansion
-        if (target.data("pod-name") == undefined) { return true }
+  //       // Allow new tabs
+  //       if (event.metaKey == true) { return true }
+  //       // Support middle clicking
+  //       if (event.which == 2) { return true }
+  //       // Don't run expansion multiple times
+  //       if (target.hasClass("is-expanded")) { return true }
+  //       // If it's deprecated, you have to tap "Expand" otherwise we allow
+  //       // for clicking on the inline links
+  //       if (target.data("deprecated") == true && $(event.target).text() != "Expand") { return true }
+  //       // For results which don't need expansion
+  //       if (target.data("pod-name") == undefined) { return true }
 
-        expandSearchResult(target)
-        event.stopPropagation()
-        return false
-      });
-    },
+  //       expandSearchResult(target)
+  //       event.stopPropagation()
+  //       return false
+  //     });
+  //   },
 
-    // This is used to generate the correct query strings, localized. E.g. "subject:war".
-    // Note: If you don't give these, the field identifier given in the Picky server is used.
-    //
-    qualifiers: {
-      en:{
-        dependencies: 'uses',
-        platform: 'on',
-        language: 'lang'
-      }
-    },
+  //   // This is used to generate the correct query strings, localized. E.g. "subject:war".
+  //   // Note: If you don't give these, the field identifier given in the Picky server is used.
+  //   //
+  //   qualifiers: {
+  //     en:{
+  //       dependencies: 'uses',
+  //       platform: 'on',
+  //       language: 'lang'
+  //     }
+  //   },
 
-    // Use this to group the choices (those are used when Picky needs more feedback).
-    // If a category is missing, it is appended in a virtual group at the end.
-    // Optional. Default is [].
-    //
-    // We group platform explicitly, so it is always positioned at
-    // the start of the explanation of the choices (also, we can
-    // simply not show it).
-    //
-    groups: [
-      ['platform'],
-      ['language']
-    ],
+  //   // Use this to group the choices (those are used when Picky needs more feedback).
+  //   // If a category is missing, it is appended in a virtual group at the end.
+  //   // Optional. Default is [].
+  //   //
+  //   // We group platform explicitly, so it is always positioned at
+  //   // the start of the explanation of the choices (also, we can
+  //   // simply not show it).
+  //   //
+  //   groups: [
+  //     ['platform'],
+  //     ['language']
+  //   ],
 
-    // This is used for formatting inside the choice groups.
-    //
-    // Use %n$s, where n is the position of the category in the key.
-    // Optional. Default is {}.
-    //
-    choices: {
-      en: {
-        'platform': '', // platform is simply not shown.
-        'language': '', // language is simply not shown.
+  //   // This is used for formatting inside the choice groups.
+  //   //
+  //   // Use %n$s, where n is the position of the category in the key.
+  //   // Optional. Default is {}.
+  //   //
+  //   choices: {
+  //     en: {
+  //       'platform': '', // platform is simply not shown.
+  //       'language': '', // language is simply not shown.
 
-        'name': 'name',
-        'author': 'author',
-        'summary': 'summary',
-        'dependencies': 'dependency',
-        'tags': 'tag',
-        'version': 'version',
-        'subspecs': 'subspec',
-        'author,name': 'author+name',
-        'name,author': 'name+author',
-        'tags,name': 'tag+name',
-        'name,tags': 'name+tag',
-        'version,name': 'version+name',
-        'name,version': 'name+version',
-        'name,dependencies': 'name+dependency',
-        'dependencies,name': 'dependency+name',
-        'author,dependencies': 'author+dependency',
-        'dependencies,author': 'dependency+author',
-        'dependencies,version': 'dependency+version',
-        'version,dependencies': 'version+dependency',
-        'author,version': 'author+version',
-        'version,author': 'version+author',
-        'summary,version': 'summary+version',
-        'version,summary': 'version+summary',
-        'tags,summary': 'summary+name',
-        'summary,tags': 'name+summary',
-        'summary,name': 'summary+name',
-        'name,summary': 'name+summary',
-        'summary,author': 'summary+author',
-        'author,summary': 'author+summary',
-        'summary,dependencies': 'summary+dependency',
-        'dependencies,summary': 'dependency+summary',
-        'name,subspecs': 'name+subspec',
-        'subspecs,name': 'subspec+name',
-        'dependencies,subspecs': 'dependency+subspec',
-        'subspecs,dependencies': 'subspec+dependency'
-      }
-    },
+  //       'name': 'name',
+  //       'author': 'author',
+  //       'summary': 'summary',
+  //       'dependencies': 'dependency',
+  //       'tags': 'tag',
+  //       'version': 'version',
+  //       'subspecs': 'subspec',
+  //       'author,name': 'author+name',
+  //       'name,author': 'name+author',
+  //       'tags,name': 'tag+name',
+  //       'name,tags': 'name+tag',
+  //       'version,name': 'version+name',
+  //       'name,version': 'name+version',
+  //       'name,dependencies': 'name+dependency',
+  //       'dependencies,name': 'dependency+name',
+  //       'author,dependencies': 'author+dependency',
+  //       'dependencies,author': 'dependency+author',
+  //       'dependencies,version': 'dependency+version',
+  //       'version,dependencies': 'version+dependency',
+  //       'author,version': 'author+version',
+  //       'version,author': 'version+author',
+  //       'summary,version': 'summary+version',
+  //       'version,summary': 'version+summary',
+  //       'tags,summary': 'summary+name',
+  //       'summary,tags': 'name+summary',
+  //       'summary,name': 'summary+name',
+  //       'name,summary': 'name+summary',
+  //       'summary,author': 'summary+author',
+  //       'author,summary': 'author+summary',
+  //       'summary,dependencies': 'summary+dependency',
+  //       'dependencies,summary': 'dependency+summary',
+  //       'name,subspecs': 'name+subspec',
+  //       'subspecs,name': 'subspec+name',
+  //       'dependencies,subspecs': 'dependency+subspec',
+  //       'subspecs,dependencies': 'subspec+dependency'
+  //     }
+  //   },
 
-    // This is used to explain the preceding word in the suggestion text (if it
-    // has not yet been defined by the choices above), localized. E.g. "Peter (author)".
-    // Optional. Default are the field identifiers from the Picky server.
-    //
-    explanations: {
-      en: {
-        author: 'written by',
-        versions: 'on version',
-        dependencies: 'using',
-        name: 'named',
-        // platform: 'on', See below.
-        // language: 'in', See below.
-        summary: 'with summary',
-        tags: 'tagged as',
-        subspecs: 'with subspec'
-      }
-    },
-    explanationDelimiter: {
-      en: 'and'
-    },
-    explanationTokenCallback: function(category, tokens) {
-      var length = tokens.length;
+  //   // This is used to explain the preceding word in the suggestion text (if it
+  //   // has not yet been defined by the choices above), localized. E.g. "Peter (author)".
+  //   // Optional. Default are the field identifiers from the Picky server.
+  //   //
+  //   explanations: {
+  //     en: {
+  //       author: 'written by',
+  //       versions: 'on version',
+  //       dependencies: 'using',
+  //       name: 'named',
+  //       // platform: 'on', See below.
+  //       // language: 'in', See below.
+  //       summary: 'with summary',
+  //       tags: 'tagged as',
+  //       subspecs: 'with subspec'
+  //     }
+  //   },
+  //   explanationDelimiter: {
+  //     en: 'and'
+  //   },
+  //   explanationTokenCallback: function(category, tokens) {
+  //     var length = tokens.length;
 
-      // Special case to clarify when both platforms are AND-ed.
-      //
-      if (category == 'platform') {
-        if (length == 2) {
-          return '<strong>on</strong> both ' + tokens.join(' & ');
-        } else {
-          return 'only <strong>on</strong> ' + tokens[0];
-        }
-      } else if (category == 'language') {
-        if (length == 2) {
-          // This case yields no results, and only occurs if a user
-          // enters text explicitly.
-          return '(both ' + tokens.join(' & ') + ')';
-        } else {
-          return '– ' + tokens[0] + ' only,';
-        }
-      }
-    }
-    // explanationTokenDelimiter: {
-    //   en: {
-    //     platform: ' & '
-    //   }
-    // }
-  });
-  pickyClient.resetFiltersAndInsert = function(query) {
-    selectDefaultPlatform();
-    selectDefaultLanguage();
-    this.insert(query);
-  };
+  //     // Special case to clarify when both platforms are AND-ed.
+  //     //
+  //     if (category == 'platform') {
+  //       if (length == 2) {
+  //         return '<strong>on</strong> both ' + tokens.join(' & ');
+  //       } else {
+  //         return 'only <strong>on</strong> ' + tokens[0];
+  //       }
+  //     } else if (category == 'language') {
+  //       if (length == 2) {
+  //         // This case yields no results, and only occurs if a user
+  //         // enters text explicitly.
+  //         return '(both ' + tokens.join(' & ') + ')';
+  //       } else {
+  //         return '– ' + tokens[0] + ' only,';
+  //       }
+  //     }
+  //   }
+  //   // explanationTokenDelimiter: {
+  //   //   en: {
+  //   //     platform: ' & '
+  //   //   }
+  //   // }
+  // });
+  // pickyClient.resetFiltersAndInsert = function(query) {
+  //   selectDefaultPlatform();
+  //   selectDefaultLanguage();
+  //   this.insert(query);
+  // };
+
 
   // Reset the search if it has been cleared and track when it has.
   //
@@ -687,6 +686,35 @@ $(window).ready(function() {
     if ('' == this.value) {
       resetSearchInterface();
     } else {
+
+      // var script=document.createElement('script');
+      // script.type='text/javascript';
+      // script.src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js";
+      // document.body.append(script)
+
+      var client = algoliasearch('WBHHAMHYNM', '4f7544ca8701f9bf2a4e55daff1b09e9');
+      var index = client.initIndex('cocoapods');    
+      index.search(this.value, function(err, content) {
+        if (err) {
+          console.log(err.message);
+          console.log(err.debugData);
+          return;
+        }
+        console.log(content.hits);
+      });
+
+      // var client = algoliasearch('WBHHAMHYNM', "ec568febb45df0876ab2b266a382af32");
+      // var index = client.initIndex('cocoapods');
+      // index.search(this.value, function(err, content) {
+      //   debugger
+      //   if (err) {
+      //     console.log(err.message);
+      //     console.log(err.debugData);
+      //     return;
+      //   }
+      //   console.log("Success")
+      //   console.log(content.hits);
+
       prepareSearchInterfaceForResults();
     }
   });
@@ -791,7 +819,7 @@ $(window).ready(function() {
   // Initially select the right platform.
   //
   if (window.initial_query != "") {
-    pickyClient.insertFromURL(window.initial_query);
+    // pickyClient.insertFromURL(window.initial_query);
   }
 
 });

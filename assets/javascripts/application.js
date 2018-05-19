@@ -5,7 +5,6 @@
 
 *= require history.min.js
 *= require history.adapter.jquery.min.js
-*= require picky.min.js
 *= require search.config.js
 *= require zero-clipboard.min.js
 *= require has_flash.js
