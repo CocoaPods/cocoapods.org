@@ -686,11 +686,6 @@ $(window).ready(function() {
       resetSearchInterface();
     } else {
 
-      // var script=document.createElement('script');
-      // script.type='text/javascript';
-      // script.src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js";
-      // document.body.append(script)
-
       var client = algoliasearch('WBHHAMHYNM', '4f7544ca8701f9bf2a4e55daff1b09e9');
       var index = client.initIndex('cocoapods');
       index.search(this.value, function(err, content) {
@@ -712,6 +707,8 @@ $(window).ready(function() {
           $(".results").append($("<ol class='results'/>"))
           $(".results ol.results").append(liStrings)
 
+          const algoliaURL = "https://www.algolia.com?utm_source=cocoapods.org&amp;utm_medium=website&amp;utm_content=cocoapods.org&amp;utm_campaign=poweredby"
+          $("div.results").append("<div class='by-algolia'>" + algoliaURL + " <a href=''><img src='/images/search-by-algolia-white.png'></a></div>")
       });
       prepareSearchInterfaceForResults();
     }
