@@ -708,7 +708,7 @@ $(window).ready(function() {
           $(".results ol.results").append(liStrings)
 
           const algoliaURL = "https://www.algolia.com?utm_source=cocoapods.org&amp;utm_medium=website&amp;utm_content=cocoapods.org&amp;utm_campaign=poweredby"
-          $("div.results").append("<div class='by-algolia'><a href='" + algoliaURL + "'><img src='/images/search-by-algolia-white.png'></a></div>")
+          $("div.results").append("<div class='by-algolia'><a href='" + algoliaURL + "'><img src='/images/search-by-algolia-white.svg'></a></div>")
       });
       prepareSearchInterfaceForResults();
     }

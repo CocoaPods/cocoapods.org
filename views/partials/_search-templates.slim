@@ -9,11 +9,11 @@ script id="search_result" type="text/html"
     .infos.col-sm-8.col-xs-12
       h3
         | {{#deprecated}}
-        span.deprecated {{name}}
+        span.deprecated {{{ _highlightResult.name.value }}}
         span.deprecated.version {{version}}
         | {{/deprecated}}
         | {{^deprecated}}
-        a href="{{link}}" {{name}}
+        a href="{{link}}" {{{ _highlightResult.name.value }}}
         span.version {{version}}
         | {{/deprecated}}
         / img.copy src=asset("./images/copy-to-clipboard.png") data-clipboard-text="pod '{{ name }}', '{{ clipboard_version }}'" data-toggle="popover" data-placement="top" data-container="body" data-html="true" data-content=popover_html
@@ -27,7 +27,7 @@ script id="search_result" type="text/html"
         | {{/deprecated_in_favor_of}}
       | {{/deprecated}}
       | {{^deprecated}}
-      p {{ summary }}
+      p {{{ _highlightResult.summary.value }}}
       | {{/deprecated}}
       / p.author {{ authors }}
 
@@ -44,11 +44,11 @@ script id="expandable_search_result" type="text/html"
       .compressed
         h3
           | {{#deprecated}}
-          span.deprecated {{ name }}
+          span.deprecated {{{ _highlightResult.name.value }}}
           span.deprecated.version {{ version }}
           | {{/deprecated}}
           | {{^deprecated}}
-          a href="{{ site_link }}" {{ name }}
+          a href="{{ site_link }}" {{{ _highlightResult.name.value }}}
           span.version {{ version }}
           | {{/deprecated}}
           / img.copy src=asset("./images/copy-to-clipboard.png") data-clipboard-text="pod '{{ name }}', '{{ clipboard_version }}'" data-toggle="popover" data-placement="top" data-container="body" data-html="true" data-content=popover_html
@@ -62,7 +62,7 @@ script id="expandable_search_result" type="text/html"
           | {{/deprecated_in_favor_of}}
         | {{/deprecated}}
         | {{^deprecated}}
-        p {{ summary }}
+        p {{{ _highlightResult.summary.value }}}
         | {{/deprecated}}
 
     .actions.col-sm-3.col-xs-12
