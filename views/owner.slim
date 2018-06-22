@@ -47,7 +47,7 @@ ruby:
     sum[:apps] = pod[:stat_metric][:app_total] + (sum[:apps] || 0)
     sum[:downloads] = pod[:stat_metric][:download_total] + (sum[:downloads] || 0)
     sum[:stars] = (pod[:github_pod_metric][:stargazers] || 0) + (sum[:stars] || 0)
-    sum[:loc] = pod[:cocoadocs_pod_metric][:total_lines_of_code] + (sum[:loc] || 0)
+    sum[:loc] = (pod[:cocoadocs_pod_metric][:total_lines_of_code] || 0) + (sum[:loc] || 0)
     sum
   end
 
