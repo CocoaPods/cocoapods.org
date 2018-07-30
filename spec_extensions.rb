@@ -30,7 +30,7 @@ module Pod
     end
 
     def or_web_documentation_url
-      documentation_url || or_cocoadocs_url
+      documentation_url || ""
     end
 
     def or_cocoapods_url
