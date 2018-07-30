@@ -193,7 +193,7 @@ ruby:
     ul.links
       li
         a href=@pod.or_podspec_url See Podspec
-      - if @pod.or_web_documentation_url != ""
+      - if @pod.or_web_documentation_url
         li
           a href=@pod.or_web_documentation_url Documentation
 
