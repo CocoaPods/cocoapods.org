@@ -231,10 +231,6 @@ ruby:
             a.hidden-xs href=@pod.or_github_url ="#{@pod.or_user}/#{@pod.or_repo}"
             a.visible-xs href=@pod.or_github_url GitHub Repo
 
-        - if has_full_metadata
-          a href="/pods/#{@pod.name}/quality"
-            li class="metadata quality_indicator quality_#{quality_group}"
-              == quality_indicator_svg
     .clearfix
 
     - if is_deprecated
