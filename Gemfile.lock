@@ -163,5 +163,8 @@ DEPENDENCIES
   uglifier (~> 2.7.2)
   yard (~> 0.8.6.2)
 
+RUBY VERSION
+   ruby 2.1.3p242
+
 BUNDLED WITH
-   1.15.4
+   1.17.3

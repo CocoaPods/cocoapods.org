@@ -129,7 +129,7 @@ task :generate_contributors do
   # loop through all projects getting a list of contributors
   repos.each do |repo|
     project = repo["name"]
-    next if project == "Specs" || repo["fork"]
+    next if project =~ /\A(Old-|CDN-|)Specs\z/ || repo["fork"]
 
     puts "Getting #{project}"
 
