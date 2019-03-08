@@ -140,6 +140,7 @@ task :generate_contributors do
 
     contributors.each do |contributor|
       name = contributor['login']
+      next if name.start_with?('dependabot')
       existing = all_contributors.detect { |e| e.name == name }
 
       if existing
