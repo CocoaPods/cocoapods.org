@@ -75,37 +75,37 @@ ruby:
     hr
 
     - if @stats && @stats["is_active"]
-      == section("Downloads",
-        { "Total" => @stats["download_total"],
-          "Week" => @stats["download_week"],
-          "Month" => @stats["download_month"],
-        })
+      / == section("Downloads",
+      /   { "Total" => @stats["download_total"],
+      /     "Week" => @stats["download_week"],
+      /     "Month" => @stats["download_month"],
+      /   })
 
-      == section("Installs", "inset", false,
-        { "Apps" => @stats["app_total"],
-          alt_spans("Apps Week", "Apps This Week") => @stats["app_week"],
-          "Pod Tries" => @stats["pod_try_total"],
-          alt_spans("Pod Tries Week", "Pod Tries This Week") => @stats["pod_try_week"],
-          "Test Targets" => @stats["tests_total"],
-          alt_spans("Test Week", "Tests This week") => @stats["tests_week"],
-          "Extensions" => @stats["extensions_total"],
-          alt_spans("Extensions Week", "Tests This week") => @stats["extensions_week"],
-          "Watch Apps" => @stats["watch_total"],
-          alt_spans("Watch Apps Week", "Watch Apps This week") => @stats["watch_week"],
-        })
+      / == section("Installs", "inset", false,
+      /   { "Apps" => @stats["app_total"],
+      /     alt_spans("Apps Week", "Apps This Week") => @stats["app_week"],
+      /     "Pod Tries" => @stats["pod_try_total"],
+      /     alt_spans("Pod Tries Week", "Pod Tries This Week") => @stats["pod_try_week"],
+      /     "Test Targets" => @stats["tests_total"],
+      /     alt_spans("Test Week", "Tests This week") => @stats["tests_week"],
+      /     "Extensions" => @stats["extensions_total"],
+      /     alt_spans("Extensions Week", "Tests This week") => @stats["extensions_week"],
+      /     "Watch Apps" => @stats["watch_total"],
+      /     alt_spans("Watch Apps Week", "Watch Apps This week") => @stats["watch_week"],
+      /   })
 
-      sub powered by <a href="https://segment.com">Segment</a>
-      hr
+      / sub powered by <a href="https://segment.com">Segment</a>
+      / hr
 
-    - if @metrics["not_found"] == 0 && @pod.or_is_github?
-      == section("GitHub",
-        { "Stars" => @metrics["stargazers"],
-          "Watchers" => @metrics["subscribers"],
-          "Forks" => @metrics["forks"],
-          "Issues" => @metrics["open_issues"],
-          "Contributors" => @metrics["contributors"],
-          "Pull Requests" => @metrics["open_pull_requests"],
-        })
+    / - if @metrics["not_found"] == 0 && @pod.or_is_github?
+    /   == section("GitHub",
+    /     { "Stars" => @metrics["stargazers"],
+    /       "Watchers" => @metrics["subscribers"],
+    /       "Forks" => @metrics["forks"],
+    /       "Issues" => @metrics["open_issues"],
+    /       "Contributors" => @metrics["contributors"],
+    /       "Pull Requests" => @metrics["open_pull_requests"],
+    /     })
 
       hr
 
