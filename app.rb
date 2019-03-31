@@ -128,8 +128,8 @@ class App < Sinatra::Base
       owners_pod[:pod_id]
     end
 
-    all_dbs = metrics.join(:stats_metrics).on(:id => :pod_id)
-    @pods = all_dbs.where(pods[:deleted] => false, pods[:id] => pod_ids).sort_by { |pod| pod[:cocoadocs_pod_metric][:quality_estimate] || 0 }.reverse
+    # all_dbs = metrics.join(:stats_metrics).on(:id => :pod_id)
+    @pods = metrics.where(pods[:deleted] => false, pods[:id] => pod_ids).sort_by { |pod| pod[:name].downcase }
 
     gravatar = Digest::MD5.hexdigest(@owner.email.downcase)
     @gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar}.png?d=retro&r=PG&s=240"
@@ -139,15 +139,7 @@ class App < Sinatra::Base
   end
 
   get '/pods/:name/quality' do
-    @name = params[:name]
-    @quality, response_code = PodQualityEstimate.load_quality_estimate(@name)
-    @page_title = "#{@name}'s Quality Estimate on CocoaPods.org"
-
-    if (400...600).cover? response_code
-      not_found
-    else
-      slim :pod_quality
-    end
+    not_found
   end
 
   def pod_page_for_result result

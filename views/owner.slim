@@ -1,59 +1,10 @@
 ruby:
-  def hide_stars pod
-   pod[:github_pod_metric][:stargazers] == nil && pod[:github_pod_metric][:stargazers] != 0
-  end
-
-  def hide_tests pod
-   pod[:cocoadocs_pod_metric][:is_vendored_framework] == true ||
-   pod[:cocoadocs_pod_metric][:total_test_expectations] == nil && pod[:cocoadocs_pod_metric][:total_test_expectations] != 0
-  end
-
-  def show_framework pod
-   pod[:cocoadocs_pod_metric][:is_vendored_framework] == true
-  end
-
-  def testing_quote tests
-    case tests
-    when -1..1 then "No Tests"
-    when 2..10 then "Some Tests"
-    when 11..30 then "Has Tests"
-    when 31..80 then "Amply Tested"
-    when 81..150 then "Well Tested"
-    else "Great Tests"
-    end
-  end
-
-  def doc_quote doc
-    case doc
-    when -1..5 then "No Docs"
-    when 6..20 then "Partial Docs"
-    when 21..50 then "Documented"
-    when 51..80 then "Good Docs"
-    else "Great Docs"
-    end
-  end
-
   def pod_owner_pods
     if @pods.length == 1
       "<span>1</span>pod"
     else
       "<span>" + @pods.length.to_s + "</span>pods"
     end
-  end
-
-  default = Hash.new(0)
-  impact = @pods.reduce(default) do |sum, pod|
-    sum[:qi] = pod[:cocoadocs_pod_metric][:quality_estimate] + (sum[:qi] || 0)
-    sum[:apps] = pod[:stat_metric][:app_total] + (sum[:apps] || 0)
-    sum[:downloads] = pod[:stat_metric][:download_total] + (sum[:downloads] || 0)
-    sum[:stars] = (pod[:github_pod_metric][:stargazers] || 0) + (sum[:stars] || 0)
-    sum[:loc] = (pod[:cocoadocs_pod_metric][:total_lines_of_code] || 0) + (sum[:loc] || 0)
-    sum
-  end
-
-  if @pods.count > 0
-    average_qi = impact[:qi] / @pods.count
-    average_qi_group = quality_indicator_group average_qi
   end
 
 css:
@@ -244,37 +195,6 @@ section.container
       .col-xs-3.impact.title
         p == pod_owner_pods
 
-      .col-xs-push-1.col-xs-8.impact
-
-        table
-          thead
-            tr
-              th
-                h2 Community Impact
-          tbody
-            - if average_qi_group
-              tr
-                td class="quality_indicator quality_#{average_qi_group}"
-                  == quality_indicator_svg
-                td Average<br/>quality
-            tr
-              td.result = impact[:apps].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
-              td apps touched
-            tr
-              td.result = impact[:downloads].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
-              td combined downloads
-
-            - if impact[:stars] > 0
-              tr
-                td.result = impact[:stars].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
-                td stargazers
-
-            - if impact[:loc] > 0
-              tr
-                td.result = impact[:loc].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
-                td lines of code
-
-
     article.row
       - @pods.each do |pod|
         .col-sm-12.pods
@@ -288,20 +208,4 @@ section.container
             p == "License: <a href='#{pod[:cocoadocs_pod_metric][:license_canonical_url]}'>#{pod[:cocoadocs_pod_metric][:license_short_name]}</a>"
 
           ul.metrics
-            li
-              div class="quality_indicator quality_#{quality_indicator_group pod[:cocoadocs_pod_metric][:quality_estimate]}"
-                a href="/pods/#{pod[:name]}/quality"
-                  == quality_indicator_svg
-
-            - unless hide_stars pod
-              li == pod[:github_pod_metric][:stargazers].to_s + " #{ pod[:github_pod_metric][:stargazers] == 1 ? "Star" : "Stars"}"
-
-            - unless hide_tests pod
-              li == testing_quote pod[:cocoadocs_pod_metric][:total_test_expectations]
-
-            - if show_framework pod
-              li Is a binary Pod
-
-            li == doc_quote pod[:cocoadocs_pod_metric][:doc_percent]
-
             li == pod[:cocoadocs_pod_metric][:dominant_language]
