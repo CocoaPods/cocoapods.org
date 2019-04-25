@@ -8,6 +8,10 @@
   twitter_username: "dnkoutso"
   cocoapods_bio: 'Polishing Performance.'
 
+- name: 'Eric Amorde'
+  twitter_username: '_amorde'
+  cocoapods_bio: "Rinse, Refactor, Repeat."
+
 - name: 'Samuel Giddins'
   twitter_username: 'segiddins'
   cocoapods_bio: "Patch Master & Bundler of Joy."
