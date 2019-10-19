@@ -11,7 +11,26 @@ require 'sprockets'
 require 'set'
 require 'digest/md5'
 
+# To support 2.6.5 - https://stackoverflow.com/questions/44053672/simple-rails-app-error-cannot-visit-integer
+require 'arel'
+module Arel
+  module Visitors
+    class DepthFirst < Arel::Visitors::Visitor
+      alias :visit_Integer :terminal
+    end
+
+    class Dot < Arel::Visitors::Visitor
+      alias :visit_Integer :visit_String
+    end
+
+    class ToSql < Arel::Visitors::Visitor
+      alias :visit_Integer :literal
+    end
+  end
+end
+
 class App < Sinatra::Base
+  
   configure do
     use Rack::Deflater
   end
