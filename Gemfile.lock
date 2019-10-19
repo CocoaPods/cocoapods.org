@@ -41,7 +41,7 @@ GEM
       dotenv-deployment (~> 0.0.2)
     dotenv-deployment (0.0.2)
     equalizer (0.0.9)
-    eventmachine (1.0.3)
+    eventmachine (1.2.7)
     execjs (2.6.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
@@ -64,7 +64,7 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
-    json (1.8.3)
+    json (1.8.6)
     link_header (0.0.8)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
@@ -130,7 +130,7 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    yajl-ruby (1.2.1)
+    yajl-ruby (1.2.3)
     yard (0.8.6.2)
 
 PLATFORMS
@@ -164,7 +164,7 @@ DEPENDENCIES
   yard (~> 0.8.6.2)
 
 RUBY VERSION
-   ruby 2.1.3p242
+   ruby 2.6.5p114
 
 BUNDLED WITH
    1.17.3
