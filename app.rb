@@ -70,6 +70,10 @@ class App < Sinatra::Base
   # Some special cases for the routing
   #
 
+  get '/pods/LLDebugTool' do
+    halt 403, "DDOS protection"
+  end
+
   get '/' do
     slim :index
   end
