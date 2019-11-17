@@ -71,18 +71,22 @@ class App < Sinatra::Base
   #
 
   get '/pods/LLDebugTool' do
+    # remove this if the cache-control seems to work
     halt 403, "DDOS protection"
   end
 
   get '/' do
+    dynamic_content_cache_headers
     slim :index
   end
 
   get '/get-started' do
+    static_content_cache_headers
     redirect "https://github.com/cocoapods/cocoapods/issues?q=is%3Aopen+is%3Aissue+label%3Ad1%3Aeasy"
   end
 
   get '/opensearch.xml' do
+    static_content_cache_headers
     content_type "application/xml"
     slim :opensearch, :layout => false
   end
@@ -103,6 +107,8 @@ class App < Sinatra::Base
   # Gets a Pod Page
   #
   get '/pods/:name/?' do
+    dynamic_content_cache_headers
+
     STDOUT.sync = true
     result = metrics.where(pods[:deleted] => false, pods[:normalized_name] => params[:name].downcase).first
     unless result
@@ -121,6 +127,7 @@ class App < Sinatra::Base
   end
 
   get '/pods/:name/inline' do
+    dynamic_content_cache_headers
     response['Access-Control-Allow-Origin'] = '*'
 
     result = metrics.where(pods[:deleted] => false, pods[:name] => params[:name]).first
@@ -130,6 +137,7 @@ class App < Sinatra::Base
   end
 
   get '/pods/:name/changelog' do
+    dynamic_content_cache_headers
     response['Access-Control-Allow-Origin'] = '*'
 
     result = metrics.where(pods[:deleted] => false, pods[:name] => params[:name]).first
@@ -144,6 +152,7 @@ class App < Sinatra::Base
   end
 
   get '/owners/:id' do
+    dynamic_content_cache_headers
     @owner = owners.where(:id => params[:id]).first
     halt 404, "404 - Owner not found" unless @owner
 
@@ -162,6 +171,7 @@ class App < Sinatra::Base
   end
 
   get '/pods/:name/quality' do
+    static_content_cache_headers
     not_found
   end
 
@@ -233,6 +243,12 @@ class App < Sinatra::Base
     settings.assets.append_path file
   end
 
+  def dynamic_content_cache_headers
+    # you have to set some `Cache-Control` to actually have cache hits on CDN
+    # using 20 secs client-side and 60 secs server-side
+    cache_control :public, max_age: 20, s_maxage: 60
+  end
+
   def static_content_cache_headers
     cache_control :public, :must_revalidated, max_age: 60 * 60 * 24 * 31 * 2
   end
@@ -274,6 +290,7 @@ class App < Sinatra::Base
   # E.g. /about -> /about.slim
   #
   get '/:filename' do
+    dynamic_content_cache_headers
     name = params[:filename]
     if File.exists? "views/#{name}.slim"
       slim :"#{name}"
