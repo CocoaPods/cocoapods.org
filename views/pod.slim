@@ -23,7 +23,7 @@ ruby:
   is_for_testing = has_full_metadata && @pod.attributes_hash["frameworks"] && @pod.attributes_hash["frameworks"].include?("XCTest")
   quality_group = has_full_metadata && quality_indicator_group(@cocoadocs["quality_estimate"])
   is_binary = has_full_metadata && @cocoadocs["is_vendored_framework"]
-  has_changelog = has_full_metadata && @cocoadocs["rendered_changelog_url"]
+  has_changelog = @cocoadocs["rendered_changelog_url"]
   is_swift = has_full_metadata && @cocoadocs["dominant_language"] == "Swift"
 
   def section(title, table_class="inset", include_zero=true, properties)
