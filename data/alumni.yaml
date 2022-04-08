@@ -2,8 +2,8 @@
 - name: Eloy Durán
   twitter_username: alloy
   cocoapods_bio: Creator, maintainer, instigator, & gesticulator.
-  twitter_profile_url: https://pbs.twimg.com/profile_images/1268131824716390400/2h_DIL-x.jpg
-  twitter_banner_url: http://pbs.twimg.com/profile_banners/12459132/1591181163/web
+  twitter_profile_url: https://pbs.twimg.com/profile_images/1504056066774032385/WNIMQvtC.jpg
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/12459132/1647429886/web
 - name: Fabio Pelosin
   twitter_username: fabiopelosin
   cocoapods_bio: Programmer at Large.
@@ -27,7 +27,7 @@
 - name: Karla Sandoval
   twitter_username: k0doval
   cocoapods_bio: Pushing those Plugins.
-  twitter_profile_url: https://pbs.twimg.com/profile_images/1203056431898869760/m2MVhdgu.jpg
+  twitter_profile_url: https://pbs.twimg.com/profile_images/1377378677067902978/Jvws3FPG.jpg
   twitter_banner_url: http://pbs.twimg.com/profile_banners/2668517719/1560207563/web
 - name: 'Emma Koszinowski '
   twitter_username: emkosz
@@ -42,12 +42,12 @@
 - name: Michele Titolo
   twitter_username: micheletitolo
   cocoapods_bio: Evangelist and CI Jedi Master.
-  twitter_profile_url: https://pbs.twimg.com/profile_images/822639129745903622/gMlzdr8X.jpg
-  twitter_banner_url: http://pbs.twimg.com/profile_banners/113393517/1484967494/web
+  twitter_profile_url: https://pbs.twimg.com/profile_images/1429136502231949313/KSyJ_2I9.jpg
+  twitter_banner_url: http://pbs.twimg.com/profile_banners/113393517/1629570831/web
 - name: Joshua Kalpin
   twitter_username: joshkalpin
   cocoapods_bio: Boss Bug Basher.
-  twitter_profile_url: https://pbs.twimg.com/profile_images/895150473610575872/NIBq2ls0.jpg
+  twitter_profile_url: https://pbs.twimg.com/profile_images/1386445300349521927/dEwIExTT.jpg
   twitter_banner_url: http://pbs.twimg.com/profile_banners/17796584/1376361936/web
 - name: Delisa Mason
   twitter_username: kattrali
@@ -88,4 +88,4 @@
   twitter_username: mrackwitz
   cocoapods_bio: Swift Pioneer.
   twitter_profile_url: https://pbs.twimg.com/profile_images/1046877701880127489/xx7xyj0d.jpg
-  twitter_banner_url: http://pbs.twimg.com/profile_banners/902525377/1517664213/web
+  twitter_banner_url: ''

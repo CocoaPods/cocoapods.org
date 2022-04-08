@@ -109,7 +109,7 @@ task :generate_contributors do
 
   def download_list(url)
     # Downloads a list of objects from the URL using `Link` header to paginate
-    response = REST.get(url)
+    response = REST.get(url, {}, {:username => '927bff412ce93e98de3e', :password => '6cb0186380b3b3301709345593a5580aadbf636f'})
     return [] if response.status_code == 204
     items = JSON.parse(response.body)
 
@@ -122,8 +122,7 @@ task :generate_contributors do
     items
   end
 
-  params = "?client_id=927bff412ce93e98de3e&client_secret=6cb0186380b3b3301709345593a5580aadbf636f"
-  repos = download_list('https://api.github.com/orgs/CocoaPods/repos' + params)
+  repos = download_list('https://api.github.com/orgs/CocoaPods/repos')
   all_contributors = []
 
   # loop through all projects getting a list of contributors
@@ -134,7 +133,7 @@ task :generate_contributors do
     puts "Getting #{project}"
 
     # grab the stats
-    contributors = download_list("https://api.github.com/repos/CocoaPods/#{project}/contributors" + params)
+    contributors = download_list("https://api.github.com/repos/CocoaPods/#{project}/contributors")
 
     puts "- Found " + contributors.count.to_s + " contributors."
 
