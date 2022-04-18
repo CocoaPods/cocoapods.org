@@ -259,6 +259,8 @@ $(window).ready(function() {
 
     entry.link = "https://cocoapods.org/pods/" + entry.name 
     entry.site_link = entry.homepage || extractRepoFromSource(entry)
+    const md5fragment = md5(entry.name).split('').slice(0,3).join('/')
+    entry.podspec = `https://github.com/CocoaPods/Specs/blob/master/Specs/${md5fragment}/${entry.name}/${entry.version}/${entry.name}.podspec.json`
 
     // If the version string has any non-numeric characters (pre-release or build metadata flags),
     // the clipboard copy prompt should use the raw version number.
