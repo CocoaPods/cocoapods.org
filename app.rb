@@ -210,7 +210,7 @@ class App < Sinatra::Base
   #
   sprockets = Sprockets::Environment.new
   unless environment == :development
-    sprockets.js_compressor  = :uglify
+    # sprockets.js_compressor  = :uglify
     sprockets.css_compressor = :scss
   end
 

@@ -24,7 +24,6 @@ gem "twitter"
 
 gem 'link_header'
 gem 'sprockets'
-gem 'uglifier', '~> 2.7.2'
 
 gem 'httparty'
 gem 'rack-attack', '~> 4.3.0'

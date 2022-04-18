@@ -42,7 +42,6 @@ GEM
     dotenv-deployment (0.0.2)
     equalizer (0.0.9)
     eventmachine (1.2.7)
-    execjs (2.6.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     flounder (1.0.1)
@@ -128,9 +127,6 @@ GEM
       simple_oauth (~> 0.3.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (2.7.2)
-      execjs (>= 0.3.0)
-      json (>= 1.8.0)
     yajl-ruby (1.2.3)
     yard (0.8.6.2)
 
@@ -161,7 +157,6 @@ DEPENDENCIES
   sprockets
   thin
   twitter
-  uglifier (~> 2.7.2)
   yard (~> 0.8.6.2)
 
 RUBY VERSION
