@@ -143,25 +143,6 @@ ruby:
 
     hr
 
-    .space_for_appsight class="#{{@pod.name}}"
-
-    .modal.fade#app_sight_info tabindex="-2" role="dialog" aria-labelledby="appsight_label" aria-hidden="true"
-      .modal-dialog
-        .modal-content
-          .modal-header
-            button.close type="button" data-dismiss="modal" aria-label="Close"
-              span aria-hidden="true" &times
-
-            h4.modal-title#appsight_label == "AppSight.io Integration"
-
-          .modal-body
-            p The CocoaPods Website has an optional integration with <a href='http://appsight.io'>AppSight.io</a> that checks every pod you look at for apps which consume it.
-            p <a href='http://appsight.io'>AppSight.io</a> is a third-party service which tracks SDKs usage in the top iOS + Android apps.
-            p 
-            hr
-            p You can turn it off by clicking here: <button type="button" class="btn btn-danger" onclick="disableAppSight('#{@pod.name}')">Disable</button>
-
-
     - if @pod.dependencies.count > 1
       table
         tbody
