@@ -201,7 +201,6 @@ $(window).ready(function() {
       result.children(".expanded").children(".content")[0].innerHTML = html
 
       /// This can be found in application.js
-      checkForAppSight(result.data("pod-name"))
       post_expansion_setup()
       addCloseButton()
     }).fail(function() {
