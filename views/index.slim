@@ -1,6 +1,6 @@
 ruby:
   total_libs = pods.size.round(-3)
-  total_apps = total_stats.order_by(:id.desc).first[:app_total].round(-5)
+  total_apps = total_stats.order_by(:id.desc).first&.[](:app_total)&.round(-5) || 0
   libraries = ActiveSupport::NumberHelper.number_to_human(total_libs, locale: "en-GB").downcase
   apps = ActiveSupport::NumberHelper.number_to_human(total_apps, locale: "en-GB").downcase
 

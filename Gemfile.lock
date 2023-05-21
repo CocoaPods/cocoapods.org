@@ -1,8 +1,8 @@
 GIT
-  remote: git://github.com/vmg/redcarpet.git
-  revision: 38d135c3ee709a2bd793dd4d544c2c71206dd528
+  remote: https://github.com/vmg/redcarpet.git
+  revision: 3e3f0b522fbe9283ba450334b5cec7a439dc0955
   specs:
-    redcarpet (3.2.0)
+    redcarpet (3.6.0)
 
 GEM
   remote: https://rubygems.org/
@@ -13,7 +13,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.6)
-    aggregate (0.2.2)
+    aggregate (0.2.3)
     arel (5.0.1.20140414130214)
     buftok (0.2.0)
     cocoapods-core (1.1.1)
@@ -22,7 +22,7 @@ GEM
       nap (~> 1.0)
     coderay (1.1.0)
     concurrent-ruby (1.1.5)
-    connection_pool (2.2.2)
+    connection_pool (2.4.1)
     daemons (1.1.9)
     dalli (2.7.4)
     data_objects (0.10.14)
@@ -131,7 +131,9 @@ GEM
     yard (0.8.6.2)
 
 PLATFORMS
-  ruby
+  x86_64-darwin-22
+  arm64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   activesupport
@@ -160,7 +162,7 @@ DEPENDENCIES
   yard (~> 0.8.6.2)
 
 RUBY VERSION
-   ruby 2.6.5p114
+   ruby 2.7.4p191
 
 BUNDLED WITH
-   1.17.3
+   2.4.13
