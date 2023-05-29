@@ -29,18 +29,6 @@ GEM
     connection_pool (2.4.1)
     daemons (1.4.1)
     dalli (2.7.11)
-    data_objects (0.10.17)
-      addressable (~> 2.1)
-    dm-core (1.2.1)
-      addressable (~> 2.3)
-    dm-do-adapter (1.2.0)
-      data_objects (~> 0.10.6)
-      dm-core (~> 1.2.0)
-    dm-postgres-adapter (1.2.0)
-      dm-do-adapter (~> 1.2.0)
-      do_postgres (~> 0.10.6)
-    do_postgres (0.10.17)
-      data_objects (= 0.10.17)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     equalizer (0.0.11)
@@ -164,9 +152,6 @@ DEPENDENCIES
   activesupport
   cocoapods-core
   dalli (~> 2.7.4)
-  dm-core
-  dm-do-adapter
-  dm-postgres-adapter
   flounder
   foreman
   github-markup

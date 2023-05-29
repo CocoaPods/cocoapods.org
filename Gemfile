@@ -5,9 +5,6 @@ gem 'sinatra'
 gem 'cocoapods-core', '>= 0'
 gem 'flounder', require: true
 gem 'rake', require: true
-gem 'dm-core', require: true
-gem 'dm-do-adapter', require: true
-gem 'dm-postgres-adapter', require: true
 
 gem 'redcarpet'
 gem 'sass'
