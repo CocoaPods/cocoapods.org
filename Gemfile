@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.7.4'
+ruby '3.1.1'
 
 gem 'sinatra'
 gem 'cocoapods-core', '>= 0'
@@ -9,10 +9,11 @@ gem 'dm-core', require: true
 gem 'dm-do-adapter', require: true
 gem 'dm-postgres-adapter', require: true
 
-gem 'redcarpet', github: 'vmg/redcarpet'
+gem 'redcarpet'
 gem 'sass'
+gem 'sassc'
 
-gem 'slim', '< 2.0'
+gem 'slim'
 gem 'yard', "~> 0.8.6.2"
 
 gem 'activesupport'
