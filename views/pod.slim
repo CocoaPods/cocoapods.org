@@ -26,24 +26,26 @@ ruby:
   has_changelog = @cocoadocs["rendered_changelog_url"]
   is_swift = has_full_metadata && @cocoadocs["dominant_language"] == "Swift"
 
-  def section(title, table_class="inset", include_zero=true, properties)
-    header = "<h3>#{title}</h3><table class='#{table_class}'><tbody>"
-    body = properties.map do |key, value|
-      "<tr><td>#{key}</td><td>#{value}</td></tr>" if value && include_zero || value.to_i != 0
-    end.join()
-    header + body + "</tbody></table>"
-  end
+  instance_exec do
+    def section(title, table_class="inset", include_zero=true, properties)
+      header = "<h3>#{title}</h3><table class='#{table_class}'><tbody>"
+      body = properties.map do |key, value|
+        "<tr><td>#{key}</td><td>#{value}</td></tr>" if value && include_zero || value.to_i != 0
+      end.join()
+      header + body + "</tbody></table>"
+    end
 
-  def alt_spans(type="lg", small, large)
-    <<-eos
-      <span class='hidden-#{type}-span'>#{small}</span><span class='visible-#{type}-span'>#{large}</span>
-    eos
-  end
+    def alt_spans(type="lg", small, large)
+      <<-eos
+        <span class='hidden-#{type}-span'>#{small}</span><span class='visible-#{type}-span'>#{large}</span>
+      eos
+    end
 
-  def link_to(url, name)
-    <<-eos
-      <a href='#{url}'>#{name}</a>
-    eos
+    def link_to(url, name)
+      <<-eos
+        <a href='#{url}'>#{name}</a>
+      eos
+    end
   end
 
 .pod_result
