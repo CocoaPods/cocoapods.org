@@ -3,6 +3,7 @@ ruby '3.1.1'
 
 gem 'sinatra'
 gem 'cocoapods-core', '>= 0'
+gem 'data_objects'
 gem 'flounder', require: true
 gem 'rake', require: true
 
