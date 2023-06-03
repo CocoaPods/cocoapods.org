@@ -1,9 +1,11 @@
 ruby:
-  def pod_owner_pods
-    if @pods.length == 1
-      "<span>1</span>pod"
-    else
-      "<span>" + @pods.length.to_s + "</span>pods"
+  instance_exec do
+    def pod_owner_pods
+      if @pods.length == 1
+        "<span>1</span>pod"
+      else
+        "<span>" + @pods.length.to_s + "</span>pods"
+      end
     end
   end
 
