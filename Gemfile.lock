@@ -81,6 +81,7 @@ GEM
     nap (1.1.0)
     naught (1.1.0)
     netrc (0.11.0)
+    newrelic_rpm (9.2.2)
     pg (0.21.0)
     pg-hstore (1.2.0)
     pry (0.14.2)
@@ -161,6 +162,7 @@ DEPENDENCIES
   httparty
   link_header
   nap
+  newrelic_rpm
   pry
   pygments.rb
   rack-attack (~> 4.3.0)

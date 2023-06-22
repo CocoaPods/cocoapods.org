@@ -27,6 +27,7 @@ gem 'sprockets'
 gem 'httparty'
 gem 'rack-attack', '~> 4.3.0'
 gem 'dalli', '~> 2.7.4'
+gem 'newrelic_rpm'
 
 group :development, :production do
   gem 'foreman'
