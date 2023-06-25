@@ -188,6 +188,10 @@ class App < Sinatra::Base
                              pod_try_total pod_try_week tests_total tests_week extensions_total
                              extensions_week watch_total watch_week))
     @version = pod_versions.where(pod_id: @pod_db.id, deleted: false).sort_by { |v| Pod::Version.new(v.name) }.last
+    # This can happen if a Pod exists with a single version that is not yet published
+    # TODO: Update the indexer to exclude this Pod from search results
+    halt 404, "404 - Pod not found" unless @version
+
     @owners = owners_pods.join(:owners).on(:owner_id => :id).where(pod_id: @pod_db.id).to_a
     @commit = commits.where(pod_version_id: @version.id, deleted_file_during_import: false).order_by(:created_at.desc).first
     @pod = Pod::Specification.from_json @commit.specification_data
