@@ -25,8 +25,15 @@ module Pod
     end
 
     def or_podspec_url
-      "https://github.com/CocoaPods/Specs/blob/master/Specs/" \
-        "#{MasterRepoMetadata.path_fragment(name, version)}/#{ name }.podspec.json"
+      path_fragment = MasterRepoMetadata.path_fragment(name, version)
+    
+      decoded_fragment = URI.decode(path_fragment)
+      parsed_fragment = decoded_fragment.scan(/\"(.*?)\"/).flatten
+    
+      char1, char2, char3, pod_name, version_number = parsed_fragment
+      version_number = version_number.match(/(\d+\.\d+\.\d+)/)[1]
+    
+      return "https://github.com/CocoaPods/Specs/blob/master/Specs/#{char1}/#{char2}/#{char3}/#{pod_name}/#{version_number}/#{pod_name}.podspec.json"
     end
 
     def or_web_documentation_url
