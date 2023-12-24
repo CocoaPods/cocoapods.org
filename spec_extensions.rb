@@ -1,4 +1,6 @@
-require "redcarpet"
+require 'redcarpet'
+require 'cocoapods-core'
+require 'uri'
 
 class Array
   def listify
@@ -25,15 +27,9 @@ module Pod
     end
 
     def or_podspec_url
-      path_fragment = MasterRepoMetadata.path_fragment(name, version)
+      path_fragment = MasterRepoMetadata.path_fragment(name, version).map(&:to_s).join('/')
     
-      decoded_fragment = URI.decode(path_fragment)
-      parsed_fragment = decoded_fragment.scan(/\"(.*?)\"/).flatten
-    
-      char1, char2, char3, pod_name, version_number = parsed_fragment
-      version_number = version_number.match(/(\d+\.\d+\.\d+)/)[1]
-    
-      return "https://github.com/CocoaPods/Specs/blob/master/Specs/#{char1}/#{char2}/#{char3}/#{pod_name}/#{version_number}/#{pod_name}.podspec.json"
+      "https://github.com/CocoaPods/Specs/blob/master/Specs/#{path_fragment}/#{name}.podspec.json"
     end
 
     def or_web_documentation_url
